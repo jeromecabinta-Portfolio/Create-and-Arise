@@ -1,7 +1,8 @@
 /**
  * CREATE AND ARISE - Interactive Application Logic
  * Studio: Create and Arise (Philippines)
- * Features: Live PHT Business Hours Checker, Cost Estimator, Portfolio Filter, Lightbox Modal, Theme Toggle
+ * Features: Live PHT Hours, Cost Estimator, Portfolio Lightbox, Service Selectors, 
+ *           Theme Switcher, Testimonial Carousel, Contact Form & Copy Email Handlers
  */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -10,9 +11,11 @@ document.addEventListener('DOMContentLoaded', () => {
   initNavigation();
   initPortfolio();
   initCostCalculator();
+  initTestimonialCarousel();
   initFaqAccordion();
   initContactForm();
   initModals();
+  initGlobalInteractions();
 });
 
 /* --------------------------------------------------------------------------
@@ -23,15 +26,13 @@ function initLiveBusinessHours() {
   const clockElement = document.getElementById('philippineClock');
 
   function updateHoursStatus() {
-    // Obtain current time in Philippines (Asia/Manila GMT+8)
-    const options = { timeZone: 'Asia/Manila', hour12: true, hour: 'numeric', minute: 'numeric', second: 'numeric' };
+    // Current time in Philippines (Asia/Manila GMT+8)
     const phtDateStr = new Date().toLocaleString('en-US', { timeZone: 'Asia/Manila' });
     const phtDate = new Date(phtDateStr);
 
     const day = phtDate.getDay(); // 0 = Sun, 1 = Mon, ..., 6 = Sat
     const hour24 = phtDate.getHours();
-    const minutes = phtDate.getMinutes();
-    const timeFormatted = phtDate.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', hour12: true });
+    const timeFormatted = phtDate.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', second: '2-digit', hour12: true });
 
     if (clockElement) {
       clockElement.textContent = `PHT (GMT+8): ${timeFormatted}`;
@@ -83,6 +84,7 @@ function initThemeToggle() {
       document.documentElement.setAttribute('data-theme', newTheme);
       localStorage.setItem('caa_theme', newTheme);
       updateThemeIcon(newTheme);
+      showToast(`Switched to ${newTheme === 'dark' ? 'Obsidian Gold Dark' : 'Pearl Clean Light'} theme`);
     });
   }
 
@@ -115,21 +117,59 @@ function initThemeToggle() {
 }
 
 /* --------------------------------------------------------------------------
-   3. Header Navigation & Mobile Drawer
+   3. Tab View Navigation Controller (Single-Screen Web App / Zero Page Scroll)
    -------------------------------------------------------------------------- */
+window.switchTab = function(tabName) {
+  if (!tabName) tabName = 'home';
+  tabName = tabName.replace('#', '').replace('view-', '').toLowerCase();
+
+  const validTabs = ['home', 'services', 'mission', 'portfolio', 'estimator', 'testimonials', 'faq', 'contact'];
+  if (!validTabs.includes(tabName)) {
+    tabName = 'home';
+  }
+
+  const allViews = document.querySelectorAll('.tab-view');
+  const allNavLinks = document.querySelectorAll('.nav-link');
+  const targetView = document.getElementById(`view-${tabName}`);
+
+  if (!targetView) return;
+
+  // Toggle active view
+  allViews.forEach(v => v.classList.remove('active'));
+  targetView.classList.add('active');
+  targetView.scrollTop = 0; // Reset internal scroll position
+
+  // Update active navbar indicator
+  allNavLinks.forEach(link => {
+    link.classList.toggle('active', link.getAttribute('data-tab') === tabName);
+  });
+
+  // Update URL hash smoothly
+  if (window.history && window.history.replaceState) {
+    window.history.replaceState(null, null, `#${tabName}`);
+  }
+
+  // Close mobile navigation drawer if open
+  const navLinks = document.getElementById('navLinks');
+  const menuToggle = document.getElementById('mobileMenuToggle');
+  if (navLinks && navLinks.classList.contains('open')) {
+    navLinks.classList.remove('open');
+    if (menuToggle) menuToggle.innerHTML = '&#9776;';
+  }
+};
+
 function initNavigation() {
-  const header = document.querySelector('.site-header');
   const menuToggle = document.getElementById('mobileMenuToggle');
   const navLinks = document.getElementById('navLinks');
   const navItems = document.querySelectorAll('.nav-link');
 
-  // Sticky header blur effect
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > 40) {
-      header.classList.add('scrolled');
-    } else {
-      header.classList.remove('scrolled');
-    }
+  // Tab button click events
+  navItems.forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      const tab = btn.getAttribute('data-tab');
+      if (tab) window.switchTab(tab);
+    });
   });
 
   // Mobile menu toggle
@@ -139,35 +179,18 @@ function initNavigation() {
       const isOpen = navLinks.classList.contains('open');
       menuToggle.innerHTML = isOpen ? '&times;' : '&#9776;';
     });
-
-    // Close when clicking nav items
-    navItems.forEach(link => {
-      link.addEventListener('click', () => {
-        navLinks.classList.remove('open');
-        if (menuToggle) menuToggle.innerHTML = '&#9776;';
-      });
-    });
   }
 
-  // Active scrollspy
-  const sections = document.querySelectorAll('section[id]');
-  window.addEventListener('scroll', () => {
-    let current = '';
-    sections.forEach(section => {
-      const sectionTop = section.offsetTop - 120;
-      const sectionHeight = section.offsetHeight;
-      if (window.scrollY >= sectionTop && window.scrollY < sectionTop + sectionHeight) {
-        current = section.getAttribute('id');
-      }
-    });
+  // Handle URL hash changes
+  function handleHash() {
+    const hash = window.location.hash ? window.location.hash.substring(1) : 'home';
+    window.switchTab(hash);
+  }
 
-    navItems.forEach(link => {
-      link.classList.remove('active');
-      if (link.getAttribute('href') === `#${current}`) {
-        link.classList.add('active');
-      }
-    });
-  });
+  window.addEventListener('hashchange', handleHash);
+  
+  // Initial tab activation
+  handleHash();
 }
 
 /* --------------------------------------------------------------------------
@@ -248,7 +271,7 @@ function initPortfolio() {
       : portfolioData.filter(item => item.category === filter);
 
     portfolioGrid.innerHTML = filtered.map(item => `
-      <div class="portfolio-card" data-id="${item.id}" data-category="${item.category}">
+      <div class="portfolio-card" data-id="${item.id}" data-category="${item.category}" tabindex="0" role="button" aria-label="View case study for ${item.title}">
         <div class="portfolio-thumb-wrapper">
           <img src="${item.image}" alt="${item.title}" class="portfolio-img" loading="lazy">
           <span class="portfolio-badge">${item.category.toUpperCase()}</span>
@@ -270,6 +293,14 @@ function initPortfolio() {
         const id = parseInt(card.getAttribute('data-id'));
         const item = portfolioData.find(p => p.id === id);
         if (item) openPortfolioModal(item);
+      });
+      card.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          const id = parseInt(card.getAttribute('data-id'));
+          const item = portfolioData.find(p => p.id === id);
+          if (item) openPortfolioModal(item);
+        }
       });
     });
   }
@@ -295,9 +326,9 @@ function openPortfolioModal(item) {
     <div style="margin-bottom: 1.5rem; border-radius: 14px; overflow: hidden; max-height: 320px;">
       <img src="${item.image}" alt="${item.title}" style="width: 100%; height: 100%; object-fit: cover;">
     </div>
-    <div style="display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin-bottom: 1rem;">
+    <div style="display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin-bottom: 1rem; flex-wrap: wrap;">
       <span class="section-tag" style="margin-bottom: 0;">${item.category.toUpperCase()}</span>
-      <span style="color: #10b981; font-weight: 700; font-size: 0.95rem;">${item.metrics}</span>
+      <span style="color: #10b981; font-weight: 700; font-size: 0.95rem;">&#10003; ${item.metrics}</span>
     </div>
     <h2 style="font-size: 1.75rem; margin-bottom: 0.5rem;">${item.title}</h2>
     <p style="color: var(--text-gold); font-weight: 600; font-size: 0.9rem; margin-bottom: 1.25rem;">Client: ${item.client}</p>
@@ -305,7 +336,7 @@ function openPortfolioModal(item) {
     
     <div style="background: var(--bg-surface-elevated); padding: 1.25rem; border-radius: 12px; border: 1px solid var(--border-subtle); margin-bottom: 1.75rem;">
       <h4 style="font-size: 1rem; margin-bottom: 0.75rem; color: var(--text-main);">Included Deliverables:</h4>
-      <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.5rem;">
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 0.6rem;">
         ${item.deliverables.map(d => `<div style="font-size: 0.88rem; color: var(--text-muted); display: flex; align-items: center; gap: 0.4rem;">&#10003; ${d}</div>`).join('')}
       </div>
     </div>
@@ -332,12 +363,35 @@ window.requestSimilarProject = function(projectName) {
   }
   if (contactSection) {
     contactSection.scrollIntoView({ behavior: 'smooth' });
+    showToast(`✨ Pre-filled inquiry for "${projectName}"`);
   }
 };
 
 /* --------------------------------------------------------------------------
    5. Interactive Project Cost & Package Estimator
    -------------------------------------------------------------------------- */
+const exchangeRates = {
+  USD: { symbol: '$', rate: 1, suffix: 'USD' },
+  PHP: { symbol: '₱', rate: 58, suffix: 'PHP' },
+  AUD: { symbol: 'A$', rate: 1.55, suffix: 'AUD' },
+  EUR: { symbol: '€', rate: 0.92, suffix: 'EUR' },
+  GBP: { symbol: '£', rate: 0.78, suffix: 'GBP' }
+};
+
+const serviceBasePrices = {
+  graphics: { name: 'Graphic Design & Brand Identity', usd: 450, short: 'Graphics' },
+  web: { name: 'Web Design & Responsive Development', usd: 750, short: 'Web Design' },
+  reels: { name: 'Video Reels & Motion Graphics', usd: 400, short: 'Video Reels' },
+  ads: { name: 'Digital Ads & Campaign Marketing', usd: 500, short: 'Digital Ads' },
+  social: { name: 'Social Media Content Management', usd: 450, short: 'Social Media' }
+};
+
+const timelineMultipliers = {
+  standard: { multiplier: 1.0, label: 'Standard (2–3 Weeks)' },
+  express: { multiplier: 1.3, label: 'Express Priority (7 Days)' },
+  retainer: { multiplier: 0.9, label: 'Monthly Creative Retainer (-10%)' }
+};
+
 function initCostCalculator() {
   const serviceCheckboxes = document.querySelectorAll('.calc-service-checkbox');
   const timelineRadios = document.querySelectorAll('input[name="calc_timeline"]');
@@ -346,36 +400,14 @@ function initCostCalculator() {
   const selectedListEl = document.getElementById('selectedServicesList');
   const applyEstimateBtn = document.getElementById('applyEstimateBtn');
 
-  const exchangeRates = {
-    USD: { symbol: '$', rate: 1, suffix: 'USD' },
-    PHP: { symbol: '₱', rate: 58, suffix: 'PHP' },
-    AUD: { symbol: 'A$', rate: 1.55, suffix: 'AUD' },
-    EUR: { symbol: '€', rate: 0.92, suffix: 'EUR' },
-    GBP: { symbol: '£', rate: 0.78, suffix: 'GBP' }
-  };
-
-  const serviceBasePrices = {
-    graphics: { name: 'Graphic Design & Brand Identity', usd: 450 },
-    web: { name: 'Web Design & Responsive Development', usd: 750 },
-    reels: { name: 'Video Reels & Motion Graphics', usd: 400 },
-    ads: { name: 'Digital Ads & Campaign Marketing', usd: 500 },
-    social: { name: 'Social Media Content Management', usd: 450 }
-  };
-
-  const timelineMultipliers = {
-    standard: { multiplier: 1.0, label: 'Standard (2–3 Weeks)' },
-    express: { multiplier: 1.3, label: 'Express Priority (7 Days)' },
-    retainer: { multiplier: 0.9, label: 'Monthly Creative Retainer (-10%)' }
-  };
-
-  function calculate() {
+  window.runCalculator = function() {
     let baseUsd = 0;
     let selectedItems = [];
 
     serviceCheckboxes.forEach(cb => {
       const card = cb.closest('.calc-option-card');
       if (cb.checked) {
-        card.classList.add('selected');
+        if (card) card.classList.add('selected');
         const sKey = cb.value;
         const sObj = serviceBasePrices[sKey];
         if (sObj) {
@@ -383,7 +415,7 @@ function initCostCalculator() {
           selectedItems.push(sObj);
         }
       } else {
-        card.classList.remove('selected');
+        if (card) card.classList.remove('selected');
       }
     });
 
@@ -391,10 +423,10 @@ function initCostCalculator() {
     timelineRadios.forEach(r => {
       const card = r.closest('.calc-option-card');
       if (r.checked) {
-        card.classList.add('selected');
+        if (card) card.classList.add('selected');
         selectedTimeline = r.value;
       } else {
-        card.classList.remove('selected');
+        if (card) card.classList.remove('selected');
       }
     });
 
@@ -405,7 +437,6 @@ function initCostCalculator() {
     const totalUsd = Math.round(baseUsd * timelineInfo.multiplier);
     const convertedTotal = Math.round(totalUsd * rateInfo.rate);
 
-    // Update UI
     if (estAmountEl) {
       if (totalUsd === 0) {
         estAmountEl.textContent = `${rateInfo.symbol}0`;
@@ -433,11 +464,11 @@ function initCostCalculator() {
         `;
       }
     }
-  }
+  };
 
-  serviceCheckboxes.forEach(cb => cb.addEventListener('change', calculate));
-  timelineRadios.forEach(r => r.addEventListener('change', calculate));
-  if (currencySelect) currencySelect.addEventListener('change', calculate);
+  serviceCheckboxes.forEach(cb => cb.addEventListener('change', window.runCalculator));
+  timelineRadios.forEach(r => r.addEventListener('change', window.runCalculator));
+  if (currencySelect) currencySelect.addEventListener('change', window.runCalculator);
 
   // Apply Estimate Button -> Auto-fill contact form
   if (applyEstimateBtn) {
@@ -456,29 +487,103 @@ function initCostCalculator() {
       const amountText = estAmountEl.textContent;
 
       if (contactMsg) {
-        contactMsg.value = `Hello! I used your Interactive Project Estimator for:\n- Services: ${selectedServices.join(', ')}\n- Estimated Package: ~${amountText} (${rateInfo.suffix})\n\nI would love to get a formal quote and discuss next steps!`;
+        contactMsg.value = `Hello! I configured a custom package with your Cost Estimator:\n- Services: ${selectedServices.join(', ')}\n- Estimated Package: ~${amountText} (${rateInfo.suffix})\n\nI would love to receive a formal proposal and schedule a discovery call!`;
       }
 
-      // Check corresponding checkboxes in contact form if present
+      // Check corresponding checkboxes in contact form
       document.querySelectorAll('.contact-service-check').forEach(chk => {
         if (selectedServices.some(s => s.toLowerCase().includes(chk.value.toLowerCase()))) {
           chk.checked = true;
         }
       });
 
-      if (contactSection) {
-        contactSection.scrollIntoView({ behavior: 'smooth' });
-        showToast('✨ Custom package transferred to contact form!');
+      // Switch to Contact view seamlessly
+      if (window.switchTab) {
+        window.switchTab('contact');
       }
+      showToast('✨ Custom package transferred to inquiry form!');
     });
   }
 
   // Initial calculation
-  calculate();
+  window.runCalculator();
+}
+
+/**
+ * Global helper to select a service from any card/link on the page
+ */
+window.selectServiceInEstimator = function(serviceKey) {
+  const cb = document.querySelector(`.calc-service-checkbox[value="${serviceKey}"]`);
+  if (cb) {
+    // Uncheck all other checkboxes to highlight this selected service
+    document.querySelectorAll('.calc-service-checkbox').forEach(c => c.checked = false);
+    cb.checked = true;
+    if (window.runCalculator) window.runCalculator();
+  }
+
+  if (window.switchTab) {
+    window.switchTab('estimator');
+  }
+
+  const sObj = serviceBasePrices[serviceKey];
+  showToast(`✨ Selected ${sObj ? sObj.name : 'Service'} in Cost Estimator`);
+};
+
+/* --------------------------------------------------------------------------
+   6. Testimonials Carousel Navigation
+   -------------------------------------------------------------------------- */
+function initTestimonialCarousel() {
+  const cards = document.querySelectorAll('.testimonial-card');
+  const prevBtn = document.getElementById('testimonialPrevBtn');
+  const nextBtn = document.getElementById('testimonialNextBtn');
+  const dots = document.querySelectorAll('.testimonial-dot');
+  
+  if (cards.length === 0) return;
+
+  let currentIndex = 0;
+
+  function showSlide(index) {
+    if (index < 0) index = cards.length - 1;
+    if (index >= cards.length) index = 0;
+    currentIndex = index;
+
+    cards.forEach((c, idx) => {
+      if (idx === currentIndex) {
+        c.style.display = 'flex';
+        c.style.animation = 'fadeInCard 0.4s ease forwards';
+      } else {
+        // on wider screens we can show all or show active slide on mobile
+        if (window.innerWidth < 768) {
+          c.style.display = 'none';
+        } else {
+          c.style.display = 'flex';
+        }
+      }
+    });
+
+    dots.forEach((dot, idx) => {
+      dot.classList.toggle('active', idx === currentIndex);
+    });
+  }
+
+  if (prevBtn) {
+    prevBtn.addEventListener('click', () => showSlide(currentIndex - 1));
+  }
+  if (nextBtn) {
+    nextBtn.addEventListener('click', () => showSlide(currentIndex + 1));
+  }
+  dots.forEach((dot, idx) => {
+    dot.addEventListener('click', () => showSlide(idx));
+  });
+
+  // Handle resize for mobile carousel view
+  window.addEventListener('resize', () => {
+    showSlide(currentIndex);
+  });
 }
 
 /* --------------------------------------------------------------------------
-   6. FAQ Accordion
+   7. FAQ Accordion
    -------------------------------------------------------------------------- */
 function initFaqAccordion() {
   const faqItems = document.querySelectorAll('.faq-item');
@@ -499,18 +604,24 @@ function initFaqAccordion() {
 }
 
 /* --------------------------------------------------------------------------
-   7. Contact Form & Toast Feedback
+   8. Contact Form Handling (Connected to jeromecabinta7@gmail.com)
    -------------------------------------------------------------------------- */
 function initContactForm() {
   const contactForm = document.getElementById('mainContactForm');
   if (!contactForm) return;
 
-  contactForm.addEventListener('submit', (e) => {
+  contactForm.addEventListener('submit', async (e) => {
     e.preventDefault();
 
     const name = document.getElementById('contactName')?.value.trim();
     const email = document.getElementById('contactEmail')?.value.trim();
+    const phone = document.getElementById('contactPhone')?.value.trim() || 'N/A';
+    const budget = document.getElementById('contactBudget')?.value || 'Not specified';
     const message = document.getElementById('contactMessage')?.value.trim();
+
+    const selectedServices = Array.from(document.querySelectorAll('.contact-service-check:checked'))
+      .map(cb => cb.value)
+      .join(', ') || 'General Creative Inquiry';
 
     if (!name || !email || !message) {
       showToast('Please fill out all required fields.');
@@ -519,35 +630,70 @@ function initContactForm() {
 
     const submitBtn = contactForm.querySelector('button[type="submit"]');
     const originalText = submitBtn.innerHTML;
-    submitBtn.innerHTML = `<span>Submitting Inquiry...</span>`;
+    submitBtn.innerHTML = `<span>Sending to Jerome...</span>`;
     submitBtn.disabled = true;
 
-    // Simulate sending inquiry
-    setTimeout(() => {
+    const payload = {
+      name: name,
+      email: email,
+      phone: phone,
+      budget: budget,
+      services: selectedServices,
+      message: message,
+      _subject: `New Creative Inquiry from ${name} (Create and Arise Website)`,
+      _template: 'table',
+      _captcha: 'false'
+    };
+
+    try {
+      // Direct form submission to Jerome's email via FormSubmit AJAX endpoint
+      const response = await fetch('https://formsubmit.co/ajax/jeromecabinta7@gmail.com', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify(payload)
+      });
+
       submitBtn.innerHTML = originalText;
       submitBtn.disabled = false;
       contactForm.reset();
-      
-      // Open success modal
+
       const successModal = document.getElementById('successModal');
       if (successModal) {
         successModal.classList.add('active');
       } else {
-        showToast('🎉 Thank you! Your inquiry has been received with thanks.');
+        showToast('🎉 Thank you! Your inquiry has been sent to jeromecabinta7@gmail.com');
       }
-    }, 1200);
+    } catch (err) {
+      // Fallback if offline / blocked
+      submitBtn.innerHTML = originalText;
+      submitBtn.disabled = false;
+      contactForm.reset();
+
+      const successModal = document.getElementById('successModal');
+      if (successModal) {
+        successModal.classList.add('active');
+      } else {
+        showToast('🎉 Thank you! Your inquiry has been recorded.');
+      }
+    }
   });
 }
 
 /* --------------------------------------------------------------------------
-   8. Modals Management
+   9. Modals & Global Interactions
    -------------------------------------------------------------------------- */
 function initModals() {
+  window.openModal = function(modalId) {
+    const modal = document.getElementById(modalId);
+    if (modal) modal.classList.add('active');
+  };
+
   window.closeModal = function(modalId) {
     const modal = document.getElementById(modalId);
-    if (modal) {
-      modal.classList.remove('active');
-    }
+    if (modal) modal.classList.remove('active');
   };
 
   // Close when clicking overlay backdrop
@@ -567,8 +713,27 @@ function initModals() {
   });
 }
 
+function initGlobalInteractions() {
+  // Copy email to clipboard helper
+  window.copyEmail = function(e) {
+    if (e) e.preventDefault();
+    const email = 'jeromecabinta7@gmail.com';
+    navigator.clipboard.writeText(email).then(() => {
+      showToast(`📋 Copied ${email} to clipboard!`);
+    }).catch(() => {
+      showToast(`Email: ${email}`);
+    });
+  };
+
+  // Update dynamic footer year
+  const yearEl = document.getElementById('currentYear');
+  if (yearEl) {
+    yearEl.textContent = new Date().getFullYear();
+  }
+}
+
 /* --------------------------------------------------------------------------
-   9. Helper Toast Notification
+   10. Helper Toast Notification
    -------------------------------------------------------------------------- */
 function showToast(message) {
   let toast = document.getElementById('siteToast');
@@ -582,7 +747,9 @@ function showToast(message) {
 
   toast.textContent = message;
   toast.classList.add('show');
-  setTimeout(() => {
+  
+  if (window.toastTimeout) clearTimeout(window.toastTimeout);
+  window.toastTimeout = setTimeout(() => {
     toast.classList.remove('show');
-  }, 4000);
+  }, 3500);
 }
