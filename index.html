@@ -1,14 +1,1042 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="en" data-theme="dark">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- SEO Meta Tags -->
+  <title>Create and Arise | Web Design, Graphics, Video Reels & Digital Marketing Agency</title>
+  <meta name="description" content="Create and Arise is a premier Christian-led creative agency based in the Philippines. We specialize in purpose-driven Graphic Design, Web Design, Digital Ads Marketing, Video Reels, and Social Media Management. Open Monday to Friday.">
+  <meta name="keywords" content="Create and Arise, Graphic Design Philippines, Web Design Agency, Digital Ads Marketing, Video Reels Editing, Social Media Management, Christian Creative Agency, Philippines Digital Marketing">
+  <meta name="author" content="Create and Arise">
 
+  <!-- Open Graph / Social Sharing -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Create and Arise | Creative Design & Digital Marketing Agency">
+  <meta property="og:description" content="Empowering visionary brands with purpose-driven graphic design, high-converting websites, dynamic video reels, and digital marketing.">
+  <meta property="og:image" content="assets/images/hero-agency.jpg">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Syne:wght@600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="assets/css/style.css">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%23f59e0b'/><path d='M30 70 L50 25 L70 70 L55 70 L50 48 L45 70 Z' fill='%230a0b10'/></svg>">
+</head>
 <body>
 
-</body>
+  <!-- Ambient Light Effect Orbs -->
+  <div class="bg-ambient-layer" aria-hidden="true">
+    <div class="ambient-orb orb-1"></div>
+    <div class="ambient-orb orb-2"></div>
+    <div class="ambient-orb orb-3"></div>
+  </div>
 
+  <!-- Top Announcement Bar: Live Hours & Studio Status -->
+  <aside class="top-announcement-bar">
+    <div class="container top-bar-content">
+      <div class="business-status-chip" id="liveStatusBadge">
+        <span class="status-dot online"></span>
+        <span><strong>Studio Status:</strong> Loading Schedule...</span>
+      </div>
+      <div class="top-bar-info">
+        <span class="top-info-item" id="philippineClock">PHT (GMT+8): Loading...</span>
+        <span class="top-info-item hide-mobile">&#128205; Manila, Philippines (Serving Worldwide)</span>
+        <span class="top-info-item hide-mobile">&#128197; Mon &ndash; Fri Operations</span>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Navigation Header -->
+  <header class="site-header">
+    <div class="container navbar">
+      <a href="#home" class="brand-logo" aria-label="Create and Arise Home">
+        <div class="brand-icon-box">
+          <span>CA</span>
+        </div>
+        <div class="brand-text">
+          <span class="brand-name">CREATE <span style="color: var(--color-primary);">&amp;</span> ARISE</span>
+          <span class="brand-tagline">Creative &bull; Digital &bull; Purpose</span>
+        </div>
+      </a>
+
+      <!-- Navigation Links -->
+      <nav class="nav-links" id="navLinks" aria-label="Main Navigation">
+        <a href="#home" class="nav-link active">Home</a>
+        <a href="#services" class="nav-link">Services</a>
+        <a href="#mission" class="nav-link">Mission &amp; Vision</a>
+        <a href="#portfolio" class="nav-link">Portfolio</a>
+        <a href="#estimator" class="nav-link">Cost Calculator</a>
+        <a href="#testimonials" class="nav-link">Reviews</a>
+        <a href="#faq" class="nav-link">FAQs</a>
+        <a href="#contact" class="nav-link">Contact</a>
+      </nav>
+
+      <!-- Header Controls -->
+      <div class="header-actions">
+        <button class="theme-toggle-btn" id="themeToggleBtn" aria-label="Toggle Dark / Light Theme" title="Toggle Theme">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+          </svg>
+        </button>
+
+        <a href="#contact" class="btn btn-primary btn-sm btn-quote">
+          <span>Get a Quote</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+
+        <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Open Navigation Menu">
+          &#9776;
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero-section" id="home">
+    <div class="container hero-grid">
+      <div class="hero-content">
+        <div class="hero-badge-container">
+          <span class="section-tag">&#10024; Creative Design &amp; Digital Growth Agency</span>
+          <span class="hero-location-badge">&#127477;&#127469; Based in the Philippines &bull; Serving Global Brands</span>
+        </div>
+
+        <h1 class="hero-title">
+          Crafting Purposeful <span class="gradient-text">Creativity.</span><br>
+          Empowering Brands to <span class="gradient-text-purple">Arise.</span>
+        </h1>
+
+        <p class="hero-lead">
+          We combine cutting-edge visual graphic design, high-converting modern web design, viral video reels, and high-ROI digital ad campaigns—built on Christian values of excellence, integrity, and faithful stewardship.
+        </p>
+
+        <div class="hero-cta-group">
+          <a href="#contact" class="btn btn-primary">
+            <span>Start Your Project</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+          <a href="#portfolio" class="btn btn-secondary">
+            <span>Explore Portfolio</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></svg>
+          </a>
+          <a href="#estimator" class="btn btn-outline">
+            <span>Calculate Cost</span>
+          </a>
+        </div>
+
+        <!-- Highlight Numbers -->
+        <div class="hero-highlights">
+          <div class="highlight-item">
+            <span class="highlight-number">100%</span>
+            <span class="highlight-label">Purpose &amp; Integrity Driven</span>
+          </div>
+          <div class="highlight-item">
+            <span class="highlight-number">10M+</span>
+            <span class="highlight-label">Organic Video &amp; Reel Views</span>
+          </div>
+          <div class="highlight-item">
+            <span class="highlight-number">Mon &ndash; Fri</span>
+            <span class="highlight-label">Dedicated Weekday Focus</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Hero Visual Composition -->
+      <div class="hero-visual">
+        <div class="hero-card-frame">
+          <div class="hero-card-inner">
+            <img src="assets/images/hero-agency.jpg" alt="Create and Arise Creative Agency Showcase" class="hero-image" width="800" height="450">
+          </div>
+        </div>
+
+        <!-- Floating Interactive Badges -->
+        <div class="floating-badge floating-badge-1">
+          <div class="badge-icon gold">&#9733;</div>
+          <div>
+            <div class="badge-title">Visual Design Mastery</div>
+            <div class="badge-desc">Brand Graphics &amp; UI Excellence</div>
+          </div>
+        </div>
+
+        <div class="floating-badge floating-badge-2">
+          <div class="badge-icon purple">&#128640;</div>
+          <div>
+            <div class="badge-title">Data-Driven Growth</div>
+            <div class="badge-desc">+320% Average Ad ROAS</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Scripture & Purpose Motto Banner -->
+  <div class="motto-banner" aria-label="Company Scripture and Foundational Motto">
+    <div class="container">
+      <p class="motto-quote">
+        &ldquo;<span>Arise, shine;</span> for your light has come, and the glory of the Lord rises upon you.&rdquo;
+      </p>
+      <p class="motto-reference">Isaiah 60:1 &bull; Founded on Faith, Integrity, and Creative Mastery in the Philippines</p>
+    </div>
+  </div>
+
+  <!-- Services Section -->
+  <section class="section" id="services">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">&#9889; What We Do</span>
+        <h2 class="section-title">Comprehensive Creative &amp; <span class="gradient-text">Digital Services</span></h2>
+        <p class="section-desc">
+          From breathtaking graphic brand identities to revenue-generating ad campaigns and high-speed web experiences, we engineer every asset to stand out and deliver results.
+        </p>
+      </div>
+
+      <div class="services-grid">
+        <!-- Service 1: Graphic Design & Brand Identity -->
+        <article class="service-card">
+          <div class="service-header">
+            <div class="service-icon-box icon-amber">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 19l7-7 3 3-7 7-3-3z"></path>
+                <path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"></path>
+                <path d="M2 2l7.586 7.586"></path>
+                <circle cx="11" cy="11" r="2"></circle>
+              </svg>
+            </div>
+            <span class="service-number">01</span>
+          </div>
+          <h3 class="service-title">Graphic Design &amp; Brand Identity</h3>
+          <p class="service-desc">
+            Visual storytelling that commands attention. We craft high-impact brand identities, bespoke logo systems, marketing collaterals, and pitch decks with uncompromised artistic polish.
+          </p>
+          <ul class="service-feature-list">
+            <li class="service-feature-item">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>Logo &amp; Visual Identity System</span>
+            </li>
+            <li class="service-feature-item">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>Brand Guidelines &amp; Typography Sets</span>
+            </li>
+            <li class="service-feature-item">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>Packaging, Pitch Decks &amp; Print Assets</span>
+            </li>
+            <li class="service-feature-item">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>Custom Vector Art &amp; Infographics</span>
+            </li>
+          </ul>
+          <a href="#estimator" class="service-action-link">Estimate Package &rarr;</a>
+        </article>
+
+        <!-- Service 2: Web Design & Development -->
+        <article class="service-card">
+          <div class="service-header">
+            <div class="service-icon-box icon-cyan">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                <line x1="8" y1="21" x2="16" y2="21"></line>
+                <line x1="12" y1="17" x2="12" y2="21"></line>
+              </svg>
+            </div>
+            <span class="service-number">02</span>
+          </div>
+          <h3 class="service-title">Web Design &amp; Development</h3>
+          <p class="service-desc">
+            Fast, responsive, and visually mesmerizing websites engineered for conversions. We turn your website into a 24/7 digital salesperson that builds trust and accelerates sales.
+          </p>
+          <ul class="service-feature-list">
+            <li class="service-feature-item">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>Modern UI/UX Responsive Layouts</span>
+            </li>
+            <li class="service-feature-item">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>High-Converting Landing Pages</span>
+            </li>
+            <li class="service-feature-item">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>SEO Optimization &amp; Lightning Speed</span>
+            </li>
+            <li class="service-feature-item">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>Interactive Lead Capture Integrations</span>
+            </li>
+          </ul>
+          <a href="#estimator" class="service-action-link">Estimate Package &rarr;</a>
+        </article>
+
+        <!-- Service 3: Video Reels & Motion Graphics -->
+        <article class="service-card">
+          <div class="service-header">
+            <div class="service-icon-box icon-purple">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polygon points="23 7 16 12 23 17 23 7"></polygon>
+                <rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect>
+              </svg>
+            </div>
+            <span class="service-number">03</span>
+          </div>
+          <h3 class="service-title">Video Reels &amp; Motion Graphics</h3>
+          <p class="service-desc">
+            Viral short-form video editing and kinetic animations designed for TikTok, Instagram Reels, and YouTube Shorts. We capture attention within the first 3 seconds.
+          </p>
+          <ul class="service-feature-list">
+            <li class="service-feature-item">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>Hook-Driven Short Form Video Editing</span>
+            </li>
+            <li class="service-feature-item">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>Kinetic Typography &amp; Dynamic Captions</span>
+            </li>
+            <li class="service-feature-item">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>3D Motion Graphics &amp; Logo Animations</span>
+            </li>
+            <li class="service-feature-item">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>Sound Design &amp; Trend Audio Matching</span>
+            </li>
+          </ul>
+          <a href="#estimator" class="service-action-link">Estimate Package &rarr;</a>
+        </article>
+
+        <!-- Service 4: Digital Ads & Campaign Marketing -->
+        <article class="service-card">
+          <div class="service-header">
+            <div class="service-icon-box icon-rose">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="12" y1="20" x2="12" y2="10"></line>
+                <line x1="18" y1="20" x2="18" y2="4"></line>
+                <line x1="6" y1="20" x2="6" y2="16"></line>
+              </svg>
+            </div>
+            <span class="service-number">04</span>
+          </div>
+          <h3 class="service-title">Digital Ads &amp; Campaign Marketing</h3>
+          <p class="service-desc">
+            Maximize your Return on Ad Spend (ROAS). We design data-backed paid advertising strategies across Meta (Facebook &amp; Instagram), Google Ads, and TikTok with high-converting creative copies.
+          </p>
+          <ul class="service-feature-list">
+            <li class="service-feature-item">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>Meta, Google &amp; TikTok Ad Campaigns</span>
+            </li>
+            <li class="service-feature-item">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>Target Audience Modeling &amp; Retargeting</span>
+            </li>
+            <li class="service-feature-item">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>A/B Creative &amp; Copy Split Testing</span>
+            </li>
+            <li class="service-feature-item">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>Weekly Transparent Analytics &amp; ROAS Growth</span>
+            </li>
+          </ul>
+          <a href="#estimator" class="service-action-link">Estimate Package &rarr;</a>
+        </article>
+
+        <!-- Service 5: Social Media Management -->
+        <article class="service-card">
+          <div class="service-header">
+            <div class="service-icon-box icon-emerald">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+              </svg>
+            </div>
+            <span class="service-number">05</span>
+          </div>
+          <h3 class="service-title">Social Media Management</h3>
+          <p class="service-desc">
+            Build a loyal community and consistent visual feed. We handle complete social media strategy, daily aesthetic carousels, engaging copywriting, community replies, and growth scheduling.
+          </p>
+          <ul class="service-feature-list">
+            <li class="service-feature-item">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>Monthly Content Calendar &amp; Grid Curation</span>
+            </li>
+            <li class="service-feature-item">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>High-Impact Graphic Carousels &amp; Posts</span>
+            </li>
+            <li class="service-feature-item">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>Audience Engagement &amp; Inquiries Support</span>
+            </li>
+            <li class="service-feature-item">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>Hashtag Strategy &amp; Growth Reports</span>
+            </li>
+          </ul>
+          <a href="#estimator" class="service-action-link">Estimate Package &rarr;</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Mission, Vision & The ARISE Core Values -->
+  <section class="section faith-mission-section" id="mission">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">&#128220; Our Foundation</span>
+        <h2 class="section-title">Rooted in Faith, <span class="gradient-text">Driven by Purpose</span></h2>
+        <p class="section-desc">
+          We believe true creative excellence is an act of worship and stewardship. We bring honesty, biblical integrity, and relentless devotion to every design and campaign we craft.
+        </p>
+      </div>
+
+      <!-- Mission & Vision Cards -->
+      <div class="mission-vision-grid">
+        <div class="mv-card mission-card">
+          <div class="mv-card-icon">&#128261;</div>
+          <h3 class="mv-card-title">Our Mission</h3>
+          <p class="mv-card-text">
+            To empower visionary businesses, creators, and Kingdom-minded enterprises with world-class graphic design, high-converting digital web solutions, and strategic marketing campaigns. We are dedicated to delivering creative excellence rooted in Christian integrity, purposeful storytelling, and authentic partnership from the Philippines to global markets.
+          </p>
+        </div>
+
+        <div class="mv-card vision-card">
+          <div class="mv-card-icon">&#128065;&#65039;</div>
+          <h3 class="mv-card-title">Our Vision</h3>
+          <p class="mv-card-text">
+            To be a premier faith-driven creative powerhouse recognized worldwide for uplifting brands to arise, illuminate their industries, and create transformative impact through breathtaking visual craft, ethical innovation, and measurable digital growth.
+          </p>
+        </div>
+      </div>
+
+      <!-- ARISE Core Values Pillars -->
+      <div class="pillars-header">
+        <h3 style="font-size: 1.5rem; margin-bottom: 0.5rem;">The <span class="gradient-text">A.R.I.S.E.</span> Core Values</h3>
+        <p style="color: var(--text-muted); font-size: 0.95rem;">The spiritual and professional pillars that guide every client interaction and creative decision</p>
+      </div>
+
+      <div class="pillars-grid">
+        <div class="pillar-card">
+          <div class="pillar-letter">A</div>
+          <h4 class="pillar-title">Authenticity &amp; Faith</h4>
+          <p class="pillar-desc">Conducting all business with transparency, Christian honesty, and uncompromised honor.</p>
+        </div>
+
+        <div class="pillar-card">
+          <div class="pillar-letter">R</div>
+          <h4 class="pillar-title">Radiant Excellence</h4>
+          <p class="pillar-desc">Delivering world-class graphic design and digital polish that shines above industry standards.</p>
+        </div>
+
+        <div class="pillar-card">
+          <div class="pillar-letter">I</div>
+          <h4 class="pillar-title">Impact &amp; Purpose</h4>
+          <p class="pillar-desc">Designing not just for vanity metrics, but for real brand equity, conversions, and kingdom impact.</p>
+        </div>
+
+        <div class="pillar-card">
+          <div class="pillar-letter">S</div>
+          <h4 class="pillar-title">Stewardship</h4>
+          <p class="pillar-desc">Treating our clients' budgets, time, and trust with faithful dedication and respectful diligence.</p>
+        </div>
+
+        <div class="pillar-card">
+          <div class="pillar-letter">E</div>
+          <h4 class="pillar-title">Elevation &amp; Growth</h4>
+          <p class="pillar-desc">Elevating businesses to arise and lead their respective markets with confidence and clarity.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Portfolio Showcase Section -->
+  <section class="section" id="portfolio">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">&#128396;&#65039; Creative Showcase</span>
+        <h2 class="section-title">Featured Works &amp; <span class="gradient-text">Case Studies</span></h2>
+        <p class="section-desc">
+          Explore a curated selection of brand identities, high-converting websites, dynamic reels, and data-backed digital campaigns crafted by Create and Arise.
+        </p>
+      </div>
+
+      <!-- Filter Buttons -->
+      <div class="portfolio-filters">
+        <button class="filter-btn active" data-filter="all">All Projects</button>
+        <button class="filter-btn" data-filter="branding">Graphics &amp; Branding</button>
+        <button class="filter-btn" data-filter="web">Web Design</button>
+        <button class="filter-btn" data-filter="reels">Video Reels &amp; Motion</button>
+        <button class="filter-btn" data-filter="ads">Digital Ads</button>
+        <button class="filter-btn" data-filter="social">Social Media</button>
+      </div>
+
+      <!-- Portfolio Grid -->
+      <div class="portfolio-grid" id="portfolioGrid">
+        <!-- Rendered dynamically by JavaScript -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive Project Cost & Quote Estimator -->
+  <section class="section" id="estimator">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">&#128178; Transparent Pricing</span>
+        <h2 class="section-title">Interactive Project <span class="gradient-text">Cost Estimator</span></h2>
+        <p class="section-desc">
+          Select the services and pacing your business needs to view an instant transparent package estimate. You can transfer your configuration directly into our booking form!
+        </p>
+      </div>
+
+      <div class="calculator-box">
+        <div class="calc-grid">
+          <!-- Step 1 & 2 Inputs -->
+          <div class="calc-inputs">
+            <!-- Step 1: Services Selection -->
+            <div class="calc-step-group">
+              <h3 class="calc-step-title">
+                <span class="step-num">1</span>
+                <span>Select Required Services (Choose one or multiple):</span>
+              </h3>
+              <div class="calc-options-grid">
+                <label class="calc-option-card">
+                  <input type="checkbox" class="calc-service-checkbox" value="graphics" checked>
+                  <div>
+                    <div class="calc-option-name">Graphic &amp; Brand Identity</div>
+                    <div style="font-size: 0.78rem; color: var(--text-muted);">Logo, style guide, vector assets</div>
+                  </div>
+                </label>
+
+                <label class="calc-option-card">
+                  <input type="checkbox" class="calc-service-checkbox" value="web" checked>
+                  <div>
+                    <div class="calc-option-name">Web Design &amp; Development</div>
+                    <div style="font-size: 0.78rem; color: var(--text-muted);">Responsive UI/UX, SEO ready</div>
+                  </div>
+                </label>
+
+                <label class="calc-option-card">
+                  <input type="checkbox" class="calc-service-checkbox" value="reels">
+                  <div>
+                    <div class="calc-option-name">Video Reels &amp; Motion</div>
+                    <div style="font-size: 0.78rem; color: var(--text-muted);">Short-form reels, typography, audio</div>
+                  </div>
+                </label>
+
+                <label class="calc-option-card">
+                  <input type="checkbox" class="calc-service-checkbox" value="ads">
+                  <div>
+                    <div class="calc-option-name">Digital Ads Marketing</div>
+                    <div style="font-size: 0.78rem; color: var(--text-muted);">Meta/Google ads setup, creative testing</div>
+                  </div>
+                </label>
+
+                <label class="calc-option-card">
+                  <input type="checkbox" class="calc-service-checkbox" value="social">
+                  <div>
+                    <div class="calc-option-name">Social Media Management</div>
+                    <div style="font-size: 0.78rem; color: var(--text-muted);">Content calendar, graphics, posting</div>
+                  </div>
+                </label>
+              </div>
+            </div>
+
+            <!-- Step 2: Timeline & Delivery Speed -->
+            <div class="calc-step-group">
+              <h3 class="calc-step-title">
+                <span class="step-num">2</span>
+                <span>Project Timeline / Pacing:</span>
+              </h3>
+              <div class="calc-options-grid">
+                <label class="calc-option-card">
+                  <input type="radio" name="calc_timeline" value="standard" checked>
+                  <div>
+                    <div class="calc-option-name">Standard Delivery</div>
+                    <div style="font-size: 0.78rem; color: var(--text-muted);">2 &ndash; 3 Weeks Turnaround</div>
+                  </div>
+                </label>
+
+                <label class="calc-option-card">
+                  <input type="radio" name="calc_timeline" value="express">
+                  <div>
+                    <div class="calc-option-name">Express Priority (+30%)</div>
+                    <div style="font-size: 0.78rem; color: var(--text-muted);">7-Day Dedicated Sprint</div>
+                  </div>
+                </label>
+
+                <label class="calc-option-card">
+                  <input type="radio" name="calc_timeline" value="retainer">
+                  <div>
+                    <div class="calc-option-name">Monthly Retainer (-10%)</div>
+                    <div style="font-size: 0.78rem; color: var(--text-muted);">Ongoing Creative Partnership</div>
+                  </div>
+                </label>
+              </div>
+            </div>
+
+            <!-- Currency Selector -->
+            <div class="form-group" style="max-width: 320px;">
+              <label class="form-label" for="calcCurrency">Select Currency:</label>
+              <select id="calcCurrency" class="form-control">
+                <option value="USD" selected>USD ($) - United States Dollar</option>
+                <option value="PHP">PHP (₱) - Philippine Peso</option>
+                <option value="AUD">AUD (A$) - Australian Dollar</option>
+                <option value="EUR">EUR (€) - Euro</option>
+                <option value="GBP">GBP (£) - British Pound</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Calculator Summary Card -->
+          <div class="calc-summary-card">
+            <h3 class="summary-header">Estimated Package Summary</h3>
+            <div id="selectedServicesList" class="selected-services-list">
+              <!-- Rendered dynamically -->
+            </div>
+
+            <div class="estimated-price-box">
+              <div class="est-label">Estimated Investment</div>
+              <div class="est-amount" id="estAmount">$1,200</div>
+              <div class="est-currency-note">Estimated scope range &bull; Final quote confirmed upon discovery</div>
+            </div>
+
+            <button type="button" class="btn btn-primary" id="applyEstimateBtn" style="width: 100%;">
+              <span>Claim This Custom Package</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </button>
+            <p style="font-size: 0.75rem; color: var(--text-subtle); text-align: center; margin-top: 0.75rem;">
+              &#128274; Zero obligation &bull; Personalized proposal sent within 24 business hours
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Client Reviews / Testimonials -->
+  <section class="section" id="testimonials">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">&#9733;&#9733;&#9733;&#9733;&#9733; Client Endorsements</span>
+        <h2 class="section-title">Trusted by Visionary <span class="gradient-text">Leaders Worldwide</span></h2>
+        <p class="section-desc">
+          Read what founders, business owners, and ministry directors say about our creative excellence, reliability, and faith-driven dedication.
+        </p>
+      </div>
+
+      <div class="testimonials-grid">
+        <!-- Testimonial 1 -->
+        <article class="testimonial-card">
+          <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="testimonial-quote">
+            &ldquo;Create and Arise transformed our brand from looking generic to looking like a Fortune 500 powerhouse. Their attention to graphic design detail and speedy turnaround during weekdays made working with them an absolute joy.&rdquo;
+          </p>
+          <div class="testimonial-author">
+            <div class="author-avatar">MR</div>
+            <div>
+              <div class="author-name">Michael Ramirez</div>
+              <div class="author-role">Founder, Apex Goods Global (USA)</div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Testimonial 2 -->
+        <article class="testimonial-card">
+          <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="testimonial-quote">
+            &ldquo;As a fellow Christian entrepreneur, working with Create and Arise gave us complete peace of mind. Their integrity, clear communication from the Philippines, and top-tier web design resulted in a 4x increase in our inbound client leads!&rdquo;
+          </p>
+          <div class="testimonial-author">
+            <div class="author-avatar">SC</div>
+            <div>
+              <div class="author-name">Sarah Castelo</div>
+              <div class="author-role">Managing Director, Grace &amp; Harvest Co.</div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Testimonial 3 -->
+        <article class="testimonial-card">
+          <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="testimonial-quote">
+            &ldquo;The video reels they edited for our product launch generated over 4.5 million views on TikTok within 3 weeks. Their kinetic graphics and hook pacing are unmatched. Highly recommended!&rdquo;
+          </p>
+          <div class="testimonial-author">
+            <div class="author-avatar">DL</div>
+            <div>
+              <div class="author-name">David Lawson</div>
+              <div class="author-role">Head of Growth, Lumina Tech (Australia)</div>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Frequently Asked Questions (FAQs) -->
+  <section class="section" id="faq">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">&#10067; Common Inquiries</span>
+        <h2 class="section-title">Frequently Asked <span class="gradient-text">Questions</span></h2>
+        <p class="section-desc">
+          Everything you need to know about our work schedule, international client workflows, and creative deliverables.
+        </p>
+      </div>
+
+      <div class="faq-container">
+        <!-- FAQ 1 -->
+        <div class="faq-item active">
+          <button class="faq-question-btn" type="button">
+            <span>What are your business operating hours?</span>
+            <span class="faq-icon">&#9662;</span>
+          </button>
+          <div class="faq-answer">
+            <p>
+              Create and Arise is open <strong>Monday to Friday, 8:00 AM to 6:00 PM Philippine Time (PHT / GMT+8)</strong>. We observe Saturday and Sunday as intentional days of rest, family, and spiritual renewal. All project messages sent over the weekend are prioritized first thing on Monday morning!
+            </p>
+          </div>
+        </div>
+
+        <!-- FAQ 2 -->
+        <div class="faq-item">
+          <button class="faq-question-btn" type="button">
+            <span>Do you work with international clients outside the Philippines?</span>
+            <span class="faq-icon">&#9662;</span>
+          </button>
+          <div class="faq-answer">
+            <p>
+              Yes, absolutely! Over 60% of our clientele resides in the United States, Canada, Australia, the United Kingdom, Singapore, and Europe. We provide seamless asynchronous communication via Slack, WhatsApp, Email, and scheduled Google Meet or Zoom calls aligned with your time zone.
+            </p>
+          </div>
+        </div>
+
+        <!-- FAQ 3 -->
+        <div class="faq-item">
+          <button class="faq-question-btn" type="button">
+            <span>What formats and source files do I receive for graphic design?</span>
+            <span class="faq-icon">&#9662;</span>
+          </button>
+          <div class="faq-answer">
+            <p>
+              You receive full commercial ownership of all deliverables including industry-standard vector files (AI, SVG, EPS, PDF), high-resolution web formats (PNG, JPG, WebP), editable Figma files, and organized brand asset folders ready for print and digital publishing.
+            </p>
+          </div>
+        </div>
+
+        <!-- FAQ 4 -->
+        <div class="faq-item">
+          <button class="faq-question-btn" type="button">
+            <span>What payment methods do you accept?</span>
+            <span class="faq-icon">&#9662;</span>
+          </button>
+          <div class="faq-answer">
+            <p>
+              For Philippine clients, we accept GCash, Maya, and direct Philippine Online Bank Transfers (BDO, BPI, UnionBank). For international clients, we accept PayPal, Stripe, Wise (TransferWise), and International Wire Transfers in USD, EUR, AUD, GBP, or PHP.
+            </p>
+          </div>
+        </div>
+
+        <!-- FAQ 5 -->
+        <div class="faq-item">
+          <button class="faq-question-btn" type="button">
+            <span>How does your Christian faith influence your business operations?</span>
+            <span class="faq-icon">&#9662;</span>
+          </button>
+          <div class="faq-answer">
+            <p>
+              Our faith is the bedrock of our work ethic. It means we operate with total transparency, deliver what we promise without cutting corners, honor deadlines with diligence, communicate with kindness and truth, and treat every project as a sacred stewardship.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact & Consultation Booking Form -->
+  <section class="section" id="contact">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">&#128233; Let's Create Together</span>
+        <h2 class="section-title">Ready to Make Your Brand <span class="gradient-text">Arise?</span></h2>
+        <p class="section-desc">
+          Fill out the inquiry form below or connect directly through WhatsApp / Messenger. We respond to all project inquiries within 24 weekday hours.
+        </p>
+      </div>
+
+      <div class="contact-grid">
+        <!-- Contact Information Panel -->
+        <div class="contact-info-panel">
+          <div class="contact-card">
+            <h3 style="font-size: 1.35rem; margin-bottom: 1.5rem;">Studio Information</h3>
+
+            <div class="contact-detail-row">
+              <div class="contact-icon-box">&#128197;</div>
+              <div>
+                <div class="contact-label">Working Hours</div>
+                <div class="contact-value">Monday &ndash; Friday (8:00 AM &ndash; 6:00 PM PHT)</div>
+                <div class="contact-schedule-badge">&#10003; Open Mon &ndash; Fri &bull; Closed Weekends</div>
+              </div>
+            </div>
+
+            <div class="contact-detail-row">
+              <div class="contact-icon-box">&#128205;</div>
+              <div>
+                <div class="contact-label">Studio Base</div>
+                <div class="contact-value">Metro Manila, Philippines (GMT+8)</div>
+                <div style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.2rem;">Serving Local &amp; Worldwide Clients</div>
+              </div>
+            </div>
+
+            <div class="contact-detail-row">
+              <div class="contact-icon-box">&#9993;&#65039;</div>
+              <div>
+                <div class="contact-label">Direct Email</div>
+                <div class="contact-value"><a href="mailto:hello@createandarise.com" style="color: var(--color-primary);">hello@createandarise.com</a></div>
+              </div>
+            </div>
+
+            <div class="contact-detail-row">
+              <div class="contact-icon-box">&#128241;</div>
+              <div>
+                <div class="contact-label">Quick Chat &amp; Inquiries</div>
+                <div class="contact-value">+63 995 123 4567</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Direct Messaging Links -->
+          <div class="contact-card" style="background: rgba(245, 158, 11, 0.05); border-color: rgba(245, 158, 11, 0.2);">
+            <h4 style="font-size: 1.1rem; margin-bottom: 0.75rem;">Prefer Instant Messaging?</h4>
+            <p style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 1.25rem;">
+              Chat directly with our creative director on WhatsApp or Facebook Messenger during business hours.
+            </p>
+            <div style="display: flex; gap: 0.75rem; flex-wrap: wrap;">
+              <a href="https://wa.me/639951234567" target="_blank" rel="noopener" class="btn btn-outline btn-sm">
+                <span>WhatsApp Chat</span>
+              </a>
+              <a href="https://m.me/createandarise" target="_blank" rel="noopener" class="btn btn-outline btn-sm">
+                <span>FB Messenger</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Interactive Contact Form -->
+        <div class="contact-form-card">
+          <h3 style="font-size: 1.5rem; margin-bottom: 0.5rem;">Start Your Free Consultation</h3>
+          <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1.5rem;">
+            Tell us about your brand vision and creative requirements.
+          </p>
+
+          <form id="mainContactForm">
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label" for="contactName">Full Name *</label>
+                <input type="text" id="contactName" class="form-control" placeholder="e.g. David Santos" required>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="contactEmail">Business Email *</label>
+                <input type="email" id="contactEmail" class="form-control" placeholder="david@company.com" required>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label" for="contactPhone">Phone / WhatsApp (Optional)</label>
+                <input type="tel" id="contactPhone" class="form-control" placeholder="+63 900 000 0000">
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="contactBudget">Estimated Budget Range</label>
+                <select id="contactBudget" class="form-control">
+                  <option value="under500">Under $500 / ₱25,000</option>
+                  <option value="500-1500" selected>$500 &ndash; $1,500 / ₱25k &ndash; ₱75k</option>
+                  <option value="1500-3000">$1,500 &ndash; $3,000 / ₱75k &ndash; ₱150k</option>
+                  <option value="3000plus">$3,000+ / ₱150,000+ (Comprehensive Retainer)</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Service checkboxes inside form -->
+            <div class="form-group">
+              <label class="form-label">Services of Interest</label>
+              <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 0.5rem; margin-top: 0.4rem;">
+                <label style="font-size: 0.85rem; display: flex; align-items: center; gap: 0.4rem; cursor: pointer;">
+                  <input type="checkbox" class="contact-service-check" value="Graphics & Branding"> Graphics
+                </label>
+                <label style="font-size: 0.85rem; display: flex; align-items: center; gap: 0.4rem; cursor: pointer;">
+                  <input type="checkbox" class="contact-service-check" value="Web Design"> Web Design
+                </label>
+                <label style="font-size: 0.85rem; display: flex; align-items: center; gap: 0.4rem; cursor: pointer;">
+                  <input type="checkbox" class="contact-service-check" value="Video Reels"> Video Reels
+                </label>
+                <label style="font-size: 0.85rem; display: flex; align-items: center; gap: 0.4rem; cursor: pointer;">
+                  <input type="checkbox" class="contact-service-check" value="Digital Ads"> Digital Ads
+                </label>
+                <label style="font-size: 0.85rem; display: flex; align-items: center; gap: 0.4rem; cursor: pointer;">
+                  <input type="checkbox" class="contact-service-check" value="Social Media"> Social Media
+                </label>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="contactMessage">Project Details &amp; Objectives *</label>
+              <textarea id="contactMessage" class="form-control" placeholder="Share your vision, brand name, specific design goals, or timeline requirements..." required></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary" style="width: 100%; padding: 1rem;">
+              <span>Submit Project Inquiry</span>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <!-- Col 1: Brand Info -->
+        <div>
+          <a href="#home" class="brand-logo" style="margin-bottom: 1rem;">
+            <div class="brand-icon-box">
+              <span>CA</span>
+            </div>
+            <div class="brand-text">
+              <span class="brand-name" style="color: #ffffff;">CREATE <span style="color: var(--color-primary);">&amp;</span> ARISE</span>
+              <span class="brand-tagline">Creative &bull; Digital &bull; Purpose</span>
+            </div>
+          </a>
+          <p class="footer-brand-desc">
+            A Christian-founded digital creative studio based in the Philippines. We uplift businesses with purpose-driven graphic design, high-converting websites, dynamic video reels, and high-impact digital marketing.
+          </p>
+          <div class="footer-social-links">
+            <a href="https://instagram.com" target="_blank" rel="noopener" class="btn-icon" aria-label="Instagram">&#128248;</a>
+            <a href="https://facebook.com" target="_blank" rel="noopener" class="btn-icon" aria-label="Facebook">&#128214;</a>
+            <a href="https://tiktok.com" target="_blank" rel="noopener" class="btn-icon" aria-label="TikTok">&#127925;</a>
+            <a href="https://linkedin.com" target="_blank" rel="noopener" class="btn-icon" aria-label="LinkedIn">&#128188;</a>
+          </div>
+        </div>
+
+        <!-- Col 2: Navigation Links -->
+        <div>
+          <h4 class="footer-col-title">Quick Links</h4>
+          <ul class="footer-links-list">
+            <li><a href="#home" class="footer-link">Home</a></li>
+            <li><a href="#services" class="footer-link">Our Services</a></li>
+            <li><a href="#mission" class="footer-link">Mission &amp; Vision</a></li>
+            <li><a href="#portfolio" class="footer-link">Portfolio Showcase</a></li>
+            <li><a href="#estimator" class="footer-link">Cost Calculator</a></li>
+            <li><a href="#testimonials" class="footer-link">Client Reviews</a></li>
+            <li><a href="#faq" class="footer-link">Frequently Asked Questions</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 3: Services -->
+        <div>
+          <h4 class="footer-col-title">Core Services</h4>
+          <ul class="footer-links-list">
+            <li><a href="#services" class="footer-link">Graphic Design &amp; Branding</a></li>
+            <li><a href="#services" class="footer-link">Web Design &amp; UI/UX</a></li>
+            <li><a href="#services" class="footer-link">Video Reels &amp; Motion</a></li>
+            <li><a href="#services" class="footer-link">Digital Ads &amp; Marketing</a></li>
+            <li><a href="#services" class="footer-link">Social Media Management</a></li>
+            <li><a href="#services" class="footer-link">Creative Retainers</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 4: Studio Schedule & Location -->
+        <div>
+          <h4 class="footer-col-title">Studio Schedule</h4>
+          <div class="footer-hours-box">
+            <div style="font-weight: 700; color: #ffffff; margin-bottom: 0.5rem;">Operating Hours (PHT):</div>
+            <div style="display: flex; justify-content: space-between; margin-bottom: 0.35rem;">
+              <span>Monday &ndash; Friday:</span>
+              <span style="color: #10b981; font-weight: 600;">8:00 AM &ndash; 6:00 PM</span>
+            </div>
+            <div style="display: flex; justify-content: space-between; color: var(--color-primary-light);">
+              <span>Saturday &ndash; Sunday:</span>
+              <span style="font-weight: 600;">Closed (Sabbath Rest)</span>
+            </div>
+            <div style="margin-top: 0.75rem; font-size: 0.78rem; color: #94a3b8; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 0.5rem;">
+              &#128205; Manila, Philippines &bull; Serving Local &amp; International Clients Globally
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer Bottom -->
+      <div class="footer-bottom">
+        <div>
+          &copy; <span id="currentYear">2026</span> Create and Arise. All rights reserved.
+        </div>
+        <div class="footer-faith-note">
+          &ldquo;Arise, shine; for your light has come.&rdquo; &bull; Isaiah 60:1
+        </div>
+        <div>
+          Handcrafted with Excellence in the Philippines
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Floating Quick Chat Button -->
+  <div class="floating-quick-chat">
+    <div class="quick-chat-tooltip">Chat with our team &#128075;</div>
+    <a href="#contact" class="quick-chat-btn" aria-label="Open Quick Contact">
+      &#9993;
+    </a>
+  </div>
+
+  <!-- Portfolio Lightbox Modal -->
+  <div class="modal-overlay" id="portfolioModal" role="dialog" aria-modal="true">
+    <div class="modal-card">
+      <button class="modal-close-btn" onclick="closeModal('portfolioModal')" aria-label="Close Modal">&times;</button>
+      <div id="portfolioModalBody">
+        <!-- Rendered by JS -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Inquiry Success Modal -->
+  <div class="modal-overlay" id="successModal" role="dialog" aria-modal="true">
+    <div class="modal-card" style="text-align: center; max-width: 500px;">
+      <div style="width: 70px; height: 70px; border-radius: 50%; background: rgba(16, 185, 129, 0.2); color: #10b981; font-size: 2.2rem; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem;">
+        &#10003;
+      </div>
+      <h3 style="font-size: 1.75rem; margin-bottom: 0.75rem;">Inquiry Received!</h3>
+      <p style="color: var(--text-muted); line-height: 1.7; margin-bottom: 1.75rem;">
+        Thank you for reaching out to <strong>Create and Arise</strong>! We have received your project details and our team will review and reply within 24 weekday business hours.
+      </p>
+      <p style="font-size: 0.85rem; color: var(--color-primary); font-style: italic; margin-bottom: 1.5rem;">
+        &ldquo;May the Lord bless the work of your hands.&rdquo; &bull; Psalm 90:17
+      </p>
+      <button class="btn btn-primary" onclick="closeModal('successModal')" style="width: 100%;">
+        Done &amp; Continue Browsing
+      </button>
+    </div>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div class="toast-container">
+    <div id="siteToast" class="toast"></div>
+  </div>
+
+  <!-- JavaScript -->
+  <script src="assets/js/app.js"></script>
+</body>
 </html>
