@@ -12,10 +12,10 @@
       actions: [
         { label: '🎨 Explore Services', callback: 'showServicesMenu' },
         { label: '💰 Check Pricing & Cost', callback: 'showPricingMenu' },
-        { label: '⏰ Working Hours & Schedule', callback: 'showHoursInfo' },
+        { label: '📅 Book Discovery Call', callback: 'openBookCallModal' },
         { label: '🚀 Start a Project', callback: 'scrollToContact' }
       ],
-      chips: ['Graphic Design', 'Web Design', 'Video Reels', 'Cost Estimator', 'Working Hours', 'Christian Values']
+      chips: ['Graphic Design', 'Web Design', 'Video Reels', 'Book a Call', 'Cost Estimator', 'Working Hours']
     },
     {
       keywords: ['service', 'services', 'what do you do', 'offer', 'packages', 'capabilities', 'specialty', 'specialties'],
@@ -44,9 +44,9 @@
       actions: [
         { label: '🧮 Estimate Web Design Package ($750+)', callback: 'selectWeb' },
         { label: '🖼️ View Web Portfolio', callback: 'filterPortfolioWeb' },
-        { label: '📅 Book a Free Discovery Call', callback: 'scrollToContact' }
+        { label: '📅 Book a Free Strategy Call', callback: 'openBookCallModal' }
       ],
-      chips: ['Cost Estimator', 'Graphic Design', 'Video Reels', 'Payment Methods']
+      chips: ['Book a Call', 'Cost Estimator', 'Graphic Design', 'Video Reels', 'Payment Methods']
     },
     {
       keywords: ['reel', 'reels', 'video', 'tiktok', 'shorts', 'youtube', 'editing', 'motion', 'animation', 'sound design'],
@@ -182,7 +182,9 @@
         <!-- Header -->
         <div class="chat-header">
           <div class="chat-header-info">
-            <div class="chat-bot-avatar">CA</div>
+            <div class="chat-bot-avatar">
+              <img src="assets/Logo/Logo.png" alt="AriseBot Logo" class="chat-bot-avatar-img">
+            </div>
             <div>
               <div class="chat-bot-title">AriseBot &bull; AI Assistant</div>
               <div class="chat-bot-status">
@@ -235,7 +237,7 @@
       <div class="chatbot-trigger-container">
         <div class="chatbot-tooltip" id="chatTooltip">Chat with AriseBot &#128075;</div>
         <button type="button" class="chatbot-trigger-btn" id="chatbotTriggerBtn" aria-label="Open AI Creative Chatbot">
-          <span id="chatTriggerIcon">&#9993;</span>
+          <span id="chatTriggerIcon"><img src="assets/Logo/Logo.png" alt="AriseBot Logo" class="chat-trigger-logo"></span>
           <span class="chatbot-unread-badge" id="chatUnreadBadge">1</span>
         </button>
       </div>
@@ -534,6 +536,11 @@
         if (window.switchTab) window.switchTab('portfolio');
         const filterReels = document.querySelector('.filter-btn[data-filter="reels"]');
         if (filterReels) filterReels.click();
+        break;
+
+      case 'openBookCallModal':
+      case 'bookCall':
+        if (window.openBookCallModal) window.openBookCallModal();
         break;
 
       case 'openWhatsApp':

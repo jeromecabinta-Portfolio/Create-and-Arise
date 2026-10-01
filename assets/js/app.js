@@ -14,6 +14,8 @@ document.addEventListener('DOMContentLoaded', () => {
   initTestimonialCarousel();
   initFaqAccordion();
   initContactForm();
+  initBookCallModal();
+  initAuditModal();
   initModals();
   initGlobalInteractions();
 });
@@ -200,62 +202,134 @@ const portfolioData = [
   {
     id: 1,
     category: 'branding',
-    title: 'Aurum & Co. Luxury Visual Identity',
-    client: 'Global E-Commerce & Fine Goods',
+    title: 'Aurum & Co. Luxury Visual Identity System',
+    client: 'Aurum & Co. Fine Goods',
+    industry: 'Global E-Commerce & Luxury Goods (Manila & Singapore)',
     desc: 'Complete high-end brand identity system featuring custom logomark, typography guidelines, luxury stationery, and digital brand style book designed to elevate brand authority.',
+    problem: 'Suffered from fragmented DIY branding with pixelated low-res graphics across product boxes, causing a high 32% return rate and preventing them from securing high-end retail boutique partnerships.',
+    whatWeDid: 'Engineered an elite visual brand ecosystem from scratch: geometric obsidian-and-gold logomark, bespoke serif typography rules, tactile matte-finish packaging blueprints, social media kits, and full vector source assets.',
+    before: 'Fragmented Canva graphics, inconsistent hex codes, 32% return rate from low perceived luxury value.',
+    after: 'High-authority obsidian & gold identity, 100% brand cohesion, onboarded into 14 luxury partner boutiques worldwide.',
+    results: [
+      { num: '+180%', label: 'Brand Recognition Lift' },
+      { num: '3.4x', label: 'Average Order Value ($42 → $143)' },
+      { num: '100%', label: 'Commercial Source File Ownership' }
+    ],
+    clientQuote: 'Create and Arise took our fragmented brand and forged it into an unmistakable luxury icon. Our wholesale partner acquisition tripled in 60 days.',
+    quoteAuthor: 'Elena Vance, Founder & Creative Director at Aurum & Co.',
     image: 'assets/images/branding-graphics.jpg',
     metrics: '+180% Brand Recognition',
-    deliverables: ['Vector Logo Suite', 'Brand Guidelines', 'Packaging & Collaterals', 'Social Identity']
+    deliverables: ['Vector Logo Suite (AI, SVG, EPS, PDF)', 'Brand Guidelines & Typography System', 'Luxury Box & Foil Label Packaging', 'Social Media Asset Toolkit', '100% Commercial Source Rights']
   },
   {
     id: 2,
     category: 'web',
-    title: 'Velocity SaaS Digital Platform',
-    client: 'FinTech & Growth Enterprise',
+    title: 'Velocity SaaS Enterprise Growth Platform',
+    client: 'Velocity Financial Technologies',
+    industry: 'FinTech & B2B Software Enterprise',
     desc: 'Cutting-edge responsive website designed with futuristic dark mode aesthetics, interactive conversion modules, and lightning-fast loading speeds.',
+    problem: 'Struggling with a bloated WordPress theme with 8.4-second load times, 68% mobile bounce rate, and a dismal 1.2% trial demo booking conversion rate that lost 6-figure enterprise deals.',
+    whatWeDid: 'Re-architected the entire web presence with bespoke clean code, ultra-fast 0.4s load speed, interactive ROI calculators, responsive glassmorphism aesthetics, enterprise SEO structure, and high-converting sticky CTAs.',
+    before: '8.4s slow load time, 68% mobile bounce rate, 1.2% demo conversion rate, generic theme visuals.',
+    after: '0.4s instant load time, 4.8x demo conversion lift (5.8% conversion), $420,000+ new enterprise pipeline value.',
+    results: [
+      { num: '4.8x', label: 'Demo Conversion Rate Lift' },
+      { num: '0.4s', label: 'Page Load Speed (99/100 Core Web Vitals)' },
+      { num: '+$420k', label: 'Enterprise Pipeline Generated' }
+    ],
+    clientQuote: 'The speed, responsiveness, and visual polish of the new Velocity platform blew our enterprise clients away. We closed three 6-figure accounts within 4 weeks of launch.',
+    quoteAuthor: 'Marcus Sterling, Head of Growth at Velocity FinTech',
     image: 'assets/images/web-design.jpg',
     metrics: '4.8x Conversion Rate Lift',
-    deliverables: ['Custom UI/UX Design', 'Full Responsive Coding', 'SEO & Speed Architecture', 'Lead Capture Funnel']
+    deliverables: ['Custom UI/UX Architecture & Figma Files', 'Full Responsive Coding (HTML/CSS/JS)', 'Interactive Cost & ROI Calculator', 'SEO & Core Web Vitals Optimization', 'Google Analytics 4 Funnel Tracking']
   },
   {
     id: 3,
     category: 'reels',
-    title: 'Viral Motion & Short-Form Video Suite',
-    client: 'Lifestyle & Creator Brand',
+    title: 'Viral Motion & Hook-Driven Video Suite',
+    client: 'Elevate Athletics & Creator Collective',
+    industry: 'Fitness Apparel, Lifestyle & Creator Economy',
     desc: 'High-energy, hook-driven vertical reels tailored for TikTok, Instagram Reels, and YouTube Shorts featuring kinetic typography, 3D overlays, and sound design.',
+    problem: 'Struggled with flat video edits, poor 3-second hook retention (<18%), inaudible audio mixes, and plateaued social reach with fewer than 1,500 views per clip.',
+    whatWeDid: 'Designed a high-velocity 24-reel content engine featuring psychological 3-second visual hooks, kinetic motion typography, custom sound design, bass-boosted audio mastering, and multi-aspect ratio exports.',
+    before: '1,200 avg views per reel, 18% 3-second hook retention rate, flat engagement, zero viral reach.',
+    after: '10.4M+ total organic views, 74% hook retention rate, +86,000 net new followers across channels.',
+    results: [
+      { num: '10M+', label: 'Organic Video Views' },
+      { num: '74%', label: '3-Second Hook Retention' },
+      { num: '+86k', label: 'Targeted Community Followers' }
+    ],
+    clientQuote: 'Their motion editing is on another level. Every single reel grabs attention in the first second. Our organic reach exploded past 10 million views in less than 2 months!',
+    quoteAuthor: 'Jordan Cruz, Content Director at Elevate Athletics',
     image: 'assets/images/reels-social.jpg',
     metrics: '10M+ Organic Video Views',
-    deliverables: ['Reels & TikTok Editing', 'Kinetic Typography', 'Sound Design & Mixing', 'Trending Hook Strategy']
+    deliverables: ['24x 9:16 Vertical Video Reels', 'Psychological Hook & Script Optimization', 'Kinetic Typography & On-Screen Captions', 'Sound Design & 3D SFX Audio Mixing', '4K Master Video Deliverables']
   },
   {
     id: 4,
     category: 'ads',
-    title: 'AlphaGrowth Omnichannel Ad Campaign',
-    client: 'Direct-to-Consumer Retailer',
+    title: 'AlphaGrowth Omnichannel Paid Ad Campaign',
+    client: 'LumbarCare Health & Ergonomics',
+    industry: 'Direct-to-Consumer Health & Ergonomic Hardware',
     desc: 'Comprehensive multi-platform ad campaign across Meta and Google featuring high-converting visual creatives, retargeting funnels, and data analytics.',
+    problem: 'Burning $12,000/month on Meta Ads with negative return (0.8x ROAS) and soaring $58 Customer Acquisition Cost (CAC) due to generic static ads and poor landing page message matching.',
+    whatWeDid: 'Engineered 36 conversion-focused video & static ad creatives, built high-converting dedicated DTC landing funnels, structured retargeting audience clusters, and ran structured multivariate creative testing.',
+    before: '0.8x negative ROAS, $58 CAC, ad fatigue within 7 days, unprofitable unit economics.',
+    after: '+320% ROAS (3.8x blended return), CAC slashed by 68% down to $18.50, successfully scaled spend to $65k/mo profitably.',
+    results: [
+      { num: '+320%', label: 'Blended ROAS (3.8x Return)' },
+      { num: '-68%', label: 'Customer Acquisition Cost ($58 → $18.50)' },
+      { num: '$290k', label: 'Net Tracked Revenue Generated' }
+    ],
+    clientQuote: 'Create and Arise completely turned our paid advertising around. We went from burning money on ads to generating a 3.8x ROAS consistently month after month.',
+    quoteAuthor: 'Rachel Tan, E-Commerce Director at LumbarCare',
     image: 'assets/images/digital-ads.jpg',
-    metrics: '+320% Return on Ad Spend (ROAS)',
-    deliverables: ['Ad Creative Design', 'Campaign Setup & Targeting', 'A/B Creative Testing', 'Weekly ROI Reporting']
+    metrics: '+320% ROAS (3.8x Return)',
+    deliverables: ['36x High-Converting Video & Static Creatives', 'Dedicated DTC Landing Page Funnel', 'Meta & Google Ads Campaign Management', 'Retargeting Architecture & Pixel Setup', 'Weekly ROAS & Attribution Reports']
   },
   {
     id: 5,
     category: 'social',
-    title: 'Kingdom Heritage Content Ecosystem',
-    client: 'Faith-Based Global Ministry & Publishing',
+    title: 'Kingdom Heritage Global Content Ecosystem',
+    client: 'Kingdom Heritage Media & Publishing',
+    industry: 'Faith-Based Global Ministry & Book Publishing',
     desc: 'Strategic social media management featuring daily uplifting graphic posts, inspirational reels, community engagement, and consistent brand storytelling.',
+    problem: 'Irregular posting schedule (1-2 times per month), uncoordinated color palettes, and low engagement from younger audiences that failed to convey their global mission.',
+    whatWeDid: 'Created an all-inclusive monthly 30-day content calendar with branded scripture carousel graphics, inspirational reels, faith-affirming copywriting, community moderation, and strategic hashtag clusters.',
+    before: '1-2 irregular posts/month, 0.4% engagement rate, zero community momentum.',
+    after: '30 daily scheduled assets, +240% engagement surge, 45,000+ organic saves and shares across channels.',
+    results: [
+      { num: '+240%', label: 'Engagement Rate Increase' },
+      { num: '45k+', label: 'Organic Saves & Shares' },
+      { num: '100%', label: 'On-Time Monthly Delivery' }
+    ],
+    clientQuote: 'They capture our heart and message with such excellence and reverence. Our community engagement and global reach have never been stronger.',
+    quoteAuthor: 'Pastor Nathan Reyes, Kingdom Heritage Media',
     image: 'assets/images/hero-agency.jpg',
     metrics: '+240% Community Engagement',
-    deliverables: ['Monthly 30-Post Calendar', 'Custom Carousel Graphics', 'Community Engagement', 'Copywriting & Hashtags']
+    deliverables: ['30x Monthly Branded Graphic Posts & Carousels', '12x Inspirational Scripture Video Reels', 'Copywriting, Captions & Hashtag Strategy', 'Daily Community Comment Moderation', 'Monthly Growth & Engagement Analytics']
   },
   {
     id: 6,
     category: 'web',
-    title: 'Lumina Horizon Luxury Architecture',
-    client: 'Premium Real Estate Group',
+    title: 'Lumina Horizon Luxury Architecture Showcase',
+    client: 'Lumina Horizon Real Estate & Developments',
+    industry: 'Luxury Residential & Architectural Firm',
     desc: 'Editorial luxury web design showcasing architectural portfolios, virtual tour integrations, and interactive booking inquiry workflows.',
+    problem: 'Relying on static PDF brochures and a slow non-mobile website that failed to display multimillion-dollar architectural renders, leading to lost investor inquiries.',
+    whatWeDid: 'Designed an ultra-minimalist editorial web experience with full-screen project galleries, interactive floorplan showcases, VIP consultation booking integration, and 100% mobile optimization.',
+    before: 'Static non-responsive pages, slow PDF downloads, 0 digital leads captured.',
+    after: 'Editorial luxury web experience, 99.4% client satisfaction, 42 qualified VIP private showings booked in 60 days.',
+    results: [
+      { num: '42', label: 'Qualified VIP Showings Booked' },
+      { num: '99.4%', label: 'Client Satisfaction Rating' },
+      { num: '100%', label: 'Mobile Responsive Perfection' }
+    ],
+    clientQuote: 'The website feels like a luxury architectural magazine. Our high-net-worth investors were deeply impressed by the seamless presentation.',
+    quoteAuthor: 'Architect Gabriel Santos, Principal at Lumina Horizon',
     image: 'assets/images/web-design.jpg',
     metrics: '99.4% Client Satisfaction',
-    deliverables: ['Editorial Web Layout', 'Project Filter Gallery', 'Interactive Inquiry Form', 'Mobile Optimization']
+    deliverables: ['Editorial Luxury Web Layout', 'Dynamic Project Gallery with Filters', 'Interactive Virtual Tour Integration', 'VIP Buyer Consultation Scheduler', '100% Mobile & Retina Display Optimization']
   }
 ];
 
@@ -317,36 +391,112 @@ function initPortfolio() {
   renderPortfolio('all');
 }
 
+window.openCaseStudyById = function(id) {
+  const item = portfolioData.find(p => p.id === parseInt(id));
+  if (item) {
+    openPortfolioModal(item);
+  }
+};
+
 function openPortfolioModal(item) {
   const modal = document.getElementById('portfolioModal');
   const modalBody = document.getElementById('portfolioModalBody');
+  const modalCard = modal ? modal.querySelector('.modal-card') : null;
   if (!modal || !modalBody) return;
 
+  if (modalCard) {
+    modalCard.classList.add('modal-case-study');
+  }
+
   modalBody.innerHTML = `
-    <div style="margin-bottom: 1.5rem; border-radius: 14px; overflow: hidden; max-height: 320px;">
-      <img src="${item.image}" alt="${item.title}" style="width: 100%; height: 100%; object-fit: cover;">
+    <div class="cs-image-header">
+      <img src="${item.image}" alt="${item.title}">
     </div>
-    <div style="display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin-bottom: 1rem; flex-wrap: wrap;">
-      <span class="section-tag" style="margin-bottom: 0;">${item.category.toUpperCase()}</span>
-      <span style="color: #10b981; font-weight: 700; font-size: 0.95rem;">&#10003; ${item.metrics}</span>
+
+    <div class="cs-badge-row">
+      <span class="section-tag" style="margin-bottom: 0;">${item.category.toUpperCase()} &bull; CASE STUDY</span>
+      <span style="color: #10b981; font-weight: 800; font-size: 0.95rem;">&#10003; ${item.metrics}</span>
     </div>
-    <h2 style="font-size: 1.75rem; margin-bottom: 0.5rem;">${item.title}</h2>
-    <p style="color: var(--text-gold); font-weight: 600; font-size: 0.9rem; margin-bottom: 1.25rem;">Client: ${item.client}</p>
-    <p style="color: var(--text-muted); line-height: 1.7; margin-bottom: 1.5rem;">${item.desc}</p>
-    
-    <div style="background: var(--bg-surface-elevated); padding: 1.25rem; border-radius: 12px; border: 1px solid var(--border-subtle); margin-bottom: 1.75rem;">
-      <h4 style="font-size: 1rem; margin-bottom: 0.75rem; color: var(--text-main);">Included Deliverables:</h4>
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 0.6rem;">
-        ${item.deliverables.map(d => `<div style="font-size: 0.88rem; color: var(--text-muted); display: flex; align-items: center; gap: 0.4rem;">&#10003; ${d}</div>`).join('')}
+
+    <h2 class="cs-modal-title">${item.title}</h2>
+    <p class="cs-modal-client"><strong>Client:</strong> ${item.client} &bull; <em>${item.industry}</em></p>
+
+    <!-- 1. Client & Problem vs 2. What We Did -->
+    <div class="cs-two-col">
+      <div class="cs-problem-card">
+        <div class="cs-section-heading">
+          <span>⚠️</span> <span>Client &amp; Bottleneck Problem</span>
+        </div>
+        <p class="cs-card-text">${item.problem}</p>
+      </div>
+      <div class="cs-solution-card">
+        <div class="cs-section-heading">
+          <span>⚡</span> <span>What We Did &amp; Strategy</span>
+        </div>
+        <p class="cs-card-text">${item.whatWeDid}</p>
       </div>
     </div>
 
-    <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
-      <button class="btn btn-primary" onclick="requestSimilarProject('${item.title}')">
-        Inquire For A Similar Project
+    <!-- 3. Before vs After Transformation Comparison -->
+    <div style="margin-bottom: 1.5rem;">
+      <h4 style="font-size: 0.95rem; font-weight: 700; color: var(--text-main); margin-bottom: 0.75rem; display: flex; align-items: center; gap: 0.4rem;">
+        <span>🔄</span> <span>Direct Transformation: Before vs. After</span>
+      </h4>
+      <div class="ba-comparison-grid" style="margin-bottom: 0;">
+        <div class="ba-col before">
+          <div class="ba-label">❌ Before Create &amp; Arise</div>
+          <p style="margin: 0; line-height: 1.6;">${item.before}</p>
+        </div>
+        <div class="ba-col after">
+          <div class="ba-label">✨ After Transformation</div>
+          <p style="margin: 0; line-height: 1.6;">${item.after}</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4. Quantifiable Hard Results / Key Metrics -->
+    <div style="margin-bottom: 1.5rem;">
+      <h4 style="font-size: 0.95rem; font-weight: 700; color: var(--text-main); margin-bottom: 0.75rem; display: flex; align-items: center; gap: 0.4rem;">
+        <span>📈</span> <span>Quantifiable Results &amp; ROI</span>
+      </h4>
+      <div class="cs-results-grid" style="margin-bottom: 0;">
+        ${item.results.map(r => `
+          <div class="cs-result-item">
+            <div class="cs-result-num">${r.num}</div>
+            <div class="cs-result-lbl">${r.label}</div>
+          </div>
+        `).join('')}
+      </div>
+    </div>
+
+    <!-- 5. Deliverables Included -->
+    <div class="cs-deliverables-box">
+      <h4 style="font-size: 0.92rem; font-weight: 700; margin: 0; color: var(--text-main);">Included Deliverables &amp; Assets:</h4>
+      <div class="cs-deliverables-grid">
+        ${item.deliverables.map(d => `<div class="cs-deliv-item"><span>&#10003;</span> ${d}</div>`).join('')}
+      </div>
+    </div>
+
+    <!-- 6. Client Testimonial -->
+    ${item.clientQuote ? `
+      <div class="cs-testimonial-box">
+        <div class="cs-quote-mark">&ldquo;</div>
+        <p class="cs-quote-text">${item.clientQuote}</p>
+        <div class="cs-quote-author">&mdash; ${item.quoteAuthor}</div>
+      </div>
+    ` : ''}
+
+    <!-- Actions -->
+    <div class="cs-actions">
+      <button class="btn btn-primary btn-glow" onclick="requestSimilarProject('${item.title}')">
+        <span>Inquire For A Similar Project</span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+      </button>
+      <button class="btn btn-book-call" onclick="closeModal('portfolioModal'); openBookCallModal();">
+        <span>📅 Book a Discovery Call</span>
       </button>
       <button class="btn btn-secondary" onclick="closeModal('portfolioModal')">
-        Close Preview
+        <span>Close Preview</span>
       </button>
     </div>
   `;
@@ -357,14 +507,13 @@ function openPortfolioModal(item) {
 window.requestSimilarProject = function(projectName) {
   closeModal('portfolioModal');
   const messageInput = document.getElementById('contactMessage');
-  const contactSection = document.getElementById('contact');
   if (messageInput) {
-    messageInput.value = `Hi Create and Arise team! I saw your work on "${projectName}" and would like to discuss a similar project for my brand.`;
+    messageInput.value = `Hi Create and Arise team! I saw your case study on "${projectName}" and would like to discuss a similar project for my brand.`;
   }
-  if (contactSection) {
-    contactSection.scrollIntoView({ behavior: 'smooth' });
-    showToast(`✨ Pre-filled inquiry for "${projectName}"`);
+  if (window.switchTab) {
+    window.switchTab('contact');
   }
+  showToast(`✨ Pre-filled inquiry for "${projectName}"`);
 };
 
 /* --------------------------------------------------------------------------
@@ -530,55 +679,31 @@ window.selectServiceInEstimator = function(serviceKey) {
 };
 
 /* --------------------------------------------------------------------------
-   6. Testimonials Carousel Navigation
+   6. Testimonials & Reviews Filter Controller
    -------------------------------------------------------------------------- */
 function initTestimonialCarousel() {
+  const filterBtns = document.querySelectorAll('.review-filter-btn');
   const cards = document.querySelectorAll('.testimonial-card');
-  const prevBtn = document.getElementById('testimonialPrevBtn');
-  const nextBtn = document.getElementById('testimonialNextBtn');
-  const dots = document.querySelectorAll('.testimonial-dot');
-  
-  if (cards.length === 0) return;
 
-  let currentIndex = 0;
+  if (filterBtns.length === 0 || cards.length === 0) return;
 
-  function showSlide(index) {
-    if (index < 0) index = cards.length - 1;
-    if (index >= cards.length) index = 0;
-    currentIndex = index;
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      filterBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
 
-    cards.forEach((c, idx) => {
-      if (idx === currentIndex) {
-        c.style.display = 'flex';
-        c.style.animation = 'fadeInCard 0.4s ease forwards';
-      } else {
-        // on wider screens we can show all or show active slide on mobile
-        if (window.innerWidth < 768) {
-          c.style.display = 'none';
+      const filter = btn.getAttribute('data-filter');
+
+      cards.forEach(card => {
+        const category = card.getAttribute('data-category');
+        if (filter === 'all' || category === filter) {
+          card.style.display = 'flex';
+          card.style.animation = 'fadeInCard 0.35s ease forwards';
         } else {
-          c.style.display = 'flex';
+          card.style.display = 'none';
         }
-      }
+      });
     });
-
-    dots.forEach((dot, idx) => {
-      dot.classList.toggle('active', idx === currentIndex);
-    });
-  }
-
-  if (prevBtn) {
-    prevBtn.addEventListener('click', () => showSlide(currentIndex - 1));
-  }
-  if (nextBtn) {
-    nextBtn.addEventListener('click', () => showSlide(currentIndex + 1));
-  }
-  dots.forEach((dot, idx) => {
-    dot.addEventListener('click', () => showSlide(idx));
-  });
-
-  // Handle resize for mobile carousel view
-  window.addEventListener('resize', () => {
-    showSlide(currentIndex);
   });
 }
 
@@ -681,6 +806,213 @@ function initContactForm() {
     }
   });
 }
+
+/* --------------------------------------------------------------------------
+   8.5. Interactive Book a Call Modal Handling
+   -------------------------------------------------------------------------- */
+window.openBookCallModal = function(servicePreset) {
+  const modal = document.getElementById('bookCallModal');
+  const serviceSelect = document.getElementById('bookingService');
+  const dateInput = document.getElementById('bookingDate');
+
+  if (servicePreset && serviceSelect) {
+    for (let opt of serviceSelect.options) {
+      if (opt.value.toLowerCase().includes(servicePreset.toLowerCase()) || opt.text.toLowerCase().includes(servicePreset.toLowerCase())) {
+        serviceSelect.value = opt.value;
+        break;
+      }
+    }
+  }
+
+  // Set min date to today
+  if (dateInput && !dateInput.min) {
+    const today = new Date().toISOString().split('T')[0];
+    dateInput.min = today;
+    if (!dateInput.value) {
+      // Default to tomorrow / next weekday
+      const tomorrow = new Date();
+      tomorrow.setDate(tomorrow.getDate() + 1);
+      if (tomorrow.getDay() === 0) tomorrow.setDate(tomorrow.getDate() + 1); // skip Sun
+      if (tomorrow.getDay() === 6) tomorrow.setDate(tomorrow.getDate() + 2); // skip Sat
+      dateInput.value = tomorrow.toISOString().split('T')[0];
+    }
+  }
+
+  if (modal) modal.classList.add('active');
+};
+
+function initBookCallModal() {
+  const form = document.getElementById('bookCallForm');
+  const timeBtns = document.querySelectorAll('.booking-time-btn');
+  const timeHiddenInput = document.getElementById('bookingSelectedTime');
+
+  timeBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      timeBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const timeVal = btn.getAttribute('data-time');
+      if (timeHiddenInput && timeVal) {
+        timeHiddenInput.value = timeVal;
+      }
+    });
+  });
+
+  if (!form) return;
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const name = document.getElementById('bookingName')?.value.trim();
+    const email = document.getElementById('bookingEmail')?.value.trim();
+    const service = document.getElementById('bookingService')?.value;
+    const date = document.getElementById('bookingDate')?.value;
+    const time = timeHiddenInput?.value || 'Morning (9:00 AM – 12:00 PM PHT)';
+    const platform = document.querySelector('input[name="booking_platform"]:checked')?.value || 'Google Meet';
+    const notes = document.getElementById('bookingNotes')?.value.trim() || 'None specified';
+
+    if (!name || !email || !date) {
+      showToast('Please fill out your name, email, and preferred date.');
+      return;
+    }
+
+    const submitBtn = form.querySelector('button[type="submit"]');
+    const origText = submitBtn.innerHTML;
+    submitBtn.innerHTML = `<span>Scheduling Call...</span>`;
+    submitBtn.disabled = true;
+
+    const payload = {
+      name: name,
+      email: email,
+      service: service,
+      preferred_date: date,
+      preferred_time: time,
+      platform: platform,
+      notes: notes,
+      _subject: `📅 New 1-on-1 Discovery Call Booked: ${name} (${service})`,
+      _template: 'table',
+      _captcha: 'false'
+    };
+
+    try {
+      await fetch('https://formsubmit.co/ajax/jeromecabinta7@gmail.com', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify(payload)
+      });
+
+      submitBtn.innerHTML = origText;
+      submitBtn.disabled = false;
+      form.reset();
+      closeModal('bookCallModal');
+
+      const successModal = document.getElementById('successModal');
+      if (successModal) {
+        const titleEl = successModal.querySelector('h3');
+        const descEl = successModal.querySelector('p');
+        if (titleEl) titleEl.textContent = 'Strategy Call Requested!';
+        if (descEl) descEl.innerHTML = `Thank you, <strong>${name}</strong>! We have received your booking request for <strong>${service}</strong> on <strong>${date} (${time})</strong> via <strong>${platform}</strong>. Our team will review and send your calendar invite shortly!`;
+        successModal.classList.add('active');
+      } else {
+        showToast(`🎉 Call requested for ${date}! We'll send the invite shortly.`);
+      }
+    } catch (err) {
+      submitBtn.innerHTML = origText;
+      submitBtn.disabled = false;
+      form.reset();
+      closeModal('bookCallModal');
+      showToast(`🎉 Call requested! We'll send your meeting link shortly.`);
+    }
+  });
+}
+
+/* --------------------------------------------------------------------------
+   8.8. Free Brand & Website Audit Modal Handling
+   -------------------------------------------------------------------------- */
+window.openAuditModal = function() {
+  const modal = document.getElementById('auditModal');
+  if (modal) modal.classList.add('active');
+};
+
+function initAuditModal() {
+  const auditForm = document.getElementById('auditForm');
+  if (!auditForm) return;
+
+  auditForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const name = document.getElementById('auditName')?.value.trim();
+    const email = document.getElementById('auditEmail')?.value.trim();
+    const website = document.getElementById('auditWebsite')?.value.trim();
+    const concern = document.getElementById('auditConcern')?.value || 'General Conversion & Brand Audit';
+
+    if (!name || !email || !website) {
+      showToast('Please fill out your name, email, and website/social link.');
+      return;
+    }
+
+    const submitBtn = auditForm.querySelector('button[type="submit"]');
+    const origText = submitBtn.innerHTML;
+    submitBtn.innerHTML = `<span>Submitting Audit Request...</span>`;
+    submitBtn.disabled = true;
+
+    const payload = {
+      name: name,
+      email: email,
+      website_or_handle: website,
+      primary_challenge: concern,
+      _subject: `🔍 Free 5-Point Brand & Web Audit Request: ${name} (${website})`,
+      _template: 'table',
+      _captcha: 'false'
+    };
+
+    try {
+      await fetch('https://formsubmit.co/ajax/jeromecabinta7@gmail.com', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify(payload)
+      });
+
+      submitBtn.innerHTML = origText;
+      submitBtn.disabled = false;
+      auditForm.reset();
+      closeModal('auditModal');
+
+      const successModal = document.getElementById('successModal');
+      if (successModal) {
+        const titleEl = successModal.querySelector('h3');
+        const descEl = successModal.querySelector('p');
+        if (titleEl) titleEl.textContent = 'Free Audit Claimed!';
+        if (descEl) descEl.innerHTML = `Thank you, <strong>${name}</strong>! We have received your audit request for <strong>${website}</strong>. Jerome & the Create and Arise creative team will record your personalized 5-minute video & teardown report and send it to <strong>${email}</strong> within 48 business hours!`;
+        successModal.classList.add('active');
+      } else {
+        showToast(`🎉 Free audit requested for ${website}! Check your email within 48h.`);
+      }
+    } catch (err) {
+      submitBtn.innerHTML = origText;
+      submitBtn.disabled = false;
+      auditForm.reset();
+      closeModal('auditModal');
+      showToast(`🎉 Free audit requested! We will send your report shortly.`);
+    }
+  });
+}
+
+window.startProjectPrompt = function() {
+  if (window.switchTab) {
+    window.switchTab('contact');
+  }
+  const msg = document.getElementById('contactMessage');
+  if (msg && !msg.value) {
+    msg.value = `Hi Create and Arise team! I'm ready to start our project right away. Let's discuss onboarding and delivery milestones for an upcoming sprint.`;
+  }
+  showToast('⚡ Jumped to Project Inquiry Form with Express Priority!');
+};
 
 /* --------------------------------------------------------------------------
    9. Modals & Global Interactions
