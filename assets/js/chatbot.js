@@ -8,25 +8,26 @@
   const botKnowledge = [
     {
       keywords: ['hi', 'hello', 'hey', 'kumusta', 'magandang', 'greetings', 'start', 'morning', 'afternoon', 'evening'],
-      response: `Hello and welcome to **Create and Arise**! ✨\n\nI'm **AriseBot**, your AI creative and digital growth assistant. We are a Christian-founded creative agency based in the Philippines, helping visionary brands arise through world-class graphics, high-converting websites, dynamic video reels, and digital marketing.\n\nHow can I help you today?`,
+      response: `Hello and welcome to **Create and Arise**! ✨\n\nI'm **AriseBot**, your AI creative and digital growth assistant. We are a Christian-founded creative agency based in the Philippines, helping visionary brands arise through world-class graphics, high-converting websites, digital ads marketing, and social media management.\n\nHow can I help you today?`,
       actions: [
         { label: '🎨 Explore Services', callback: 'showServicesMenu' },
         { label: '💰 Check Pricing & Cost', callback: 'showPricingMenu' },
         { label: '📅 Book Discovery Call', callback: 'openBookCallModal' },
         { label: '🚀 Start a Project', callback: 'scrollToContact' }
       ],
-      chips: ['Graphic Design', 'Web Design', 'Video Reels', 'Book a Call', 'Cost Estimator', 'Working Hours']
+      chips: ['Graphic Design', 'Web Design', 'Digital Ads', 'Social Media', 'Book a Call', 'Cost Estimator']
     },
     {
       keywords: ['service', 'services', 'what do you do', 'offer', 'packages', 'capabilities', 'specialty', 'specialties'],
-      response: `We specialize in 5 core creative and digital disciplines:\n\n1. **🎨 Graphic Design & Brand Identity** — Full logo suites, brand books, packaging & collaterals.\n2. **💻 Web Design & Development** — High-converting, fast, responsive UI/UX websites.\n3. **🎬 Video Reels & Motion** — Hook-driven vertical video editing for TikTok, Reels & Shorts.\n4. **📈 Digital Ads & Campaign Marketing** — Meta, Google & TikTok Ads with high-ROI creative copy.\n5. **📱 Social Media Management** — Monthly content calendars, aesthetic grids & engagement.\n\nWhich service would you like to explore?`,
+      response: `We specialize in 4 core creative and digital disciplines:\n\n1. **🎨 Graphic Design & Brand Identity** — Full logo suites, brand books, packaging & collaterals.\n2. **💻 Web Design & Development** — High-converting, fast, responsive UI/UX websites.\n3. **📈 Digital Ads & Campaign Marketing** — Meta, Google & TikTok Ads with high-ROI creative copy.\n4. **📱 Social Media Management** — Monthly content calendars, aesthetic grids & engagement.\n\nWhich service would you like to explore?`,
       actions: [
         { label: '🎨 Graphic Design Details', callback: 'explainGraphics' },
         { label: '💻 Web Design Details', callback: 'explainWeb' },
-        { label: '🎬 Video Reels Details', callback: 'explainReels' },
+        { label: '📈 Digital Ads Details', callback: 'selectAds' },
+        { label: '📱 Social Media Details', callback: 'selectSocial' },
         { label: '🧮 Open Cost Estimator', callback: 'scrollToEstimator' }
       ],
-      chips: ['Graphic Design', 'Web Design', 'Video Reels', 'Digital Ads', 'Social Media']
+      chips: ['Graphic Design', 'Web Design', 'Digital Ads', 'Social Media', 'Pricing']
     },
     {
       keywords: ['graphic', 'graphics', 'logo', 'branding', 'brand identity', 'packaging', 'vector', 'flyer', 'pitch deck', 'style guide'],
@@ -36,7 +37,7 @@
         { label: '🖼️ View Branding Portfolio', callback: 'filterPortfolioBranding' },
         { label: '📩 Inquire for Branding', callback: 'scrollToContact' }
       ],
-      chips: ['Web Design', 'Video Reels', 'Calculate Cost', 'Get a Quote']
+      chips: ['Web Design', 'Digital Ads', 'Calculate Cost', 'Get a Quote']
     },
     {
       keywords: ['web', 'website', 'web design', 'development', 'landing page', 'ui', 'ux', 'responsive', 'e-commerce', 'ecommerce'],
@@ -46,17 +47,18 @@
         { label: '🖼️ View Web Portfolio', callback: 'filterPortfolioWeb' },
         { label: '📅 Book a Free Strategy Call', callback: 'openBookCallModal' }
       ],
-      chips: ['Book a Call', 'Cost Estimator', 'Graphic Design', 'Video Reels', 'Payment Methods']
+      chips: ['Book a Call', 'Cost Estimator', 'Graphic Design', 'Digital Ads', 'Payment Methods']
     },
     {
-      keywords: ['reel', 'reels', 'video', 'tiktok', 'shorts', 'youtube', 'editing', 'motion', 'animation', 'sound design'],
-      response: `Our **Video Reels & Motion Graphics** service is built to win the 3-second attention hook! 🎬\n\nWe deliver:\n• Dynamic vertical video editing (9:16 for Reels, TikTok, Shorts)\n• Kinetic typography & trending caption styles\n• 3D motion graphics & logo animations\n• High-engagement sound design & trending audio\n• Over 10M+ organic views generated for our clients!`,
+      keywords: ['reel', 'reels', 'video', 'tiktok video', 'shorts', 'youtube video', 'editing', 'motion', 'animation', 'video editing'],
+      response: `At **Create and Arise**, our studio focuses 100% of our creative energy on our 4 specialized core pillars:\n\n1. **🎨 Graphic Design & Brand Identity**\n2. **💻 Web Design & Development**\n3. **📈 Digital Ads & Campaign Marketing**\n4. **📱 Social Media Management**\n\nWe do **not** offer standalone video reels or motion graphics production, ensuring elite quality and deep strategic craft for our 4 core offerings!\n\nWould you like to explore our graphic design, web design, ads, or social media management services?`,
       actions: [
-        { label: '🧮 Estimate Video Reels Package ($400+)', callback: 'selectReels' },
-        { label: '🖼️ View Video Portfolio', callback: 'filterPortfolioReels' },
-        { label: '📩 Start Video Project', callback: 'scrollToContact' }
+        { label: '🎨 Graphic Design & Branding', callback: 'selectGraphics' },
+        { label: '💻 Web Design & UX', callback: 'selectWeb' },
+        { label: '📈 Digital Ads Campaign', callback: 'selectAds' },
+        { label: '📱 Social Media Management', callback: 'selectSocial' }
       ],
-      chips: ['Digital Ads', 'Social Media', 'Cost Estimator', 'Contact']
+      chips: ['Graphic Design', 'Web Design', 'Digital Ads', 'Social Media', 'Cost Estimator']
     },
     {
       keywords: ['ad', 'ads', 'marketing', 'campaign', 'meta ads', 'facebook ads', 'google ads', 'tiktok ads', 'roas', 'roi', 'traffic'],
@@ -66,7 +68,7 @@
         { label: '💬 Chat with Growth Strategist', callback: 'openWhatsApp' },
         { label: '📩 Inquire for Ad Campaign', callback: 'scrollToContact' }
       ],
-      chips: ['Cost Estimator', 'Video Reels', 'Social Media', 'Working Hours']
+      chips: ['Cost Estimator', 'Digital Ads', 'Social Media', 'Working Hours']
     },
     {
       keywords: ['social', 'social media', 'smm', 'instagram', 'facebook', 'content calendar', 'grid', 'posting', 'management'],
@@ -75,16 +77,16 @@
         { label: '🧮 Estimate SMM Package ($450+)', callback: 'selectSocial' },
         { label: '📩 Book Social Media Consultation', callback: 'scrollToContact' }
       ],
-      chips: ['Graphic Design', 'Video Reels', 'Pricing', 'Contact']
+      chips: ['Graphic Design', 'Social Media', 'Pricing', 'Contact']
     },
     {
       keywords: ['price', 'pricing', 'cost', 'rates', 'how much', 'fee', 'quote', 'estimate', 'cheap', 'budget', 'expensive'],
-      response: `We pride ourselves on transparent, honest pricing with zero hidden fees! 💰\n\n**Starting Estimates:**\n• 🎨 Graphic Design & Branding: from **$450 / ₱25,000**\n• 💻 Web Design & Development: from **$750 / ₱43,500**\n• 🎬 Video Reels Suite: from **$400 / ₱23,000**\n• 📈 Digital Ads Marketing: from **$500 / ₱29,000**\n• 📱 Social Media Management: from **$450 / ₱25,000**\n\nYou can use our Interactive Cost Estimator to customize your package in **USD, PHP, AUD, EUR, or GBP**!`,
+      response: `We pride ourselves on transparent, honest pricing with zero hidden fees! 💰\n\n**Starting Estimates:**\n• 🎨 Graphic Design & Branding: from **$450 / ₱25,000**\n• 💻 Web Design & Development: from **$750 / ₱43,500**\n• 📈 Digital Ads Marketing: from **$500 / ₱29,000**\n• 📱 Social Media Management: from **$450 / ₱25,000**\n\nYou can use our Interactive Cost Estimator to customize your package in **USD, PHP, AUD, EUR, or GBP**!`,
       actions: [
         { label: '🧮 Open Interactive Cost Estimator', callback: 'scrollToEstimator' },
         { label: '📩 Request Custom Project Proposal', callback: 'scrollToContact' }
       ],
-      chips: ['Graphic Design', 'Web Design', 'Payment Methods', 'Book Project']
+      chips: ['Graphic Design', 'Web Design', 'Digital Ads', 'Social Media', 'Payment Methods']
     },
     {
       keywords: ['hours', 'open', 'schedule', 'time', 'operating', 'closed', 'weekend', 'saturday', 'sunday', 'monday', 'friday', 'sabbath'],
@@ -124,7 +126,7 @@
     },
     {
       keywords: ['contact', 'hire', 'book', 'talk', 'email', 'phone', 'whatsapp', 'messenger', 'consultation', 'call', 'meeting'],
-      response: `We'd love to partner with you! Here is how you can connect directly with our creative team:\n\n• 📝 **Booking Form:** Scroll to our free project consultation form.\n• 📱 **WhatsApp:** +63 995 123 4567\n• 💬 **FB Messenger:** m.me/createandarise\n• ✉️ **Direct Email:** jeromecabinta7@gmail.com\n\nWe respond to all project inquiries within 24 weekday business hours!`,
+      response: `We'd love to partner with you! Here is how you can connect directly with our creative team:\n\n• 📝 **Booking Form:** Scroll to our free project consultation form.\n• 📱 **WhatsApp:** +63 927 468 2635\n• 💬 **FB Messenger:** m.me/createandarise\n• ✉️ **Direct Email:** jeromecabinta7@gmail.com\n\nWe respond to all project inquiries within 24 weekday business hours!`,
       actions: [
         { label: '📝 Fill Project Consultation Form', callback: 'scrollToContact' },
         { label: '💬 Chat on WhatsApp', callback: 'openWhatsApp' },
@@ -136,14 +138,14 @@
 
   // Default Fallback Response
   const defaultFallback = {
-    response: `I'd love to help you with that! At **Create and Arise**, we provide world-class Graphic Design, High-Converting Web Design, Viral Video Reels, Digital Ads Marketing, and Social Media Management from the Philippines to global markets. 🌟\n\nWhat would you like to explore or configure?`,
+    response: `I'd love to help you with that! At **Create and Arise**, we provide world-class Graphic Design, High-Converting Web Design, Digital Ads Marketing, and Social Media Management from the Philippines to global markets. 🌟\n\nWhat would you like to explore or configure?`,
     actions: [
       { label: '🎨 Graphic & Web Services', callback: 'showServicesMenu' },
       { label: '🧮 Calculate Project Investment', callback: 'scrollToEstimator' },
       { label: '📝 Submit Project Consultation', callback: 'scrollToContact' },
       { label: '💬 WhatsApp Direct Chat', callback: 'openWhatsApp' }
     ],
-    chips: ['Graphic Design', 'Web Design', 'Video Reels', 'Cost Estimator', 'Working Hours', 'Contact']
+    chips: ['Graphic Design', 'Web Design', 'Digital Ads', 'Social Media', 'Cost Estimator', 'Contact']
   };
 
   // Chatbot Initialization
@@ -162,7 +164,7 @@
             { label: '🧮 Interactive Cost Calculator', callback: 'scrollToEstimator' },
             { label: '🕒 Check Business Schedule', callback: 'showHoursInfo' }
           ],
-          ['Graphic Design', 'Web Design', 'Video Reels', 'Pricing', 'Contact']
+          ['Graphic Design', 'Web Design', 'Digital Ads', 'Social Media', 'Pricing', 'Contact']
         );
       }
     }, 800);
@@ -288,7 +290,7 @@
             { label: '🧮 Calculate Package Cost', callback: 'scrollToEstimator' },
             { label: '📝 Start Project Booking', callback: 'scrollToContact' }
           ],
-          ['Graphic Design', 'Web Design', 'Video Reels', 'Pricing', 'Working Hours']
+          ['Graphic Design', 'Web Design', 'Digital Ads', 'Social Media', 'Pricing', 'Working Hours']
         );
       });
     }
@@ -445,11 +447,10 @@
     switch (callbackName) {
       case 'showServicesMenu':
         appendBotMessage(
-          `Here are the 5 core services of **Create and Arise**:\n\n1. **🎨 Graphic Design & Brand Identity**\n2. **💻 Web Design & Development**\n3. **🎬 Video Reels & Motion Graphics**\n4. **📈 Digital Ads & Campaign Marketing**\n5. **📱 Social Media Management**\n\nClick any button below to configure a quote in our Cost Estimator!`,
+          `Here are the 4 core services of **Create and Arise**:\n\n1. **🎨 Graphic Design & Brand Identity**\n2. **💻 Web Design & Development**\n3. **📈 Digital Ads & Campaign Marketing**\n4. **📱 Social Media Management**\n\nClick any button below to configure a quote in our Cost Estimator!`,
           [
             { label: '🎨 Estimate Graphics', callback: 'selectGraphics' },
             { label: '💻 Estimate Web Design', callback: 'selectWeb' },
-            { label: '🎬 Estimate Video Reels', callback: 'selectReels' },
             { label: '📈 Estimate Digital Ads', callback: 'selectAds' },
             { label: '📱 Estimate Social Media', callback: 'selectSocial' }
           ],
@@ -495,11 +496,6 @@
         if (window.selectServiceInEstimator) window.selectServiceInEstimator('web');
         break;
 
-      case 'explainReels':
-      case 'selectReels':
-        if (window.selectServiceInEstimator) window.selectServiceInEstimator('reels');
-        break;
-
       case 'selectAds':
         if (window.selectServiceInEstimator) window.selectServiceInEstimator('ads');
         break;
@@ -532,19 +528,13 @@
         if (filterWeb) filterWeb.click();
         break;
 
-      case 'filterPortfolioReels':
-        if (window.switchTab) window.switchTab('portfolio');
-        const filterReels = document.querySelector('.filter-btn[data-filter="reels"]');
-        if (filterReels) filterReels.click();
-        break;
-
       case 'openBookCallModal':
       case 'bookCall':
         if (window.openBookCallModal) window.openBookCallModal();
         break;
 
       case 'openWhatsApp':
-        window.open('https://wa.me/639951234567?text=Hello%20Create%20and%20Arise!%20I%20am%20chatting%20with%20AriseBot%20and%20would%20like%20to%20inquire%20about%20a%20project.', '_blank');
+        window.open('https://wa.me/639274682635?text=Hello%20Create%20and%20Arise!%20I%20am%20chatting%20with%20AriseBot%20and%20would%20like%20to%20inquire%20about%20a%20project.', '_blank');
         break;
 
       case 'copyEmail':

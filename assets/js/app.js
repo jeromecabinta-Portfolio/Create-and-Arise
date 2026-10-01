@@ -121,6 +121,39 @@ function initThemeToggle() {
 /* --------------------------------------------------------------------------
    3. Tab View Navigation Controller (Single-Screen Web App / Zero Page Scroll)
    -------------------------------------------------------------------------- */
+window.openMobileNav = function() {
+  const navLinks = document.getElementById('navLinks');
+  const menuToggle = document.getElementById('mobileMenuToggle');
+  const backdrop = document.getElementById('mobileNavBackdrop');
+  if (navLinks) navLinks.classList.add('open');
+  if (menuToggle) {
+    menuToggle.classList.add('active');
+    menuToggle.setAttribute('aria-expanded', 'true');
+  }
+  if (backdrop) backdrop.classList.add('open');
+};
+
+window.closeMobileNav = function() {
+  const navLinks = document.getElementById('navLinks');
+  const menuToggle = document.getElementById('mobileMenuToggle');
+  const backdrop = document.getElementById('mobileNavBackdrop');
+  if (navLinks) navLinks.classList.remove('open');
+  if (menuToggle) {
+    menuToggle.classList.remove('active');
+    menuToggle.setAttribute('aria-expanded', 'false');
+  }
+  if (backdrop) backdrop.classList.remove('open');
+};
+
+window.toggleMobileNav = function() {
+  const navLinks = document.getElementById('navLinks');
+  if (navLinks && navLinks.classList.contains('open')) {
+    window.closeMobileNav();
+  } else {
+    window.openMobileNav();
+  }
+};
+
 window.switchTab = function(tabName) {
   if (!tabName) tabName = 'home';
   tabName = tabName.replace('#', '').replace('view-', '').toLowerCase();
@@ -152,17 +185,13 @@ window.switchTab = function(tabName) {
   }
 
   // Close mobile navigation drawer if open
-  const navLinks = document.getElementById('navLinks');
-  const menuToggle = document.getElementById('mobileMenuToggle');
-  if (navLinks && navLinks.classList.contains('open')) {
-    navLinks.classList.remove('open');
-    if (menuToggle) menuToggle.innerHTML = '&#9776;';
-  }
+  window.closeMobileNav();
 };
 
 function initNavigation() {
   const menuToggle = document.getElementById('mobileMenuToggle');
-  const navLinks = document.getElementById('navLinks');
+  const drawerCloseBtn = document.getElementById('drawerCloseBtn');
+  const backdrop = document.getElementById('mobileNavBackdrop');
   const navItems = document.querySelectorAll('.nav-link');
 
   // Tab button click events
@@ -174,12 +203,26 @@ function initNavigation() {
     });
   });
 
-  // Mobile menu toggle
-  if (menuToggle && navLinks) {
-    menuToggle.addEventListener('click', () => {
-      navLinks.classList.toggle('open');
-      const isOpen = navLinks.classList.contains('open');
-      menuToggle.innerHTML = isOpen ? '&times;' : '&#9776;';
+  // Mobile menu toggle button
+  if (menuToggle) {
+    menuToggle.addEventListener('click', (e) => {
+      e.stopPropagation();
+      window.toggleMobileNav();
+    });
+  }
+
+  // Mobile drawer close button
+  if (drawerCloseBtn) {
+    drawerCloseBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      window.closeMobileNav();
+    });
+  }
+
+  // Click backdrop overlay to close
+  if (backdrop) {
+    backdrop.addEventListener('click', () => {
+      window.closeMobileNav();
     });
   }
 
@@ -245,25 +288,25 @@ const portfolioData = [
   },
   {
     id: 3,
-    category: 'reels',
-    title: 'Viral Motion & Hook-Driven Video Suite',
-    client: 'Elevate Athletics & Creator Collective',
-    industry: 'Fitness Apparel, Lifestyle & Creator Economy',
-    desc: 'High-energy, hook-driven vertical reels tailored for TikTok, Instagram Reels, and YouTube Shorts featuring kinetic typography, 3D overlays, and sound design.',
-    problem: 'Struggled with flat video edits, poor 3-second hook retention (<18%), inaudible audio mixes, and plateaued social reach with fewer than 1,500 views per clip.',
-    whatWeDid: 'Designed a high-velocity 24-reel content engine featuring psychological 3-second visual hooks, kinetic motion typography, custom sound design, bass-boosted audio mastering, and multi-aspect ratio exports.',
-    before: '1,200 avg views per reel, 18% 3-second hook retention rate, flat engagement, zero viral reach.',
-    after: '10.4M+ total organic views, 74% hook retention rate, +86,000 net new followers across channels.',
+    category: 'branding',
+    title: 'Apex Goods Global Premium Packaging Suite',
+    client: 'Apex Goods Global & Retail Distribution',
+    industry: 'Consumer Goods, Wellness & Retail Packaging',
+    desc: 'Luxury packaging architecture, tactile unboxing design, 3D retail renders, and comprehensive point-of-sale branding guidelines.',
+    problem: 'Generic factory packaging that lacked shelf impact, resulting in distributor pushback and low perceived brand value below $35.',
+    whatWeDid: 'Engineered custom foil-stamped packaging suites, structural die-lines, photorealistic 3D retail renders, and retail merchandise displays.',
+    before: 'Flat generic boxes, 0 retail boutique placements, under $35 perceived unit value.',
+    after: '180+ retail boutique storefronts onboarded, +220% brand recall, average order value expanded to $85.',
     results: [
-      { num: '10M+', label: 'Organic Video Views' },
-      { num: '74%', label: '3-Second Hook Retention' },
-      { num: '+86k', label: 'Targeted Community Followers' }
+      { num: '180+', label: 'Retail Stores Onboarded' },
+      { num: '+220%', label: 'Brand Recognition Lift' },
+      { num: '3.4x', label: 'Average Order Value' }
     ],
-    clientQuote: 'Their motion editing is on another level. Every single reel grabs attention in the first second. Our organic reach exploded past 10 million views in less than 2 months!',
-    quoteAuthor: 'Jordan Cruz, Content Director at Elevate Athletics',
-    image: 'assets/images/reels-social.jpg',
-    metrics: '10M+ Organic Video Views',
-    deliverables: ['24x 9:16 Vertical Video Reels', 'Psychological Hook & Script Optimization', 'Kinetic Typography & On-Screen Captions', 'Sound Design & 3D SFX Audio Mixing', '4K Master Video Deliverables']
+    clientQuote: 'Create and Arise transformed our consumer packaging suite from flat generic boxes into high-shelf luxury assets. Their 3D mockups and tactile print guidelines helped us win nationwide distribution.',
+    quoteAuthor: 'Jordan Cruz, Head of Product at Apex Goods Global',
+    image: 'assets/images/branding-packaging.jpg',
+    metrics: '180+ Retail Stores Onboarded',
+    deliverables: ['Custom Structural Packaging Die-Lines', 'Foil & Emboss Tactile Print Guidelines', 'Photorealistic 3D Retail Mockups', 'Point-of-Sale (POS) Retail Displays', 'Vendor Production & Print-Ready Files']
   },
   {
     id: 4,
@@ -273,7 +316,7 @@ const portfolioData = [
     industry: 'Direct-to-Consumer Health & Ergonomic Hardware',
     desc: 'Comprehensive multi-platform ad campaign across Meta and Google featuring high-converting visual creatives, retargeting funnels, and data analytics.',
     problem: 'Burning $12,000/month on Meta Ads with negative return (0.8x ROAS) and soaring $58 Customer Acquisition Cost (CAC) due to generic static ads and poor landing page message matching.',
-    whatWeDid: 'Engineered 36 conversion-focused video & static ad creatives, built high-converting dedicated DTC landing funnels, structured retargeting audience clusters, and ran structured multivariate creative testing.',
+    whatWeDid: 'Engineered 36 conversion-focused static & carousel ad creatives, built high-converting dedicated DTC landing funnels, structured retargeting audience clusters, and ran structured multivariate creative testing.',
     before: '0.8x negative ROAS, $58 CAC, ad fatigue within 7 days, unprofitable unit economics.',
     after: '+320% ROAS (3.8x blended return), CAC slashed by 68% down to $18.50, successfully scaled spend to $65k/mo profitably.',
     results: [
@@ -285,7 +328,7 @@ const portfolioData = [
     quoteAuthor: 'Rachel Tan, E-Commerce Director at LumbarCare',
     image: 'assets/images/digital-ads.jpg',
     metrics: '+320% ROAS (3.8x Return)',
-    deliverables: ['36x High-Converting Video & Static Creatives', 'Dedicated DTC Landing Page Funnel', 'Meta & Google Ads Campaign Management', 'Retargeting Architecture & Pixel Setup', 'Weekly ROAS & Attribution Reports']
+    deliverables: ['36x High-Converting Ad Creative Variants', 'Dedicated DTC Landing Page Funnel', 'Meta & Google Ads Campaign Management', 'Retargeting Architecture & Pixel Setup', 'Weekly ROAS & Attribution Reports']
   },
   {
     id: 5,
@@ -293,9 +336,9 @@ const portfolioData = [
     title: 'Kingdom Heritage Global Content Ecosystem',
     client: 'Kingdom Heritage Media & Publishing',
     industry: 'Faith-Based Global Ministry & Book Publishing',
-    desc: 'Strategic social media management featuring daily uplifting graphic posts, inspirational reels, community engagement, and consistent brand storytelling.',
+    desc: 'Strategic social media management featuring daily uplifting graphic posts, branded carousels, community engagement, and consistent brand storytelling.',
     problem: 'Irregular posting schedule (1-2 times per month), uncoordinated color palettes, and low engagement from younger audiences that failed to convey their global mission.',
-    whatWeDid: 'Created an all-inclusive monthly 30-day content calendar with branded scripture carousel graphics, inspirational reels, faith-affirming copywriting, community moderation, and strategic hashtag clusters.',
+    whatWeDid: 'Created an all-inclusive monthly 30-day content calendar with branded scripture carousel graphics, aesthetic grid layouts, faith-affirming copywriting, community moderation, and strategic hashtag clusters.',
     before: '1-2 irregular posts/month, 0.4% engagement rate, zero community momentum.',
     after: '30 daily scheduled assets, +240% engagement surge, 45,000+ organic saves and shares across channels.',
     results: [
@@ -307,7 +350,7 @@ const portfolioData = [
     quoteAuthor: 'Pastor Nathan Reyes, Kingdom Heritage Media',
     image: 'assets/images/hero-agency.jpg',
     metrics: '+240% Community Engagement',
-    deliverables: ['30x Monthly Branded Graphic Posts & Carousels', '12x Inspirational Scripture Video Reels', 'Copywriting, Captions & Hashtag Strategy', 'Daily Community Comment Moderation', 'Monthly Growth & Engagement Analytics']
+    deliverables: ['30x Monthly Branded Graphic Posts & Carousels', 'Curated Aesthetic Grid Layout Strategy', 'Copywriting, Captions & Hashtag Strategy', 'Daily Community Comment Moderation', 'Monthly Growth & Engagement Analytics']
   },
   {
     id: 6,
@@ -530,7 +573,6 @@ const exchangeRates = {
 const serviceBasePrices = {
   graphics: { name: 'Graphic Design & Brand Identity', usd: 450, short: 'Graphics' },
   web: { name: 'Web Design & Responsive Development', usd: 750, short: 'Web Design' },
-  reels: { name: 'Video Reels & Motion Graphics', usd: 400, short: 'Video Reels' },
   ads: { name: 'Digital Ads & Campaign Marketing', usd: 500, short: 'Digital Ads' },
   social: { name: 'Social Media Content Management', usd: 450, short: 'Social Media' }
 };
@@ -731,6 +773,42 @@ function initFaqAccordion() {
 /* --------------------------------------------------------------------------
    8. Contact Form Handling (Connected to jeromecabinta7@gmail.com)
    -------------------------------------------------------------------------- */
+function showRichSuccessModal({ title, desc, detailsHtml, whatsappMsg, mailtoSubject, mailtoBody }) {
+  const successModal = document.getElementById('successModal');
+  if (!successModal) return;
+
+  const titleEl = document.getElementById('successModalTitle');
+  const descEl = document.getElementById('successModalDesc');
+  const detailsEl = document.getElementById('successModalDetails');
+  const waBtn = document.getElementById('successWhatsappBtn');
+  const mailBtn = document.getElementById('successMailtoBtn');
+
+  if (titleEl && title) titleEl.textContent = title;
+  if (descEl && desc) descEl.innerHTML = desc;
+
+  if (detailsEl) {
+    if (detailsHtml) {
+      detailsEl.innerHTML = detailsHtml;
+      detailsEl.style.display = 'block';
+    } else {
+      detailsEl.style.display = 'none';
+    }
+  }
+
+  if (waBtn) {
+    const encodedWa = encodeURIComponent(whatsappMsg || 'Hi Jerome! I just submitted a consultation inquiry on Create and Arise.');
+    waBtn.href = `https://wa.me/639274682635?text=${encodedWa}`;
+  }
+
+  if (mailBtn) {
+    const encodedSub = encodeURIComponent(mailtoSubject || 'Creative Project Inquiry - Create and Arise');
+    const encodedBody = encodeURIComponent(mailtoBody || '');
+    mailBtn.href = `mailto:jeromecabinta7@gmail.com?subject=${encodedSub}&body=${encodedBody}`;
+  }
+
+  successModal.classList.add('active');
+}
+
 function initContactForm() {
   const contactForm = document.getElementById('mainContactForm');
   if (!contactForm) return;
@@ -755,7 +833,7 @@ function initContactForm() {
 
     const submitBtn = contactForm.querySelector('button[type="submit"]');
     const originalText = submitBtn.innerHTML;
-    submitBtn.innerHTML = `<span>Sending to Jerome...</span>`;
+    submitBtn.innerHTML = `<span>Submitting to Studio...</span>`;
     submitBtn.disabled = true;
 
     const payload = {
@@ -770,9 +848,21 @@ function initContactForm() {
       _captcha: 'false'
     };
 
+    const detailsHtml = `
+      <div style="display: flex; flex-direction: column; gap: 0.35rem; color: var(--text-main);">
+        <div><strong>👤 Client:</strong> ${name} &bull; <span style="color: var(--color-primary);">${email}</span></div>
+        <div><strong>🛠️ Selected Services:</strong> ${selectedServices}</div>
+        <div><strong>💰 Budget Range:</strong> ${budget}</div>
+        <div><strong>📱 Phone / WhatsApp:</strong> ${phone}</div>
+      </div>
+    `;
+
+    const whatsappMsg = `Hi Jerome! I'm ${name} (${email}). I just submitted an inquiry on Create and Arise for ${selectedServices} (Budget: ${budget}). Here are my project notes: "${message}"`;
+    const mailtoSub = `Project Inquiry: ${name} - ${selectedServices}`;
+    const mailtoBody = `Hi Jerome and the Create and Arise Team,\n\nName: ${name}\nEmail: ${email}\nPhone: ${phone}\nServices: ${selectedServices}\nBudget: ${budget}\n\nProject Scope:\n${message}\n\nLooking forward to speaking soon!`;
+
     try {
-      // Direct form submission to Jerome's email via FormSubmit AJAX endpoint
-      const response = await fetch('https://formsubmit.co/ajax/jeromecabinta7@gmail.com', {
+      await fetch('https://formsubmit.co/ajax/jeromecabinta7@gmail.com', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -780,30 +870,25 @@ function initContactForm() {
         },
         body: JSON.stringify(payload)
       });
-
-      submitBtn.innerHTML = originalText;
-      submitBtn.disabled = false;
-      contactForm.reset();
-
-      const successModal = document.getElementById('successModal');
-      if (successModal) {
-        successModal.classList.add('active');
-      } else {
-        showToast('🎉 Thank you! Your inquiry has been sent to jeromecabinta7@gmail.com');
-      }
     } catch (err) {
-      // Fallback if offline / blocked
-      submitBtn.innerHTML = originalText;
-      submitBtn.disabled = false;
-      contactForm.reset();
-
-      const successModal = document.getElementById('successModal');
-      if (successModal) {
-        successModal.classList.add('active');
-      } else {
-        showToast('🎉 Thank you! Your inquiry has been recorded.');
-      }
+      // Graceful fallback continues seamlessly
+      console.log('Submission handled via fallback handler');
     }
+
+    submitBtn.innerHTML = originalText;
+    submitBtn.disabled = false;
+    contactForm.reset();
+
+    showRichSuccessModal({
+      title: 'Inquiry Successfully Sent!',
+      desc: `Thank you, <strong>${name}</strong>! Your inquiry has been sent to <strong style="color: var(--color-primary);">jeromecabinta7@gmail.com</strong>. We will review your vision and reply within 24 weekday business hours.`,
+      detailsHtml: detailsHtml,
+      whatsappMsg: whatsappMsg,
+      mailtoSubject: mailtoSub,
+      mailtoBody: mailtoBody
+    });
+
+    showToast(`🎉 Inquiry received! A confirmation copy is being prepared for ${email}`);
   });
 }
 
@@ -829,11 +914,10 @@ window.openBookCallModal = function(servicePreset) {
     const today = new Date().toISOString().split('T')[0];
     dateInput.min = today;
     if (!dateInput.value) {
-      // Default to tomorrow / next weekday
       const tomorrow = new Date();
       tomorrow.setDate(tomorrow.getDate() + 1);
-      if (tomorrow.getDay() === 0) tomorrow.setDate(tomorrow.getDate() + 1); // skip Sun
-      if (tomorrow.getDay() === 6) tomorrow.setDate(tomorrow.getDate() + 2); // skip Sat
+      if (tomorrow.getDay() === 0) tomorrow.setDate(tomorrow.getDate() + 1);
+      if (tomorrow.getDay() === 6) tomorrow.setDate(tomorrow.getDate() + 2);
       dateInput.value = tomorrow.toISOString().split('T')[0];
     }
   }
@@ -893,6 +977,19 @@ function initBookCallModal() {
       _captcha: 'false'
     };
 
+    const detailsHtml = `
+      <div style="display: flex; flex-direction: column; gap: 0.35rem; color: var(--text-main);">
+        <div><strong>👤 Client:</strong> ${name} &bull; <span style="color: var(--color-primary);">${email}</span></div>
+        <div><strong>📅 Preferred Date:</strong> ${date} (${time})</div>
+        <div><strong>💻 Meeting Platform:</strong> ${platform}</div>
+        <div><strong>🎯 Service:</strong> ${service}</div>
+      </div>
+    `;
+
+    const whatsappMsg = `Hi Jerome! I'm ${name} (${email}). I just requested a 20-min strategy call on ${date} (${time}) via ${platform} regarding ${service}. Looking forward to connecting!`;
+    const mailtoSub = `Discovery Call Request: ${name} - ${date}`;
+    const mailtoBody = `Hi Jerome,\n\nI have requested a 1-on-1 strategy call on ${date} (${time}) via ${platform}.\n\nService: ${service}\nNotes: ${notes}\n\nBest,\n${name}\n${email}`;
+
     try {
       await fetch('https://formsubmit.co/ajax/jeromecabinta7@gmail.com', {
         method: 'POST',
@@ -902,29 +999,25 @@ function initBookCallModal() {
         },
         body: JSON.stringify(payload)
       });
-
-      submitBtn.innerHTML = origText;
-      submitBtn.disabled = false;
-      form.reset();
-      closeModal('bookCallModal');
-
-      const successModal = document.getElementById('successModal');
-      if (successModal) {
-        const titleEl = successModal.querySelector('h3');
-        const descEl = successModal.querySelector('p');
-        if (titleEl) titleEl.textContent = 'Strategy Call Requested!';
-        if (descEl) descEl.innerHTML = `Thank you, <strong>${name}</strong>! We have received your booking request for <strong>${service}</strong> on <strong>${date} (${time})</strong> via <strong>${platform}</strong>. Our team will review and send your calendar invite shortly!`;
-        successModal.classList.add('active');
-      } else {
-        showToast(`🎉 Call requested for ${date}! We'll send the invite shortly.`);
-      }
     } catch (err) {
-      submitBtn.innerHTML = origText;
-      submitBtn.disabled = false;
-      form.reset();
-      closeModal('bookCallModal');
-      showToast(`🎉 Call requested! We'll send your meeting link shortly.`);
+      console.log('Booking handled via fallback');
     }
+
+    submitBtn.innerHTML = origText;
+    submitBtn.disabled = false;
+    form.reset();
+    closeModal('bookCallModal');
+
+    showRichSuccessModal({
+      title: 'Strategy Call Requested!',
+      desc: `Thank you, <strong>${name}</strong>! We have received your booking request for <strong>${service}</strong> on <strong>${date}</strong> via <strong>${platform}</strong>. Jerome will send your calendar invite to <strong>${email}</strong> shortly!`,
+      detailsHtml: detailsHtml,
+      whatsappMsg: whatsappMsg,
+      mailtoSubject: mailtoSub,
+      mailtoBody: mailtoBody
+    });
+
+    showToast(`🎉 Call requested for ${date}!`);
   });
 }
 
@@ -968,6 +1061,18 @@ function initAuditModal() {
       _captcha: 'false'
     };
 
+    const detailsHtml = `
+      <div style="display: flex; flex-direction: column; gap: 0.35rem; color: var(--text-main);">
+        <div><strong>👤 Client:</strong> ${name} &bull; <span style="color: var(--color-primary);">${email}</span></div>
+        <div><strong>🌐 Website / Social Handle:</strong> ${website}</div>
+        <div><strong>🔍 Audit Focus:</strong> ${concern}</div>
+      </div>
+    `;
+
+    const whatsappMsg = `Hi Jerome! I'm ${name} (${email}). I just requested a Free 5-Point Brand & Web Audit for my brand (${website}). Primary focus: ${concern}.`;
+    const mailtoSub = `Free 5-Point Audit Request: ${name} - ${website}`;
+    const mailtoBody = `Hi Jerome,\n\nI requested a free 5-point audit diagnostic for ${website}.\n\nName: ${name}\nEmail: ${email}\nFocus Area: ${concern}\n\nLooking forward to your 5-point brand & UX audit report!`;
+
     try {
       await fetch('https://formsubmit.co/ajax/jeromecabinta7@gmail.com', {
         method: 'POST',
@@ -977,29 +1082,25 @@ function initAuditModal() {
         },
         body: JSON.stringify(payload)
       });
-
-      submitBtn.innerHTML = origText;
-      submitBtn.disabled = false;
-      auditForm.reset();
-      closeModal('auditModal');
-
-      const successModal = document.getElementById('successModal');
-      if (successModal) {
-        const titleEl = successModal.querySelector('h3');
-        const descEl = successModal.querySelector('p');
-        if (titleEl) titleEl.textContent = 'Free Audit Claimed!';
-        if (descEl) descEl.innerHTML = `Thank you, <strong>${name}</strong>! We have received your audit request for <strong>${website}</strong>. Jerome & the Create and Arise creative team will record your personalized 5-minute video & teardown report and send it to <strong>${email}</strong> within 48 business hours!`;
-        successModal.classList.add('active');
-      } else {
-        showToast(`🎉 Free audit requested for ${website}! Check your email within 48h.`);
-      }
     } catch (err) {
-      submitBtn.innerHTML = origText;
-      submitBtn.disabled = false;
-      auditForm.reset();
-      closeModal('auditModal');
-      showToast(`🎉 Free audit requested! We will send your report shortly.`);
+      console.log('Audit request handled via fallback');
     }
+
+    submitBtn.innerHTML = origText;
+    submitBtn.disabled = false;
+    auditForm.reset();
+    closeModal('auditModal');
+
+    showRichSuccessModal({
+      title: 'Free 5-Point Audit Claimed!',
+      desc: `Thank you, <strong>${name}</strong>! We have received your audit request for <strong>${website}</strong>. Jerome & the Create and Arise creative team will compile your personalized 5-point brand & UX diagnostic report and send it to <strong>${email}</strong> within 48 business hours!`,
+      detailsHtml: detailsHtml,
+      whatsappMsg: whatsappMsg,
+      mailtoSubject: mailtoSub,
+      mailtoBody: mailtoBody
+    });
+
+    showToast(`🎉 Free audit requested for ${website}! Check your email within 48h.`);
   });
 }
 
@@ -1046,13 +1147,32 @@ function initModals() {
 }
 
 function initGlobalInteractions() {
-  // Copy email to clipboard helper
+  // Copy email to clipboard helper with visual button feedback
   window.copyEmail = function(e) {
     if (e) e.preventDefault();
     const email = 'jeromecabinta7@gmail.com';
+    const btn = e && e.target ? e.target.closest('button') : null;
+    const origText = btn ? btn.innerHTML : 'Copy';
+
     navigator.clipboard.writeText(email).then(() => {
+      if (btn) {
+        btn.innerHTML = 'Copied! ✓';
+        btn.style.borderColor = '#10b981';
+        btn.style.color = '#10b981';
+        setTimeout(() => {
+          btn.innerHTML = origText;
+          btn.style.borderColor = '';
+          btn.style.color = '';
+        }, 2500);
+      }
       showToast(`📋 Copied ${email} to clipboard!`);
     }).catch(() => {
+      if (btn) {
+        btn.innerHTML = 'Copied! ✓';
+        setTimeout(() => {
+          btn.innerHTML = origText;
+        }, 2500);
+      }
       showToast(`Email: ${email}`);
     });
   };

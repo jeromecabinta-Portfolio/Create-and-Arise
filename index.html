@@ -5,15 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <!-- SEO Meta Tags -->
-  <title>Create and Arise | Web Design, Graphics, Video Reels & Digital Marketing Agency</title>
-  <meta name="description" content="Create and Arise is a premier Christian-led creative agency based in the Philippines. We specialize in purpose-driven Graphic Design, Web Design, Digital Ads Marketing, Video Reels, and Social Media Management. Open Monday to Friday.">
-  <meta name="keywords" content="Create and Arise, Graphic Design Philippines, Web Design Agency, Digital Ads Marketing, Video Reels Editing, Social Media Management, Christian Creative Agency, Philippines Digital Marketing">
+  <title>Create and Arise | Web Design, Graphic Design, Digital Ads & Social Media Agency</title>
+  <meta name="description" content="Create and Arise is a premier Christian-led creative agency based in the Philippines. We specialize in purpose-driven Graphic Design, Web Design, Digital Ads Marketing, and Social Media Management. Open Monday to Friday.">
+  <meta name="keywords" content="Create and Arise, Graphic Design Philippines, Web Design Agency, Digital Ads Marketing, Social Media Management, Christian Creative Agency, Philippines Digital Marketing">
   <meta name="author" content="Create and Arise">
 
   <!-- Open Graph / Social Sharing -->
   <meta property="og:type" content="website">
   <meta property="og:title" content="Create and Arise | Creative Design & Digital Marketing Agency">
-  <meta property="og:description" content="Empowering visionary brands with purpose-driven graphic design, high-converting websites, dynamic video reels, and digital marketing.">
+  <meta property="og:description" content="Empowering visionary brands with purpose-driven graphic design, high-converting websites, digital ads, and social media management.">
   <meta property="og:image" content="assets/images/hero-agency.jpg">
 
   <!-- Google Fonts -->
@@ -22,7 +22,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Syne:wght@600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
 
   <!-- Stylesheet -->
-  <link rel="stylesheet" href="assets/css/style.css?v=2.2">
+  <link rel="stylesheet" href="assets/css/style.css?v=3.1">
 
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="assets/Logo/Logo.png">
@@ -65,17 +65,46 @@
         </div>
       </a>
 
-      <!-- Navigation Tabs -->
+      <!-- Navigation Tabs & Slide-in Mobile Drawer -->
       <nav class="nav-links" id="navLinks" aria-label="Main Navigation">
-        <button type="button" class="nav-link active" data-tab="home">Home</button>
-        <button type="button" class="nav-link" data-tab="services">Services</button>
-        <button type="button" class="nav-link" data-tab="mission">About Us</button>
-        <button type="button" class="nav-link" data-tab="portfolio">Portfolio</button>
-        <button type="button" class="nav-link" data-tab="estimator">Cost Estimator</button>
-        <button type="button" class="nav-link" data-tab="testimonials">Reviews</button>
-        <button type="button" class="nav-link" data-tab="faq">FAQs</button>
-        <button type="button" class="nav-link" data-tab="contact">Contact</button>
+        <!-- Mobile Drawer Header -->
+        <div class="nav-drawer-header">
+          <div class="drawer-brand">
+            <img src="assets/Logo/Logo.png" alt="Create and Arise Logo" class="drawer-brand-logo" width="32" height="32">
+            <span>CREATE <span style="color: var(--color-primary);">&amp;</span> ARISE</span>
+          </div>
+          <button type="button" class="drawer-close-btn" id="drawerCloseBtn" aria-label="Close menu">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+          </button>
+        </div>
+
+        <button type="button" class="nav-link active" data-tab="home"><span class="nav-icon">🏠</span> <span>Home</span></button>
+        <button type="button" class="nav-link" data-tab="services"><span class="nav-icon">⚡</span> <span>Services</span></button>
+        <button type="button" class="nav-link" data-tab="mission"><span class="nav-icon">📖</span> <span>About Us</span></button>
+        <button type="button" class="nav-link" data-tab="portfolio"><span class="nav-icon">🎨</span> <span>Portfolio</span></button>
+        <button type="button" class="nav-link" data-tab="estimator"><span class="nav-icon">🧮</span> <span>Cost Estimator</span></button>
+        <button type="button" class="nav-link" data-tab="testimonials"><span class="nav-icon">⭐</span> <span>Reviews</span></button>
+        <button type="button" class="nav-link" data-tab="faq"><span class="nav-icon">❓</span> <span>FAQs</span></button>
+        <button type="button" class="nav-link" data-tab="contact"><span class="nav-icon">✉️</span> <span>Contact</span></button>
+
+        <div class="mobile-drawer-cta-section">
+          <button type="button" onclick="openBookCallModal()" class="btn btn-book-call btn-sm" style="width: 100%; justify-content: center; margin-bottom: 0.65rem;">
+            <span>📅 Book a Free Call</span>
+          </button>
+          <button type="button" onclick="openAuditModal()" class="btn btn-audit btn-sm" style="width: 100%; justify-content: center; margin-bottom: 0.65rem;">
+            <span>🔍 Get Free Audit</span>
+          </button>
+          <button type="button" onclick="switchTab('contact')" class="btn btn-primary btn-sm" style="width: 100%; justify-content: center; margin-bottom: 0.65rem;">
+            <span>✉️ Start Consultation</span>
+          </button>
+          <button type="button" onclick="switchTab('estimator')" class="btn btn-secondary btn-sm" style="width: 100%; justify-content: center;">
+            <span>🧮 Cost Estimator</span>
+          </button>
+        </div>
       </nav>
+
+      <!-- Mobile Drawer Backdrop Overlay -->
+      <div class="mobile-nav-backdrop" id="mobileNavBackdrop"></div>
 
       <!-- Header Controls -->
       <div class="header-actions">
@@ -93,21 +122,24 @@
           </svg>
         </button>
 
-        <button type="button" onclick="openBookCallModal()" class="btn btn-book-call btn-sm hide-mobile" title="Schedule a 20-min strategy call">
+        <button type="button" onclick="openBookCallModal()" class="btn btn-book-call btn-sm header-cta-btn" title="Schedule a 20-min strategy call">
           <span>📅 Book a Call</span>
         </button>
 
-        <button type="button" onclick="openAuditModal()" class="btn btn-audit btn-sm hide-mobile" title="Claim a free 5-point brand & website teardown">
+        <button type="button" onclick="openAuditModal()" class="btn btn-audit btn-sm header-cta-btn" title="Claim a free 5-point brand & website teardown">
           <span>🔍 Free Audit</span>
         </button>
 
-        <button type="button" onclick="switchTab('contact')" class="btn btn-primary btn-sm btn-quote">
+        <button type="button" onclick="switchTab('contact')" class="btn btn-primary btn-sm header-cta-btn btn-quote" title="Get an Instant Custom Quote">
           <span>Get a Quote</span>
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
         </button>
 
-        <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Open Navigation Menu">
-          &#9776;
+        <!-- Modern Animated Burger Toggle -->
+        <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle Navigation Menu" aria-expanded="false" title="Menu">
+          <span class="burger-bar"></span>
+          <span class="burger-bar"></span>
+          <span class="burger-bar"></span>
         </button>
       </div>
     </div>
@@ -130,7 +162,7 @@
           </h1>
 
           <p class="hero-lead">
-            Create and Arise is a Christian-led creative agency delivering high-impact visual branding, modern web design, viral video reels, and paid ads to scale visionary leaders worldwide.
+            Create and Arise is a Christian-led creative agency delivering high-impact visual branding, modern web design, strategic digital ads, and social media management to scale visionary leaders worldwide.
           </p>
 
           <!-- One Focused Primary Call-to-Action (CTA) -->
@@ -151,8 +183,8 @@
               <span class="highlight-label">Brands Elevated</span>
             </div>
             <div class="highlight-item">
-              <span class="highlight-number">10M+</span>
-              <span class="highlight-label">Video Reels Views</span>
+              <span class="highlight-number">99.4%</span>
+              <span class="highlight-label">Client Satisfaction</span>
             </div>
             <div class="highlight-item">
               <span class="highlight-number">+320%</span>
@@ -267,9 +299,9 @@
             <div class="stats-counter-desc">Guaranteed Mon&ndash;Fri pacing</div>
           </div>
           <div class="stats-counter-card">
-            <div class="stats-counter-num">10.4M+</div>
-            <div class="stats-counter-title">Organic Video Views</div>
-            <div class="stats-counter-desc">TikTok, Reels &amp; Shorts</div>
+            <div class="stats-counter-num">99.4%</div>
+            <div class="stats-counter-title">Client Satisfaction</div>
+            <div class="stats-counter-desc">85+ verified 5-star reviews</div>
           </div>
           <div class="stats-counter-card">
             <div class="stats-counter-num">100%</div>
@@ -333,27 +365,7 @@
             </button>
           </article>
 
-          <!-- Item 3: Video Reels -->
-          <article class="what-we-do-card">
-            <div class="what-we-do-icon" style="background: rgba(139, 92, 246, 0.15); color: var(--color-secondary);">
-              🎬
-            </div>
-            <h3 class="what-we-do-title">Video Reels &amp; Motion Graphics</h3>
-            <p class="what-we-do-desc">
-              Hook-driven 9:16 vertical short-form editing tailored for TikTok, Instagram Reels, and YouTube Shorts with dynamic captions and sound design.
-            </p>
-            <div class="what-we-do-tags">
-              <span class="what-we-do-tag">TikTok &amp; Reels</span>
-              <span class="what-we-do-tag">Kinetic Captions</span>
-              <span class="what-we-do-tag">Motion Overlays</span>
-              <span class="what-we-do-tag">Trend Audio</span>
-            </div>
-            <button type="button" onclick="selectServiceInEstimator('reels')" class="what-we-do-link">
-              <span>Estimate Package</span> &rarr;
-            </button>
-          </article>
-
-          <!-- Item 4: Digital Ads -->
+          <!-- Item 3: Digital Ads -->
           <article class="what-we-do-card">
             <div class="what-we-do-icon" style="background: rgba(244, 63, 94, 0.15); color: #f43f5e;">
               📈
@@ -373,7 +385,7 @@
             </button>
           </article>
 
-          <!-- Item 5: Social Media -->
+          <!-- Item 4: Social Media -->
           <article class="what-we-do-card">
             <div class="what-we-do-icon" style="background: rgba(16, 185, 129, 0.15); color: #10b981;">
               📱
@@ -386,7 +398,7 @@
               <span class="what-we-do-tag">Content Calendar</span>
               <span class="what-we-do-tag">Aesthetic Grids</span>
               <span class="what-we-do-tag">Copywriting</span>
-              <span class="what-we-do-tag">Community Replies</span>
+              <span class="what-we-do-tag">Community Growth</span>
             </div>
             <button type="button" onclick="selectServiceInEstimator('social')" class="what-we-do-link">
               <span>Estimate Package</span> &rarr;
@@ -458,7 +470,7 @@
               </div>
               <div class="audience-solution-item">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                <span>Sermon Highlights &amp; Viral Faith-Based Reels</span>
+                <span>High-Impact Ministry Graphics &amp; Social Campaigns</span>
               </div>
               <div class="audience-solution-item">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
@@ -475,7 +487,7 @@
             </div>
             <h3 class="audience-title">E-Commerce &amp; Direct-to-Consumer Brands</h3>
             <p class="audience-desc">
-              Online store owners wanting eye-catching packaging design, high-converting product landing pages, and revenue-boosting TikTok &amp; Meta ad creatives.
+              Online store owners wanting eye-catching packaging design, high-converting product landing pages, and revenue-boosting digital ad creatives.
             </p>
             <div class="audience-solutions-list">
               <div class="audience-solution-item">
@@ -488,7 +500,7 @@
               </div>
               <div class="audience-solution-item">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                <span>Dynamic Ad Variations for Meta &amp; TikTok Testing</span>
+                <span>Dynamic Ad Variations for Meta &amp; Google Testing</span>
               </div>
             </div>
           </article>
@@ -501,7 +513,7 @@
             </div>
             <h3 class="audience-title">Coaches, Consultants &amp; Creators</h3>
             <p class="audience-desc">
-              High-ticket experts needing an authoritative web presence, viral short-form video reels to build massive trust, and pitch decks that close premium client packages.
+              High-ticket experts needing an authoritative web presence, conversion-focused social media marketing to build massive trust, and pitch decks that close premium client packages.
             </p>
             <div class="audience-solutions-list">
               <div class="audience-solution-item">
@@ -510,7 +522,7 @@
               </div>
               <div class="audience-solution-item">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                <span>Hook-Driven Viral Video Reels for Growth</span>
+                <span>High-Converting Social Media Content Strategy</span>
               </div>
               <div class="audience-solution-item">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
@@ -559,7 +571,7 @@
             </div>
             <h3 class="value-prop-title">Conversion &amp; Revenue-Focused Craft</h3>
             <p class="value-prop-desc">
-              We don't build vanity designs. Every visual layout, color palette, typography hierarchy, and video hook is engineered to convert casual visitors into loyal paying customers.
+              We don't build vanity designs. Every visual layout, color palette, typography hierarchy, and digital strategy is engineered to convert casual visitors into loyal paying customers.
             </p>
             <div class="value-prop-metric">
               <span>&#10003;</span>
@@ -649,7 +661,7 @@
               <div class="cta-matrix-icon" style="background: rgba(6, 182, 212, 0.15); color: var(--color-accent);">🔍</div>
               <h3 class="cta-matrix-title">Get Your Free Audit</h3>
               <p class="cta-matrix-desc">
-                Receive a personalized 5-point video and conversion teardown of your current website or social presence within 48 weekday hours. 100% free.
+                Receive a personalized 5-point brand, UX, and conversion teardown of your current website or social presence within 48 weekday hours. 100% free.
               </p>
               <button type="button" onclick="openAuditModal()" class="btn btn-audit cta-card-btn">
                 <span>Claim Free Audit</span>
@@ -685,7 +697,7 @@
       </div>
     </section>
 
-    <!-- VIEW 2: SERVICES (5 Core Services) -->
+    <!-- VIEW 2: SERVICES (4 Core Services) -->
     <section class="tab-view" id="view-services" aria-label="Services Catalog">
       <div class="container">
         <div class="section-header">
@@ -772,43 +784,7 @@
             <button type="button" onclick="selectServiceInEstimator('web')" class="service-action-link" style="background:none;border:none;cursor:pointer;">Estimate Package &rarr;</button>
           </article>
 
-          <!-- Service 3: Video Reels & Motion Graphics -->
-          <article class="service-card">
-            <div class="service-header">
-              <div class="service-icon-box icon-purple">
-                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <polygon points="23 7 16 12 23 17 23 7"></polygon>
-                  <rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect>
-                </svg>
-              </div>
-              <span class="service-number">03</span>
-            </div>
-            <h3 class="service-title">Video Reels &amp; Motion Graphics</h3>
-            <p class="service-desc">
-              Viral short-form video editing and kinetic animations designed for TikTok, Instagram Reels, and YouTube Shorts. We capture attention within the first 3 seconds.
-            </p>
-            <ul class="service-feature-list">
-              <li class="service-feature-item">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                <span>Hook-Driven Short Form Video Editing</span>
-              </li>
-              <li class="service-feature-item">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                <span>Kinetic Typography &amp; Dynamic Captions</span>
-              </li>
-              <li class="service-feature-item">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                <span>3D Motion Graphics &amp; Logo Animations</span>
-              </li>
-              <li class="service-feature-item">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                <span>Sound Design &amp; Trend Audio Matching</span>
-              </li>
-            </ul>
-            <button type="button" onclick="selectServiceInEstimator('reels')" class="service-action-link" style="background:none;border:none;cursor:pointer;">Estimate Package &rarr;</button>
-          </article>
-
-          <!-- Service 4: Digital Ads & Campaign Marketing -->
+          <!-- Service 3: Digital Ads & Campaign Marketing -->
           <article class="service-card">
             <div class="service-header">
               <div class="service-icon-box icon-rose">
@@ -818,7 +794,7 @@
                   <line x1="6" y1="20" x2="6" y2="16"></line>
                 </svg>
               </div>
-              <span class="service-number">04</span>
+              <span class="service-number">03</span>
             </div>
             <h3 class="service-title">Digital Ads &amp; Campaign Marketing</h3>
             <p class="service-desc">
@@ -845,7 +821,7 @@
             <button type="button" onclick="selectServiceInEstimator('ads')" class="service-action-link" style="background:none;border:none;cursor:pointer;">Estimate Package &rarr;</button>
           </article>
 
-          <!-- Service 5: Social Media Management -->
+          <!-- Service 4: Social Media Management -->
           <article class="service-card">
             <div class="service-header">
               <div class="service-icon-box icon-emerald">
@@ -853,7 +829,7 @@
                   <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
                 </svg>
               </div>
-              <span class="service-number">05</span>
+              <span class="service-number">04</span>
             </div>
             <h3 class="service-title">Social Media Management</h3>
             <p class="service-desc">
@@ -929,7 +905,7 @@
                 <strong>Create and Arise</strong> is an independent creative agency based in <strong>Metro Manila, Philippines</strong>, partnering with visionary founders, businesses, and Kingdom enterprises worldwide.
               </p>
               <p class="about-who-text">
-                Led by <strong>Jerome Cabinta</strong> and a specialized collective of senior graphic artists, web engineers, video editors, and digital marketing strategists, we bridge the gap between world-class artistic craft and measurable commercial revenue. We proudly serve clients across the United States, Australia, the United Kingdom, Canada, Singapore, and Europe with seamless asynchronous workflows and dedicated weekday collaboration.
+                Led by <strong>Jerome Cabinta</strong> and a specialized collective of senior graphic artists, web engineers, and digital marketing strategists, we bridge the gap between world-class artistic craft and measurable commercial revenue. We proudly serve clients across the United States, Australia, the United Kingdom, Canada, Singapore, and Europe with seamless asynchronous workflows and dedicated weekday collaboration.
               </p>
             </div>
 
@@ -940,8 +916,8 @@
                 <span class="about-stat-label">Visionary Brands Elevated</span>
               </div>
               <div class="about-stat-item">
-                <span class="about-stat-num">10M+</span>
-                <span class="about-stat-label">Organic Video &amp; Reel Views</span>
+                <span class="about-stat-num">99.4%</span>
+                <span class="about-stat-label">Client Satisfaction Rating</span>
               </div>
               <div class="about-stat-item">
                 <span class="about-stat-num">+320%</span>
@@ -965,7 +941,7 @@
                 <strong>Create and Arise</strong> was born out of a clear realization: visionary entrepreneurs, ministries, and purpose-driven businesses often faced an unfair compromise. They either had to hire high-priced secular agencies that didn't share their values, or settle for budget freelancers who lacked the strategic depth and visual mastery needed to command real authority.
               </p>
               <p>
-                We founded Create and Arise to prove that <strong>deep faith and premier creative excellence belong together</strong>. We combine cutting-edge visual aesthetics, modern conversion web design, and viral short-form storytelling with uncompromised biblical integrity, transparent communication, and genuine care for our clients' success.
+                We founded Create and Arise to prove that <strong>deep faith and premier creative excellence belong together</strong>. We combine cutting-edge visual aesthetics, modern conversion web design, and data-backed digital marketing with uncompromised biblical integrity, transparent communication, and genuine care for our clients' success.
               </p>
               <p>
                 We operate with an intentional rhythm: dedicated, laser-focused weekday sprints (<strong>Monday to Friday, 8:00 AM – 6:00 PM PHT</strong>) and observing the weekend for spiritual renewal, family, and Sabbath rest.
@@ -1110,7 +1086,7 @@
             </div>
             <h3 class="why-work-title">100% Commercial Source File Ownership</h3>
             <p class="why-work-desc">
-              You receive full ownership of all deliverables including industry-standard vector files (AI, SVG, EPS, PDF), Figma files, 4K video exports, and organized assets with zero lock-in.
+              You receive full ownership of all deliverables including industry-standard vector files (AI, SVG, EPS, PDF), Figma files, and organized high-resolution design assets with zero lock-in.
             </p>
             <div class="why-work-benefit">
               <span>&#10003;</span>
@@ -1169,7 +1145,7 @@
           <span class="section-tag">&#128396;&#65039; Creative Showcase</span>
           <h2 class="section-title">Featured Works &amp; <span class="gradient-text">Case Studies</span></h2>
           <p class="section-desc">
-            Explore a curated selection of brand identities, high-converting websites, dynamic reels, and data-backed digital campaigns crafted by Create and Arise.
+            Explore a curated selection of brand identities, high-converting websites, digital ad creatives, and data-backed digital campaigns crafted by Create and Arise.
           </p>
         </div>
 
@@ -1178,7 +1154,6 @@
           <button class="filter-btn active" data-filter="all">All Projects</button>
           <button class="filter-btn" data-filter="branding">Graphics &amp; Branding</button>
           <button class="filter-btn" data-filter="web">Web Design</button>
-          <button class="filter-btn" data-filter="reels">Video Reels &amp; Motion</button>
           <button class="filter-btn" data-filter="ads">Digital Ads</button>
           <button class="filter-btn" data-filter="social">Social Media</button>
         </div>
@@ -1267,36 +1242,36 @@
               </button>
             </article>
 
-            <!-- Transformation 3: Viral Motion Reels (Elevate Athletics) -->
+            <!-- Transformation 3: High-Impact Brand Packaging (Apex Goods) -->
             <article class="before-after-card">
               <div class="ba-header">
-                <span class="section-tag" style="margin-bottom: 0;">Video Reels &amp; Motion</span>
-                <span style="color: #10b981; font-weight: 800; font-size: 0.85rem;">10M+ Organic Views</span>
+                <span class="section-tag" style="margin-bottom: 0;">Graphics &amp; Packaging</span>
+                <span style="color: #10b981; font-weight: 800; font-size: 0.85rem;">100% Rebrand Success</span>
               </div>
-              <h4 class="ba-client-title">Elevate Athletics Motion Suite</h4>
-              <p class="ba-client-sub">Fitness Apparel &bull; Creator Brand</p>
+              <h4 class="ba-client-title">Apex Goods Global Packaging Suite</h4>
+              <p class="ba-client-sub">Consumer Goods &bull; Global E-Commerce</p>
 
               <div class="ba-comparison-grid">
                 <div class="ba-col before">
                   <span class="ba-label">&#10060; Before</span>
-                  <div>&bull; Boring static edits with 1.2k avg views</div>
-                  <div>&bull; Poor 18% 3-second hook retention</div>
-                  <div>&bull; Zero viral algorithmic reach</div>
+                  <div>&bull; Outdated generic packaging design</div>
+                  <div>&bull; Low perceived customer value &amp; trust</div>
+                  <div>&bull; Inconsistent collateral across retail channels</div>
                 </div>
                 <div class="ba-col after">
                   <span class="ba-label">&#10024; After</span>
-                  <div>&bull; 24 kinetic typography hook-driven reels</div>
-                  <div>&bull; 74% 3-second hook retention rate</div>
-                  <div>&bull; 10.4M+ total views &amp; +86k followers</div>
+                  <div>&bull; Bespoke vector identity &amp; tactile packaging</div>
+                  <div>&bull; Full commercial source files delivered (AI/SVG)</div>
+                  <div>&bull; +140% surge in repeat wholesale orders</div>
                 </div>
               </div>
 
               <div class="ba-metric-highlight">
                 <span>&#128200; Key Metric ROI:</span>
-                <span>10M+ Views &bull; 74% Hook Retention</span>
+                <span>+140% Wholesale Growth &bull; 100% Brand Ownership</span>
               </div>
 
-              <button type="button" class="btn btn-outline btn-sm" onclick="openCaseStudyById(3)" style="margin-top: 1.25rem; width: 100%;">
+              <button type="button" class="btn btn-outline btn-sm" onclick="openCaseStudyById(6)" style="margin-top: 1.25rem; width: 100%;">
                 <span>Deep Dive Case Study &rarr;</span>
               </button>
             </article>
@@ -1319,7 +1294,7 @@
                 </div>
                 <div class="ba-col after">
                   <span class="ba-label">&#10024; After</span>
-                  <div>&bull; 36 high-converting video &amp; static creatives</div>
+                  <div>&bull; 36 high-converting static &amp; dynamic ad creatives</div>
                   <div>&bull; CAC slashed by 68% ($18.50 CAC)</div>
                   <div>&bull; Scaled profitably to $65k/mo spend</div>
                 </div>
@@ -1341,7 +1316,7 @@
             <span class="section-tag" style="background: rgba(245, 158, 11, 0.2); border-color: rgba(245, 158, 11, 0.5);">&#128640; Achieve Similar Results &bull; Zero Guesswork</span>
             <h3 class="about-cta-title">Want Results Like These for Your Service Business?</h3>
             <p class="about-cta-desc">
-              Whether you need to fix a poor conversion rate, transform your brand identity, or launch viral video reels, our team is ready to engineer your transformation.
+              Whether you need to fix a poor conversion rate, transform your brand identity, or launch high-converting digital campaigns, our team is ready to engineer your transformation.
             </p>
             <div class="about-cta-buttons">
               <button type="button" onclick="openBookCallModal()" class="btn btn-book-call btn-glow">
@@ -1398,14 +1373,6 @@
                     <div>
                       <div class="calc-option-name">Web Design &amp; Development</div>
                       <div style="font-size: 0.78rem; color: var(--text-muted);">Responsive UI/UX, SEO ready</div>
-                    </div>
-                  </label>
-
-                  <label class="calc-option-card">
-                    <input type="checkbox" class="calc-service-checkbox" value="reels">
-                    <div>
-                      <div class="calc-option-name">Video Reels &amp; Motion</div>
-                      <div style="font-size: 0.78rem; color: var(--text-muted);">Short-form reels, typography, audio</div>
                     </div>
                   </label>
 
@@ -1574,9 +1541,8 @@
           <button type="button" class="review-filter-btn active" data-filter="all">All Reviews (85+)</button>
           <button type="button" class="review-filter-btn" data-filter="web">Web Design &amp; UI/UX (32)</button>
           <button type="button" class="review-filter-btn" data-filter="branding">Branding &amp; Graphics (24)</button>
-          <button type="button" class="review-filter-btn" data-filter="reels">Video Reels &amp; Motion (18)</button>
-          <button type="button" class="review-filter-btn" data-filter="ads">Digital Paid Ads (12)</button>
-          <button type="button" class="review-filter-btn" data-filter="ministry">Christian Ministries (15)</button>
+          <button type="button" class="review-filter-btn" data-filter="ads">Digital Paid Ads (14)</button>
+          <button type="button" class="review-filter-btn" data-filter="ministry">Christian Ministries &amp; Social (15)</button>
         </div>
 
         <!-- 3. Testimonials Grid -->
@@ -1633,18 +1599,18 @@
             </div>
           </article>
 
-          <!-- Testimonial 3: Elevate Athletics (Video Reels) -->
-          <article class="testimonial-card" data-category="reels">
+          <!-- Testimonial 3: Elevate Living (Social Media) -->
+          <article class="testimonial-card" data-category="ministry">
             <div class="testimonial-card-header">
               <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-              <span class="testimonial-service-tag">Video Reels &amp; Motion</span>
+              <span class="testimonial-service-tag">Social Media Management</span>
             </div>
             <p class="testimonial-quote">
-              &ldquo;Their motion editing is on another level. Every single reel grabs attention in the first 3 seconds with kinetic typography and dynamic sound design. Our organic reach exploded past 10 million views across TikTok and Instagram!&rdquo;
+              &ldquo;Their social media management transformed our entire digital presence. Every single graphic post, carousel, and caption is crafted with immense attention to detail. Our community engagement surged by over 280% and our monthly inbound inquiries quadrupled!&rdquo;
             </p>
             <div class="testimonial-result-tag">
-              <span>&#127916;</span>
-              <span>Outcome: 10.4M+ Organic Video Views &amp; +86k Followers</span>
+              <span>&#128241;</span>
+              <span>Outcome: +280% Engagement Surge &amp; 4x Inbound Inquiries</span>
             </div>
             <div class="testimonial-author">
               <div class="author-avatar">JC</div>
@@ -1653,7 +1619,7 @@
                   <span class="author-name">Jordan Cruz</span>
                   <span class="author-verified-chip">&#10003; Verified</span>
                 </div>
-                <div class="author-role">Content Director, Elevate Athletics</div>
+                <div class="author-role">Brand Director, Elevate Living</div>
                 <div class="author-location">&#127482;&#127480; California, USA</div>
               </div>
             </div>
@@ -1666,7 +1632,7 @@
               <span class="testimonial-service-tag">Digital Paid Ads</span>
             </div>
             <p class="testimonial-quote">
-              &ldquo;Create and Arise completely turned our paid advertising around. We were burning money with a 0.8x negative ROAS. They designed 36 dynamic video/static ad variants, slashed our CAC by 68%, and scaled us to a consistent 3.8x blended return.&rdquo;
+              &ldquo;Create and Arise completely turned our paid advertising around. We were burning money with a 0.8x negative ROAS. They designed 36 high-converting ad creative variants, slashed our CAC by 68%, and scaled us to a consistent 3.8x blended return.&rdquo;
             </p>
             <div class="testimonial-result-tag">
               <span>&#128640;</span>
@@ -1692,7 +1658,7 @@
               <span class="testimonial-service-tag">Christian Ministry</span>
             </div>
             <p class="testimonial-quote">
-              &ldquo;Working with a Christian creative agency that honors the Lord with such diligence and reverence has been a profound blessing. Their monthly 30-day content ecosystem and inspirational reels elevated our global outreach by over 240%.&rdquo;
+              &ldquo;Working with a Christian creative agency that honors the Lord with such diligence and reverence has been a profound blessing. Their monthly 30-day content ecosystem and faith-filled graphics elevated our global outreach by over 240%.&rdquo;
             </p>
             <div class="testimonial-result-tag">
               <span>&#10013;&#65039;</span>
@@ -1944,7 +1910,7 @@
           <span class="section-tag" style="background: rgba(245, 158, 11, 0.2); border-color: rgba(245, 158, 11, 0.5);">&#128640; Still Have Questions? &bull; Zero Guesswork</span>
           <h3 class="about-cta-title">Ready to Take Your Next Step Forward?</h3>
           <p class="about-cta-desc">
-            Whether you want a quick 1-on-1 discovery call, an instant quote calculation, or a free brand teardown video, we're ready to serve:
+            Whether you want a quick 1-on-1 discovery call, an instant quote calculation, or a free 5-point brand audit, we're ready to serve:
           </p>
           <div class="about-cta-buttons">
             <button type="button" onclick="openBookCallModal()" class="btn btn-book-call btn-glow">
@@ -2006,7 +1972,7 @@
                 <div>
                   <div class="contact-label">Direct Inquiries Email</div>
                   <div class="contact-value" style="display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap;">
-                    <a href="mailto:jeromecabinta7@gmail.com" style="color: var(--color-primary);">jeromecabinta7@gmail.com</a>
+                    <a href="mailto:jeromecabinta7@gmail.com" style="color: var(--color-primary); font-weight: 700;">jeromecabinta7@gmail.com</a>
                     <button type="button" onclick="copyEmail(event)" class="btn btn-secondary btn-sm" style="padding: 0.25rem 0.65rem; font-size: 0.75rem;" title="Copy email address">
                       Copy
                     </button>
@@ -2018,7 +1984,12 @@
                 <div class="contact-icon-box">&#128241;</div>
                 <div>
                   <div class="contact-label">Quick Chat &amp; Inquiries</div>
-                  <div class="contact-value">+63 995 123 4567</div>
+                  <div class="contact-value" style="display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap;">
+                    <a href="tel:+639274682635" style="color: var(--text-main); font-weight: 700; text-decoration: none;">+63 927 468 2635</a>
+                    <a href="https://wa.me/639274682635?text=Hi%20Create%20and%20Arise!%20I'd%20like%20to%20inquire%20about%20your%20creative%20services." target="_blank" rel="noopener" class="btn btn-outline btn-sm" style="padding: 0.2rem 0.6rem; font-size: 0.75rem; border-color: rgba(16, 185, 129, 0.4); color: #10b981;">
+                      WhatsApp
+                    </a>
+                  </div>
                 </div>
               </div>
             </div>
@@ -2027,7 +1998,7 @@
             <div class="contact-card" style="background: rgba(139, 92, 246, 0.06); border-color: rgba(139, 92, 246, 0.25);">
               <h4 style="font-size: 1.1rem; margin-bottom: 0.5rem;">⚡ Instant Action Fast Tracks</h4>
               <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1rem;">
-                Prefer a direct calendar booking or video audit instead of a text inquiry?
+                Prefer a direct calendar booking or 5-point brand audit instead of a text inquiry?
               </p>
               <div style="display: flex; flex-direction: column; gap: 0.6rem;">
                 <button type="button" onclick="openBookCallModal()" class="btn btn-book-call btn-sm" style="width: 100%; justify-content: center;">
@@ -2049,7 +2020,7 @@
                 Chat directly with our creative director on WhatsApp or Facebook Messenger during business hours.
               </p>
               <div style="display: flex; gap: 0.75rem; flex-wrap: wrap;">
-                <a href="https://wa.me/639951234567?text=Hi%20Create%20and%20Arise!%20I'd%20like%20to%20inquire%20about%20your%20services." target="_blank" rel="noopener" class="btn btn-outline btn-sm">
+                <a href="https://wa.me/639274682635?text=Hi%20Create%20and%20Arise!%20I'd%20like%20to%20inquire%20about%20your%20services." target="_blank" rel="noopener" class="btn btn-outline btn-sm">
                   <span>WhatsApp Chat</span>
                 </a>
                 <a href="https://m.me/createandarise" target="_blank" rel="noopener" class="btn btn-outline btn-sm">
@@ -2082,7 +2053,7 @@
               <div class="form-row">
                 <div class="form-group">
                   <label class="form-label" for="contactPhone">Phone / WhatsApp (Optional)</label>
-                  <input type="tel" id="contactPhone" class="form-control" placeholder="+63 900 000 0000">
+                  <input type="tel" id="contactPhone" class="form-control" placeholder="+63 927 468 2635">
                 </div>
 
                 <div class="form-group">
@@ -2096,24 +2067,21 @@
                 </div>
               </div>
 
-              <!-- Service checkboxes inside form -->
+              <!-- Service checkboxes inside form (4 Pillars) -->
               <div class="form-group">
                 <label class="form-label">Services of Interest</label>
                 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 0.5rem; margin-top: 0.4rem;">
                   <label style="font-size: 0.85rem; display: flex; align-items: center; gap: 0.4rem; cursor: pointer;">
-                    <input type="checkbox" class="contact-service-check" value="Graphics & Branding"> Graphics
+                    <input type="checkbox" class="contact-service-check" value="Graphics & Branding"> Graphics &amp; Branding
                   </label>
                   <label style="font-size: 0.85rem; display: flex; align-items: center; gap: 0.4rem; cursor: pointer;">
-                    <input type="checkbox" class="contact-service-check" value="Web Design"> Web Design
+                    <input type="checkbox" class="contact-service-check" value="Web Design"> Web Design &amp; UX
                   </label>
                   <label style="font-size: 0.85rem; display: flex; align-items: center; gap: 0.4rem; cursor: pointer;">
-                    <input type="checkbox" class="contact-service-check" value="Video Reels"> Video Reels
+                    <input type="checkbox" class="contact-service-check" value="Digital Ads"> Digital Ads Marketing
                   </label>
                   <label style="font-size: 0.85rem; display: flex; align-items: center; gap: 0.4rem; cursor: pointer;">
-                    <input type="checkbox" class="contact-service-check" value="Digital Ads"> Digital Ads
-                  </label>
-                  <label style="font-size: 0.85rem; display: flex; align-items: center; gap: 0.4rem; cursor: pointer;">
-                    <input type="checkbox" class="contact-service-check" value="Social Media"> Social Media
+                    <input type="checkbox" class="contact-service-check" value="Social Media"> Social Media Management
                   </label>
                 </div>
               </div>
@@ -2199,7 +2167,6 @@
               <option value="Full Creative & Growth Suite" selected>Full Creative &amp; Growth Suite</option>
               <option value="Graphic Design & Brand Identity">Graphic Design &amp; Brand Identity</option>
               <option value="High-Converting Web Design">High-Converting Web Design</option>
-              <option value="Video Reels & Motion Graphics">Video Reels &amp; Motion Graphics</option>
               <option value="Digital Ads & Campaign Marketing">Digital Ads &amp; Campaign Marketing</option>
               <option value="Social Media Content Management">Social Media Management</option>
             </select>
@@ -2243,7 +2210,7 @@
               <span>💻 Zoom</span>
             </label>
             <label class="platform-card">
-              <input type="radio" name="booking_platform" value="WhatsApp Video/Audio">
+              <input type="radio" name="booking_platform" value="WhatsApp Call / Chat">
               <span>💬 WhatsApp</span>
             </label>
             <label class="platform-card">
@@ -2280,16 +2247,16 @@
         </span>
         <h3 id="auditModalTitle" style="font-size: 1.65rem; margin-bottom: 0.35rem;">Get Your Free Brand &amp; Website Audit</h3>
         <p style="color: var(--text-muted); font-size: 0.88rem; line-height: 1.6;">
-          Enter your website URL or social handle. Jerome &amp; our senior creative team will record a <strong>custom 5-minute video teardown</strong> revealing your UX, branding, conversion bottlenecks, and mobile speed insights — delivered within 48 business hours.
+          Enter your website URL or social handle. Jerome &amp; our senior creative team will compile a <strong>custom 5-point brand &amp; UX audit report</strong> revealing conversion bottlenecks, typography hierarchy, and mobile speed friction — delivered within 48 business hours.
         </p>
       </div>
 
       <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.65rem; margin-bottom: 1.25rem; font-size: 0.76rem; text-align: center;">
         <div style="background: rgba(6, 182, 212, 0.08); border: 1px solid rgba(6, 182, 212, 0.2); border-radius: var(--radius-sm); padding: 0.5rem;">
-          🎥 <strong>5-Min Video</strong><br><span style="color: var(--text-subtle);">Direct screen walkthrough</span>
+          🔍 <strong>5-Point Audit</strong><br><span style="color: var(--text-subtle);">Direct expert evaluation</span>
         </div>
         <div style="background: rgba(139, 92, 246, 0.08); border: 1px solid rgba(139, 92, 246, 0.2); border-radius: var(--radius-sm); padding: 0.5rem;">
-          📊 <strong>5-Point Scorecard</strong><br><span style="color: var(--text-subtle);">PDF conversion checklist</span>
+          📊 <strong>Action Scorecard</strong><br><span style="color: var(--text-subtle);">Actionable UX checklist</span>
         </div>
         <div style="background: rgba(16, 185, 129, 0.08); border: 1px solid rgba(16, 185, 129, 0.2); border-radius: var(--radius-sm); padding: 0.5rem;">
           🚫 <strong>Zero Pressure</strong><br><span style="color: var(--text-subtle);">No sales pitch required</span>
@@ -2319,7 +2286,7 @@
             <option value="Conversion Rate & Lead Capture (Why aren't visitors converting?)" selected>Conversion Rate &amp; Lead Capture (Why aren't visitors converting?)</option>
             <option value="Visual Aesthetics & Premium Brand Elevation">Visual Aesthetics &amp; Premium Brand Elevation</option>
             <option value="Mobile UX & Navigation Speed Friction">Mobile UX &amp; Navigation Speed Friction</option>
-            <option value="Video Reels & Social Media Content Strategy">Video Reels &amp; Social Media Content Strategy</option>
+            <option value="Social Media & Organic Growth Strategy">Social Media &amp; Organic Growth Strategy</option>
             <option value="Full Comprehensive Brand & Web Diagnostic">Full Comprehensive Brand &amp; Web Diagnostic</option>
           </select>
         </div>
@@ -2329,7 +2296,7 @@
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
         </button>
         <p style="font-size: 0.75rem; color: var(--text-subtle); text-align: center; margin-top: 0.65rem;">
-          🔒 100% Free &bull; No obligation &bull; Loom video &amp; report sent directly to your inbox within 48 weekday hours.
+          🔒 100% Free &bull; No obligation &bull; Audit report sent directly to your inbox within 48 weekday hours.
         </p>
       </form>
     </div>
@@ -2337,16 +2304,31 @@
 
   <!-- Inquiry Success Modal -->
   <div class="modal-overlay" id="successModal" role="dialog" aria-modal="true">
-    <div class="modal-card" style="text-align: center; max-width: 500px;">
-      <div style="width: 70px; height: 70px; border-radius: 50%; background: rgba(16, 185, 129, 0.2); color: #10b981; font-size: 2.2rem; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem;">
+    <div class="modal-card" style="text-align: center; max-width: 540px; padding: 2.25rem 1.75rem;">
+      <div style="width: 72px; height: 72px; border-radius: 50%; background: rgba(16, 185, 129, 0.18); border: 2px solid rgba(16, 185, 129, 0.4); color: #10b981; font-size: 2.4rem; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.25rem; box-shadow: 0 0 20px rgba(16, 185, 129, 0.35);">
         &#10003;
       </div>
-      <h3 style="font-size: 1.75rem; margin-bottom: 0.75rem;">Inquiry Received!</h3>
-      <p style="color: var(--text-muted); line-height: 1.7; margin-bottom: 1.75rem;">
-        Thank you for reaching out to <strong>Create and Arise</strong>! We have received your project details and our team will review and reply within 24 weekday business hours.
+      <h3 id="successModalTitle" style="font-size: 1.75rem; margin-bottom: 0.5rem; font-family: var(--font-display);">Inquiry Successfully Sent!</h3>
+      <p id="successModalDesc" style="color: var(--text-muted); line-height: 1.65; margin-bottom: 1.25rem; font-size: 0.95rem;">
+        Thank you for reaching out to <strong>Create and Arise</strong>! Your project specifications have been submitted directly to our creative studio at <strong style="color: var(--color-primary);">jeromecabinta7@gmail.com</strong>. We will review your requirements and respond within 24 weekday business hours.
       </p>
-      <p style="font-size: 0.85rem; color: var(--color-primary); font-style: italic; margin-bottom: 1.5rem;">
-        &ldquo;May the Lord bless the work of your hands.&rdquo; &bull; Psalm 90:17
+
+      <!-- Dynamic Summary Details Box -->
+      <div id="successModalDetails" style="background: var(--bg-surface-elevated); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: 1rem; margin-bottom: 1.25rem; text-align: left; font-size: 0.85rem; display: none;">
+      </div>
+
+      <!-- Instant Fast Action Pathways -->
+      <div style="display: flex; flex-direction: column; gap: 0.65rem; margin-bottom: 1.25rem;">
+        <a id="successWhatsappBtn" href="https://wa.me/639274682635?text=Hi%20Jerome!%20I%20just%20submitted%20a%20consultation%20inquiry%20on%20the%20Create%20and%20Arise%20website." target="_blank" rel="noopener" class="btn btn-outline" style="width: 100%; justify-content: center; gap: 0.5rem; border-color: rgba(16, 185, 129, 0.4); color: #10b981;">
+          <span>💬 Chat Directly on WhatsApp with Jerome</span>
+        </a>
+        <a id="successMailtoBtn" href="mailto:jeromecabinta7@gmail.com" class="btn btn-secondary" style="width: 100%; justify-content: center; gap: 0.5rem; font-size: 0.88rem;">
+          <span>✉️ Open Direct Email Draft</span>
+        </a>
+      </div>
+
+      <p style="font-size: 0.82rem; color: var(--text-gold); font-style: italic; margin-bottom: 1.25rem;">
+        &ldquo;May the favor of the Lord our God rest on us; establish the work of our hands.&rdquo; &bull; Psalm 90:17
       </p>
       <button class="btn btn-primary" onclick="closeModal('successModal')" style="width: 100%;">
         Done &amp; Continue Browsing
@@ -2360,7 +2342,7 @@
   </div>
 
   <!-- Application Logic & Automated Chatbot Scripts -->
-  <script src="assets/js/app.js?v=2.1"></script>
-  <script src="assets/js/chatbot.js?v=2.1"></script>
+  <script src="assets/js/app.js?v=2.4"></script>
+  <script src="assets/js/chatbot.js?v=2.3"></script>
 </body>
 </html>
