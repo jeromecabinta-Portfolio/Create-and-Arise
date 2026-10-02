@@ -245,120 +245,195 @@ const portfolioData = [
   {
     id: 1,
     category: 'branding',
-    title: 'Aurum & Co. Luxury Visual Identity System',
-    client: 'Aurum & Co. Fine Goods',
-    industry: 'Global E-Commerce & Luxury Goods (Manila & Singapore)',
-    desc: 'Complete high-end brand identity system featuring custom logomark, typography guidelines, luxury stationery, and digital brand style book designed to elevate brand authority.',
-    problem: 'Suffered from fragmented DIY branding with pixelated low-res graphics across product boxes, causing a high 32% return rate and preventing them from securing high-end retail boutique partnerships.',
-    whatWeDid: 'Engineered an elite visual brand ecosystem from scratch: geometric obsidian-and-gold logomark, bespoke serif typography rules, tactile matte-finish packaging blueprints, social media kits, and full vector source assets.',
-    before: 'Fragmented Canva graphics, inconsistent hex codes, 32% return rate from low perceived luxury value.',
-    after: 'High-authority obsidian & gold identity, 100% brand cohesion, onboarded into 14 luxury partner boutiques worldwide.',
+    categoryLabel: 'Graphics & Branding',
+    title: 'Create & Arise Master Brand Collateral & Merchandise Suite',
+    client: 'Create and Arise Official Studio Brand Identity',
+    industry: 'Faith-Led Creative Agency & Business Consultancy (La Trinidad, Benguet)',
+    timeline: 'Comprehensive Master Brand Architecture',
+    tagline: 'Official Luxury Identity, Print Packaging, Executive Stationery & Merchandise Ecosystem',
+    tools: ['Photoshop', 'Canva', 'Adobe Illustrator'],
+    ownership: '100% Master Vector Source Assets & High-Res Mockup Suite',
+    desc: 'Official master visual brand architecture for Create and Arise featuring Isaiah 60:1 gold emblem, executive business stationery, retail packaging, published book covers, and premium apparel merchandise.',
+    problem: 'Needed an unmistakable, world-class luxury brand identity system and physical collateral suite that seamlessly communicates high-ticket creative competence, Christian faith values, and business leadership authority.',
+    whatWeDid: 'Crafted the complete master brand ecosystem: the iconic flaming cross gold medallion, tactile luxury shopping bags (Isaiah 60:1), executive consultant business cards, published leadership book covers, ceramic mugs, and apparel merchandise.',
+    before: 'Early conceptual drafts without physical print guidelines or unified commercial merchandise.',
+    after: 'Cohesive 12-piece physical and digital brand collateral suite commanding prestige, faith inspiration, and executive credibility worldwide.',
     results: [
-      { num: '+180%', label: 'Brand Recognition Lift' },
-      { num: '3.4x', label: 'Average Order Value ($42 → $143)' },
-      { num: '100%', label: 'Commercial Source File Ownership' }
+      { num: '100%', label: 'Vector Master Source Rights' },
+      { num: '12+', label: 'Physical Print & Merch Assets' },
+      { num: 'Isaiah 60:1', label: 'Foundational Scripture Identity' }
     ],
-    clientQuote: 'Create and Arise took our fragmented brand and forged it into an unmistakable luxury icon. Our wholesale partner acquisition tripled in 60 days.',
-    quoteAuthor: 'Elena Vance, Founder & Creative Director at Aurum & Co.',
-    image: 'assets/images/branding-graphics.jpg',
-    metrics: '+180% Brand Recognition',
-    deliverables: ['Vector Logo Suite (AI, SVG, EPS, PDF)', 'Brand Guidelines & Typography System', 'Luxury Box & Foil Label Packaging', 'Social Media Asset Toolkit', '100% Commercial Source Rights']
+    clientQuote: 'Our brand identity is our promise of excellence as working for the Lord. Every collateral piece reflects purpose, craft, and unwavering integrity.',
+    quoteAuthor: 'Jerome Cabinta, Founder & Lead Consultant at Create and Arise',
+    image: 'assets/Mock ups/12.png',
+    metrics: '12-Piece Master Brand Suite',
+    gallery: [
+      { src: 'assets/Mock ups/12.png', title: 'Luxury Ribbon Gift Bag', desc: 'Isaiah 60:1 Gold Foil Ribbon Packaging' },
+      { src: 'assets/Mock ups/4.png', title: 'Executive Business Card', desc: 'Jerome Cabinta, Business Consultant' },
+      { src: 'assets/Mock ups/10.png', title: 'Published Book Covers', desc: 'Authored Works by Jerome P. Cabinta' },
+      { src: 'assets/Mock ups/1.png', title: 'Embroidered Brand Cap', desc: 'Colossians 3:23 Scripture Edition' },
+      { src: 'assets/Mock ups/7.png', title: 'Matte White Shopper Bag', desc: '2025 Luxury Brand Shopper' },
+      { src: 'assets/Mock ups/8.png', title: 'Apparel Script T-Shirt', desc: 'Folded White Signature Brand Tee' },
+      { src: 'assets/Mock ups/5.png', title: 'Hot Coffee Cup Mockup', desc: 'Matte Black 2025 Gold Emblem Cup' },
+      { src: 'assets/Mock ups/9.png', title: 'Ceramic Brand Mug', desc: 'Made for the Bold, Designed to Stand Out' },
+      { src: 'assets/Mock ups/6.png', title: 'Luxury Apparel Hangtag', desc: 'Thynk Unlimited Garment Label' },
+      { src: 'assets/Mock ups/2.png', title: 'Kraft & Paper Boutique Bags', desc: 'Explore, Dream, Discover More' },
+      { src: 'assets/Mock ups/3.png', title: 'Stand-Up Zipper Pouch', desc: 'Enjoy Every Moment Packaging' },
+      { src: 'assets/Mock ups/11.png', title: 'Artisan Coffee Bag', desc: 'Fuel Your Spirit 250g Roast Bag' }
+    ],
+    deliverables: [
+      'Master Vector Logo Suite (AI, SVG, EPS, PDF, High-Res PNG)',
+      'Executive Business Cards & Stationery Design',
+      'Published Leadership Book Covers (Print & Kindle Ready)',
+      'Luxury Retail Shopping Bags & Foil-Stamped Packaging Blueprints',
+      'Full Apparel & Merch Suite (Caps, T-Shirts, Mugs, Hangtags)',
+      '100% Commercial Vector Source Rights Handover'
+    ]
   },
   {
     id: 2,
     category: 'web',
+    categoryLabel: 'Web Design & UX/UI',
     title: 'Velocity SaaS Enterprise Growth Platform',
     client: 'Velocity Financial Technologies',
-    industry: 'FinTech & B2B Software Enterprise',
-    desc: 'Cutting-edge responsive website designed with futuristic dark mode aesthetics, interactive conversion modules, and lightning-fast loading speeds.',
-    problem: 'Struggling with a bloated WordPress theme with 8.4-second load times, 68% mobile bounce rate, and a dismal 1.2% trial demo booking conversion rate that lost 6-figure enterprise deals.',
-    whatWeDid: 'Re-architected the entire web presence with bespoke clean code, ultra-fast 0.4s load speed, interactive ROI calculators, responsive glassmorphism aesthetics, enterprise SEO structure, and high-converting sticky CTAs.',
+    industry: 'FinTech & B2B Enterprise Software',
+    timeline: '4-Week Architecture & Coding Sprint',
+    tagline: 'Ultra-Fast Hand-Coded Web Platform with 0.4s Instant Load Time',
+    tools: ['Figma', 'Semantic HTML5', 'Vanilla CSS3', 'JavaScript', 'GA4 Analytics'],
+    ownership: '100% Clean Hand-Coded Codebase & Figma Component Tokens',
+    desc: 'High-performance responsive web platform with dark mode glassmorphism, interactive ARR & ROI calculators, and 99/100 Core Web Vitals.',
+    problem: 'Struggling with a bloated WordPress theme suffering from 8.4-second load times, 68% mobile bounce rate, and a dismal 1.2% trial demo booking conversion rate that lost 6-figure enterprise deals.',
+    whatWeDid: 'Re-architected the entire web presence with bespoke hand-crafted code, ultra-fast 0.4s load speed, interactive ROI calculators, responsive glassmorphism aesthetics, enterprise SEO structure, and high-converting sticky CTAs.',
     before: '8.4s slow load time, 68% mobile bounce rate, 1.2% demo conversion rate, generic theme visuals.',
-    after: '0.4s instant load time, 4.8x demo conversion lift (5.8% conversion), $420,000+ new enterprise pipeline value.',
+    after: '0.4s instant load time (99/100 Lighthouse), 4.8x demo conversion lift (5.8% conversion), $420,000+ new enterprise pipeline value.',
     results: [
       { num: '4.8x', label: 'Demo Conversion Rate Lift' },
-      { num: '0.4s', label: 'Page Load Speed (99/100 Core Web Vitals)' },
+      { num: '0.4s', label: 'Instant Load Speed (99/100 Lighthouse)' },
       { num: '+$420k', label: 'Enterprise Pipeline Generated' }
     ],
     clientQuote: 'The speed, responsiveness, and visual polish of the new Velocity platform blew our enterprise clients away. We closed three 6-figure accounts within 4 weeks of launch.',
     quoteAuthor: 'Marcus Sterling, Head of Growth at Velocity FinTech',
-    image: 'assets/images/web-design.jpg',
-    metrics: '4.8x Conversion Rate Lift',
-    deliverables: ['Custom UI/UX Architecture & Figma Files', 'Full Responsive Coding (HTML/CSS/JS)', 'Interactive Cost & ROI Calculator', 'SEO & Core Web Vitals Optimization', 'Google Analytics 4 Funnel Tracking']
+    image: 'assets/images/velocity-web.jpg',
+    metrics: '4.8x Demo Conversion Rate Lift',
+    deliverables: [
+      'Custom UI/UX Architecture & Figma Master Component System',
+      'Hand-Crafted Clean Semantic Codebase (Zero Bloat)',
+      'Interactive Live Cost & ARR ROI Estimator',
+      'Enterprise Technical SEO & 99/100 Core Web Vitals',
+      'Google Analytics 4 Conversion Funnel Tracking'
+    ]
   },
   {
     id: 3,
     category: 'branding',
-    title: 'Apex Goods Global Premium Packaging Suite',
-    client: 'Apex Goods Global & Retail Distribution',
-    industry: 'Consumer Goods, Wellness & Retail Packaging',
-    desc: 'Luxury packaging architecture, tactile unboxing design, 3D retail renders, and comprehensive point-of-sale branding guidelines.',
-    problem: 'Generic factory packaging that lacked shelf impact, resulting in distributor pushback and low perceived brand value below $35.',
+    categoryLabel: 'Graphics & Packaging',
+    title: 'Apex Botanics Global Premium Packaging Suite',
+    client: 'Apex Botanics & Retail Distribution',
+    industry: 'Consumer Goods, Wellness & Retail Distribution',
+    timeline: '5-Week Structural Packaging Suite',
+    tagline: 'Tactile Forest Emerald & Bronze Unboxing Suite & 3D Retail Visualization',
+    tools: ['Adobe Illustrator', 'Cinema 4D', 'Keyshot', 'Die-Line Engineering'],
+    ownership: '100% Print-Ready Vector Blueprints & 3D Photorealistic Renders',
+    desc: 'Luxury cosmetic & botanical packaging architecture, tactile unboxing die-lines, photorealistic 3D retail renders, and retail POS displays.',
+    problem: 'Generic factory packaging that lacked shelf impact, resulting in distributor pushback and low perceived brand value below $35 per unit.',
     whatWeDid: 'Engineered custom foil-stamped packaging suites, structural die-lines, photorealistic 3D retail renders, and retail merchandise displays.',
     before: 'Flat generic boxes, 0 retail boutique placements, under $35 perceived unit value.',
     after: '180+ retail boutique storefronts onboarded, +220% brand recall, average order value expanded to $85.',
     results: [
-      { num: '180+', label: 'Retail Stores Onboarded' },
+      { num: '180+', label: 'Retail Storefronts Onboarded' },
       { num: '+220%', label: 'Brand Recognition Lift' },
-      { num: '3.4x', label: 'Average Order Value' }
+      { num: '3.4x', label: 'Average Order Value ($25 → $85)' }
     ],
     clientQuote: 'Create and Arise transformed our consumer packaging suite from flat generic boxes into high-shelf luxury assets. Their 3D mockups and tactile print guidelines helped us win nationwide distribution.',
-    quoteAuthor: 'Jordan Cruz, Head of Product at Apex Goods Global',
-    image: 'assets/images/branding-packaging.jpg',
-    metrics: '180+ Retail Stores Onboarded',
-    deliverables: ['Custom Structural Packaging Die-Lines', 'Foil & Emboss Tactile Print Guidelines', 'Photorealistic 3D Retail Mockups', 'Point-of-Sale (POS) Retail Displays', 'Vendor Production & Print-Ready Files']
+    quoteAuthor: 'Jordan Cruz, Head of Product at Apex Botanics',
+    image: 'assets/images/apex-packaging.jpg',
+    metrics: '180+ Retail Storefronts Onboarded',
+    deliverables: [
+      'Custom Structural Packaging Die-Lines (AI & PDF)',
+      'Foil & Emboss Tactile Print Guidelines & Specifications',
+      'Photorealistic 3D Retail & E-Commerce Mockups',
+      'Point-of-Sale (POS) Retail Merchandise Displays',
+      'Full Commercial Rights & Factory Print Handoff'
+    ]
   },
   {
     id: 4,
     category: 'ads',
-    title: 'AlphaGrowth Omnichannel Paid Ad Campaign',
+    categoryLabel: 'Digital Ads Marketing',
+    title: 'LumbarCare Omnichannel Paid Ad Campaign',
     client: 'LumbarCare Health & Ergonomics',
     industry: 'Direct-to-Consumer Health & Ergonomic Hardware',
-    desc: 'Comprehensive multi-platform ad campaign across Meta and Google featuring high-converting visual creatives, retargeting funnels, and data analytics.',
+    timeline: '90-Day Omnichannel Growth Sprint',
+    tagline: 'Multi-Platform Ad Creative Suite Slashed CAC by 68% and Scaled Spend Profitably',
+    tools: ['Meta Ads Manager', 'Google Ads', 'TikTok Ads', 'Figma Creative Suite', 'Triple Whale'],
+    ownership: '36x High-Res Creative Master Files & Dedicated Landing Funnels',
+    desc: 'High-converting multi-platform ad campaign across Meta and Google featuring 36 visual creative variants, retargeting funnels, and data analytics.',
     problem: 'Burning $12,000/month on Meta Ads with negative return (0.8x ROAS) and soaring $58 Customer Acquisition Cost (CAC) due to generic static ads and poor landing page message matching.',
     whatWeDid: 'Engineered 36 conversion-focused static & carousel ad creatives, built high-converting dedicated DTC landing funnels, structured retargeting audience clusters, and ran structured multivariate creative testing.',
     before: '0.8x negative ROAS, $58 CAC, ad fatigue within 7 days, unprofitable unit economics.',
     after: '+320% ROAS (3.8x blended return), CAC slashed by 68% down to $18.50, successfully scaled spend to $65k/mo profitably.',
     results: [
       { num: '+320%', label: 'Blended ROAS (3.8x Return)' },
-      { num: '-68%', label: 'Customer Acquisition Cost ($58 → $18.50)' },
+      { num: '-68%', label: 'CAC Reduction ($58 → $18.50)' },
       { num: '$290k', label: 'Net Tracked Revenue Generated' }
     ],
     clientQuote: 'Create and Arise completely turned our paid advertising around. We went from burning money on ads to generating a 3.8x ROAS consistently month after month.',
     quoteAuthor: 'Rachel Tan, E-Commerce Director at LumbarCare',
-    image: 'assets/images/digital-ads.jpg',
+    image: 'assets/images/lumbarcare-ads.jpg',
     metrics: '+320% ROAS (3.8x Return)',
-    deliverables: ['36x High-Converting Ad Creative Variants', 'Dedicated DTC Landing Page Funnel', 'Meta & Google Ads Campaign Management', 'Retargeting Architecture & Pixel Setup', 'Weekly ROAS & Attribution Reports']
+    deliverables: [
+      '36x High-Converting Ad Creative Variants (Static, Carousel, Story)',
+      'Dedicated High-Converting DTC Landing Page Funnels',
+      'Meta & Google Ads Campaign Architecture & Retargeting',
+      'Triple Whale Attribution & Pixel Integration Setup',
+      'Weekly ROAS & Creative Fatigue Analytics Reports'
+    ]
   },
   {
     id: 5,
     category: 'social',
+    categoryLabel: 'Social Media Management',
     title: 'Kingdom Heritage Global Content Ecosystem',
     client: 'Kingdom Heritage Media & Publishing',
     industry: 'Faith-Based Global Ministry & Book Publishing',
+    timeline: 'Ongoing Monthly Content Architecture',
+    tagline: '30-Day Curated Graphic Ecosystem with +240% Community Growth',
+    tools: ['Adobe Photoshop', 'Canva Pro', 'Figma', 'Meta Business Suite', 'Metricool'],
+    ownership: '100% Branded Asset Library & Master Editable Templates',
     desc: 'Strategic social media management featuring daily uplifting graphic posts, branded carousels, community engagement, and consistent brand storytelling.',
     problem: 'Irregular posting schedule (1-2 times per month), uncoordinated color palettes, and low engagement from younger audiences that failed to convey their global mission.',
     whatWeDid: 'Created an all-inclusive monthly 30-day content calendar with branded scripture carousel graphics, aesthetic grid layouts, faith-affirming copywriting, community moderation, and strategic hashtag clusters.',
     before: '1-2 irregular posts/month, 0.4% engagement rate, zero community momentum.',
     after: '30 daily scheduled assets, +240% engagement surge, 45,000+ organic saves and shares across channels.',
     results: [
-      { num: '+240%', label: 'Engagement Rate Increase' },
+      { num: '+240%', label: 'Community Engagement Surge' },
       { num: '45k+', label: 'Organic Saves & Shares' },
-      { num: '100%', label: 'On-Time Monthly Delivery' }
+      { num: '100%', label: 'On-Time Monthly Publishing' }
     ],
     clientQuote: 'They capture our heart and message with such excellence and reverence. Our community engagement and global reach have never been stronger.',
     quoteAuthor: 'Pastor Nathan Reyes, Kingdom Heritage Media',
-    image: 'assets/images/hero-agency.jpg',
+    image: 'assets/images/kingdom-social.jpg',
     metrics: '+240% Community Engagement',
-    deliverables: ['30x Monthly Branded Graphic Posts & Carousels', 'Curated Aesthetic Grid Layout Strategy', 'Copywriting, Captions & Hashtag Strategy', 'Daily Community Comment Moderation', 'Monthly Growth & Engagement Analytics']
+    deliverables: [
+      '30x Monthly Branded Graphic Posts & Scripture Carousels',
+      'Curated Aesthetic 9-Grid Layout Strategy & Palette Guide',
+      'Faith-Affirming Copywriting, Captions & Hashtag Strategy',
+      'Daily Community Comment & Direct Message Moderation',
+      'Monthly Analytics & Audience Growth Reporting'
+    ]
   },
   {
     id: 6,
     category: 'web',
+    categoryLabel: 'Web Design & UX/UI',
     title: 'Lumina Horizon Luxury Architecture Showcase',
-    client: 'Lumina Horizon Real Estate & Developments',
-    industry: 'Luxury Residential & Architectural Firm',
-    desc: 'Editorial luxury web design showcasing architectural portfolios, virtual tour integrations, and interactive booking inquiry workflows.',
+    client: 'Lumina Horizon Architectural Studio',
+    industry: 'Luxury Residential & Modern Architectural Firm',
+    timeline: '5-Week Editorial Web Design Sprint',
+    tagline: 'Editorial High-Net-Worth Web Experience with 3D Spatial Floorplans',
+    tools: ['Figma', 'WebGL 3D Viewer', 'Vanilla CSS3 Grid', 'Responsive HTML5'],
+    ownership: '100% Clean Semantic Source Code & High-Res Media Optimization',
+    desc: 'Editorial luxury web design showcasing architectural portfolios, 3D floorplan spatial previews, and interactive private VIP booking workflows.',
     problem: 'Relying on static PDF brochures and a slow non-mobile website that failed to display multimillion-dollar architectural renders, leading to lost investor inquiries.',
     whatWeDid: 'Designed an ultra-minimalist editorial web experience with full-screen project galleries, interactive floorplan showcases, VIP consultation booking integration, and 100% mobile optimization.',
     before: 'Static non-responsive pages, slow PDF downloads, 0 digital leads captured.',
@@ -370,68 +445,244 @@ const portfolioData = [
     ],
     clientQuote: 'The website feels like a luxury architectural magazine. Our high-net-worth investors were deeply impressed by the seamless presentation.',
     quoteAuthor: 'Architect Gabriel Santos, Principal at Lumina Horizon',
-    image: 'assets/images/web-design.jpg',
-    metrics: '99.4% Client Satisfaction',
-    deliverables: ['Editorial Luxury Web Layout', 'Dynamic Project Gallery with Filters', 'Interactive Virtual Tour Integration', 'VIP Buyer Consultation Scheduler', '100% Mobile & Retina Display Optimization']
+    image: 'assets/images/lumina-architecture.jpg',
+    metrics: '42 Qualified VIP Showings Booked',
+    deliverables: [
+      'Editorial Luxury Web Layout & Architectural Grid System',
+      'Dynamic High-Resolution Project Showcase with Category Filters',
+      'Interactive 3D Spatial Model & Floorplan Viewer',
+      'Private VIP Investor Consultation Booking Flow',
+      '100% Mobile & Retina Display Optimization'
+    ]
   }
 ];
 
 function initPortfolio() {
   const filterBtns = document.querySelectorAll('.filter-btn');
   const portfolioGrid = document.getElementById('portfolioGrid');
+  const matrixContainer = document.getElementById('portfolioMatrixView');
+  const viewModeBtns = document.querySelectorAll('.view-mode-btn');
+  const searchInput = document.getElementById('portfolioSearchInput');
+  const searchClear = document.getElementById('portfolioSearchClear');
 
-  function renderPortfolio(filter = 'all') {
-    if (!portfolioGrid) return;
-    
-    const filtered = filter === 'all' 
-      ? portfolioData 
-      : portfolioData.filter(item => item.category === filter);
+  let currentFilter = 'all';
+  let currentSearchQuery = '';
+  let currentViewMode = 'grid'; // 'grid' or 'matrix'
 
-    portfolioGrid.innerHTML = filtered.map(item => `
-      <div class="portfolio-card" data-id="${item.id}" data-category="${item.category}" tabindex="0" role="button" aria-label="View case study for ${item.title}">
-        <div class="portfolio-thumb-wrapper">
-          <img src="${item.image}" alt="${item.title}" class="portfolio-img" loading="lazy">
-          <span class="portfolio-badge">${item.category.toUpperCase()}</span>
-        </div>
-        <div class="portfolio-info">
-          <h3 class="portfolio-title">${item.title}</h3>
-          <p class="portfolio-client">${item.client}</p>
-          <div class="portfolio-metrics">
-            <span class="metric-badge">&#10003; ${item.metrics}</span>
-            <span class="view-case-btn">Explore Case Study &rarr;</span>
-          </div>
-        </div>
-      </div>
-    `).join('');
+  function getFilteredData() {
+    return portfolioData.filter(item => {
+      const matchesCategory = currentFilter === 'all' || item.category === currentFilter;
+      if (!matchesCategory) return false;
 
-    // Attach click listeners to cards
-    document.querySelectorAll('.portfolio-card').forEach(card => {
-      card.addEventListener('click', () => {
-        const id = parseInt(card.getAttribute('data-id'));
-        const item = portfolioData.find(p => p.id === id);
-        if (item) openPortfolioModal(item);
-      });
-      card.addEventListener('keydown', (e) => {
-        if (e.key === 'Enter' || e.key === ' ') {
-          e.preventDefault();
-          const id = parseInt(card.getAttribute('data-id'));
-          const item = portfolioData.find(p => p.id === id);
-          if (item) openPortfolioModal(item);
-        }
-      });
+      if (!currentSearchQuery) return true;
+
+      const q = currentSearchQuery.toLowerCase().trim();
+      const matchInTitle = item.title && item.title.toLowerCase().includes(q);
+      const matchInClient = item.client && item.client.toLowerCase().includes(q);
+      const matchInIndustry = item.industry && item.industry.toLowerCase().includes(q);
+      const matchInDesc = item.desc && item.desc.toLowerCase().includes(q);
+      const matchInTagline = item.tagline && item.tagline.toLowerCase().includes(q);
+      const matchInMetrics = item.metrics && item.metrics.toLowerCase().includes(q);
+      const matchInTools = item.tools && item.tools.some(t => t.toLowerCase().includes(q));
+      const matchInCategory = item.categoryLabel && item.categoryLabel.toLowerCase().includes(q);
+
+      return matchInTitle || matchInClient || matchInIndustry || matchInDesc || matchInTagline || matchInMetrics || matchInTools || matchInCategory;
     });
   }
 
+  function renderPortfolio() {
+    if (!portfolioGrid) return;
+    
+    const filtered = getFilteredData();
+
+    if (filtered.length === 0) {
+      portfolioGrid.innerHTML = `
+        <div class="portfolio-empty-state" style="grid-column: 1 / -1; text-align: center; padding: 4rem 1.5rem; background: var(--bg-surface-elevated); border: 1px dashed var(--border-subtle); border-radius: var(--radius-lg);">
+          <div style="font-size: 2.5rem; margin-bottom: 0.75rem;">🔍</div>
+          <h4 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 0.5rem; color: var(--text-main);">No matching projects found</h4>
+          <p style="color: var(--text-muted); font-size: 0.9rem; max-width: 450px; margin: 0 auto 1.5rem;">
+            We couldn't find any case studies matching "${currentSearchQuery}". Try adjusting your keywords or clearing filters.
+          </p>
+          <button type="button" class="btn btn-secondary btn-sm" id="resetPortfolioSearchBtn">
+            <span>Reset Filters &amp; Search</span>
+          </button>
+        </div>
+      `;
+
+      const resetBtn = document.getElementById('resetPortfolioSearchBtn');
+      if (resetBtn) {
+        resetBtn.addEventListener('click', () => {
+          currentFilter = 'all';
+          currentSearchQuery = '';
+          if (searchInput) searchInput.value = '';
+          if (searchClear) searchClear.style.display = 'none';
+          filterBtns.forEach(b => b.classList.toggle('active', b.getAttribute('data-filter') === 'all'));
+          renderPortfolio();
+        });
+      }
+    } else {
+      portfolioGrid.innerHTML = filtered.map(item => `
+        <article class="portfolio-card" data-id="${item.id}" data-category="${item.category}" tabindex="0" role="button" aria-label="Present case study for ${item.title}">
+          <div class="portfolio-thumb-wrapper">
+            <img src="${item.image}" alt="${item.title}" class="portfolio-img" loading="lazy">
+            <div class="portfolio-overlay">
+              <span class="portfolio-quick-view-btn">👁️ Present Case Study</span>
+            </div>
+            <div class="portfolio-badges-top">
+              <span class="portfolio-badge">${item.categoryLabel || item.category.toUpperCase()}</span>
+              <span class="portfolio-timeline-badge">${item.timeline}</span>
+            </div>
+          </div>
+          <div class="portfolio-info">
+            <div class="portfolio-client-row">
+              <span class="portfolio-client">${item.client}</span>
+              <span class="portfolio-verified-badge">✓ Verified Output</span>
+            </div>
+            <h3 class="portfolio-title">${item.title}</h3>
+            <p class="portfolio-desc">${item.desc}</p>
+            
+            <div class="portfolio-tools-row">
+              ${item.tools.map(t => `<span class="portfolio-tool-tag">${t}</span>`).join('')}
+            </div>
+
+            <div class="portfolio-metrics">
+              <div class="metric-badge">
+                <span>🚀</span>
+                <strong>${item.metrics}</strong>
+              </div>
+              <span class="view-case-btn">Deep Dive &rarr;</span>
+            </div>
+          </div>
+        </article>
+      `).join('');
+
+      // Attach click listeners to cards
+      document.querySelectorAll('.portfolio-card').forEach(card => {
+        card.addEventListener('click', () => {
+          const id = parseInt(card.getAttribute('data-id'));
+          const item = portfolioData.find(p => p.id === id);
+          if (item) openPortfolioModal(item);
+        });
+        card.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            const id = parseInt(card.getAttribute('data-id'));
+            const item = portfolioData.find(p => p.id === id);
+            if (item) openPortfolioModal(item);
+          }
+        });
+      });
+    }
+
+    renderMatrixTable(filtered);
+  }
+
+  function renderMatrixTable(items) {
+    if (!matrixContainer) return;
+    if (items.length === 0) {
+      matrixContainer.innerHTML = `
+        <div style="text-align: center; padding: 3rem 1.5rem; color: var(--text-muted);">
+          No case studies match the current search criteria in Matrix View.
+        </div>
+      `;
+      return;
+    }
+
+    matrixContainer.innerHTML = `
+      <div class="matrix-table-wrapper">
+        <table class="matrix-table">
+          <thead>
+            <tr>
+              <th>Client &amp; Scope</th>
+              <th>Discipline</th>
+              <th>Starting Bottleneck</th>
+              <th>Create &amp; Arise Execution</th>
+              <th>Commercial ROI Result</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            ${items.map(item => `
+              <tr>
+                <td>
+                  <strong>${item.client}</strong>
+                  <div style="font-size: 0.78rem; color: var(--text-subtle); margin-top: 0.2rem;">${item.timeline}</div>
+                </td>
+                <td>
+                  <span class="portfolio-badge" style="position: static; display: inline-block;">${item.categoryLabel}</span>
+                </td>
+                <td style="max-width: 200px; font-size: 0.82rem; color: var(--text-muted);">
+                  ${item.problem}
+                </td>
+                <td style="max-width: 240px; font-size: 0.82rem; color: var(--text-main);">
+                  ${item.whatWeDid}
+                </td>
+                <td>
+                  <span class="matrix-roi-chip">&#128640; ${item.metrics}</span>
+                </td>
+                <td>
+                  <button type="button" class="btn btn-secondary btn-sm" onclick="openCaseStudyById(${item.id})">
+                    <span>Present</span>
+                  </button>
+                </td>
+              </tr>
+            `).join('')}
+          </tbody>
+        </table>
+      </div>
+    `;
+  }
+
+  // Filter Buttons
   filterBtns.forEach(btn => {
     btn.addEventListener('click', () => {
       filterBtns.forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
-      const filter = btn.getAttribute('data-filter');
-      renderPortfolio(filter);
+      currentFilter = btn.getAttribute('data-filter') || 'all';
+      renderPortfolio();
     });
   });
 
-  renderPortfolio('all');
+  // Real-time Search Input
+  if (searchInput) {
+    searchInput.addEventListener('input', (e) => {
+      currentSearchQuery = e.target.value;
+      if (searchClear) {
+        searchClear.style.display = currentSearchQuery.length > 0 ? 'block' : 'none';
+      }
+      renderPortfolio();
+    });
+  }
+
+  // Search Clear Button
+  if (searchClear) {
+    searchClear.addEventListener('click', () => {
+      if (searchInput) searchInput.value = '';
+      currentSearchQuery = '';
+      searchClear.style.display = 'none';
+      if (searchInput) searchInput.focus();
+      renderPortfolio();
+    });
+  }
+
+  // View Mode Switcher (Grid vs Matrix)
+  viewModeBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      viewModeBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      currentViewMode = btn.getAttribute('data-view');
+
+      if (currentViewMode === 'matrix') {
+        if (portfolioGrid) portfolioGrid.style.display = 'none';
+        if (matrixContainer) matrixContainer.style.display = 'block';
+      } else {
+        if (portfolioGrid) portfolioGrid.style.display = 'grid';
+        if (matrixContainer) matrixContainer.style.display = 'none';
+      }
+    });
+  });
+
+  renderPortfolio();
 }
 
 window.openCaseStudyById = function(id) {
@@ -452,100 +703,163 @@ function openPortfolioModal(item) {
   }
 
   modalBody.innerHTML = `
+    <!-- Top Presentation Header -->
+    <div class="cs-presentation-header">
+      <div class="cs-badge-row">
+        <div class="cs-tag-group">
+          <span class="section-tag" style="margin-bottom: 0;">${item.categoryLabel.toUpperCase()} &bull; CASE STUDY</span>
+          <span class="cs-timeline-chip">⏱️ ${item.timeline}</span>
+          <span class="cs-verified-chip">&#10003; Verified Client Output</span>
+        </div>
+        <span class="cs-top-metric-chip">&#128640; ${item.metrics}</span>
+      </div>
+
+      <h2 class="cs-modal-title">${item.title}</h2>
+      <p class="cs-modal-client"><strong>Client:</strong> ${item.client} &bull; <em>${item.industry}</em></p>
+    </div>
+
+    <!-- High-Definition Hero Showcase Banner -->
     <div class="cs-image-header">
-      <img src="${item.image}" alt="${item.title}">
+      <div class="cs-image-stage">
+        <img id="csModalHeroImg" src="${item.image}" alt="${item.title}">
+      </div>
+      <div class="cs-image-tagline">
+        <span id="csModalHeroCaption">${item.tagline}</span>
+        <span class="cs-ownership-badge">&#128274; 100% Commercial Source Rights Handover</span>
+      </div>
     </div>
 
-    <div class="cs-badge-row">
-      <span class="section-tag" style="margin-bottom: 0;">${item.category.toUpperCase()} &bull; CASE STUDY</span>
-      <span style="color: #10b981; font-weight: 800; font-size: 0.95rem;">&#10003; ${item.metrics}</span>
+    <!-- 3-Pill Executive ROI Metric Counters -->
+    <div class="cs-results-grid">
+      ${item.results.map(r => `
+        <div class="cs-result-item">
+          <div class="cs-result-num">${r.num}</div>
+          <div class="cs-result-lbl">${r.label}</div>
+        </div>
+      `).join('')}
     </div>
 
-    <h2 class="cs-modal-title">${item.title}</h2>
-    <p class="cs-modal-client"><strong>Client:</strong> ${item.client} &bull; <em>${item.industry}</em></p>
-
-    <!-- 1. Client & Problem vs 2. What We Did -->
+    <!-- 1. Client Problem vs 2. What We Executed -->
     <div class="cs-two-col">
       <div class="cs-problem-card">
         <div class="cs-section-heading">
-          <span>⚠️</span> <span>Client &amp; Bottleneck Problem</span>
+          <span>⚠️</span> <span>Client Bottleneck &amp; Problem</span>
         </div>
         <p class="cs-card-text">${item.problem}</p>
       </div>
       <div class="cs-solution-card">
         <div class="cs-section-heading">
-          <span>⚡</span> <span>What We Did &amp; Strategy</span>
+          <span>⚡</span> <span>Create &amp; Arise Strategic Execution</span>
         </div>
         <p class="cs-card-text">${item.whatWeDid}</p>
       </div>
     </div>
 
-    <!-- 3. Before vs After Transformation Comparison -->
-    <div style="margin-bottom: 1.5rem;">
-      <h4 style="font-size: 0.95rem; font-weight: 700; color: var(--text-main); margin-bottom: 0.75rem; display: flex; align-items: center; gap: 0.4rem;">
-        <span>🔄</span> <span>Direct Transformation: Before vs. After</span>
+    <!-- 3. Before vs After Direct Comparison -->
+    <div class="cs-ba-box">
+      <h4 class="cs-box-title">
+        <span>🔄</span> <span>Direct Transformation: Pre-Partnership vs. Post-Launch</span>
       </h4>
       <div class="ba-comparison-grid" style="margin-bottom: 0;">
         <div class="ba-col before">
-          <div class="ba-label">❌ Before Create &amp; Arise</div>
+          <div class="ba-label">❌ Pre-Partnership Bottlenecks</div>
           <p style="margin: 0; line-height: 1.6;">${item.before}</p>
         </div>
         <div class="ba-col after">
-          <div class="ba-label">✨ After Transformation</div>
+          <div class="ba-label">✨ Post-Launch Commercial Outcomes</div>
           <p style="margin: 0; line-height: 1.6;">${item.after}</p>
         </div>
       </div>
     </div>
 
-    <!-- 4. Quantifiable Hard Results / Key Metrics -->
-    <div style="margin-bottom: 1.5rem;">
-      <h4 style="font-size: 0.95rem; font-weight: 700; color: var(--text-main); margin-bottom: 0.75rem; display: flex; align-items: center; gap: 0.4rem;">
-        <span>📈</span> <span>Quantifiable Results &amp; ROI</span>
-      </h4>
-      <div class="cs-results-grid" style="margin-bottom: 0;">
-        ${item.results.map(r => `
-          <div class="cs-result-item">
-            <div class="cs-result-num">${r.num}</div>
-            <div class="cs-result-lbl">${r.label}</div>
-          </div>
-        `).join('')}
-      </div>
-    </div>
-
-    <!-- 5. Deliverables Included -->
+    <!-- 4. Deliverables & Tool Stack -->
     <div class="cs-deliverables-box">
-      <h4 style="font-size: 0.92rem; font-weight: 700; margin: 0; color: var(--text-main);">Included Deliverables &amp; Assets:</h4>
+      <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 0.75rem;">
+        <h4 class="cs-box-title" style="margin-bottom: 0;">
+          <span>📦</span> <span>Deliverables Handed Over:</span>
+        </h4>
+        <div class="cs-tools-pills">
+          ${item.tools.map(t => `<span class="cs-tool-badge">${t}</span>`).join('')}
+        </div>
+      </div>
       <div class="cs-deliverables-grid">
         ${item.deliverables.map(d => `<div class="cs-deliv-item"><span>&#10003;</span> ${d}</div>`).join('')}
       </div>
     </div>
 
-    <!-- 6. Client Testimonial -->
+    <!-- 4.5. Multi-Asset Brand Mockup Gallery (When available) -->
+    ${item.gallery && item.gallery.length ? `
+      <div class="cs-gallery-box">
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 0.85rem;">
+          <h4 class="cs-box-title" style="margin-bottom: 0;">
+            <span>🎨</span> <span>Brand Collateral &amp; Physical Mockups Suite (${item.gallery.length} Assets)</span>
+          </h4>
+          <span style="font-size: 0.75rem; color: var(--text-gold); font-weight: 600;">✨ Click any asset to preview</span>
+        </div>
+        <div class="cs-mockup-gallery-grid">
+          ${item.gallery.map(g => `
+            <div class="cs-mockup-item" onclick="swapModalHeroImage('${g.src}', '${g.title.replace(/'/g, "\\'")}')" role="button" tabindex="0" title="Click to view ${g.title}">
+              <div class="cs-mockup-thumb">
+                <img src="${g.src}" alt="${g.title}" loading="lazy">
+              </div>
+              <div class="cs-mockup-meta">
+                <strong>${g.title}</strong>
+                <span>${g.desc}</span>
+              </div>
+            </div>
+          `).join('')}
+        </div>
+      </div>
+    ` : ''}
+
+    <!-- 5. Verified Client Testimonial -->
     ${item.clientQuote ? `
       <div class="cs-testimonial-box">
-        <div class="cs-quote-mark">&ldquo;</div>
-        <p class="cs-quote-text">${item.clientQuote}</p>
+        <div class="cs-quote-header">
+          <div class="cs-quote-stars">&#9733;&#9733;&#9733;&#9733;&#9733; 5.0 Verified Review</div>
+          <span class="cs-quote-chip">&#10003; Verified Stakeholder</span>
+        </div>
+        <p class="cs-quote-text">&ldquo;${item.clientQuote}&rdquo;</p>
         <div class="cs-quote-author">&mdash; ${item.quoteAuthor}</div>
       </div>
     ` : ''}
 
-    <!-- Actions -->
+    <!-- Modal Presentation Action Ribbons -->
     <div class="cs-actions">
-      <button class="btn btn-primary btn-glow" onclick="requestSimilarProject('${item.title}')">
+      <button class="btn btn-primary btn-glow" onclick="requestSimilarProject('${item.title.replace(/'/g, "\\'")}')">
         <span>Inquire For A Similar Project</span>
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
       </button>
       <button class="btn btn-book-call" onclick="closeModal('portfolioModal'); openBookCallModal();">
-        <span>📅 Book a Discovery Call</span>
+        <span>📅 Book a Free Strategy Call</span>
       </button>
       <button class="btn btn-secondary" onclick="closeModal('portfolioModal')">
-        <span>Close Preview</span>
+        <span>Close Presentation</span>
       </button>
     </div>
   `;
 
   modal.classList.add('active');
 }
+
+window.swapModalHeroImage = function(src, title) {
+  const heroImg = document.getElementById('csModalHeroImg') || document.querySelector('.cs-image-header img');
+  const taglineSpan = document.getElementById('csModalHeroCaption') || document.querySelector('.cs-image-tagline span:first-child');
+  if (heroImg) {
+    heroImg.style.opacity = '0.3';
+    setTimeout(() => {
+      heroImg.src = src;
+      heroImg.alt = title;
+      heroImg.style.opacity = '1';
+    }, 120);
+    const stage = document.querySelector('.cs-image-stage');
+    if (stage) stage.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+  if (taglineSpan && title) {
+    taglineSpan.textContent = `Viewing: ${title}`;
+  }
+  showToast(`🔍 Previewing ${title}`);
+};
 
 window.requestSimilarProject = function(projectName) {
   closeModal('portfolioModal');

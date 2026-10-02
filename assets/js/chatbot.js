@@ -98,8 +98,8 @@
       chips: ['Location', 'Pricing', 'Services', 'Faith Foundation']
     },
     {
-      keywords: ['philippines', 'location', 'where', 'manila', 'base', 'country', 'international', 'overseas', 'foreign', 'timezone', 'gmt'],
-      response: `🇵🇭 **Create and Arise** is proudly based in **Metro Manila, Philippines (GMT+8)**, serving both Philippine enterprises and global brands in North America, Australia, the UK, Europe, and Asia!\n\nWe provide seamless asynchronous updates, dedicated Slack/WhatsApp channels, and flexible video consultations tailored to your local timezone.`,
+      keywords: ['philippines', 'location', 'where', 'benguet', 'la trinidad', 'manila', 'base', 'country', 'international', 'overseas', 'foreign', 'timezone', 'gmt'],
+      response: `🇵🇭 **Create and Arise** is proudly based in **La Trinidad, Benguet, Philippines (GMT+8)**, serving both Philippine enterprises and global brands in North America, Australia, the UK, Europe, and Asia!\n\nWe provide seamless asynchronous updates, dedicated Slack/WhatsApp channels, and flexible video consultations tailored to your local timezone.`,
       actions: [
         { label: '💳 View Accepted Payment Methods', callback: 'showPaymentMethods' },
         { label: '🚀 Start Your Global Project', callback: 'scrollToContact' }
