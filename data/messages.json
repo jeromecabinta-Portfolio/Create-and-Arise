@@ -1,0 +1,13 @@
+[
+  {
+    "id": "MSG-MUVKDBJX-499",
+    "name": "Jerome Test Client",
+    "email": "testclient@example.com",
+    "phone": "+63 927 468 2635",
+    "budget": ",500 - ,000",
+    "services": "Web Design, Digital Ads",
+    "message": "Hello Jerome! This is a test message to verify the email dispatch system.",
+    "_subject": "🔔 Test Contact Inquiry to Jerome",
+    "receivedAt": "2026-10-05T18:09:05.469Z"
+  }
+]

@@ -1,0 +1,28 @@
+[
+  {
+    "id": "CAA-MUVILIJZ-2409",
+    "name": "Test Client",
+    "email": "test@example.com",
+    "service": "Full Creative & Growth Suite",
+    "date": "2026-10-08",
+    "timeSlot": "04:30 PM PHT",
+    "timeSlotLocal": "4:30 PM",
+    "timezone": "Asia/Manila",
+    "platform": "Google Meet",
+    "notes": "Hai",
+    "createdAt": "2026-10-05T17:19:28.559Z"
+  },
+  {
+    "id": "CAA-MUVKL1RQ-9822",
+    "name": "Marcus Vance",
+    "email": "marcus.vance@growthbrand.co",
+    "service": "High-Converting Web Design",
+    "date": "2026-10-30",
+    "timeSlot": "02:15 PM PHT",
+    "timeSlotLocal": "02:15 PM",
+    "timezone": "Asia/Manila",
+    "platform": "Google Meet",
+    "notes": "Testing discovery call booking to createandarise05@gmail.com",
+    "createdAt": "2026-10-05T18:15:06.038Z"
+  }
+]

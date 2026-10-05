@@ -5,7 +5,92 @@
  *           Theme Switcher, Testimonial Carousel, Contact Form & Copy Email Handlers
  */
 
+/* --------------------------------------------------------------------------
+   FORM ENDPOINT CONFIGURATION (Formspree / FormSubmit / Custom)
+   "Connect your form to our form endpoint and we'll email you the submissions."
+   -------------------------------------------------------------------------- */
+window.CAA_FORM_CONFIG = {
+  // If you use Formspree, paste your Formspree Form ID (e.g. 'mqkvbzwq') or full URL (e.g. 'https://formspree.io/f/mqkvbzwq') below:
+  formspreeId: '',
+
+  // Fallback endpoint:
+  fallbackEndpoint: 'https://formsubmit.co/ajax/createandarise05@gmail.com',
+
+  getEndpoint() {
+    if (this.formspreeId && this.formspreeId.trim()) {
+      const id = this.formspreeId.trim();
+      if (id.startsWith('http://') || id.startsWith('https://')) {
+        return id;
+      }
+      return `https://formspree.io/f/${id}`;
+    }
+    return this.fallbackEndpoint;
+  }
+};
+
+window.sendFormSubmission = async function (payload) {
+  // Ensure _replyto is always present for instant Gmail replies
+  if (payload.email && !payload._replyto) {
+    payload._replyto = payload.email;
+  }
+  if (!payload._captcha) payload._captcha = 'false';
+  if (!payload._template) payload._template = 'table';
+
+  // 1. Try local server relay endpoint first if available (logs to data/messages.json & relays to FormSubmit backend-to-backend)
+  try {
+    const localRes = await fetch('/api/contact', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(payload)
+    });
+    if (localRes.ok) {
+      const data = await localRes.json();
+      console.log('Submission successfully logged and dispatched via server relay:', data);
+      return true;
+    }
+  } catch (localErr) {
+    // If running statically or server is unreachable, smoothly fallback to direct client FormSubmit dispatch
+  }
+
+  // 2. Direct client-side dispatch to FormSubmit
+  const endpoint = window.CAA_FORM_CONFIG ? window.CAA_FORM_CONFIG.getEndpoint() : 'https://formsubmit.co/ajax/createandarise05@gmail.com';
+  try {
+    const res = await fetch(endpoint, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body: JSON.stringify(payload)
+    });
+    return res.ok;
+  } catch (err) {
+    console.warn('Form endpoint dispatch fallback:', err);
+    return false;
+  }
+};
+
+function syncFormActions() {
+  const endpoint = window.CAA_FORM_CONFIG ? window.CAA_FORM_CONFIG.getEndpoint() : '';
+  if (!endpoint) return;
+  const forms = [
+    document.getElementById('mainContactForm'),
+    document.getElementById('bookCallForm'),
+    document.getElementById('auditForm'),
+    document.getElementById('feedbackForm')
+  ];
+  forms.forEach(f => {
+    if (f) {
+      f.setAttribute('action', endpoint);
+      f.setAttribute('method', 'POST');
+    }
+  });
+}
+
 document.addEventListener('DOMContentLoaded', () => {
+  syncFormActions();
   initLiveBusinessHours();
   initThemeToggle();
   initNavigation();
@@ -82,7 +167,7 @@ function initThemeToggle() {
     themeToggleBtn.addEventListener('click', () => {
       const currentTheme = document.documentElement.getAttribute('data-theme') || 'dark';
       const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-      
+
       document.documentElement.setAttribute('data-theme', newTheme);
       localStorage.setItem('caa_theme', newTheme);
       updateThemeIcon(newTheme);
@@ -121,7 +206,7 @@ function initThemeToggle() {
 /* --------------------------------------------------------------------------
    3. Tab View Navigation Controller (Single-Screen Web App / Zero Page Scroll)
    -------------------------------------------------------------------------- */
-window.openMobileNav = function() {
+window.openMobileNav = function () {
   const navLinks = document.getElementById('navLinks');
   const menuToggle = document.getElementById('mobileMenuToggle');
   const backdrop = document.getElementById('mobileNavBackdrop');
@@ -133,7 +218,7 @@ window.openMobileNav = function() {
   if (backdrop) backdrop.classList.add('open');
 };
 
-window.closeMobileNav = function() {
+window.closeMobileNav = function () {
   const navLinks = document.getElementById('navLinks');
   const menuToggle = document.getElementById('mobileMenuToggle');
   const backdrop = document.getElementById('mobileNavBackdrop');
@@ -145,7 +230,7 @@ window.closeMobileNav = function() {
   if (backdrop) backdrop.classList.remove('open');
 };
 
-window.toggleMobileNav = function() {
+window.toggleMobileNav = function () {
   const navLinks = document.getElementById('navLinks');
   if (navLinks && navLinks.classList.contains('open')) {
     window.closeMobileNav();
@@ -154,7 +239,7 @@ window.toggleMobileNav = function() {
   }
 };
 
-window.switchTab = function(tabName) {
+window.switchTab = function (tabName) {
   if (!tabName) tabName = 'home';
   tabName = tabName.replace('#', '').replace('view-', '').toLowerCase();
 
@@ -233,7 +318,7 @@ function initNavigation() {
   }
 
   window.addEventListener('hashchange', handleHash);
-  
+
   // Initial tab activation
   handleHash();
 }
@@ -264,13 +349,13 @@ const portfolioData = [
       { num: 'Isaiah 60:1', label: 'Foundational Scripture Identity' }
     ],
     clientQuote: 'Our brand identity is our promise of excellence as working for the Lord. Every collateral piece reflects purpose, craft, and unwavering integrity.',
-    quoteAuthor: 'Jerome Cabinta, Founder & Lead Consultant at Create and Arise',
+    quoteAuthor: 'Create and Arise Team',
     image: 'assets/Mock ups/12.png',
     metrics: '12-Piece Master Brand Suite',
     gallery: [
       { src: 'assets/Mock ups/12.png', title: 'Luxury Ribbon Gift Bag', desc: 'Isaiah 60:1 Gold Foil Ribbon Packaging' },
-      { src: 'assets/Mock ups/4.png', title: 'Executive Business Card', desc: 'Jerome Cabinta, Business Consultant' },
-      { src: 'assets/Mock ups/10.png', title: 'Published Book Covers', desc: 'Authored Works by Jerome P. Cabinta' },
+      { src: 'assets/Mock ups/4.png', title: 'Executive Business Card', desc: 'Corporate Brand Collateral Card' },
+      { src: 'assets/Mock ups/10.png', title: 'Editorial & Book Design', desc: 'Print & Publication Showcase' },
       { src: 'assets/Mock ups/1.png', title: 'Embroidered Brand Cap', desc: 'Colossians 3:23 Scripture Edition' },
       { src: 'assets/Mock ups/7.png', title: 'Matte White Shopper Bag', desc: '2025 Luxury Brand Shopper' },
       { src: 'assets/Mock ups/8.png', title: 'Apparel Script T-Shirt', desc: 'Folded White Signature Brand Tee' },
@@ -492,7 +577,7 @@ function initPortfolio() {
 
   function renderPortfolio() {
     if (!portfolioGrid) return;
-    
+
     const filtered = getFilteredData();
 
     if (filtered.length === 0) {
@@ -685,7 +770,7 @@ function initPortfolio() {
   renderPortfolio();
 }
 
-window.openCaseStudyById = function(id) {
+window.openCaseStudyById = function (id) {
   const item = portfolioData.find(p => p.id === parseInt(id));
   if (item) {
     openPortfolioModal(item);
@@ -842,7 +927,7 @@ function openPortfolioModal(item) {
   modal.classList.add('active');
 }
 
-window.swapModalHeroImage = function(src, title) {
+window.swapModalHeroImage = function (src, title) {
   const heroImg = document.getElementById('csModalHeroImg') || document.querySelector('.cs-image-header img');
   const taglineSpan = document.getElementById('csModalHeroCaption') || document.querySelector('.cs-image-tagline span:first-child');
   if (heroImg) {
@@ -861,7 +946,7 @@ window.swapModalHeroImage = function(src, title) {
   showToast(`🔍 Previewing ${title}`);
 };
 
-window.requestSimilarProject = function(projectName) {
+window.requestSimilarProject = function (projectName) {
   closeModal('portfolioModal');
   const messageInput = document.getElementById('contactMessage');
   if (messageInput) {
@@ -905,7 +990,7 @@ function initCostCalculator() {
   const selectedListEl = document.getElementById('selectedServicesList');
   const applyEstimateBtn = document.getElementById('applyEstimateBtn');
 
-  window.runCalculator = function() {
+  window.runCalculator = function () {
     let baseUsd = 0;
     let selectedItems = [];
 
@@ -1017,7 +1102,7 @@ function initCostCalculator() {
 /**
  * Global helper to select a service from any card/link on the page
  */
-window.selectServiceInEstimator = function(serviceKey) {
+window.selectServiceInEstimator = function (serviceKey) {
   const cb = document.querySelector(`.calc-service-checkbox[value="${serviceKey}"]`);
   if (cb) {
     // Uncheck all other checkboxes to highlight this selected service
@@ -1085,9 +1170,9 @@ function initFaqAccordion() {
 }
 
 /* --------------------------------------------------------------------------
-   8. Contact Form Handling (Connected to jeromecabinta7@gmail.com)
+   8. Contact Form Handling (Connected to createandarise05@gmail.com)
    -------------------------------------------------------------------------- */
-function showRichSuccessModal({ title, desc, detailsHtml, whatsappMsg, mailtoSubject, mailtoBody }) {
+function showRichSuccessModal({ title, desc, detailsHtml, whatsappMsg, mailtoSubject, mailtoBody, googleCalUrl, icsData, icsFilename }) {
   const successModal = document.getElementById('successModal');
   if (!successModal) return;
 
@@ -1096,6 +1181,9 @@ function showRichSuccessModal({ title, desc, detailsHtml, whatsappMsg, mailtoSub
   const detailsEl = document.getElementById('successModalDetails');
   const waBtn = document.getElementById('successWhatsappBtn');
   const mailBtn = document.getElementById('successMailtoBtn');
+  const calActions = document.getElementById('successCalendarActions');
+  const googleCalBtn = document.getElementById('successGoogleCalBtn');
+  const icsBtn = document.getElementById('successIcsDownloadBtn');
 
   if (titleEl && title) titleEl.textContent = title;
   if (descEl && desc) descEl.innerHTML = desc;
@@ -1109,15 +1197,54 @@ function showRichSuccessModal({ title, desc, detailsHtml, whatsappMsg, mailtoSub
     }
   }
 
+  // Handle Calendar Sync actions
+  if (calActions) {
+    if (googleCalUrl || icsData) {
+      calActions.style.display = 'flex';
+
+      if (googleCalBtn && googleCalUrl) {
+        googleCalBtn.href = googleCalUrl;
+        googleCalBtn.style.display = 'flex';
+      } else if (googleCalBtn) {
+        googleCalBtn.style.display = 'none';
+      }
+
+      if (icsBtn && icsData) {
+        icsBtn.style.display = 'flex';
+        icsBtn.onclick = () => {
+          try {
+            const blob = new Blob([icsData], { type: 'text/calendar;charset=utf-8' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = icsFilename || 'Create-and-Arise-Discovery-Call.ics';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+            showToast('🍏 Calendar file (.ics) downloaded!');
+          } catch (err) {
+            console.error('ICS download error:', err);
+            showToast('Unable to generate ICS file automatically.');
+          }
+        };
+      } else if (icsBtn) {
+        icsBtn.style.display = 'none';
+      }
+    } else {
+      calActions.style.display = 'none';
+    }
+  }
+
   if (waBtn) {
-    const encodedWa = encodeURIComponent(whatsappMsg || 'Hi Jerome! I just submitted a consultation inquiry on Create and Arise.');
+    const encodedWa = encodeURIComponent(whatsappMsg || 'Hi Create and Arise! I just submitted a consultation inquiry on the website.');
     waBtn.href = `https://wa.me/639274682635?text=${encodedWa}`;
   }
 
   if (mailBtn) {
     const encodedSub = encodeURIComponent(mailtoSubject || 'Creative Project Inquiry - Create and Arise');
     const encodedBody = encodeURIComponent(mailtoBody || '');
-    mailBtn.href = `mailto:jeromecabinta7@gmail.com?subject=${encodedSub}&body=${encodedBody}`;
+    mailBtn.href = `mailto:createandarise05@gmail.com?subject=${encodedSub}&body=${encodedBody}`;
   }
 
   successModal.classList.add('active');
@@ -1153,6 +1280,7 @@ function initContactForm() {
     const payload = {
       name: name,
       email: email,
+      _replyto: email,
       phone: phone,
       budget: budget,
       services: selectedServices,
@@ -1171,23 +1299,11 @@ function initContactForm() {
       </div>
     `;
 
-    const whatsappMsg = `Hi Jerome! I'm ${name} (${email}). I just submitted an inquiry on Create and Arise for ${selectedServices} (Budget: ${budget}). Here are my project notes: "${message}"`;
+    const whatsappMsg = `Hi Create and Arise! I'm ${name} (${email}). I just submitted an inquiry for ${selectedServices} (Budget: ${budget}). Here are my project notes: "${message}"`;
     const mailtoSub = `Project Inquiry: ${name} - ${selectedServices}`;
-    const mailtoBody = `Hi Jerome and the Create and Arise Team,\n\nName: ${name}\nEmail: ${email}\nPhone: ${phone}\nServices: ${selectedServices}\nBudget: ${budget}\n\nProject Scope:\n${message}\n\nLooking forward to speaking soon!`;
+    const mailtoBody = `Hi Create and Arise Team,\n\nName: ${name}\nEmail: ${email}\nPhone: ${phone}\nServices: ${selectedServices}\nBudget: ${budget}\n\nProject Scope:\n${message}\n\nLooking forward to speaking soon!`;
 
-    try {
-      await fetch('https://formsubmit.co/ajax/jeromecabinta7@gmail.com', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json'
-        },
-        body: JSON.stringify(payload)
-      });
-    } catch (err) {
-      // Graceful fallback continues seamlessly
-      console.log('Submission handled via fallback handler');
-    }
+    await window.sendFormSubmission(payload);
 
     submitBtn.innerHTML = originalText;
     submitBtn.disabled = false;
@@ -1195,7 +1311,7 @@ function initContactForm() {
 
     showRichSuccessModal({
       title: 'Inquiry Successfully Sent!',
-      desc: `Thank you, <strong>${name}</strong>! Your inquiry has been sent to <strong style="color: var(--color-primary);">jeromecabinta7@gmail.com</strong>. We will review your vision and reply within 24 weekday business hours.`,
+      desc: `Thank you, <strong>${name}</strong>! Your inquiry has been sent to <strong style="color: var(--color-primary);">createandarise05@gmail.com</strong>. We will review your vision and reply within 24 weekday business hours.`,
       detailsHtml: detailsHtml,
       whatsappMsg: whatsappMsg,
       mailtoSubject: mailtoSub,
@@ -1209,10 +1325,106 @@ function initContactForm() {
 /* --------------------------------------------------------------------------
    8.5. Interactive Book a Call Modal Handling
    -------------------------------------------------------------------------- */
-window.openBookCallModal = function(servicePreset) {
+/* --------------------------------------------------------------------------
+   8.5. Interactive Book a Call Modal & Live Schedule Engine
+   -------------------------------------------------------------------------- */
+const PHT_TIME_SLOTS = [
+  // Morning Sessions (PHT 9:00 AM – 12:00 PM)
+  { id: 'm1', phtTime: '09:00 AM PHT', hour24: 9, min: 0, category: 'Morning', label: '09:00 AM' },
+  { id: 'm2', phtTime: '09:45 AM PHT', hour24: 9, min: 45, category: 'Morning', label: '09:45 AM' },
+  { id: 'm3', phtTime: '10:30 AM PHT', hour24: 10, min: 30, category: 'Morning', label: '10:30 AM' },
+  { id: 'm4', phtTime: '11:15 AM PHT', hour24: 11, min: 15, category: 'Morning', label: '11:15 AM' },
+  // Afternoon Sessions (PHT 1:30 PM – 5:00 PM)
+  { id: 'a1', phtTime: '01:30 PM PHT', hour24: 13, min: 30, category: 'Afternoon', label: '01:30 PM' },
+  { id: 'a2', phtTime: '02:15 PM PHT', hour24: 14, min: 15, category: 'Afternoon', label: '02:15 PM' },
+  { id: 'a3', phtTime: '03:00 PM PHT', hour24: 15, min: 0, category: 'Afternoon', label: '03:00 PM' },
+  { id: 'a4', phtTime: '03:45 PM PHT', hour24: 15, min: 45, category: 'Afternoon', label: '03:45 PM' },
+  { id: 'a5', phtTime: '04:30 PM PHT', hour24: 16, min: 30, category: 'Afternoon', label: '04:30 PM' },
+  // Evening Sessions (PHT 6:00 PM – 8:30 PM / Aligned to US & European Mornings)
+  { id: 'e1', phtTime: '06:00 PM PHT', hour24: 18, min: 0, category: 'Evening / US', label: '06:00 PM' },
+  { id: 'e2', phtTime: '06:45 PM PHT', hour24: 18, min: 45, category: 'Evening / US', label: '06:45 PM' },
+  { id: 'e3', phtTime: '07:30 PM PHT', hour24: 19, min: 30, category: 'Evening / US', label: '07:30 PM' },
+  { id: 'e4', phtTime: '08:15 PM PHT', hour24: 20, min: 15, category: 'Evening / US', label: '08:15 PM' }
+];
+
+let schedulerState = {
+  currentYear: new Date().getFullYear(),
+  currentMonth: new Date().getMonth(), // 0-indexed
+  selectedDate: null, // 'YYYY-MM-DD'
+  selectedSlot: null, // Slot object
+  bookedSlots: [],
+  userTimezone: Intl.DateTimeFormat().resolvedOptions().timeZone || 'Asia/Manila',
+  showStudioPhtPrimary: false
+};
+
+// Helper: Convert Date object to PHT representation
+function getPhtTodayString() {
+  const phtDateStr = new Date().toLocaleString('en-US', { timeZone: 'Asia/Manila' });
+  const phtDate = new Date(phtDateStr);
+  const y = phtDate.getFullYear();
+  const m = String(phtDate.getMonth() + 1).padStart(2, '0');
+  const d = String(phtDate.getDate()).padStart(2, '0');
+  return `${y}-${m}-${d}`;
+}
+
+// Helper: Get next valid weekday (Mon–Fri)
+function getInitialSelectableDate() {
+  const phtDateStr = new Date().toLocaleString('en-US', { timeZone: 'Asia/Manila' });
+  let dt = new Date(phtDateStr);
+  const hour = dt.getHours();
+
+  // If after 5:30 PM PHT or on weekend, push forward
+  if (hour >= 18) {
+    dt.setDate(dt.getDate() + 1);
+  }
+
+  // If Sunday (0), move to Monday (+1). If Saturday (6), move to Monday (+2).
+  if (dt.getDay() === 0) dt.setDate(dt.getDate() + 1);
+  if (dt.getDay() === 6) dt.setDate(dt.getDate() + 2);
+
+  const y = dt.getFullYear();
+  const m = String(dt.getMonth() + 1).padStart(2, '0');
+  const d = String(dt.getDate()).padStart(2, '0');
+  return `${y}-${m}-${d}`;
+}
+
+// Helper: Construct Date object for slot in PHT (GMT+8)
+function getSlotDateObj(dateStr, slot) {
+  const pad = n => String(n).padStart(2, '0');
+  return new Date(`${dateStr}T${pad(slot.hour24)}:${pad(slot.min)}:00+08:00`);
+}
+
+// Helper: Load booked slots from server API and localStorage fallback
+async function loadBookedSlots() {
+  let serverBookings = [];
+  try {
+    const res = await fetch('/api/bookings');
+    if (res.ok) {
+      serverBookings = await res.json();
+    }
+  } catch (e) {
+    // Graceful offline/local fallback
+  }
+
+  let localBookings = [];
+  try {
+    const raw = localStorage.getItem('caa_saved_bookings');
+    if (raw) localBookings = JSON.parse(raw);
+  } catch (e) {}
+
+  const merged = [...serverBookings];
+  localBookings.forEach(lb => {
+    if (!merged.some(m => m.date === lb.date && m.timeSlot === lb.timeSlot)) {
+      merged.push(lb);
+    }
+  });
+
+  schedulerState.bookedSlots = merged;
+}
+
+window.openBookCallModal = function (servicePreset) {
   const modal = document.getElementById('bookCallModal');
   const serviceSelect = document.getElementById('bookingService');
-  const dateInput = document.getElementById('bookingDate');
 
   if (servicePreset && serviceSelect) {
     for (let opt of serviceSelect.options) {
@@ -1223,67 +1435,416 @@ window.openBookCallModal = function(servicePreset) {
     }
   }
 
-  // Set min date to today
-  if (dateInput && !dateInput.min) {
-    const today = new Date().toISOString().split('T')[0];
-    dateInput.min = today;
-    if (!dateInput.value) {
-      const tomorrow = new Date();
-      tomorrow.setDate(tomorrow.getDate() + 1);
-      if (tomorrow.getDay() === 0) tomorrow.setDate(tomorrow.getDate() + 1);
-      if (tomorrow.getDay() === 6) tomorrow.setDate(tomorrow.getDate() + 2);
-      dateInput.value = tomorrow.toISOString().split('T')[0];
-    }
+  // Reset to Step 1
+  switchBookingStep(1);
+
+  // Set initial selected date to next valid weekday
+  if (!schedulerState.selectedDate) {
+    schedulerState.selectedDate = getInitialSelectableDate();
   }
+
+  const selParts = schedulerState.selectedDate.split('-');
+  schedulerState.currentYear = parseInt(selParts[0], 10);
+  schedulerState.currentMonth = parseInt(selParts[1], 10) - 1;
+
+  // Load booked slots and render
+  loadBookedSlots().then(() => {
+    renderCalendar();
+    renderTimeSlots(schedulerState.selectedDate);
+    checkExistingBooking();
+  });
 
   if (modal) modal.classList.add('active');
 };
 
+function switchBookingStep(step) {
+  const step1 = document.getElementById('bookingStep1');
+  const step2 = document.getElementById('bookingStep2');
+  const ind1 = document.getElementById('stepIndicator1');
+  const ind2 = document.getElementById('stepIndicator2');
+
+  if (step === 1) {
+    if (step1) step1.style.display = 'block';
+    if (step2) step2.style.display = 'none';
+    if (ind1) {
+      ind1.classList.add('active');
+      ind1.classList.remove('completed');
+    }
+    if (ind2) {
+      ind2.classList.remove('active', 'completed');
+    }
+  } else if (step === 2) {
+    if (step1) step1.style.display = 'none';
+    if (step2) step2.style.display = 'block';
+    if (ind1) {
+      ind1.classList.remove('active');
+      ind1.classList.add('completed');
+    }
+    if (ind2) {
+      ind2.classList.add('active');
+    }
+  }
+}
+
+function checkExistingBooking() {
+  const noticeEl = document.getElementById('bookingExistingNotice');
+  const titleEl = document.getElementById('existingBookingTitle');
+  const detailsEl = document.getElementById('existingBookingDetails');
+  const rescheduleBtn = document.getElementById('btnExistingReschedule');
+
+  if (!noticeEl) return;
+
+  try {
+    const raw = localStorage.getItem('caa_active_booking');
+    if (!raw) {
+      noticeEl.style.display = 'none';
+      return;
+    }
+
+    const booking = JSON.parse(raw);
+    const todayPht = getPhtTodayString();
+
+    if (booking.date >= todayPht) {
+      noticeEl.style.display = 'flex';
+      if (titleEl) titleEl.textContent = `Upcoming Call: ${booking.service || 'Strategy Session'}`;
+      if (detailsEl) {
+        detailsEl.innerHTML = `📅 <strong>${booking.date}</strong> &bull; ⏰ ${booking.timeSlot} (${booking.platform || 'Google Meet'})`;
+      }
+
+      if (rescheduleBtn) {
+        rescheduleBtn.onclick = () => {
+          noticeEl.style.display = 'none';
+          showToast('Pick a new date and time slot to reschedule.');
+        };
+      }
+    } else {
+      noticeEl.style.display = 'none';
+    }
+  } catch (e) {
+    noticeEl.style.display = 'none';
+  }
+}
+
+function renderCalendar() {
+  const monthTitle = document.getElementById('calMonthTitle');
+  const grid = document.getElementById('calDaysGrid');
+  const prevBtn = document.getElementById('calPrevMonthBtn');
+
+  if (!grid || !monthTitle) return;
+
+  const year = schedulerState.currentYear;
+  const month = schedulerState.currentMonth;
+
+  const monthNames = [
+    'January', 'February', 'March', 'April', 'May', 'June',
+    'July', 'August', 'September', 'October', 'November', 'December'
+  ];
+
+  monthTitle.textContent = `${monthNames[month]} ${year}`;
+
+  // Disable prev button if viewing previous to current month
+  const now = new Date();
+  const isPastMonth = year < now.getFullYear() || (year === now.getFullYear() && month <= now.getMonth());
+  if (prevBtn) prevBtn.disabled = isPastMonth;
+
+  grid.innerHTML = '';
+
+  const firstDayObj = new Date(year, month, 1);
+  // Convert Sunday=0 to Monday=0 format: (getDay() + 6) % 7
+  const startDayOfWeek = (firstDayObj.getDay() + 6) % 7; 
+
+  const daysInMonth = new Date(year, month + 1, 0).getDate();
+  const daysInPrevMonth = new Date(year, month, 0).getDate();
+
+  const todayPht = getPhtTodayString();
+
+  // Previous month trailing days
+  for (let i = startDayOfWeek - 1; i >= 0; i--) {
+    const dayNum = daysInPrevMonth - i;
+    const cell = document.createElement('div');
+    cell.className = 'calendar-day other-month disabled';
+    cell.textContent = dayNum;
+    grid.appendChild(cell);
+  }
+
+  // Current month days
+  for (let d = 1; d <= daysInMonth; d++) {
+    const pad = n => String(n).padStart(2, '0');
+    const dateStr = `${year}-${pad(month + 1)}-${pad(d)}`;
+    const dayDate = new Date(year, month, d);
+    const dayOfWeek = dayDate.getDay(); // 0 = Sun, 6 = Sat
+
+    const cell = document.createElement('button');
+    cell.type = 'button';
+    cell.className = 'calendar-day';
+    cell.textContent = d;
+
+    const isWeekend = (dayOfWeek === 0 || dayOfWeek === 6);
+    const isPast = (dateStr < todayPht);
+    const isToday = (dateStr === todayPht);
+    const isSelected = (dateStr === schedulerState.selectedDate);
+
+    if (isToday) cell.classList.add('today');
+    if (isSelected) cell.classList.add('selected');
+
+    if (isWeekend) {
+      cell.classList.add('weekend');
+      cell.title = 'Weekend closed (Sabbath rest & renewal)';
+      cell.disabled = true;
+    } else if (isPast) {
+      cell.classList.add('disabled');
+      cell.disabled = true;
+    } else {
+      cell.title = `Available: ${monthNames[month]} ${d}, ${year}`;
+      cell.addEventListener('click', () => {
+        schedulerState.selectedDate = dateStr;
+        schedulerState.selectedSlot = null;
+        renderCalendar();
+        renderTimeSlots(dateStr);
+      });
+    }
+
+    grid.appendChild(cell);
+  }
+}
+
+function renderTimeSlots(dateStr) {
+  const displayDate = document.getElementById('slotsSelectedDateDisplay');
+  const slotsArea = document.getElementById('slotsArea');
+  const tzText = document.getElementById('slotsTzText');
+  const continueBtn = document.getElementById('btnContinueToDetails');
+  const statusEl = document.getElementById('slotSelectionStatus');
+
+  if (!slotsArea) return;
+
+  if (continueBtn) continueBtn.disabled = true;
+
+  if (!dateStr) {
+    if (displayDate) displayDate.textContent = 'Select a Date';
+    slotsArea.innerHTML = `<div style="text-align: center; color: var(--text-muted); padding: 2rem 0; font-size: 0.85rem;">Please select an open weekday (Mon–Fri) from the calendar.</div>`;
+    return;
+  }
+
+  const dtObj = new Date(`${dateStr}T12:00:00`);
+  const formattedDate = dtObj.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric', year: 'numeric' });
+  if (displayDate) displayDate.textContent = formattedDate;
+
+  if (tzText) {
+    const tzLabel = schedulerState.showStudioPhtPrimary
+      ? 'Studio Time (PHT GMT+8)'
+      : `${schedulerState.userTimezone}`;
+    tzText.textContent = tzLabel;
+  }
+
+  const todayPht = getPhtTodayString();
+  const now = new Date();
+
+  slotsArea.innerHTML = '';
+
+  const categories = ['Morning', 'Afternoon', 'Evening / US'];
+
+  categories.forEach(cat => {
+    const slotsInCat = PHT_TIME_SLOTS.filter(s => s.category === cat);
+    if (slotsInCat.length === 0) return;
+
+    const catTitle = document.createElement('div');
+    catTitle.className = 'slot-category-title';
+    let catIcon = '🌅';
+    if (cat === 'Afternoon') catIcon = '☀️';
+    if (cat.includes('Evening')) catIcon = '🌙';
+    catTitle.innerHTML = `<span>${catIcon} ${cat}</span>`;
+    slotsArea.appendChild(catTitle);
+
+    const pillsGrid = document.createElement('div');
+    pillsGrid.className = 'slot-pills-grid';
+
+    slotsInCat.forEach(slot => {
+      const slotBtn = document.createElement('button');
+      slotBtn.type = 'button';
+      slotBtn.className = 'time-slot-pill';
+
+      const slotDate = getSlotDateObj(dateStr, slot);
+      const localTimeStr = slotDate.toLocaleTimeString([], { hour: 'numeric', minute: '2-digit', hour12: true });
+
+      // Check if slot is already booked for this date
+      const isBooked = schedulerState.bookedSlots.some(b => b.date === dateStr && (b.timeSlot === slot.phtTime || b.timeSlot === slot.label));
+
+      // Check if slot is in the past for today
+      let isPastSlot = false;
+      if (dateStr === todayPht) {
+        // Compare with current actual time
+        if (slotDate.getTime() <= (now.getTime() + 15 * 60 * 1000)) { // 15 min buffer
+          isPastSlot = true;
+        }
+      }
+
+      if (schedulerState.showStudioPhtPrimary) {
+        slotBtn.innerHTML = `
+          <div class="slot-pht-time">${slot.label} PHT</div>
+          <div class="slot-local-sub">${localTimeStr} Local</div>
+        `;
+      } else {
+        slotBtn.innerHTML = `
+          <div class="slot-pht-time">${localTimeStr}</div>
+          <div class="slot-local-sub">${slot.label} PHT</div>
+        `;
+      }
+
+      if (isBooked) {
+        slotBtn.classList.add('booked');
+        slotBtn.disabled = true;
+        slotBtn.title = 'Slot already booked';
+      } else if (isPastSlot) {
+        slotBtn.classList.add('booked');
+        slotBtn.disabled = true;
+        slotBtn.title = 'Time slot passed';
+      } else {
+        if (schedulerState.selectedSlot && schedulerState.selectedSlot.id === slot.id) {
+          slotBtn.classList.add('active');
+          if (continueBtn) continueBtn.disabled = false;
+        }
+
+        slotBtn.addEventListener('click', () => {
+          document.querySelectorAll('.time-slot-pill').forEach(p => p.classList.remove('active'));
+          slotBtn.classList.add('active');
+          schedulerState.selectedSlot = {
+            ...slot,
+            localTimeStr: localTimeStr
+          };
+
+          if (continueBtn) continueBtn.disabled = false;
+          if (statusEl) {
+            statusEl.innerHTML = `Selected: <strong>${formattedDate}</strong> at <strong>${slot.phtTime}</strong> (${localTimeStr} your time)`;
+          }
+        });
+      }
+
+      pillsGrid.appendChild(slotBtn);
+    });
+
+    slotsArea.appendChild(pillsGrid);
+  });
+}
+
 function initBookCallModal() {
   const form = document.getElementById('bookCallForm');
-  const timeBtns = document.querySelectorAll('.booking-time-btn');
-  const timeHiddenInput = document.getElementById('bookingSelectedTime');
+  const prevBtn = document.getElementById('calPrevMonthBtn');
+  const nextBtn = document.getElementById('calNextMonthBtn');
+  const tzChip = document.getElementById('slotsTzChip');
+  const continueBtn = document.getElementById('btnContinueToDetails');
+  const backBtn = document.getElementById('btnBackToCalendar');
 
-  timeBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      timeBtns.forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      const timeVal = btn.getAttribute('data-time');
-      if (timeHiddenInput && timeVal) {
-        timeHiddenInput.value = timeVal;
+  // Month navigation
+  if (prevBtn) {
+    prevBtn.addEventListener('click', () => {
+      if (schedulerState.currentMonth === 0) {
+        schedulerState.currentMonth = 11;
+        schedulerState.currentYear--;
+      } else {
+        schedulerState.currentMonth--;
       }
+      renderCalendar();
     });
-  });
+  }
+
+  if (nextBtn) {
+    nextBtn.addEventListener('click', () => {
+      if (schedulerState.currentMonth === 11) {
+        schedulerState.currentMonth = 0;
+        schedulerState.currentYear++;
+      } else {
+        schedulerState.currentMonth++;
+      }
+      renderCalendar();
+    });
+  }
+
+  // Timezone toggle
+  if (tzChip) {
+    tzChip.addEventListener('click', () => {
+      schedulerState.showStudioPhtPrimary = !schedulerState.showStudioPhtPrimary;
+      renderTimeSlots(schedulerState.selectedDate);
+      showToast(schedulerState.showStudioPhtPrimary ? 'Showing Studio PHT (GMT+8) times primary' : 'Showing your detected local timezone primary');
+    });
+  }
+
+  // Continue to Step 2
+  if (continueBtn) {
+    continueBtn.addEventListener('click', () => {
+      if (!schedulerState.selectedDate || !schedulerState.selectedSlot) {
+        showToast('Please pick both a date and an available time slot.');
+        return;
+      }
+
+      const dtObj = new Date(`${schedulerState.selectedDate}T12:00:00`);
+      const formattedDate = dtObj.toLocaleDateString('en-US', { weekday: 'long', month: 'short', day: 'numeric', year: 'numeric' });
+      const slot = schedulerState.selectedSlot;
+
+      const summaryDateTime = document.getElementById('summaryDateTime');
+      const summaryTz = document.getElementById('summaryTzNotice');
+
+      if (summaryDateTime) {
+        summaryDateTime.textContent = `${formattedDate} @ ${slot.phtTime}`;
+      }
+      if (summaryTz) {
+        summaryTz.innerHTML = `Your Local Time: <strong>${slot.localTimeStr}</strong> (${schedulerState.userTimezone}) &bull; ⏱️ 20-Min Discovery Session`;
+      }
+
+      const hiddenDate = document.getElementById('bookingDate');
+      const hiddenTime = document.getElementById('bookingSelectedTime');
+      const hiddenLocal = document.getElementById('bookingTimeSlotLocal');
+      const hiddenTz = document.getElementById('bookingClientTimezone');
+
+      if (hiddenDate) hiddenDate.value = schedulerState.selectedDate;
+      if (hiddenTime) hiddenTime.value = slot.phtTime;
+      if (hiddenLocal) hiddenLocal.value = slot.localTimeStr;
+      if (hiddenTz) hiddenTz.value = schedulerState.userTimezone;
+
+      switchBookingStep(2);
+    });
+  }
+
+  // Back to Step 1
+  if (backBtn) {
+    backBtn.addEventListener('click', () => {
+      switchBookingStep(1);
+    });
+  }
 
   if (!form) return;
 
+  // Form submission handler
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
 
     const name = document.getElementById('bookingName')?.value.trim();
     const email = document.getElementById('bookingEmail')?.value.trim();
     const service = document.getElementById('bookingService')?.value;
-    const date = document.getElementById('bookingDate')?.value;
-    const time = timeHiddenInput?.value || 'Morning (9:00 AM – 12:00 PM PHT)';
+    const date = document.getElementById('bookingDate')?.value || schedulerState.selectedDate;
+    const time = document.getElementById('bookingSelectedTime')?.value || (schedulerState.selectedSlot ? schedulerState.selectedSlot.phtTime : '09:00 AM PHT');
+    const timeLocal = document.getElementById('bookingTimeSlotLocal')?.value || (schedulerState.selectedSlot ? schedulerState.selectedSlot.localTimeStr : time);
     const platform = document.querySelector('input[name="booking_platform"]:checked')?.value || 'Google Meet';
     const notes = document.getElementById('bookingNotes')?.value.trim() || 'None specified';
 
-    if (!name || !email || !date) {
-      showToast('Please fill out your name, email, and preferred date.');
+    if (!name || !email || !date || !time) {
+      showToast('Please complete your name, email, and scheduled appointment slot.');
       return;
     }
 
-    const submitBtn = form.querySelector('button[type="submit"]');
-    const origText = submitBtn.innerHTML;
-    submitBtn.innerHTML = `<span>Scheduling Call...</span>`;
+    const submitBtn = document.getElementById('btnSubmitBooking') || form.querySelector('button[type="submit"]');
+    const origHtml = submitBtn.innerHTML;
+    submitBtn.innerHTML = `<span>Reserving Your Call...</span>`;
     submitBtn.disabled = true;
 
     const payload = {
       name: name,
       email: email,
+      _replyto: email,
       service: service,
-      preferred_date: date,
-      preferred_time: time,
+      date: date,
+      timeSlot: time,
+      timeSlotLocal: timeLocal,
+      timezone: schedulerState.userTimezone,
       platform: platform,
       notes: notes,
       _subject: `📅 New 1-on-1 Discovery Call Booked: ${name} (${service})`,
@@ -1291,54 +1852,163 @@ function initBookCallModal() {
       _captcha: 'false'
     };
 
+    let bookingId = 'CAA-' + Date.now().toString(36).toUpperCase() + '-' + Math.floor(1000 + Math.random() * 9000);
+
+    // 1. Post to local server API endpoint /api/book-call
+    try {
+      const apiRes = await fetch('/api/book-call', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(payload)
+      });
+
+      if (apiRes.ok) {
+        const json = await apiRes.json();
+        if (json.booking && json.booking.id) {
+          bookingId = json.booking.id;
+        }
+      } else if (apiRes.status === 409) {
+        showToast('⚠️ That time slot was just booked by another client. Please choose another slot.');
+        submitBtn.innerHTML = origHtml;
+        submitBtn.disabled = false;
+        switchBookingStep(1);
+        await loadBookedSlots();
+        renderTimeSlots(date);
+        return;
+      }
+    } catch (apiErr) {
+      console.log('Local booking endpoint fallback to localStorage');
+    }
+
+    // 2. Persist locally to localStorage
+    const savedBookingRecord = {
+      id: bookingId,
+      name: name,
+      email: email,
+      service: service,
+      date: date,
+      timeSlot: time,
+      timeSlotLocal: timeLocal,
+      platform: platform,
+      notes: notes,
+      timezone: schedulerState.userTimezone,
+      bookedAt: new Date().toISOString()
+    };
+
+    try {
+      localStorage.setItem('caa_active_booking', JSON.stringify(savedBookingRecord));
+      let allBookings = [];
+      const rawAll = localStorage.getItem('caa_saved_bookings');
+      if (rawAll) allBookings = JSON.parse(rawAll);
+      allBookings.push(savedBookingRecord);
+      localStorage.setItem('caa_saved_bookings', JSON.stringify(allBookings));
+    } catch (e) {}
+
+    // 3. Asynchronously notify studio email via form endpoint
+    window.sendFormSubmission(payload).catch(() => {});
+
+    // 4. Generate Calendar Sync URLs (.ics & Google Calendar)
+    const slotObj = schedulerState.selectedSlot || PHT_TIME_SLOTS[0];
+    const slotStartDate = getSlotDateObj(date, slotObj);
+    const slotEndDate = new Date(slotStartDate.getTime() + 30 * 60 * 1000); // 30-min duration
+
+    const padIso = (n) => String(n).padStart(2, '0');
+    const startIso = slotStartDate.toISOString().replace(/[-:]/g, '').split('.')[0] + 'Z';
+    const endIso = slotEndDate.toISOString().replace(/[-:]/g, '').split('.')[0] + 'Z';
+
+    const gCalTitle = encodeURIComponent(`1-on-1 Discovery Call | Create and Arise`);
+    const gCalDetails = encodeURIComponent(
+      `Discovery & Strategy Call with Jerome Cabinta and the Create and Arise Creative Studio.\n\n` +
+      `👤 Client: ${name} (${email})\n` +
+      `🎯 Service: ${service}\n` +
+      `💻 Platform: ${platform}\n` +
+      `⏰ Philippine Time: ${time}\n` +
+      `🌐 Client Local Time: ${timeLocal} (${schedulerState.userTimezone})\n` +
+      `📝 Notes: ${notes}\n\n` +
+      `Official Studio: Create and Arise (La Trinidad, Benguet / Serving Worldwide)\n` +
+      `WhatsApp: +63 927 468 2635 | createandarise05@gmail.com`
+    );
+    const googleCalUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${gCalTitle}&dates=${startIso}/${endIso}&details=${gCalDetails}&location=${encodeURIComponent(platform)}`;
+
+    // Standard RFC-5545 iCalendar data
+    const uid = `${bookingId}@createandarise.com`;
+    const nowIso = new Date().toISOString().replace(/[-:]/g, '').split('.')[0] + 'Z';
+    const icsContent = [
+      'BEGIN:VCALENDAR',
+      'VERSION:2.0',
+      'PRODID:-//Create and Arise//Discovery Call Scheduler//EN',
+      'CALSCALE:GREGORIAN',
+      'METHOD:REQUEST',
+      'BEGIN:VEVENT',
+      `UID:${uid}`,
+      `DTSTAMP:${nowIso}`,
+      `DTSTART:${startIso}`,
+      `DTEND:${endIso}`,
+      `SUMMARY:1-on-1 Discovery Call | Create and Arise`,
+      `DESCRIPTION:1-on-1 Strategy Session with Jerome Cabinta & the Create and Arise creative team.\\nPlatform: ${platform}\\nService: ${service}\\nBooking ID: ${bookingId}`,
+      `LOCATION:${platform}`,
+      'STATUS:CONFIRMED',
+      'BEGIN:VALARM',
+      'TRIGGER:-PT15M',
+      'ACTION:DISPLAY',
+      'DESCRIPTION:Reminder: Create and Arise Discovery Call in 15 minutes',
+      'END:VALARM',
+      'END:VEVENT',
+      'END:VCALENDAR'
+    ].join('\r\n');
+
+    const dtObj = new Date(`${date}T12:00:00`);
+    const formattedDate = dtObj.toLocaleDateString('en-US', { weekday: 'long', month: 'short', day: 'numeric', year: 'numeric' });
+
     const detailsHtml = `
-      <div style="display: flex; flex-direction: column; gap: 0.35rem; color: var(--text-main);">
+      <div style="display: flex; flex-direction: column; gap: 0.4rem; color: var(--text-main);">
+        <div style="font-size: 0.8rem; color: var(--text-gold); font-weight: 700;">🔖 Booking Ref: ${bookingId}</div>
         <div><strong>👤 Client:</strong> ${name} &bull; <span style="color: var(--color-primary);">${email}</span></div>
-        <div><strong>📅 Preferred Date:</strong> ${date} (${time})</div>
+        <div><strong>📅 Scheduled Date:</strong> ${formattedDate}</div>
+        <div><strong>⏰ Scheduled Time:</strong> ${time} <span style="color: var(--text-muted); font-size: 0.8rem;">(${timeLocal} local)</span></div>
         <div><strong>💻 Meeting Platform:</strong> ${platform}</div>
         <div><strong>🎯 Service:</strong> ${service}</div>
       </div>
     `;
 
-    const whatsappMsg = `Hi Jerome! I'm ${name} (${email}). I just requested a 20-min strategy call on ${date} (${time}) via ${platform} regarding ${service}. Looking forward to connecting!`;
-    const mailtoSub = `Discovery Call Request: ${name} - ${date}`;
-    const mailtoBody = `Hi Jerome,\n\nI have requested a 1-on-1 strategy call on ${date} (${time}) via ${platform}.\n\nService: ${service}\nNotes: ${notes}\n\nBest,\n${name}\n${email}`;
+    const whatsappMsg = `Hi Create and Arise! I'm ${name} (${email}). I just scheduled a 1-on-1 strategy call for ${formattedDate} at ${time} via ${platform} (Ref: ${bookingId}). Looking forward to connecting!`;
+    const mailtoSub = `Discovery Call Confirmed: ${name} - ${formattedDate} (${time})`;
+    const mailtoBody = `Hi Create and Arise Creative Team,\n\nI have scheduled our 1-on-1 strategy call:\n\nBooking Ref: ${bookingId}\nDate: ${formattedDate}\nTime: ${time} (${timeLocal} local)\nPlatform: ${platform}\nService: ${service}\nNotes: ${notes}\n\nBest,\n${name}\n${email}`;
 
-    try {
-      await fetch('https://formsubmit.co/ajax/jeromecabinta7@gmail.com', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json'
-        },
-        body: JSON.stringify(payload)
-      });
-    } catch (err) {
-      console.log('Booking handled via fallback');
-    }
-
-    submitBtn.innerHTML = origText;
+    submitBtn.innerHTML = origHtml;
     submitBtn.disabled = false;
     form.reset();
     closeModal('bookCallModal');
+    switchBookingStep(1);
 
     showRichSuccessModal({
-      title: 'Strategy Call Requested!',
-      desc: `Thank you, <strong>${name}</strong>! We have received your booking request for <strong>${service}</strong> on <strong>${date}</strong> via <strong>${platform}</strong>. Jerome will send your calendar invite to <strong>${email}</strong> shortly!`,
+      title: 'Strategy Call Confirmed!',
+      desc: `Thank you, <strong>${name}</strong>! Your 1-on-1 discovery call is scheduled for <strong>${formattedDate}</strong> at <strong>${time}</strong> via <strong>${platform}</strong>. Use the buttons below to sync directly to your calendar!`,
       detailsHtml: detailsHtml,
       whatsappMsg: whatsappMsg,
       mailtoSubject: mailtoSub,
-      mailtoBody: mailtoBody
+      mailtoBody: mailtoBody,
+      googleCalUrl: googleCalUrl,
+      icsData: icsContent,
+      icsFilename: `Create-and-Arise-Discovery-Call-${date}.ics`
     });
 
-    showToast(`🎉 Call requested for ${date}!`);
+    showToast(`🎉 Call scheduled for ${formattedDate}!`);
+
+    // Reload booked slots to disable this slot in real-time
+    loadBookedSlots().then(() => {
+      renderCalendar();
+      if (schedulerState.selectedDate) renderTimeSlots(schedulerState.selectedDate);
+    });
   });
 }
 
 /* --------------------------------------------------------------------------
    8.8. Free Brand & Website Audit Modal Handling
    -------------------------------------------------------------------------- */
-window.openAuditModal = function() {
+window.openAuditModal = function () {
   const modal = document.getElementById('auditModal');
   if (modal) modal.classList.add('active');
 };
@@ -1368,6 +2038,7 @@ function initAuditModal() {
     const payload = {
       name: name,
       email: email,
+      _replyto: email,
       website_or_handle: website,
       primary_challenge: concern,
       _subject: `🔍 Free 5-Point Brand & Web Audit Request: ${name} (${website})`,
@@ -1383,22 +2054,11 @@ function initAuditModal() {
       </div>
     `;
 
-    const whatsappMsg = `Hi Jerome! I'm ${name} (${email}). I just requested a Free 5-Point Brand & Web Audit for my brand (${website}). Primary focus: ${concern}.`;
+    const whatsappMsg = `Hi Create and Arise! I'm ${name} (${email}). I just requested a Free 5-Point Brand & Web Audit for my brand (${website}). Primary focus: ${concern}.`;
     const mailtoSub = `Free 5-Point Audit Request: ${name} - ${website}`;
-    const mailtoBody = `Hi Jerome,\n\nI requested a free 5-point audit diagnostic for ${website}.\n\nName: ${name}\nEmail: ${email}\nFocus Area: ${concern}\n\nLooking forward to your 5-point brand & UX audit report!`;
+    const mailtoBody = `Hi Create and Arise Team,\n\nI requested a free 5-point audit diagnostic for ${website}.\n\nName: ${name}\nEmail: ${email}\nFocus Area: ${concern}\n\nLooking forward to your 5-point brand & UX audit report!`;
 
-    try {
-      await fetch('https://formsubmit.co/ajax/jeromecabinta7@gmail.com', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json'
-        },
-        body: JSON.stringify(payload)
-      });
-    } catch (err) {
-      console.log('Audit request handled via fallback');
-    }
+    await window.sendFormSubmission(payload);
 
     submitBtn.innerHTML = origText;
     submitBtn.disabled = false;
@@ -1407,7 +2067,7 @@ function initAuditModal() {
 
     showRichSuccessModal({
       title: 'Free 5-Point Audit Claimed!',
-      desc: `Thank you, <strong>${name}</strong>! We have received your audit request for <strong>${website}</strong>. Jerome & the Create and Arise creative team will compile your personalized 5-point brand & UX diagnostic report and send it to <strong>${email}</strong> within 48 business hours!`,
+      desc: `Thank you, <strong>${name}</strong>! We have received your audit request for <strong>${website}</strong>. The Create and Arise creative team will compile your personalized 5-point brand & UX diagnostic report and send it to <strong>${email}</strong> within 48 business hours!`,
       detailsHtml: detailsHtml,
       whatsappMsg: whatsappMsg,
       mailtoSubject: mailtoSub,
@@ -1418,7 +2078,7 @@ function initAuditModal() {
   });
 }
 
-window.startProjectPrompt = function() {
+window.startProjectPrompt = function () {
   if (window.switchTab) {
     window.switchTab('contact');
   }
@@ -1433,12 +2093,12 @@ window.startProjectPrompt = function() {
    9. Modals & Global Interactions
    -------------------------------------------------------------------------- */
 function initModals() {
-  window.openModal = function(modalId) {
+  window.openModal = function (modalId) {
     const modal = document.getElementById(modalId);
     if (modal) modal.classList.add('active');
   };
 
-  window.closeModal = function(modalId) {
+  window.closeModal = function (modalId) {
     const modal = document.getElementById(modalId);
     if (modal) modal.classList.remove('active');
   };
@@ -1462,9 +2122,9 @@ function initModals() {
 
 function initGlobalInteractions() {
   // Copy email to clipboard helper with visual button feedback
-  window.copyEmail = function(e) {
+  window.copyEmail = function (e) {
     if (e) e.preventDefault();
-    const email = 'jeromecabinta7@gmail.com';
+    const email = 'createandarise05@gmail.com';
     const btn = e && e.target ? e.target.closest('button') : null;
     const origText = btn ? btn.innerHTML : 'Copy';
 
@@ -1513,9 +2173,109 @@ function showToast(message) {
 
   toast.textContent = message;
   toast.classList.add('show');
-  
+
   if (window.toastTimeout) clearTimeout(window.toastTimeout);
   window.toastTimeout = setTimeout(() => {
     toast.classList.remove('show');
   }, 3500);
+}
+
+/* --------------------------------------------------------------------------
+   11. Website Feedback Modal
+   -------------------------------------------------------------------------- */
+let _feedbackRating = 0;
+let _feedbackCategory = '';
+
+function openFeedbackModal() {
+  const modal = document.getElementById('feedbackModal');
+  if (!modal) return;
+
+  // Reset the form state
+  const form = document.getElementById('feedbackForm');
+  if (form) form.reset();
+
+  // Reset stars
+  _feedbackRating = 0;
+  _feedbackCategory = '';
+  document.querySelectorAll('.star-btn').forEach(btn => btn.classList.remove('active'));
+  const label = document.getElementById('starRatingLabel');
+  if (label) label.textContent = '';
+
+  // Reset categories
+  document.querySelectorAll('.feedback-category-btn').forEach(btn => btn.classList.remove('selected'));
+
+  modal.classList.add('active');
+  document.body.style.overflow = 'hidden';
+
+  // Wire star buttons
+  document.querySelectorAll('.star-btn').forEach(btn => {
+    btn.onclick = function () {
+      const val = parseInt(this.dataset.star);
+      _feedbackRating = val;
+      const labels = ['', 'Poor', 'Fair', 'Good', 'Great', 'Excellent! ⭐'];
+      const labelEl = document.getElementById('starRatingLabel');
+      if (labelEl) labelEl.textContent = `${val} / 5 — ${labels[val]}`;
+      const ratingInput = document.getElementById('feedbackRatingInput');
+      if (ratingInput) ratingInput.value = `${val} / 5 (${labels[val]})`;
+      document.querySelectorAll('.star-btn').forEach(s => {
+        s.classList.toggle('active', parseInt(s.dataset.star) <= val);
+      });
+    };
+  });
+
+  // Wire category buttons
+  document.querySelectorAll('.feedback-category-btn').forEach(btn => {
+    btn.onclick = function () {
+      _feedbackCategory = this.dataset.category;
+      const catInput = document.getElementById('feedbackCategoryInput');
+      if (catInput) catInput.value = this.dataset.category;
+      document.querySelectorAll('.feedback-category-btn').forEach(b => b.classList.remove('selected'));
+      this.classList.add('selected');
+    };
+  });
+
+  // Wire form submit
+  if (form) {
+    form.onsubmit = function (e) {
+      e.preventDefault();
+      const message = document.getElementById('feedbackMessage').value.trim();
+      if (!message) {
+        showToast('⚠️ Please share your feedback before submitting.');
+        return;
+      }
+      if (_feedbackRating === 0) {
+        showToast('⭐ Please select a star rating.');
+        return;
+      }
+
+      const name = document.getElementById('feedbackName').value.trim() || 'Anonymous';
+      const email = document.getElementById('feedbackEmail').value.trim();
+      const category = _feedbackCategory || 'General';
+      const ratingLabels = ['', 'Poor', 'Fair', 'Good', 'Great', 'Excellent'];
+
+      const subject = encodeURIComponent(`[Website Feedback] ${_feedbackRating}★ ${ratingLabels[_feedbackRating]} — ${category}`);
+      const body = encodeURIComponent(
+        `Website Feedback Submission\n` +
+        `===========================\n` +
+        `From: ${name}${email ? ' (' + email + ')' : ''}\n` +
+        `Rating: ${_feedbackRating}/5 — ${ratingLabels[_feedbackRating]}\n` +
+        `Category: ${category}\n\n` +
+        `Feedback:\n${message}\n\n` +
+        `---\nSent from Create and Arise website`
+      );
+
+      // Send to active form endpoint (Formspree / fallback)
+      window.sendFormSubmission({
+        name: name,
+        email: email || 'anonymous@visitor.com',
+        rating: `${_feedbackRating}/5 (${ratingLabels[_feedbackRating]})`,
+        category: category,
+        feedback: message,
+        _subject: `[Website Feedback] ${_feedbackRating}★ ${ratingLabels[_feedbackRating]} — ${category}`
+      }).catch(() => {});
+
+      closeModal('feedbackModal');
+      showToast(`✅ Thank you${name !== 'Anonymous' ? ', ' + name : ''}! Your feedback has been sent directly to Jerome & the team.`);
+    };
+  }
 }

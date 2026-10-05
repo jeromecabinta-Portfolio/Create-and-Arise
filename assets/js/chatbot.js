@@ -92,10 +92,11 @@
       keywords: ['hours', 'open', 'schedule', 'time', 'operating', 'closed', 'weekend', 'saturday', 'sunday', 'monday', 'friday', 'sabbath'],
       response: `🕒 **Our Operating Hours (PHT / GMT+8):**\n\n• **Monday to Friday:** 8:00 AM – 6:00 PM PHT (Active Studio)\n• **Saturday & Sunday:** Closed for Weekend Sabbath, Rest & Family Renewal\n\nAll inquiries sent during weekends are prioritized first thing on Monday morning! We serve clients across all global time zones (US, Australia, UK, Europe, Asia) with smooth asynchronous communication.`,
       actions: [
+        { label: '📅 Schedule a 1-on-1 Call', callback: 'openBookCallModal' },
         { label: '📩 Leave a Message for Monday', callback: 'scrollToContact' },
         { label: '💬 Send a WhatsApp Inquiry', callback: 'openWhatsApp' }
       ],
-      chips: ['Location', 'Pricing', 'Services', 'Faith Foundation']
+      chips: ['Book a Call', 'Location', 'Pricing', 'Services', 'Faith Foundation']
     },
     {
       keywords: ['philippines', 'location', 'where', 'benguet', 'la trinidad', 'manila', 'base', 'country', 'international', 'overseas', 'foreign', 'timezone', 'gmt'],
@@ -126,13 +127,33 @@
     },
     {
       keywords: ['contact', 'hire', 'book', 'talk', 'email', 'phone', 'whatsapp', 'messenger', 'consultation', 'call', 'meeting'],
-      response: `We'd love to partner with you! Here is how you can connect directly with our creative team:\n\n• 📝 **Booking Form:** Scroll to our free project consultation form.\n• 📱 **WhatsApp:** +63 927 468 2635\n• 💬 **FB Messenger:** m.me/createandarise\n• ✉️ **Direct Email:** jeromecabinta7@gmail.com\n\nWe respond to all project inquiries within 24 weekday business hours!`,
+      response: `We'd love to partner with you! Here is how you can connect directly with our creative team:\n\n• 📝 **Booking Form:** Scroll to our free project consultation form.\n• 📱 **WhatsApp:** +63 927 468 2635\n• 💬 **FB Messenger:** m.me/createandarise\n• ✉️ **Direct Email:** createandarise05@gmail.com\n\nWe respond to all project inquiries within 24 weekday business hours!`,
       actions: [
         { label: '📝 Fill Project Consultation Form', callback: 'scrollToContact' },
         { label: '💬 Chat on WhatsApp', callback: 'openWhatsApp' },
         { label: '📋 Copy Direct Email', callback: 'copyEmail' }
       ],
       chips: ['Cost Estimator', 'Services', 'Working Hours', 'Branding']
+    },
+    {
+      keywords: ['jerome', 'cabinta', 'developer', 'web developer', 'who made', 'who developed', 'who coded', 'coder'],
+      response: `👨‍💻 **Meet the Developer:**\n\n**Jerome Cabinta** is a member of the **Create and Arise** team, serving as the web developer who built and developed this website.\n\nHe codes and maintains the platform with fast, clean code, responsive design, and smooth user interactions as part of the creative team.`,
+      actions: [
+        { label: '📖 Meet Our Team & Studio', callback: 'scrollToMission' },
+        { label: '📅 Book a Team Consultation', callback: 'openBookCallModal' },
+        { label: '💬 WhatsApp Our Team', callback: 'openWhatsApp' }
+      ],
+      chips: ['Our Mission', 'Cost Estimator', 'Services', 'Contact']
+    },
+    {
+      keywords: ['team', 'members', 'staff', 'who works', 'people', 'collective', 'who is on the team', 'agency team', 'leadership'],
+      response: `👥 **Meet the Create and Arise Team:**\n\nOur multidisciplinary collective combines faith-driven stewardship with premier creative mastery:\n\n• **Elijah Morales** — Founder & Executive Creative Director\n• **Jerome Cabinta** — Web Developer & UI Implementation\n• **Hannah Grace Santos** — Senior Brand & Packaging Designer\n• **Caleb Tan** — Digital Ads & Growth Strategist\n• **Faith Dela Cruz** — Social Media & Content Strategist\n\nEvery project is handled with direct communication and dedicated weekday sprints!`,
+      actions: [
+        { label: '📖 View Team Profiles', callback: 'scrollToMission' },
+        { label: '📅 Book a Team Consultation', callback: 'openBookCallModal' },
+        { label: '💬 WhatsApp Our Team', callback: 'openWhatsApp' }
+      ],
+      chips: ['About Us', 'Services', 'Cost Estimator', 'Contact']
     }
   ];
 
@@ -152,7 +173,7 @@
   function initChatbot() {
     createChatbotMarkup();
     bindChatEvents();
-    
+
     // Auto-greeting if empty
     setTimeout(() => {
       const messagesContainer = document.getElementById('chatbotMessages');
@@ -300,7 +321,7 @@
         e.preventDefault();
         const text = userInput.value.trim();
         if (!text) return;
-        
+
         appendUserMessage(text);
         userInput.value = '';
         processUserQuery(text);
@@ -410,7 +431,7 @@
     scrollToBottom();
 
     const normalized = userQuery.toLowerCase();
-    
+
     // Find matching knowledge item
     let matched = null;
     let maxMatchCount = 0;
@@ -466,8 +487,9 @@
 
       case 'showHoursInfo':
         appendBotMessage(
-          `🕒 **Studio Operating Hours (PHT / GMT+8):**\n\n• **Monday to Friday:** 8:00 AM – 6:00 PM PHT\n• **Saturday & Sunday:** Closed (Weekend Sabbath Rest)\n\nWe provide rapid response times under 24 weekday hours for all clients worldwide!`,
+          `🕒 **Studio Operating Hours (PHT / GMT+8):**\n\n• **Monday to Friday:** 8:00 AM – 6:00 PM PHT\n• **Saturday & Sunday:** Closed (Weekend Sabbath Rest)\n\nWe provide rapid response times under 24 weekday hours for all clients worldwide! Would you like to schedule a 1-on-1 discovery call?`,
           [
+            { label: '📅 Schedule 1-on-1 Call', callback: 'openBookCallModal' },
             { label: '📝 Fill Project Consultation Form', callback: 'scrollToContact' },
             { label: '💬 Chat on WhatsApp', callback: 'openWhatsApp' }
           ],
