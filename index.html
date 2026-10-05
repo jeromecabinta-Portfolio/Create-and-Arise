@@ -2703,8 +2703,7 @@
           <span class="section-tag">&#128233; Let's Create Together</span>
           <h2 class="section-title">Ready to Make Your Brand <span class="gradient-text">Arise?</span></h2>
           <p class="section-desc">
-            Fill out the inquiry form below or connect directly through WhatsApp / Messenger. We respond to all project
-            inquiries within 24 weekday hours.
+            Fill out the inquiry form below or connect directly through WhatsApp / Messenger. You will immediately receive an automated email confirmation receipt, and Jerome Cabinta &amp; our team respond to all project inquiries within 24 weekday business hours.
           </p>
         </div>
 
@@ -2810,9 +2809,33 @@
           <!-- Interactive Contact Form -->
           <div class="contact-form-card">
             <h3 style="font-size: 1.5rem; margin-bottom: 0.5rem;">Start Your Free Consultation</h3>
-            <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1.5rem;">
+            <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1.25rem;">
               Tell us about your brand vision and creative requirements.
             </p>
+
+            <!-- Instant Email Confirmation Guarantee Callout -->
+            <div class="inquiry-email-guarantee-banner">
+              <div class="inquiry-guarantee-badge-pill">
+                <span class="pulse-dot"></span>
+                <span>⚡ Instant Email Confirmation</span>
+              </div>
+              <div class="inquiry-guarantee-body">
+                <div class="inquiry-guarantee-icon-box" aria-hidden="true">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                    <polyline points="22,6 12,13 2,6"></polyline>
+                  </svg>
+                </div>
+                <div>
+                  <div style="font-weight: 700; color: var(--text-main); font-size: 0.95rem; margin-bottom: 0.25rem;">
+                    You will receive an official email confirmation
+                  </div>
+                  <p style="font-size: 0.84rem; color: var(--text-muted); margin: 0; line-height: 1.45;">
+                    As soon as you submit your inquiry, our automated studio system delivers an official receipt to your inbox containing your project reference code, scope summary, and our guaranteed 24-hour response timeline.
+                  </p>
+                </div>
+              </div>
+            </div>
 
             <form id="mainContactForm" action="https://formsubmit.co/createandarise05@gmail.com" method="POST">
               <!-- FormSubmit Configuration Helpers -->
@@ -2830,6 +2853,10 @@
                 <div class="form-group">
                   <label class="form-label" for="contactEmail">Business Email *</label>
                   <input type="email" id="contactEmail" name="email" class="form-control" placeholder="david@company.com" required>
+                  <div class="form-email-confirm-hint">
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+                    <span>Your inquiry confirmation copy &amp; reference ID will be sent here.</span>
+                  </div>
                 </div>
               </div>
 
@@ -2886,6 +2913,18 @@
                 </svg>
               </button>
 
+              <!-- Trust & Delivery Guarantees -->
+              <div class="form-submit-guarantees">
+                <span>🔒 100% Privacy</span>
+                <span class="dot">&bull;</span>
+                <span class="highlight-check">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                  Instant Email Confirmation
+                </span>
+                <span class="dot">&bull;</span>
+                <span>⏱️ 24-Hr Weekday Reply Guarantee</span>
+              </div>
+
               <!-- Inline Receiving Message Confirmation Card -->
               <div id="contactInlineConfirmation" style="display: none; margin-top: 1.25rem; background: rgba(16, 185, 129, 0.08); border: 1px solid rgba(16, 185, 129, 0.35); border-radius: var(--radius-md); padding: 1.25rem; text-align: left;">
                 <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.75rem; border-bottom: 1px solid rgba(16, 185, 129, 0.2); padding-bottom: 0.5rem;">
@@ -2897,9 +2936,12 @@
                   </span>
                 </div>
                 <p id="contactInlineNotice" style="font-size: 0.88rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 0.85rem;">
-                  Thank you! Your project inquiry has been received by Jerome Cabinta &amp; the Create and Arise creative team at <strong style="color: var(--color-primary);">createandarise05@gmail.com</strong>. An automated confirmation copy has been dispatched to your email.
+                  Thank you! Your project inquiry has been received by Jerome Cabinta &amp; the Create and Arise creative team. An automated confirmation copy has been dispatched to your email.
                 </p>
                 <div style="display: flex; gap: 0.6rem; flex-wrap: wrap;">
+                  <a href="https://mail.google.com/" target="_blank" rel="noopener" class="btn btn-primary btn-sm" style="gap: 0.4rem;">
+                    <span>📬 Check Gmail / Inbox</span>
+                  </a>
                   <button type="button" class="btn btn-secondary btn-sm" onclick="resetContactFormUI()">
                     Send Another Inquiry
                   </button>
@@ -3072,6 +3114,10 @@
             <div class="form-group">
               <label class="form-label" for="bookingEmail">Business Email *</label>
               <input type="email" id="bookingEmail" name="email" class="form-control" placeholder="sarah@brand.com" required>
+              <div class="form-email-confirm-hint">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+                <span>Calendar invite &amp; email confirmation will be sent here.</span>
+              </div>
             </div>
           </div>
 
@@ -3180,6 +3226,10 @@
           <div class="form-group">
             <label class="form-label" for="auditEmail">Business / Work Email *</label>
             <input type="email" id="auditEmail" name="email" class="form-control" placeholder="david@company.com" required>
+            <div class="form-email-confirm-hint">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+              <span>Audit confirmation &amp; full report will be delivered here.</span>
+            </div>
           </div>
         </div>
 
@@ -3255,6 +3305,10 @@
 
       <!-- Instant Fast Action Pathways -->
       <div style="display: flex; flex-direction: column; gap: 0.65rem; margin-bottom: 1.25rem;">
+        <a id="successCheckEmailBtn" href="https://mail.google.com/" target="_blank" rel="noopener" class="btn btn-primary"
+          style="width: 100%; justify-content: center; gap: 0.5rem; background: linear-gradient(135deg, #f59e0b, #d97706); color: #0a0b10; font-weight: 700; border: none; box-shadow: 0 4px 15px rgba(245, 158, 11, 0.35);">
+          <span>📬 Open Email Inbox to View Confirmation</span>
+        </a>
         <a id="successWhatsappBtn"
           href="https://wa.me/639274682635?text=Hi%20Create%20and%20Arise!%20I%20just%20submitted%20a%20consultation%20inquiry%20on%20the%20website."
           target="_blank" rel="noopener" class="btn btn-outline"

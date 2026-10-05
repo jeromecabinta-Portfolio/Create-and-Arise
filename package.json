@@ -1,0 +1,25 @@
+{
+  "name": "create-and-arise",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jeromecabinta-Portfolio/Create-and-Arise.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/jeromecabinta-Portfolio/Create-and-Arise/issues"
+  },
+  "homepage": "https://github.com/jeromecabinta-Portfolio/Create-and-Arise#readme",
+  "dependencies": {
+    "nodemailer": "^10.0.15"
+  }
+}

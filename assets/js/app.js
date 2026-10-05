@@ -1175,7 +1175,7 @@ function initFaqAccordion() {
 /* --------------------------------------------------------------------------
    8. Contact Form Handling (Connected to createandarise05@gmail.com)
    -------------------------------------------------------------------------- */
-function showRichSuccessModal({ title, desc, detailsHtml, whatsappMsg, mailtoSubject, mailtoBody, googleCalUrl, icsData, icsFilename }) {
+function showRichSuccessModal({ title, desc, detailsHtml, whatsappMsg, mailtoSubject, mailtoBody, googleCalUrl, icsData, icsFilename, clientEmail }) {
   const successModal = document.getElementById('successModal');
   if (!successModal) return;
 
@@ -1187,6 +1187,7 @@ function showRichSuccessModal({ title, desc, detailsHtml, whatsappMsg, mailtoSub
   const calActions = document.getElementById('successCalendarActions');
   const googleCalBtn = document.getElementById('successGoogleCalBtn');
   const icsBtn = document.getElementById('successIcsDownloadBtn');
+  const checkEmailBtn = document.getElementById('successCheckEmailBtn');
 
   if (titleEl && title) titleEl.textContent = title;
   if (descEl && desc) descEl.innerHTML = desc;
@@ -1197,6 +1198,29 @@ function showRichSuccessModal({ title, desc, detailsHtml, whatsappMsg, mailtoSub
       detailsEl.style.display = 'block';
     } else {
       detailsEl.style.display = 'none';
+    }
+  }
+
+  // Handle Dynamic Email Confirmation Link
+  if (checkEmailBtn) {
+    if (clientEmail) {
+      checkEmailBtn.style.display = 'inline-flex';
+      const emailDomain = (clientEmail.split('@')[1] || '').toLowerCase();
+      if (emailDomain.includes('gmail')) {
+        checkEmailBtn.href = 'https://mail.google.com/';
+        checkEmailBtn.innerHTML = `<span>📬 Check Gmail for Confirmation (${clientEmail})</span>`;
+      } else if (emailDomain.includes('outlook') || emailDomain.includes('hotmail') || emailDomain.includes('live')) {
+        checkEmailBtn.href = 'https://outlook.live.com/';
+        checkEmailBtn.innerHTML = `<span>📬 Check Outlook for Confirmation (${clientEmail})</span>`;
+      } else if (emailDomain.includes('yahoo')) {
+        checkEmailBtn.href = 'https://mail.yahoo.com/';
+        checkEmailBtn.innerHTML = `<span>📬 Check Yahoo Mail for Confirmation (${clientEmail})</span>`;
+      } else {
+        checkEmailBtn.href = `mailto:${clientEmail}`;
+        checkEmailBtn.innerHTML = `<span>📬 Check Email for Confirmation (${clientEmail})</span>`;
+      }
+    } else {
+      checkEmailBtn.style.display = 'none';
     }
   }
 
@@ -1366,11 +1390,12 @@ function initContactForm() {
 
     showRichSuccessModal({
       title: 'Inquiry Received & Confirmed! 🎉',
-      desc: `Thank you, <strong>${name}</strong>! Your project inquiry has been safely received by <strong>Jerome Cabinta</strong> and the <strong>Create and Arise</strong> creative team. A confirmation receipt has been dispatched to your email (<strong>${email}</strong>).`,
+      desc: `Thank you, <strong>${name}</strong>! Your project inquiry has been safely received by <strong>Jerome Cabinta</strong> and the <strong>Create and Arise</strong> creative team. An official confirmation email with your reference copy (<strong>${inquiryRef}</strong>) has been dispatched to <strong>${email}</strong>.`,
       detailsHtml: detailsHtml,
       whatsappMsg: whatsappMsg,
       mailtoSubject: mailtoSub,
-      mailtoBody: mailtoBody
+      mailtoBody: mailtoBody,
+      clientEmail: email
     });
 
     showToast(`🎉 Inquiry received & confirmed! Check ${email} for your receipt`);
@@ -2051,15 +2076,16 @@ function initBookCallModal() {
     switchBookingStep(1);
 
     showRichSuccessModal({
-      title: 'Strategy Call Confirmed!',
-      desc: `Thank you, <strong>${name}</strong>! Your 1-on-1 discovery call is scheduled for <strong>${formattedDate}</strong> at <strong>${time}</strong> via <strong>${platform}</strong>. Use the buttons below to sync directly to your calendar!`,
+      title: 'Strategy Call Confirmed! 📅',
+      desc: `Thank you, <strong>${name}</strong>! Your 1-on-1 discovery call is scheduled for <strong>${formattedDate}</strong> at <strong>${time}</strong> via <strong>${platform}</strong>. A calendar invite &amp; email confirmation copy have been sent to <strong>${email}</strong>!`,
       detailsHtml: detailsHtml,
       whatsappMsg: whatsappMsg,
       mailtoSubject: mailtoSub,
       mailtoBody: mailtoBody,
       googleCalUrl: googleCalUrl,
       icsData: icsContent,
-      icsFilename: `Create-and-Arise-Discovery-Call-${date}.ics`
+      icsFilename: `Create-and-Arise-Discovery-Call-${date}.ics`,
+      clientEmail: email
     });
 
     showToast(`🎉 Call scheduled for ${formattedDate}!`);
@@ -2138,7 +2164,8 @@ function initAuditModal() {
       detailsHtml: detailsHtml,
       whatsappMsg: whatsappMsg,
       mailtoSubject: mailtoSub,
-      mailtoBody: mailtoBody
+      mailtoBody: mailtoBody,
+      clientEmail: email
     });
 
     showToast(`🎉 Free audit requested for ${website}! Check your email within 48h.`);

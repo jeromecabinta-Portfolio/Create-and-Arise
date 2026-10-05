@@ -24,5 +24,18 @@
     "platform": "Google Meet",
     "notes": "Testing discovery call booking to createandarise05@gmail.com",
     "createdAt": "2026-10-05T18:15:06.038Z"
+  },
+  {
+    "id": "CAA-MUVMQM36-7495",
+    "name": "Marcus Vance",
+    "email": "marcus.vance@growthbrand.co",
+    "service": "Full Creative & Growth Suite",
+    "date": "2026-11-05",
+    "timeSlot": "10:30 AM PHT",
+    "timeSlotLocal": "10:30 AM",
+    "timezone": "Asia/Manila",
+    "platform": "Google Meet",
+    "notes": "Testing discovery call booking email confirmation",
+    "createdAt": "2026-10-05T19:15:24.882Z"
   }
 ]

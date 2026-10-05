@@ -127,13 +127,23 @@
     },
     {
       keywords: ['contact', 'hire', 'book', 'talk', 'email', 'phone', 'whatsapp', 'messenger', 'consultation', 'call', 'meeting'],
-      response: `We'd love to partner with you! Here is how you can connect directly with our creative team:\n\n• 📝 **Booking Form:** Scroll to our free project consultation form.\n• 📱 **WhatsApp:** +63 927 468 2635\n• 💬 **FB Messenger:** m.me/createandarise\n• ✉️ **Direct Email:** createandarise05@gmail.com\n\nWe respond to all project inquiries within 24 weekday business hours!`,
+      response: `We'd love to partner with you! Here is how you can connect directly with our creative team:\n\n• 📝 **Booking Form:** Scroll to our free project consultation form.\n• 📱 **WhatsApp:** +63 927 468 2635\n• 💬 **FB Messenger:** m.me/createandarise\n• ✉️ **Direct Email:** createandarise05@gmail.com\n\n✨ **Instant Confirmation:** When you submit an inquiry, you will immediately receive an automated confirmation email with your project reference ID!\n⏱️ We respond to all project inquiries within 24 weekday business hours!`,
       actions: [
         { label: '📝 Fill Project Consultation Form', callback: 'scrollToContact' },
         { label: '💬 Chat on WhatsApp', callback: 'openWhatsApp' },
         { label: '📋 Copy Direct Email', callback: 'copyEmail' }
       ],
       chips: ['Cost Estimator', 'Services', 'Working Hours', 'Branding']
+    },
+    {
+      keywords: ['confirmation', 'email confirmation', 'receipt', 'confirmation email', 'receive email', 'confirm inquiry', 'inquiry confirmation'],
+      response: `✉️ **Automated Email Confirmation:**\n\nYes! Whenever you submit a project inquiry through our website, our studio system **immediately delivers an official confirmation email** to your inbox!\n\n• 🏷️ **Reference Code:** Unique reference receipt (e.g. \`INQ-CAA-XXXX\`)\n• 📝 **Scope Summary:** Details of your selected services & budget\n• ⏱️ **Turnaround Guarantee:** Guaranteed reply within 24 weekday business hours (Mon–Fri 8AM–6PM PHT).`,
+      actions: [
+        { label: '📝 Submit an Inquiry', callback: 'scrollToContact' },
+        { label: '📅 Book a Discovery Call', callback: 'openBookCallModal' },
+        { label: '💬 Chat on WhatsApp', callback: 'openWhatsApp' }
+      ],
+      chips: ['Consultation Form', 'Book Call', 'Working Hours', 'Services']
     },
     {
       keywords: ['jerome', 'cabinta', 'developer', 'web developer', 'who made', 'who developed', 'who coded', 'coder'],

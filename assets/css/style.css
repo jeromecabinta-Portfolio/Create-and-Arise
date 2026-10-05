@@ -6952,3 +6952,112 @@ body {
     grid-template-columns: 1fr !important;
   }
 }
+
+/* --------------------------------------------------------------------------
+   Inquiry Automated Email Confirmation & Trust Badges
+   -------------------------------------------------------------------------- */
+.inquiry-email-guarantee-banner {
+  background: linear-gradient(135deg, rgba(245, 158, 11, 0.08) 0%, rgba(16, 185, 129, 0.06) 100%);
+  border: 1px solid rgba(245, 158, 11, 0.28);
+  border-radius: var(--radius-md, 12px);
+  padding: 1.1rem 1.25rem;
+  margin-bottom: 1.5rem;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.inquiry-email-guarantee-banner:hover {
+  border-color: rgba(245, 158, 11, 0.45);
+  box-shadow: 0 6px 24px rgba(245, 158, 11, 0.12);
+}
+
+.inquiry-guarantee-badge-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: #10b981;
+  background: rgba(16, 185, 129, 0.14);
+  border: 1px solid rgba(16, 185, 129, 0.35);
+  padding: 0.25rem 0.65rem;
+  border-radius: 999px;
+  margin-bottom: 0.75rem;
+}
+
+.pulse-dot {
+  width: 7px;
+  height: 7px;
+  background-color: #10b981;
+  border-radius: 50%;
+  box-shadow: 0 0 8px #10b981;
+  animation: pulseDotAnim 2s infinite ease-in-out;
+}
+
+@keyframes pulseDotAnim {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.3); opacity: 0.6; }
+}
+
+.inquiry-guarantee-body {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.85rem;
+}
+
+.inquiry-guarantee-icon-box {
+  flex-shrink: 0;
+  width: 42px;
+  height: 42px;
+  border-radius: 10px;
+  background: rgba(245, 158, 11, 0.15);
+  border: 1px solid rgba(245, 158, 11, 0.35);
+  color: var(--color-primary, #f59e0b);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 12px rgba(245, 158, 11, 0.2);
+}
+
+.form-email-confirm-hint {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.78rem;
+  color: #10b981;
+  margin-top: 0.38rem;
+  font-weight: 500;
+}
+
+.form-email-confirm-hint svg {
+  flex-shrink: 0;
+  stroke: #10b981;
+}
+
+.form-submit-guarantees {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.7rem;
+  margin-top: 0.85rem;
+  font-size: 0.78rem;
+  color: var(--text-muted, #94a3b8);
+  flex-wrap: wrap;
+  text-align: center;
+}
+
+.form-submit-guarantees .highlight-check {
+  color: #10b981;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.form-submit-guarantees .dot {
+  color: var(--border-glass, rgba(255, 255, 255, 0.15));
+}

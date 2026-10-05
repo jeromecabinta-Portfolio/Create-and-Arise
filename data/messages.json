@@ -9,5 +9,32 @@
     "message": "Hello Jerome! This is a test message to verify the email dispatch system.",
     "_subject": "🔔 Test Contact Inquiry to Jerome",
     "receivedAt": "2026-10-05T18:09:05.469Z"
+  },
+  {
+    "id": "INQ-MUVMQBWV-8040",
+    "name": "Marcus Vance",
+    "email": "marcus.vance@growthbrand.co",
+    "services": "High-Converting Web Design",
+    "budget": ",500 - ,000",
+    "phone": "+1 415 555 0192",
+    "message": "Inquiring about a full website redesign and branding overhaul.",
+    "inquiryReference": "INQ-MUVMQBWV-8040",
+    "receivedAt": "2026-10-05T19:15:11.695Z"
+  },
+  {
+    "id": "INQ-MUVMVV6U-3033",
+    "name": "Evelyn Reed",
+    "email": "evelyn@growthcorp.com",
+    "_replyto": "evelyn@growthcorp.com",
+    "_autoresponse": "Thank you for reaching out to Create and Arise! ✨ We have safely received your creative project inquiry (Ref: INQ-MUVMVV6U-3033). Jerome Cabinta and our creative team will review your specifications and reply within 24 weekday business hours (Mon–Fri 8AM–6PM PHT). If urgent, message us on WhatsApp: +63 927 468 2635 | createandarise05@gmail.com",
+    "inquiryReference": "INQ-MUVMVV6U-3033",
+    "phone": "+1 415 555 9821",
+    "budget": "1500-3000",
+    "services": "General Creative Inquiry",
+    "message": "Looking for website redesign with email confirmation.",
+    "_subject": "🚀 [NEW INQUIRY] Evelyn Reed - General Creative Inquiry (Ref: INQ-MUVMVV6U-3033)",
+    "_template": "table",
+    "_captcha": "false",
+    "receivedAt": "2026-10-05T19:19:30.048Z"
   }
 ]
