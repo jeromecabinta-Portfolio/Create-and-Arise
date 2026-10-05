@@ -33,6 +33,9 @@ window.sendFormSubmission = async function (payload) {
   if (payload.email && !payload._replyto) {
     payload._replyto = payload.email;
   }
+  if (!payload._autoresponse) {
+    payload._autoresponse = "Thank you for reaching out to Create and Arise! ✨ We have safely received your creative inquiry. Jerome Cabinta and our creative team will review your project details and respond within 24 weekday business hours (Mon–Fri 8AM–6PM PHT). WhatsApp: +63 927 468 2635 | createandarise05@gmail.com";
+  }
   if (!payload._captcha) payload._captcha = 'false';
   if (!payload._template) payload._template = 'table';
 
@@ -1277,31 +1280,67 @@ function initContactForm() {
     submitBtn.innerHTML = `<span>Submitting to Studio...</span>`;
     submitBtn.disabled = true;
 
+    const inquiryRef = 'INQ-' + Date.now().toString(36).toUpperCase() + '-' + Math.floor(1000 + Math.random() * 9000);
+    const autoresponseMsg = `Thank you for reaching out to Create and Arise! ✨ We have safely received your creative project inquiry (Ref: ${inquiryRef}). Jerome Cabinta and our creative team will review your specifications and reply within 24 weekday business hours (Mon–Fri 8AM–6PM PHT). If urgent, message us on WhatsApp: +63 927 468 2635 | createandarise05@gmail.com`;
+
     const payload = {
       name: name,
       email: email,
       _replyto: email,
+      _autoresponse: autoresponseMsg,
+      inquiryReference: inquiryRef,
       phone: phone,
       budget: budget,
       services: selectedServices,
       message: message,
-      _subject: `New Creative Inquiry from ${name} (Create and Arise Website)`,
+      _subject: `🚀 [NEW INQUIRY] ${name} - ${selectedServices} (Ref: ${inquiryRef})`,
       _template: 'table',
       _captcha: 'false'
     };
 
+    const nowStr = new Date().toLocaleString('en-US', {
+      timeZone: 'Asia/Manila',
+      month: 'short',
+      day: 'numeric',
+      year: 'numeric',
+      hour: 'numeric',
+      minute: '2-digit',
+      hour12: true
+    });
+
     const detailsHtml = `
-      <div style="display: flex; flex-direction: column; gap: 0.35rem; color: var(--text-main);">
-        <div><strong>👤 Client:</strong> ${name} &bull; <span style="color: var(--color-primary);">${email}</span></div>
-        <div><strong>🛠️ Selected Services:</strong> ${selectedServices}</div>
-        <div><strong>💰 Budget Range:</strong> ${budget}</div>
-        <div><strong>📱 Phone / WhatsApp:</strong> ${phone}</div>
+      <div style="background: rgba(16, 185, 129, 0.08); border: 1px solid rgba(16, 185, 129, 0.3); border-radius: var(--radius-md); padding: 1.15rem; margin-bottom: 0.5rem; text-align: left;">
+        <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(16, 185, 129, 0.2); padding-bottom: 0.6rem; margin-bottom: 0.75rem;">
+          <div style="font-weight: 700; color: #10b981; font-size: 0.88rem; display: flex; align-items: center; gap: 0.4rem;">
+            <span>✓ OFFICIAL RECEIPT CONFIRMATION</span>
+          </div>
+          <div style="font-size: 0.75rem; color: var(--text-gold); font-weight: 700; background: rgba(245, 158, 11, 0.15); padding: 0.2rem 0.5rem; border-radius: 4px;">
+            ${inquiryRef}
+          </div>
+        </div>
+
+        <div style="display: flex; flex-direction: column; gap: 0.4rem; font-size: 0.85rem; color: var(--text-main);">
+          <div><strong>👤 Client:</strong> ${name} &bull; <span style="color: var(--color-primary);">${email}</span></div>
+          <div><strong>🛠️ Selected Services:</strong> ${selectedServices}</div>
+          <div><strong>💰 Budget Range:</strong> ${budget}</div>
+          <div><strong>📱 Phone / WhatsApp:</strong> ${phone}</div>
+          <div><strong>⏰ Received Timestamp:</strong> ${nowStr} (PHT)</div>
+          <div style="margin-top: 0.35rem; padding-top: 0.45rem; border-top: 1px dashed var(--border-subtle); font-size: 0.8rem; color: var(--text-muted);">
+            <strong>📝 Scope Preview:</strong> &ldquo;${message.length > 90 ? message.substring(0, 90) + '...' : message}&rdquo;
+          </div>
+        </div>
+
+        <div style="margin-top: 0.85rem; padding: 0.75rem; background: rgba(0, 0, 0, 0.25); border-radius: var(--radius-sm); font-size: 0.8rem; color: var(--text-muted); display: flex; flex-direction: column; gap: 0.25rem;">
+          <div style="color: #10b981; font-weight: 600;">📬 Delivered to Studio: createandarise05@gmail.com</div>
+          <div>📨 <strong>Client Auto-Confirmation:</strong> Dispatched to <em>${email}</em></div>
+          <div>⏱️ <strong>Guaranteed Studio Response:</strong> Within 24 weekday business hours (Mon–Fri 8AM–6PM PHT)</div>
+        </div>
       </div>
     `;
 
-    const whatsappMsg = `Hi Create and Arise! I'm ${name} (${email}). I just submitted an inquiry for ${selectedServices} (Budget: ${budget}). Here are my project notes: "${message}"`;
-    const mailtoSub = `Project Inquiry: ${name} - ${selectedServices}`;
-    const mailtoBody = `Hi Create and Arise Team,\n\nName: ${name}\nEmail: ${email}\nPhone: ${phone}\nServices: ${selectedServices}\nBudget: ${budget}\n\nProject Scope:\n${message}\n\nLooking forward to speaking soon!`;
+    const whatsappMsg = `Hi Create and Arise! I'm ${name} (${email}). I just submitted an inquiry (Ref: ${inquiryRef}) for ${selectedServices} (Budget: ${budget}). Here are my project notes: "${message}"`;
+    const mailtoSub = `Project Inquiry (${inquiryRef}): ${name} - ${selectedServices}`;
+    const mailtoBody = `Hi Jerome & Create and Arise Creative Team,\n\nInquiry Ref: ${inquiryRef}\nName: ${name}\nEmail: ${email}\nPhone: ${phone}\nServices: ${selectedServices}\nBudget: ${budget}\n\nProject Scope:\n${message}\n\nLooking forward to speaking soon!`;
 
     await window.sendFormSubmission(payload);
 
@@ -1309,18 +1348,46 @@ function initContactForm() {
     submitBtn.disabled = false;
     contactForm.reset();
 
+    // Show inline receipt banner on contact form
+    const inlineCard = document.getElementById('contactInlineConfirmation');
+    const inlineRef = document.getElementById('contactInlineRef');
+    const inlineNotice = document.getElementById('contactInlineNotice');
+    const inlineWa = document.getElementById('contactInlineWaLink');
+    if (inlineCard) {
+      if (inlineRef) inlineRef.textContent = inquiryRef;
+      if (inlineNotice) {
+        inlineNotice.innerHTML = `Thank you, <strong>${name}</strong>! Your inquiry (Ref: <strong>${inquiryRef}</strong>) has been safely received by Jerome Cabinta at <strong style="color: var(--color-primary);">createandarise05@gmail.com</strong>. An automated confirmation copy has also been dispatched to <strong>${email}</strong>.`;
+      }
+      if (inlineWa) {
+        inlineWa.href = `https://wa.me/639274682635?text=${encodeURIComponent(`Hi Jerome! I just submitted an inquiry on Create and Arise (Ref: ${inquiryRef}). Looking forward to connecting!`)}`;
+      }
+      inlineCard.style.display = 'block';
+    }
+
     showRichSuccessModal({
-      title: 'Inquiry Successfully Sent!',
-      desc: `Thank you, <strong>${name}</strong>! Your inquiry has been sent to <strong style="color: var(--color-primary);">createandarise05@gmail.com</strong>. We will review your vision and reply within 24 weekday business hours.`,
+      title: 'Inquiry Received & Confirmed! 🎉',
+      desc: `Thank you, <strong>${name}</strong>! Your project inquiry has been safely received by <strong>Jerome Cabinta</strong> and the <strong>Create and Arise</strong> creative team. A confirmation receipt has been dispatched to your email (<strong>${email}</strong>).`,
       detailsHtml: detailsHtml,
       whatsappMsg: whatsappMsg,
       mailtoSubject: mailtoSub,
       mailtoBody: mailtoBody
     });
 
-    showToast(`🎉 Inquiry received! A confirmation copy is being prepared for ${email}`);
+    showToast(`🎉 Inquiry received & confirmed! Check ${email} for your receipt`);
   });
 }
+
+window.resetContactFormUI = function () {
+  const form = document.getElementById('mainContactForm');
+  const inline = document.getElementById('contactInlineConfirmation');
+  if (form) form.reset();
+  if (inline) inline.style.display = 'none';
+  const submitBtn = document.getElementById('btnSubmitContact');
+  if (submitBtn) {
+    submitBtn.disabled = false;
+    submitBtn.style.display = 'inline-flex';
+  }
+};
 
 /* --------------------------------------------------------------------------
    8.5. Interactive Book a Call Modal Handling

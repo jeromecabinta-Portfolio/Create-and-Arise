@@ -25,9 +25,12 @@ const MIME_TYPES = {
 function relayToFormSubmit(payload) {
   return new Promise((resolve) => {
     try {
+      const defaultAutoresponse = "Thank you for reaching out to Create and Arise! ✨ We have safely received your inquiry. Jerome Cabinta and our creative team will review your project details and respond within 24 weekday business hours (Mon–Fri 8AM–6PM PHT). WhatsApp: +63 927 468 2635 | createandarise05@gmail.com";
+
       const data = JSON.stringify({
         ...payload,
         _replyto: payload.email || OWNER_EMAIL,
+        _autoresponse: payload._autoresponse || defaultAutoresponse,
         _template: 'table',
         _captcha: 'false'
       });

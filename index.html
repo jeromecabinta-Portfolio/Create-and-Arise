@@ -2819,6 +2819,7 @@
               <input type="hidden" name="_subject" value="🚀 New Project Inquiry - Create and Arise">
               <input type="hidden" name="_template" value="table">
               <input type="hidden" name="_captcha" value="false">
+              <input type="hidden" name="_autoresponse" value="Thank you for reaching out to Create and Arise! ✨ We have safely received your creative project inquiry. Jerome Cabinta and our creative team will review your specifications and reply within 24 weekday business hours (Mon–Fri 8AM–6PM PHT). If urgent, message us on WhatsApp: +63 927 468 2635 | createandarise05@gmail.com">
 
               <div class="form-row">
                 <div class="form-group">
@@ -2877,13 +2878,36 @@
                   required></textarea>
               </div>
 
-              <button type="submit" class="btn btn-primary" style="width: 100%; padding: 1rem;">
+              <button type="submit" id="btnSubmitContact" class="btn btn-primary" style="width: 100%; padding: 1rem;">
                 <span>Submit Project Inquiry</span>
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
                   <line x1="22" y1="2" x2="11" y2="13"></line>
                   <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
                 </svg>
               </button>
+
+              <!-- Inline Receiving Message Confirmation Card -->
+              <div id="contactInlineConfirmation" style="display: none; margin-top: 1.25rem; background: rgba(16, 185, 129, 0.08); border: 1px solid rgba(16, 185, 129, 0.35); border-radius: var(--radius-md); padding: 1.25rem; text-align: left;">
+                <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.75rem; border-bottom: 1px solid rgba(16, 185, 129, 0.2); padding-bottom: 0.5rem;">
+                  <div style="color: #10b981; font-weight: 700; font-size: 0.95rem; display: flex; align-items: center; gap: 0.4rem;">
+                    <span>✓ Inquiry Received &amp; Confirmed</span>
+                  </div>
+                  <span id="contactInlineRef" style="font-size: 0.75rem; color: var(--text-gold); font-weight: 700; background: rgba(245, 158, 11, 0.15); padding: 0.2rem 0.5rem; border-radius: 4px;">
+                    REF-CAA-XXXX
+                  </span>
+                </div>
+                <p id="contactInlineNotice" style="font-size: 0.88rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 0.85rem;">
+                  Thank you! Your project inquiry has been received by Jerome Cabinta &amp; the Create and Arise creative team at <strong style="color: var(--color-primary);">createandarise05@gmail.com</strong>. An automated confirmation copy has been dispatched to your email.
+                </p>
+                <div style="display: flex; gap: 0.6rem; flex-wrap: wrap;">
+                  <button type="button" class="btn btn-secondary btn-sm" onclick="resetContactFormUI()">
+                    Send Another Inquiry
+                  </button>
+                  <a id="contactInlineWaLink" href="https://wa.me/639274682635" target="_blank" rel="noopener" class="btn btn-outline btn-sm" style="border-color: rgba(16, 185, 129, 0.4); color: #10b981;">
+                    💬 Chat on WhatsApp
+                  </a>
+                </div>
+              </div>
             </form>
           </div>
         </div>
@@ -3033,6 +3057,7 @@
           <input type="hidden" name="_subject" value="📅 1-on-1 Discovery Call Scheduled - Create and Arise">
           <input type="hidden" name="_template" value="table">
           <input type="hidden" name="_captcha" value="false">
+          <input type="hidden" name="_autoresponse" value="Thank you for booking a 1-on-1 Discovery Call with Create and Arise! ✨ Your appointment details have been safely received. Jerome Cabinta and the creative team will send your calendar invitation and meeting link. Studio: createandarise05@gmail.com | WhatsApp: +63 927 468 2635">
 
           <input type="hidden" id="bookingDate" name="date">
           <input type="hidden" id="bookingSelectedTime" name="time_slot_pht">
@@ -3145,6 +3170,7 @@
         <input type="hidden" name="_subject" value="🔍 Free 5-Point Brand & Website Audit Claimed - Create and Arise">
         <input type="hidden" name="_template" value="table">
         <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_autoresponse" value="Thank you for claiming your Free 5-Point Brand & Web Audit from Create and Arise! ✨ Jerome and the creative team will analyze your website/brand and email your full diagnostic report within 48 weekday hours. Studio: createandarise05@gmail.com | WhatsApp: +63 927 468 2635">
 
         <div class="form-row">
           <div class="form-group">
@@ -3290,6 +3316,7 @@
         <input type="hidden" name="_subject" value="⭐ New Website Feedback - Create and Arise">
         <input type="hidden" name="_template" value="table">
         <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_autoresponse" value="Thank you for sharing your feedback with Create and Arise! ✨ Jerome Cabinta and the team deeply appreciate your encouragement and insights. Studio: createandarise05@gmail.com">
 
         <input type="hidden" id="feedbackRatingInput" name="star_rating">
         <input type="hidden" id="feedbackCategoryInput" name="feedback_category">
@@ -3360,7 +3387,7 @@
   </div>
 
   <!-- Application Logic & Automated Chatbot Scripts -->
-  <script src="assets/js/app.js?v=3.0"></script>
+  <script src="assets/js/app.js?v=4.0"></script>
   <script src="assets/js/chatbot.js?v=2.4"></script>
 </body>
 
