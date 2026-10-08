@@ -147,13 +147,24 @@
     },
     {
       keywords: ['jerome', 'cabinta', 'developer', 'web developer', 'who made', 'who developed', 'who coded', 'coder'],
-      response: `👨‍💻 **Meet the Developer:**\n\n**Jerome Cabinta** is a member of the **Create and Arise** team, serving as the web developer who built and developed this website.\n\nHe codes and maintains the platform with fast, clean code, responsive design, and smooth user interactions as part of the creative team.`,
+      response: `👨‍💻 **Meet the Developer:**\n\n**Jerome Cabinta** is a member of the **Create and Arise** creative team, serving as the web developer who engineered this website.\n\nHe also built **PURPOSE / STUDIO™**, an interactive 500 GSM heavyweight streetwear e-commerce platform deployed live at [create-with-purpose.vercel.app](https://create-with-purpose.vercel.app).\n\nHe specializes in sub-second load speeds, clean semantic HTML5, modern vanilla CSS, and engaging interactive experiences.`,
       actions: [
+        { label: '🚀 Launch Purpose Studio (Live Site)', callback: 'openPurposeProject' },
         { label: '📖 Meet Our Team & Studio', callback: 'scrollToMission' },
         { label: '📅 Book a Team Consultation', callback: 'openBookCallModal' },
         { label: '💬 WhatsApp Our Team', callback: 'openWhatsApp' }
       ],
-      chips: ['Our Mission', 'Cost Estimator', 'Services', 'Contact']
+      chips: ['Live Project', 'Our Mission', 'Cost Estimator', 'Services']
+    },
+    {
+      keywords: ['purpose', 'create with purpose', 'streetwear', 'hoodie', 'hoodies', 'fashion site', 'ecommerce sample', 'vercel project'],
+      response: `🔥 **Featured Live Project: PURPOSE / STUDIO™**\n\n**PURPOSE / STUDIO™** is an interactive streetwear e-commerce lab developed by **Jerome Cabinta**:\n\n• **Live Website:** [create-with-purpose.vercel.app](https://create-with-purpose.vercel.app)\n• **Features:** 500 GSM French Terry heavyweight hoodies, dynamic TikTok Shop video showcases, smart sizing engine, interactive bundle builder, and instant checkout flow.\n• **Performance:** 99/100 Core Web Vitals with sub-0.3s global Vercel Edge loading.\n\nWould you like to explore the live website or view the case study?`,
+      actions: [
+        { label: '🚀 Launch Live Site (Vercel)', callback: 'openPurposeProject' },
+        { label: '👁️ Deep Dive Case Study', callback: 'openPurposeCaseStudy' },
+        { label: '🧮 Estimate Web Project', callback: 'scrollToEstimator' }
+      ],
+      chips: ['Live Project', 'Case Studies', 'Web Design', 'Contact']
     },
     {
       keywords: ['team', 'members', 'staff', 'who works', 'people', 'collective', 'who is on the team', 'agency team', 'leadership'],
@@ -567,6 +578,17 @@
 
       case 'openWhatsApp':
         window.open('https://wa.me/639274682635?text=Hello%20Create%20and%20Arise!%20I%20am%20chatting%20with%20AriseBot%20and%20would%20like%20to%20inquire%20about%20a%20project.', '_blank');
+        break;
+
+      case 'openPurposeProject':
+        window.open('https://create-with-purpose.vercel.app', '_blank');
+        break;
+
+      case 'openPurposeCaseStudy':
+        if (window.switchTab) window.switchTab('portfolio');
+        setTimeout(() => {
+          if (window.openCaseStudyById) window.openCaseStudyById(7);
+        }, 150);
         break;
 
       case 'copyEmail':

@@ -542,6 +542,47 @@ const portfolioData = [
       'Private VIP Investor Consultation Booking Flow',
       '100% Mobile & Retina Display Optimization'
     ]
+  },
+  {
+    id: 7,
+    category: 'web',
+    categoryLabel: 'Web Design & E-Commerce',
+    title: 'PURPOSE / STUDIO™ — 500 GSM Heavyweight Streetwear E-Commerce Platform',
+    client: 'PURPOSE / STUDIO™ (Verified Fashion Lab)',
+    industry: 'Direct-to-Consumer Streetwear & TikTok Shop E-Commerce',
+    timeline: 'Custom E-Commerce & Interactive Frontend Sprint',
+    tagline: '500 GSM Architectural Streetwear Experience with Interactive Drops, Sizing Engine & Express Checkout',
+    liveUrl: 'https://create-with-purpose.vercel.app',
+    tools: ['Semantic HTML5', 'Vanilla CSS3', 'JavaScript', 'Vercel Global Edge', 'Interactive UX'],
+    ownership: '100% Custom Frontend Architecture & Deployed Vercel Platform',
+    desc: 'High-performance architectural streetwear digital platform featuring dynamic TikTok Shop showcases, 500 GSM fabric lab breakdowns, smart size finder, and express checkout.',
+    problem: 'Needed a bespoke high-fashion digital storefront that breaks away from generic e-commerce templates, loading with sub-second speeds while offering an immersive brutalist design and interactive TikTok-style showcases.',
+    whatWeDid: 'Engineered a custom streetwear web platform from scratch with 40 distinct architectural silhouettes, voucher redemption system, live showcase feed, fabric lab specifications, and streamlined order checkout.',
+    before: 'Standard generic e-commerce templates with slow loading and zero brand-specific interactive narrative.',
+    after: 'High-speed bespoke brutalist web experience with 99/100 Core Web Vitals, dynamic TikTok Shop style showcases, and 100% interactive customer engagement.',
+    results: [
+      { num: '40+', label: 'Architectural Silhouettes' },
+      { num: '0.3s', label: 'Ultra-Fast Vercel Load' },
+      { num: '100%', label: 'Custom Hand-Coded UI' }
+    ],
+    clientQuote: 'The platform captures the raw, architectural energy of our 500 GSM heavyweight garments perfectly. The interactive showcases and smooth checkout feel truly world-class.',
+    quoteAuthor: 'Jerome Cabinta, Web Developer & Designer',
+    image: 'assets/images/purpose-studio-editorial.jpg',
+    metrics: 'Live Vercel E-Commerce App',
+    gallery: [
+      { src: 'assets/images/purpose-studio-editorial.jpg', title: 'Drop 04 Editorial Campaign', desc: 'Brutalist Architecture & Garment Drape' },
+      { src: 'assets/images/purpose-hoodie-black.jpg', title: 'The Archive Pullover — Vintage Washed Black', desc: '500 GSM Custom Loopback Cotton' },
+      { src: 'assets/images/purpose-hoodie-zip.jpg', title: 'The Archive Two-Way Zip — Dark Asphalt', desc: 'Heavy Matte YKK Zipper & Ribbed Gussets' },
+      { src: 'assets/images/purpose-hoodie-bone.jpg', title: 'The Archive Pullover — Chalk Bone Alabaster', desc: '100% Combed Organic French Terry Cotton' },
+      { src: 'assets/images/purpose-hoodie-fabric.jpg', title: '500 GSM Fabric Technology Lab', desc: 'Dense Loopback French Terry Texture' }
+    ],
+    deliverables: [
+      'Bespoke Streetwear Frontend with TikTok Shop Architecture',
+      'Interactive Capsule Bundle Builder & Smart Sizing Engine',
+      'Live Interactive Product Showcase & Voucher Redemption Flow',
+      'Clean Vanilla JavaScript & CSS Architecture (Zero Framework Bloat)',
+      'High-Speed Deployment on Vercel Global Edge Network'
+    ]
   }
 ];
 
@@ -615,10 +656,19 @@ function initPortfolio() {
             <img src="${item.image}" alt="${item.title}" class="portfolio-img" loading="lazy">
             <div class="portfolio-overlay">
               <span class="portfolio-quick-view-btn">👁️ Present Case Study</span>
+              ${item.liveUrl ? `
+                <a href="${item.liveUrl}" target="_blank" rel="noopener noreferrer" class="portfolio-quick-live-btn" onclick="event.stopPropagation();" title="Launch live website in new tab">
+                  <span>🚀 Launch Live Site ↗</span>
+                </a>
+              ` : ''}
             </div>
             <div class="portfolio-badges-top">
               <span class="portfolio-badge">${item.categoryLabel || item.category.toUpperCase()}</span>
-              <span class="portfolio-timeline-badge">${item.timeline}</span>
+              ${item.liveUrl ? `
+                <span class="portfolio-live-chip"><span class="pulse-dot"></span> Live Project</span>
+              ` : `
+                <span class="portfolio-timeline-badge">${item.timeline}</span>
+              `}
             </div>
           </div>
           <div class="portfolio-info">
@@ -638,7 +688,14 @@ function initPortfolio() {
                 <span>🚀</span>
                 <strong>${item.metrics}</strong>
               </div>
-              <span class="view-case-btn">Deep Dive &rarr;</span>
+              <div style="display: flex; align-items: center; gap: 0.5rem;">
+                ${item.liveUrl ? `
+                  <a href="${item.liveUrl}" target="_blank" rel="noopener noreferrer" class="card-inline-live-link" onclick="event.stopPropagation();" title="Visit live website">
+                    <span>Live ↗</span>
+                  </a>
+                ` : ''}
+                <span class="view-case-btn">Deep Dive &rarr;</span>
+              </div>
             </div>
           </div>
         </article>
@@ -709,9 +766,16 @@ function initPortfolio() {
                   <span class="matrix-roi-chip">&#128640; ${item.metrics}</span>
                 </td>
                 <td>
-                  <button type="button" class="btn btn-secondary btn-sm" onclick="openCaseStudyById(${item.id})">
-                    <span>Present</span>
-                  </button>
+                  <div style="display: flex; gap: 0.35rem; align-items: center;">
+                    <button type="button" class="btn btn-secondary btn-sm" onclick="openCaseStudyById(${item.id})">
+                      <span>Present</span>
+                    </button>
+                    ${item.liveUrl ? `
+                      <a href="${item.liveUrl}" target="_blank" rel="noopener noreferrer" class="card-inline-live-link" title="Visit live website">
+                        <span>Live ↗</span>
+                      </a>
+                    ` : ''}
+                  </div>
                 </td>
               </tr>
             `).join('')}
@@ -798,6 +862,13 @@ function openPortfolioModal(item) {
           <span class="section-tag" style="margin-bottom: 0;">${item.categoryLabel.toUpperCase()} &bull; CASE STUDY</span>
           <span class="cs-timeline-chip">⏱️ ${item.timeline}</span>
           <span class="cs-verified-chip">&#10003; Verified Client Output</span>
+          ${item.liveUrl ? `
+            <a href="${item.liveUrl}" target="_blank" rel="noopener noreferrer" class="cs-live-url-chip" title="Open Live Website">
+              <span class="pulse-dot"></span>
+              <span>Live: <strong>${item.liveUrl.replace('https://', '')}</strong></span>
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+            </a>
+          ` : ''}
         </div>
         <span class="cs-top-metric-chip">&#128640; ${item.metrics}</span>
       </div>
@@ -914,7 +985,13 @@ function openPortfolioModal(item) {
 
     <!-- Modal Presentation Action Ribbons -->
     <div class="cs-actions">
-      <button class="btn btn-primary btn-glow" onclick="requestSimilarProject('${item.title.replace(/'/g, "\\'")}')">
+      ${item.liveUrl ? `
+        <a href="${item.liveUrl}" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-glow cs-live-cta-btn">
+          <span>🚀 Launch Live Platform (${item.liveUrl.replace('https://', '')})</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+        </a>
+      ` : ''}
+      <button class="btn ${item.liveUrl ? 'btn-secondary' : 'btn-primary btn-glow'}" onclick="requestSimilarProject('${item.title.replace(/'/g, "\\'")}')">
         <span>Inquire For A Similar Project</span>
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
       </button>
