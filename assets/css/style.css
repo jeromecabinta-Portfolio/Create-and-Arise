@@ -2476,6 +2476,10 @@ select {
   transition: opacity var(--transition-fast);
 }
 
+.portfolio-overlay:empty {
+  display: none;
+}
+
 .portfolio-card:hover .portfolio-overlay {
   opacity: 1;
 }
@@ -7065,12 +7069,15 @@ body {
 /* ==========================================================================
    FEATURED LIVE PROJECT SPOTLIGHT: PURPOSE / STUDIO™ (create-with-purpose.vercel.app)
    ========================================================================== */
-.portfolio-featured-spotlight {
+.portfolio-featured-spotlight,
+.portfolio-card-flagship {
+  grid-column: 1 / -1;
+  width: 100%;
   background: linear-gradient(135deg, rgba(20, 24, 38, 0.95), rgba(12, 14, 22, 0.98));
   border: 1px solid rgba(245, 158, 11, 0.35);
   border-radius: var(--radius-xl, 20px);
   padding: clamp(1.5rem, 3.5vw, 2.35rem);
-  margin-bottom: 2.25rem;
+  margin-bottom: 0;
   display: grid;
   grid-template-columns: 1.18fr 0.82fr;
   gap: clamp(1.5rem, 3vw, 2.5rem);
@@ -7079,9 +7086,11 @@ body {
   overflow: hidden;
   box-shadow: 0 20px 45px rgba(0, 0, 0, 0.5), 0 0 35px rgba(245, 158, 11, 0.12);
   transition: all var(--transition-normal);
+  cursor: pointer;
 }
 
-.portfolio-featured-spotlight::before {
+.portfolio-featured-spotlight::before,
+.portfolio-card-flagship::before {
   content: '';
   position: absolute;
   top: -50%;
@@ -7092,9 +7101,11 @@ body {
   pointer-events: none;
 }
 
-.portfolio-featured-spotlight:hover {
+.portfolio-featured-spotlight:hover,
+.portfolio-card-flagship:hover {
+  transform: translateY(-6px);
   border-color: rgba(245, 158, 11, 0.6);
-  box-shadow: 0 24px 50px rgba(0, 0, 0, 0.6), 0 0 45px rgba(245, 158, 11, 0.2);
+  box-shadow: 0 24px 50px rgba(0, 0, 0, 0.6), 0 0 45px rgba(245, 158, 11, 0.22);
 }
 
 .spotlight-content {
@@ -7243,7 +7254,8 @@ body {
 }
 
 @media (max-width: 900px) {
-  .portfolio-featured-spotlight {
+  .portfolio-featured-spotlight,
+  .portfolio-card-flagship {
     grid-template-columns: 1fr;
     gap: 1.5rem;
   }

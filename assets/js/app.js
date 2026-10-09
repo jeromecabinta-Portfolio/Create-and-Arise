@@ -381,7 +381,7 @@ const portfolioData = [
   {
     id: 2,
     category: 'web',
-    categoryLabel: 'Web Design & UX/UI',
+    categoryLabel: 'Web Design & Development',
     title: 'Velocity SaaS Enterprise Growth Platform',
     client: 'Velocity Financial Technologies',
     industry: 'FinTech & B2B Enterprise Software',
@@ -513,7 +513,7 @@ const portfolioData = [
   {
     id: 6,
     category: 'web',
-    categoryLabel: 'Web Design & UX/UI',
+    categoryLabel: 'Web Design & Development',
     title: 'Lumina Horizon Luxury Architecture Showcase',
     client: 'Lumina Horizon Architectural Studio',
     industry: 'Luxury Residential & Modern Architectural Firm',
@@ -546,16 +546,16 @@ const portfolioData = [
   {
     id: 7,
     category: 'web',
-    categoryLabel: 'Web Design & E-Commerce',
-    title: 'PURPOSE / STUDIO™ — 500 GSM Heavyweight Streetwear E-Commerce Platform',
+    categoryLabel: 'Web Design & Development',
+    title: 'PURPOSE / STUDIO™ — 500 GSM Streetwear Platform',
     client: 'PURPOSE / STUDIO™ (Verified Fashion Lab)',
     industry: 'Direct-to-Consumer Streetwear & TikTok Shop E-Commerce',
-    timeline: 'Custom E-Commerce & Interactive Frontend Sprint',
+    timeline: 'Custom E-Commerce Sprint',
     tagline: '500 GSM Architectural Streetwear Experience with Interactive Drops, Sizing Engine & Express Checkout',
     liveUrl: 'https://create-with-purpose.vercel.app',
-    tools: ['Semantic HTML5', 'Vanilla CSS3', 'JavaScript', 'Vercel Global Edge', 'Interactive UX'],
+    tools: ['Semantic HTML5', 'Vanilla CSS3', 'JavaScript', 'Vercel Edge'],
     ownership: '100% Custom Frontend Architecture & Deployed Vercel Platform',
-    desc: 'High-performance architectural streetwear digital platform featuring dynamic TikTok Shop showcases, 500 GSM fabric lab breakdowns, smart size finder, and express checkout.',
+    desc: 'Architectural streetwear digital platform featuring dynamic TikTok Shop feeds, 500 GSM fabric lab breakdowns, smart sizing engine, and express checkout.',
     problem: 'Needed a bespoke high-fashion digital storefront that breaks away from generic e-commerce templates, loading with sub-second speeds while offering an immersive brutalist design and interactive TikTok-style showcases.',
     whatWeDid: 'Engineered a custom streetwear web platform from scratch with 40 distinct architectural silhouettes, voucher redemption system, live showcase feed, fabric lab specifications, and streamlined order checkout.',
     before: 'Standard generic e-commerce templates with slow loading and zero brand-specific interactive narrative.',
@@ -568,7 +568,7 @@ const portfolioData = [
     clientQuote: 'The platform captures the raw, architectural energy of our 500 GSM heavyweight garments perfectly. The interactive showcases and smooth checkout feel truly world-class.',
     quoteAuthor: 'Jerome Cabinta, Web Developer & Designer',
     image: 'assets/images/purpose-studio-editorial.jpg',
-    metrics: 'Live Vercel E-Commerce App',
+    metrics: '0.3s Vercel Speed • 40+ Silhouettes',
     gallery: [
       { src: 'assets/images/purpose-studio-editorial.jpg', title: 'Drop 04 Editorial Campaign', desc: 'Brutalist Architecture & Garment Drape' },
       { src: 'assets/images/purpose-hoodie-black.jpg', title: 'The Archive Pullover — Vintage Washed Black', desc: '500 GSM Custom Loopback Cotton' },
@@ -582,6 +582,237 @@ const portfolioData = [
       'Live Interactive Product Showcase & Voucher Redemption Flow',
       'Clean Vanilla JavaScript & CSS Architecture (Zero Framework Bloat)',
       'High-Speed Deployment on Vercel Global Edge Network'
+    ]
+  },
+  {
+    id: 8,
+    category: 'branding',
+    categoryLabel: 'Graphics & Branding',
+    title: 'Aurum & Co. Master Luxury Brand Architecture & Visual System',
+    client: 'Aurum & Co. (Elena Vance, Founder & Creative Director)',
+    industry: 'Fine Jewelry, Luxury Accessories & Boutiques (Singapore • Manila)',
+    timeline: '6-Week Master Identity & Guidelines Sprint',
+    tagline: 'Award-Winning Geometric Gold Monogram, Tactile Editorial Guidelines & Bespoke Stationery Suite',
+    tools: ['Adobe Illustrator', 'Adobe InDesign', 'Photoshop', 'Pantone Matching System', 'Print Finishing'],
+    ownership: '100% Vector Master Source Rights (AI, EPS, SVG, PDF) & Hardcover Print Specs',
+    desc: 'Comprehensive master brand architecture featuring geometric gold foil monogram, tactile embossed brand guidelines manual, gold-gilded business cards, curated color swatch hierarchy, and luxury boutique packaging.',
+    problem: 'Fragmented visual identity with pixelated print collateral, conflicting color swatches across international suppliers, and a 32% return rate driven by cheap perceived product unboxing.',
+    whatWeDid: 'Forged an iconic, unmistakable luxury brand system: bespoke geometric gold & obsidian monogram, 92-page hardcover brand identity guidelines, hot-stamped foil business cards with gold-gilded edges, Pantone color swatch cards, luxury envelopes, and factory packaging die-lines.',
+    before: 'Fragmented Canva assets, inconsistent supplier colors, low perceived value, limited to 2 local stores.',
+    after: 'Bespoke gold monogram, tactile luxury packaging guidelines, onboarding into 14 luxury partner boutiques worldwide, and 3.4x average order value lift.',
+    results: [
+      { num: '+180%', label: 'Brand Recognition Lift' },
+      { num: '14', label: 'Global Boutiques Onboarded' },
+      { num: '3.4x', label: 'Average Order Value Lift' }
+    ],
+    clientQuote: 'Create and Arise took our fragmented brand and forged it into an unmistakable luxury icon. The geometric gold monogram, typography hierarchy, and tactile packaging guidelines enabled us to onboard into 14 luxury partner boutiques worldwide.',
+    quoteAuthor: 'Elena Vance, Founder & Creative Director at Aurum & Co.',
+    image: 'assets/images/branding-graphics.jpg',
+    metrics: '+180% Recognition • 14 Boutiques',
+    gallery: [
+      { src: 'assets/images/branding-graphics.jpg', title: 'Master Brand Identity Suite', desc: 'Hardcover Guidelines Book, Monogram, Swatches & Stationery' },
+      { src: 'assets/images/aurum-branding.jpg', title: 'Luxury Unboxing Suite', desc: 'Gold Ribbon Gift Box, Notebook & Flacon Packaging' }
+    ],
+    deliverables: [
+      'Master Vector Monogram & Logo Suite (AI, EPS, SVG, PDF, PNG)',
+      '92-Page Hardcover Brand Identity Guidelines Manual',
+      'Gold Foil Hot-Stamped Executive Business Cards with Gilded Edges',
+      'Curated Pantone Color Swatch System (Obsidian, Gold, Emerald, Bone)',
+      'Luxury Retail Packaging & Embossed Rigid Box Blueprints',
+      '100% Commercial Vector Source Rights Handover'
+    ]
+  },
+  {
+    id: 9,
+    category: 'branding',
+    categoryLabel: 'Graphics & Branding',
+    title: 'Archibald & Croft (A&C) Haute Parfumerie & Bespoke Packaging Suite',
+    client: 'Archibald & Croft Bespoke London & Paris',
+    industry: 'Haute Parfumerie, Luxury Fragrances & Bespoke Goods',
+    timeline: '5-Week Structural Packaging & Identity Sprint',
+    tagline: 'Gilded Serif Ligature Monogram, Rigid Matte Gift Box, Velvet Ribbon & Gilt-Edge Stationery',
+    tools: ['Adobe Illustrator', 'Cinema 4D', 'Keyshot', 'Die-Line Structural Engineering', 'Photoshop'],
+    ownership: '100% Factory Print-Ready Vector Blueprints & 3D Photorealistic Renders',
+    desc: 'High-end fragrance and luxury gift identity featuring custom serif ligature monogram, gold foil hot-stamping on matte black rigid gift boxes, luxury satin ribbons, glass perfume flacon labeling, and gilded-edge cards.',
+    problem: 'Ultra-premium artisan fragrance formulations were packaged in off-the-shelf bottles and generic boxes that could not justify £240+ retail price points against heritage Paris perfume houses.',
+    whatWeDid: 'Engineered a regal heritage visual identity anchored by a custom "A&C" ligature monogram, tactile soft-touch matte black packaging boxes with gold foil hot-stamping, metallic bottle labels, and custom ribbon unboxing presentation.',
+    before: 'Off-the-shelf packaging, under £65 average price point, struggling to gain luxury department store placement.',
+    after: 'Secured shelf placement in elite London and European department boutiques, expanded price point to £280, and generated 4.2x perceived value lift.',
+    results: [
+      { num: '4.2x', label: 'Perceived Value Expansion' },
+      { num: '100%', label: 'Custom Engineered Die-Lines' },
+      { num: '£280', label: 'Flagship Retail Price Point' }
+    ],
+    clientQuote: 'The packaging transformation was breathtaking. Our retail buyers in Mayfair and Paris immediately doubled their opening orders upon unboxing the prototype presentation.',
+    quoteAuthor: 'Isabelle Croft, Creative Director at Archibald & Croft London',
+    image: 'assets/images/aurum-branding.jpg',
+    metrics: '4.2x Perceived Value Lift • £280 AOV',
+    gallery: [
+      { src: 'assets/images/aurum-branding.jpg', title: 'Haute Parfumerie Unboxing Suite', desc: 'Matte Gift Box with Gold Ribbon, Journal & Flacon' },
+      { src: 'assets/images/branding-graphics.jpg', title: 'Collateral & Color Standard', desc: 'Accompanying Corporate Stationery & Swatch System' }
+    ],
+    deliverables: [
+      'Custom "A&C" Serif Ligature Monogram & Typographic System',
+      'Rigid Luxury Gift Box Structural Die-Lines & Ribbon Specifications',
+      'Metallic Foil Flacon Bottle Label & Cap Engraving Blueprints',
+      'Gilt-Edge Executive Stationery & Authenticity Certificate Cards',
+      'Complete 3D Photorealistic Unboxing Renders for E-Commerce',
+      '100% Commercial Vector Source Files & Factory Handoff'
+    ]
+  },
+  {
+    id: 10,
+    category: 'branding',
+    categoryLabel: 'Graphics & Branding',
+    title: 'Kingdom Arise Global Summit Visual Identity & Conference Collateral',
+    client: 'Kingdom Arise International Leadership Network',
+    industry: 'Global Christian Leadership, Faith & Marketplace Conferences',
+    timeline: '4-Week Comprehensive Event Branding Sprint',
+    tagline: 'Gold Radiant Cross & Crown Emblem, Executive Conference Guide, VIP Lanyard Badges & Event Merch',
+    tools: ['Adobe Illustrator', 'Adobe InDesign', 'Photoshop', 'Laser Engraving Specs', 'Vector Precision'],
+    ownership: '100% Commercial Master Print Files, Large-Format Assets & Merch Blueprints',
+    desc: 'Comprehensive event visual identity and physical collateral for an international leadership summit, featuring a radiant geometric cross-and-crown emblem, foil-embossed conference guidebook, gold acrylic VIP lanyards, matte laser-etched tumblers, and canvas tote bags.',
+    problem: 'Annual executive summit was represented by fragmented flyer templates and low-resolution badges, failing to attract international business and marketplace leaders or command VIP ticket prices.',
+    whatWeDid: 'Designed a prestige global summit visual identity system inspired by Isaiah 60:1, featuring radiant geometric gold vector emblem, 84-page executive hardbound program guide, VIP etched gold badges, wax-sealed VIP invitations, and premium delegate merchandise.',
+    before: 'Fragmented clip-art templates, low registration among business executives, zero merchandise revenue.',
+    after: '2,500+ registered delegates across 48 nations, 100% sell-out of VIP tickets, and conference merchandise completely sold out on Day 1.',
+    results: [
+      { num: '2,500+', label: 'Delegates Across 48 Nations' },
+      { num: '100%', label: 'VIP Pass Tier Sold Out' },
+      { num: 'Isaiah 60:1', label: 'Scriptural Theme & Inspiration' }
+    ],
+    clientQuote: 'The graphic identity and conference collateral elevated our gathering onto the world stage. Delegates from Europe, Asia, and the Americas commented on the stunning excellence of every single piece.',
+    quoteAuthor: 'Bishop David Morales, Host & Convening Director',
+    image: 'assets/images/kingdom-summit-branding.jpg',
+    metrics: '2,500+ Delegates • 48 Nations',
+    gallery: [
+      { src: 'assets/images/kingdom-summit-branding.jpg', title: 'Global Summit Delegate Suite', desc: 'Conference Guidebook, Gold VIP Badge, Canvas Tote & Tumbler' },
+      { src: 'assets/Mock ups/1.png', title: 'Scripture Edition Summit Cap', desc: 'Colossians 3:23 Embroidered Delegate Cap' },
+      { src: 'assets/Mock ups/8.png', title: 'Summit Signature Apparel Tee', desc: 'Est. 2025 Graceful Movement White Shirt' }
+    ],
+    deliverables: [
+      'Master Summit Crest & Radiance Vector System (AI, SVG, PDF)',
+      'Hardbound 84-Page Executive Conference Guidebook Design',
+      'Laser-Cut Etched Gold VIP Acrylic Lanyard Badges',
+      'Delegate Merch Suite (Canvas Totes, Laser-Etched Tumblers, Caps)',
+      'Wax-Sealed Gold Foil VIP Invitation & RSVP Stationery Suite',
+      'Giant LED Stage Backdrop Visuals & Environmental Wayfinding Signs'
+    ]
+  },
+  {
+    id: 11,
+    category: 'branding',
+    categoryLabel: 'Graphics & Branding',
+    title: 'Solaria Botanicals Organic Skincare Brand & Packaging Architecture',
+    client: 'Solaria Botanicals Clean Beauty Lab',
+    industry: 'Organic Cosmetics, Clean Beauty & Botanical Skincare',
+    timeline: '5-Week Brand Identity & Packaging Sprint',
+    tagline: 'Minimalist Nature-Inspired Identity, Tactile Amber Glass Droppers, Debossed Stationery & Swatch System',
+    tools: ['Adobe Illustrator', 'Adobe Photoshop', 'Cinema 4D', 'Packaging Die-Cutter Specs', 'Pantone TCX'],
+    ownership: '100% Vector Packaging Blueprints & Commercial Brand Guidelines Source',
+    desc: 'Full brand identity and luxury cosmetic packaging ecosystem featuring blind-debossed serif branding, tactile cream paperboard cartons, amber dropper bottles with gold pipettes, linen stationery, and botanical color palette system.',
+    problem: 'High-efficacy botanical serum formulations were trapped in generic eco-packaging clichés, leading to weak 1.4% DTC conversion rates and zero unboxing shares on TikTok and Instagram.',
+    whatWeDid: 'Created an editorial, quiet-luxury visual identity anchored by a minimalist monogram, custom color swatch palette (Terracotta, Sage Green, Muted Gold), blind-embossed packaging cartons, amber glass droppers, and tactile cotton stationery.',
+    before: 'Cluttered generic eco-packaging, 1.4% DTC conversion, unboxing shares near zero.',
+    after: '+340% DTC conversion lift, 4.8x increase in organic unboxing videos on social media, and placement in 25+ boutique clean-beauty spas.',
+    results: [
+      { num: '+340%', label: 'DTC E-Commerce Conversion Lift' },
+      { num: '4.8x', label: 'Organic Social Unboxing Shares' },
+      { num: '98%', label: 'Sustainable Packaging Rating' }
+    ],
+    clientQuote: 'Create and Arise took our botanical formulations and clothed them in pure elegance. Our bottles look like pieces of art on our clients\' vanities, and wholesale accounts instantly noticed.',
+    quoteAuthor: 'Sophia Chen, Founder & Chemist at Solaria Botanicals',
+    image: 'assets/images/solaria-branding.jpg',
+    metrics: '+340% DTC Conversion • 25+ Spas',
+    gallery: [
+      { src: 'assets/images/solaria-branding.jpg', title: 'Complete Brand Identity Suite', desc: 'Brand Guidelines Book, Amber Droppers, Gift Box & Swatches' }
+    ],
+    deliverables: [
+      'Complete Brand Identity Guidelines Book (Nature. Radiance. Balance)',
+      'Amber Glass Serum Dropper & Cream Jar Cosmetic Label Die-Lines',
+      'Blind-Debossed Folding Carton Packaging Architecture',
+      'Color Swatch Chips (Terracotta, Sage Green, Muted Gold) & Typography Rules',
+      'Gold-Foil Edged Business Cards & Linen Envelopes',
+      '100% Commercial Vector & Print Factory Handover'
+    ]
+  },
+  {
+    id: 12,
+    category: 'branding',
+    categoryLabel: 'Graphics & Branding',
+    title: 'Jerome P. Cabinta Kingdom Leadership Publishing & Editorial Suite',
+    client: 'Kingdom Leadership Publishing & Jerome P. Cabinta',
+    industry: 'Christian Authorship, Book Publishing & Marketplace Leadership',
+    timeline: '3-Week Publication Design Sprint',
+    tagline: 'Dual Hardcover & Digital Publication Design ("Talk Like A Leader" & "God\'s Eternal Promises")',
+    tools: ['Adobe InDesign', 'Adobe Illustrator', 'Photoshop', 'KDP Print Engine', 'Kindle Direct'],
+    ownership: '100% Print-Ready KDP/IngramSpark InDesign Master Files & Vector Jackets',
+    desc: 'Complete editorial graphic design and publication typography suite for two landmark leadership books: "Talk Like A Leader" and "Aligning Your Journey with God\'s Eternal Promises", featuring custom cover artwork, interior layout hierarchy, and promotional marketing collateral.',
+    problem: 'High-value leadership and faith manuscripts lacked commercial cover design authority and typography typesetting, preventing international bookstore placement and Amazon Best Seller ranking.',
+    whatWeDid: 'Engineered custom book cover architectures: silhouette leadership motif on deep slate for executive communication, and radiant gear & silhouette artwork for spiritual destiny, accompanied by full KDP print-ready spines, barcode placement, and Kindle digital jackets.',
+    before: 'Unformatted Word manuscripts, generic stock photo covers, zero commercial bookstore distribution.',
+    after: 'Over 10,000 physical and digital copies distributed worldwide, featured in keynote speaker event book tables, and multi-format audio/digital editions published.',
+    results: [
+      { num: '10k+', label: 'Copies Distributed Worldwide' },
+      { num: '100%', label: 'Print-Ready KDP & InDesign Specs' },
+      { num: '2x', label: 'Master Publication Titles Published' }
+    ],
+    clientQuote: 'A book cover is the visual sermon before a single word is read. Create and Arise captured the depth, power, and authority of these messages with absolute visual precision.',
+    quoteAuthor: 'Jerome P. Cabinta, Author & Business Consultant',
+    image: 'assets/Mock ups/10.png',
+    metrics: '10k+ Copies • Amazon KDP Ready',
+    gallery: [
+      { src: 'assets/Mock ups/10.png', title: 'Dual Hardcover Book Showcase', desc: 'Talk Like A Leader & Aligning Your Journey with God\'s Eternal Promises' },
+      { src: 'assets/Mock ups/4.png', title: 'Author Business Card & Desk Badge', desc: 'Jerome Cabinta Business Consultant Stationery' },
+      { src: 'assets/Mock ups/1.png', title: 'Scripture Edition Apparel Cap', desc: 'Colossians 3:23 Author Merch' }
+    ],
+    deliverables: [
+      'Dual Front, Spine & Back Cover Print Architecture (Paperback & Hardcover)',
+      'Amazon KDP & IngramSpark Certified Print-Ready PDFs with Full Bleeds',
+      'Kindle & Apple Books High-Resolution Digital eBook Jackets',
+      'Interior Typography Hierarchy & Chapter Opening Spreads',
+      'Promotional Social Media Book Mockups & Event Banners',
+      'Author Business Card & Speaker Kit Collateral'
+    ]
+  },
+  {
+    id: 13,
+    category: 'branding',
+    categoryLabel: 'Graphics & Branding',
+    title: 'Create & Arise Artisan Coffee & Stand-Up Zipper Pouch Roastery Packaging',
+    client: 'Create & Arise Spirit Roastery (Benguet Highland Reserve)',
+    industry: 'Specialty Coffee, Artisan Food & Beverage Retail',
+    timeline: '4-Week Food & Beverage Packaging Sprint',
+    tagline: 'Minimalist 250G Stone-Plinth Gusseted Roast Bag & "Enjoy Every Moment" Zipper Pouch Architecture',
+    tools: ['Adobe Illustrator', 'Cinema 4D', 'Photoshop', 'Food-Grade Barrier Foil Specs', 'Die-Line Engineering'],
+    ownership: '100% Production-Ready Packaging Blueprints & Vector Graphics',
+    desc: 'Specialty coffee packaging and retail packaging suite featuring the signature Isaiah 60:1 gold emblem, clean typographic roast notes, degassing valve specifications, and eco-friendly white stand-up zipper pouches.',
+    problem: 'Premium Benguet highland coffee beans were packaged in generic brown craft bags without origin traceability or brand prestige, limiting retail pricing to $6/bag.',
+    whatWeDid: 'Designed an ultra-clean, minimalist matte white packaging suite with bold modern typography ("Fuel Your Spirit"), gold metallic crest, stone-plinth 3D visualization, and versatile barrier zipper pouches for retail shelves.',
+    before: 'Generic brown paper bags with stickers, low shelf presence, $6 retail price point.',
+    after: 'Sold in specialty cafés and corporate gift boxes at $18.50/bag, +210% retail margin, featured in regional specialty coffee gift guides.',
+    results: [
+      { num: '3.1x', label: 'Retail Price Point ($6 → $18.50)' },
+      { num: '100%', label: 'Food-Grade Foil Barrier Die-Lines' },
+      { num: '250G', label: 'Bespoke Gusseted Bag Blueprint' }
+    ],
+    clientQuote: 'The clean white packaging and striking gold emblem instantly communicates highland purity and artisan craftsmanship. It elevated our beans into a true gift-worthy luxury item.',
+    quoteAuthor: 'Create and Arise Creative Studio',
+    image: 'assets/Mock ups/11.png',
+    metrics: '3.1x Retail Price Lift • 250G Reserve',
+    gallery: [
+      { src: 'assets/Mock ups/11.png', title: 'Fuel Your Spirit 250G Coffee Bag', desc: 'Highland Reserve Gusseted Roast Bag on Stone Plinth' },
+      { src: 'assets/Mock ups/3.png', title: 'Enjoy Every Moment Zipper Pouch', desc: 'Stand-Up Resealable Barrier Pouch with Scripture Emblem' },
+      { src: 'assets/Mock ups/5.png', title: 'To-Go Matte Black Emblem Cup', desc: 'Specialty Roastery Takeout Coffee Cup' },
+      { src: 'assets/Mock ups/2.png', title: 'Explore & Dream Boutique Kraft Bags', desc: 'Retail Roastery Handled Paper Carry Bags' }
+    ],
+    deliverables: [
+      '250G Side-Gusset Coffee Bag Die-Line with Degassing Valve Specs',
+      'Stand-Up Resealable Barrier Zipper Pouch Artwork (Front & Back)',
+      'Roastery Takeout Hot Cup & Sleeve Branding System',
+      'Specialty Roast Profile & Tasting Notes Typographic Label System',
+      'Boutique Handled Paper Carry Bag Blueprints',
+      '100% Print-Ready Vector Blueprints & Commercial Rights'
     ]
   }
 ];
@@ -655,10 +886,9 @@ function initPortfolio() {
           <div class="portfolio-thumb-wrapper">
             <img src="${item.image}" alt="${item.title}" class="portfolio-img" loading="lazy">
             <div class="portfolio-overlay">
-              <span class="portfolio-quick-view-btn">👁️ Present Case Study</span>
               ${item.liveUrl ? `
-                <a href="${item.liveUrl}" target="_blank" rel="noopener noreferrer" class="portfolio-quick-live-btn" onclick="event.stopPropagation();" title="Launch live website in new tab">
-                  <span>🚀 Launch Live Site ↗</span>
+                <a href="${item.liveUrl}" target="_blank" rel="noopener noreferrer" class="portfolio-quick-live-btn" onclick="event.stopPropagation();" title="Visit live website in new tab">
+                  <span>🚀 Visit Website ↗</span>
                 </a>
               ` : ''}
             </div>
@@ -832,6 +1062,19 @@ function initPortfolio() {
         if (matrixContainer) matrixContainer.style.display = 'none';
       }
     });
+  });
+
+  // Dynamically update filter count chips based on actual data
+  filterBtns.forEach(btn => {
+    const f = btn.getAttribute('data-filter');
+    const countEl = btn.querySelector('.filter-count');
+    if (countEl) {
+      if (f === 'all') {
+        countEl.textContent = portfolioData.length;
+      } else {
+        countEl.textContent = portfolioData.filter(p => p.category === f).length;
+      }
+    }
   });
 
   renderPortfolio();
@@ -1579,7 +1822,7 @@ async function loadBookedSlots() {
   try {
     const raw = localStorage.getItem('caa_saved_bookings');
     if (raw) localBookings = JSON.parse(raw);
-  } catch (e) {}
+  } catch (e) { }
 
   const merged = [...serverBookings];
   localBookings.forEach(lb => {
@@ -1720,7 +1963,7 @@ function renderCalendar() {
 
   const firstDayObj = new Date(year, month, 1);
   // Convert Sunday=0 to Monday=0 format: (getDay() + 6) % 7
-  const startDayOfWeek = (firstDayObj.getDay() + 6) % 7; 
+  const startDayOfWeek = (firstDayObj.getDay() + 6) % 7;
 
   const daysInMonth = new Date(year, month + 1, 0).getDate();
   const daysInPrevMonth = new Date(year, month, 0).getDate();
@@ -2073,10 +2316,10 @@ function initBookCallModal() {
       if (rawAll) allBookings = JSON.parse(rawAll);
       allBookings.push(savedBookingRecord);
       localStorage.setItem('caa_saved_bookings', JSON.stringify(allBookings));
-    } catch (e) {}
+    } catch (e) { }
 
     // 3. Asynchronously notify studio email via form endpoint
-    window.sendFormSubmission(payload).catch(() => {});
+    window.sendFormSubmission(payload).catch(() => { });
 
     // 4. Generate Calendar Sync URLs (.ics & Google Calendar)
     const slotObj = schedulerState.selectedSlot || PHT_TIME_SLOTS[0];
@@ -2443,7 +2686,7 @@ function openFeedbackModal() {
         category: category,
         feedback: message,
         _subject: `[Website Feedback] ${_feedbackRating}★ ${ratingLabels[_feedbackRating]} — ${category}`
-      }).catch(() => {});
+      }).catch(() => { });
 
       closeModal('feedbackModal');
       showToast(`✅ Thank you${name !== 'Anonymous' ? ', ' + name : ''}! Your feedback has been sent directly to Jerome & the team.`);
