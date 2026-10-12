@@ -567,7 +567,7 @@ const portfolioData = [
     ],
     clientQuote: 'The platform captures the raw, architectural energy of our 500 GSM heavyweight garments perfectly. The interactive showcases and smooth checkout feel truly world-class.',
     quoteAuthor: 'Jerome Cabinta, Web Developer & Designer',
-    image: 'assets/images/purpose-studio-editorial.jpg',
+    image: 'assets/images/purpose-studio-hero.jpg',
     metrics: '0.3s Vercel Speed • 40+ Silhouettes',
     gallery: [
       { src: 'assets/images/purpose-studio-editorial.jpg', title: 'Drop 04 Editorial Campaign', desc: 'Brutalist Architecture & Garment Drape' },
@@ -814,6 +814,1125 @@ const portfolioData = [
       'Boutique Handled Paper Carry Bag Blueprints',
       '100% Print-Ready Vector Blueprints & Commercial Rights'
     ]
+  },
+  {
+    id: 14,
+    category: 'social',
+    categoryLabel: 'Social Media Management',
+    title: 'Apex Athletic Club Viral Short-Form Video & Content Engine',
+    client: 'Apex Athletic Club & Performance Lab',
+    industry: 'High-Performance Athletics, Fitness & Wellness Centers',
+    timeline: '60-Day Short-Form Video & Reels Sprint',
+    tagline: 'High-Energy Cinematography, Workout Breakdowns & +480% Organic Reach Explosion',
+    tools: ['Adobe Premiere Pro', 'CapCut Pro', 'Figma', 'Meta Business Suite', 'TikTok Creative Center'],
+    ownership: '100% Video Master Rights, Sound Licensing & Editable Reel Templates',
+    desc: 'Dynamic social media management and viral short-form video production featuring cinematic gym reels, athlete spotlights, viral audio hooks, and educational fitness carousels.',
+    problem: 'Struggled with stagnant follower growth, flat engagement, and zero video presence, relying entirely on expensive word-of-mouth that failed to convert local gym members.',
+    whatWeDid: 'Engineered a viral short-form content machine: 24 scripted and color-graded high-energy Reels/TikToks, trainer workout breakdowns, engaging motivational carousels, and proactive community moderation.',
+    before: '0 video strategy, 180 average views, flat follower curve, 0 inbound DM inquiries.',
+    after: '+480% organic reach, 1.8M total video views, 420+ qualified membership inquiries in 60 days.',
+    results: [
+      { num: '+480%', label: 'Organic Reach Surge' },
+      { num: '1.8M', label: 'Viral Reel & TikTok Views' },
+      { num: '420+', label: 'New Membership Inquiries' }
+    ],
+    clientQuote: 'Create and Arise gave our fitness brand a magnetic digital presence. Their short-form video production and pacing turned our gym floor into the most talked-about facility in town.',
+    quoteAuthor: 'Coach Marcus Vance, Head of Operations at Apex Athletic Club',
+    image: 'assets/images/reels-social.jpg',
+    metrics: '+480% Reach • 1.8M Views',
+    gallery: [
+      { src: 'assets/images/reels-social.jpg', title: 'Viral Athlete Short-Form Campaign', desc: 'Cinematic High-Impact Gym Reels Series' },
+      { src: 'assets/images/smm/gym-strength.jpg', title: 'Strength Training Breakdown', desc: 'Educational Form & Technique Social Post' },
+      { src: 'assets/images/smm/mountain-runner.jpg', title: 'Endurance & Outdoor Spotlight', desc: 'Community Weekend Athlete Story' },
+      { src: 'assets/images/smm/walking-sneakers.jpg', title: 'Footwear & Recovery Aesthetics', desc: 'Lifestyle Product Feature Series' }
+    ],
+    deliverables: [
+      '24x Cinematic Short-Form Reels & TikTok Videos (4K Vertical 9:16)',
+      '12x High-Value Educational Fitness & Nutrition Carousel Slides',
+      'Curated Trending Audio Hooks & Viral Scripting Architecture',
+      'Daily Community Direct Message & Engagement Moderation',
+      'Bi-Weekly Follower Growth & Conversion Funnel Analytics'
+    ]
+  },
+  {
+    id: 15,
+    category: 'social',
+    categoryLabel: 'Social Media Management',
+    title: 'Aura Botanica Café Lifestyle & Aesthetic Social Architecture',
+    client: 'Aura Botanica Artisan Café & Roastery',
+    industry: 'Specialty Coffee, Modern Gastronomy & Hospitality Culture',
+    timeline: 'Ongoing Monthly Lifestyle Architecture',
+    tagline: 'Warm Earthy Aesthetic 9-Grid, Latte Art Reels & 4.2x Weekend Foot Traffic Lift',
+    tools: ['Adobe Lightroom', 'Photoshop', 'Canva Pro', 'Planoly', 'Meta Business Suite'],
+    ownership: '100% High-Res Lifestyle Photo Library & Master Feed Templates',
+    desc: 'Cohesive, warm aesthetic social media management featuring daily specialty coffee lifestyle photography, latte art reels, seasonal menu showcases, and community-driven storytelling.',
+    problem: 'Poor unedited mobile phone snapshots, irregular posting schedule, low engagement, and quiet afternoon foot traffic with zero digital brand identity.',
+    whatWeDid: 'Created an unmistakable warm-earthy Instagram feed aesthetic, professional on-site lifestyle photography, weekly behind-the-bar latte art Reels, interactive story polls, and local foodie influencer collabs.',
+    before: 'Dark inconsistent photos, 0.6% engagement, low weekday customer turnout.',
+    after: '+310% follower surge in 90 days, 4.2x weekend line foot traffic, featured on 8 regional coffee blogs.',
+    results: [
+      { num: '+310%', label: 'Organic Follower Surge' },
+      { num: '4.2x', label: 'Weekend Foot Traffic Lift' },
+      { num: '98%', label: 'Positive Brand Sentiment' }
+    ],
+    clientQuote: 'Our Instagram feed now feels like a warm, inviting magazine spread. Customers regularly walk in holding up their phones pointing directly to our posts to order!',
+    quoteAuthor: 'Elena Ross, Co-Founder at Aura Botanica Café',
+    image: 'assets/images/smm/coffee-reel.jpg',
+    metrics: '+310% Followers • 4.2x Foot Traffic',
+    gallery: [
+      { src: 'assets/images/smm/matcha-latte.jpg', title: 'Ceremonial Matcha Social Feature', desc: 'Curated Clean Lifestyle Still Life' },
+      { src: 'assets/images/smm/coffee-reel.jpg', title: 'Pour-Over & Latte Art Reel', desc: 'Sensory ASMR Brew Series' },
+      { src: 'assets/images/smm/healthy-bowl.jpg', title: 'Botanical Brunch Bowl Menu', desc: 'Seasonal Organic Culinary Post' },
+      { src: 'assets/images/smm/productivity-desk.jpg', title: 'Remote Work & Coffee Vibes', desc: 'Digital Nomad Community Story' }
+    ],
+    deliverables: [
+      '30x Monthly Curated Warm-Aesthetic Feed Posts & Carousels',
+      '8x High-Resolution Sensory Coffee & Barista Process Reels',
+      'Daily Interactive Instagram Story Sequences & Polls',
+      'Influencer Gifting & Micro-Creator Outreach Framework',
+      'Local Geo-Targeted Hashtags & Google Business Profile Sync'
+    ]
+  },
+  {
+    id: 16,
+    category: 'social',
+    categoryLabel: 'Social Media Management',
+    title: 'Verve Workspace B2B Thought Leadership & Creative Hub Engine',
+    client: 'Verve Modular Coworking & Creator Hub',
+    industry: 'Modern Coworking, Startup Hubs & Remote Tech Workspaces',
+    timeline: '45-Day B2B Social Repositioning Sprint',
+    tagline: 'High-Value Productivity Carousels, Founder Spotlights & +520% Inbound Leads',
+    tools: ['Figma', 'Photoshop', 'LinkedIn Creator Studio', 'Buffer', 'Brand Typography'],
+    ownership: '100% Branded Carousel System & Reusable Canva/Figma Templates',
+    desc: 'B2B social media strategy and thought leadership content ecosystem tailored for tech founders, creative agencies, and modern hybrid professionals across LinkedIn and Instagram.',
+    problem: 'Stale corporate posts about empty desks that sounded like generic real estate listings, failing to attract high-paying tech startup teams or private studio memberships.',
+    whatWeDid: 'Transformed their feed into a hub for startup productivity: crisp dark-mode typography carousels, founder spotlight video clips, remote-work workflow tips, and targeted community event promos.',
+    before: 'Generic empty office photos, zero corporate inquiries via social, 12 likes/post.',
+    after: '+520% inbound private office desk inquiries, 85k monthly social impressions, 98% occupancy reached.',
+    results: [
+      { num: '+520%', label: 'Inbound Private Desk Inquiries' },
+      { num: '85k', label: 'Monthly Social Impressions' },
+      { num: '98%', label: 'Hub Occupancy Achieved' }
+    ],
+    clientQuote: 'Create and Arise positioned Verve as the premier Silicon Valley-tier creator space in our city. We filled our private offices and event spaces within weeks.',
+    quoteAuthor: 'Christian Del Rosario, General Manager at Verve Hub',
+    image: 'assets/images/smm/laptop-workspace.jpg',
+    metrics: '+520% Inbound Leads • 85k Impressions',
+    gallery: [
+      { src: 'assets/images/smm/laptop-workspace.jpg', title: 'Executive Ergonomic Desk Suite', desc: 'Modern High-Focus Workspace Feature' },
+      { src: 'assets/images/smm/productivity-desk.jpg', title: 'Deep Work Habit Carousel', desc: 'Viral Slide Deck for Startup Founders' },
+      { src: 'assets/images/smm/hands-coffee.jpg', title: 'Creator Collaboration Moments', desc: 'Networking & Community Culture Asset' }
+    ],
+    deliverables: [
+      '20x Monthly Executive LinkedIn & Instagram Infographic Carousels',
+      'Resident Tech Founder Spotlight Video Snippets & Quotes',
+      'Branded Notion & Productivity Template Freebies for Lead Capture',
+      'Daily Strategic B2B Commenting & Tech Community Outreach',
+      'Monthly Inbound Lead Attribution & Pipeline Tracking'
+    ]
+  },
+  {
+    id: 17,
+    category: 'ads',
+    categoryLabel: 'Digital Ads Marketing',
+    title: 'Solaria Clean Skincare Multi-Channel Paid Acquisition Suite',
+    client: 'Solaria Clean Skincare Direct-to-Consumer',
+    industry: 'Direct-to-Consumer Clean Cosmetics & Botanical Beauty',
+    timeline: '60-Day Paid Acquisition & Funnel Sprint',
+    tagline: 'Hook-Driven UGC Video Ad Variations, Split-Testing Engine & 4.6x Blended ROAS',
+    tools: ['Meta Ads Manager', 'TikTok Ads Manager', 'Figma', 'Triple Whale', 'Shopify Plus'],
+    ownership: '100% Commercial Video Ad Masters, Raw Cuts & Hook Variations',
+    desc: 'High-converting omnichannel paid advertising campaign across Meta, TikTok, and Google featuring 24 video ad variations, before/after comparison statics, and landing page message matching.',
+    problem: 'Rising customer acquisition cost ($64 CAC) on Facebook ads due to severe creative fatigue, generic static graphics, and weak 1.1x ROAS eating into profit margins.',
+    whatWeDid: 'Produced 24 thumb-stopping UGC video ad concepts with psychological hook testing, designed comparison carousel ads, optimized mobile landing pages, and restructured ad account bid strategies.',
+    before: '$64 CAC, 1.1x unprofitable ROAS, ad fatigue in under 10 days.',
+    after: '4.6x blended ROAS, CAC reduced by 54% down to $29.40, +$180,000 net Q4 revenue generated.',
+    results: [
+      { num: '4.6x', label: 'Blended Paid ROAS' },
+      { num: '-54%', label: 'CAC Reduction ($64 → $29)' },
+      { num: '+$180k', label: 'Net Tracked Ad Revenue' }
+    ],
+    clientQuote: 'Their ad creatives completely revived our paid advertising. We saw our cost per acquisition plummet by half in the very first three weeks of running their creative test variants.',
+    quoteAuthor: 'Sophia Chen, Founder at Solaria Skincare',
+    image: 'assets/images/digital-ads.jpg',
+    metrics: '4.6x ROAS • -54% CAC Reduction',
+    gallery: [
+      { src: 'assets/images/digital-ads.jpg', title: 'Omnichannel Paid Campaign Suite', desc: 'Multi-Device High-ROAS Ad Creative Architecture' },
+      { src: 'assets/images/solaria-branding.jpg', title: 'Packaging & Product Visuals', desc: 'E-Commerce Hero Assets for Retargeting' }
+    ],
+    deliverables: [
+      '24x Hook-Driven Paid Video Creative Variations (Static & Motion)',
+      'High-Converting Mobile DTC Advertorial & Landing Page Design',
+      'Meta & TikTok Campaign Setup, Audience Segmentation & Scaling',
+      'Creative Fatigue Heatmap & Weekly Spend Efficiency Reports',
+      '100% Master Creative Files Handover'
+    ]
+  },
+  {
+    id: 18,
+    category: 'web',
+    categoryLabel: 'Web Design & Development',
+    title: 'Apex Global Capital Investor Relations & Venture Platform',
+    client: 'Apex Global Private Equity & Venture Capital',
+    industry: 'Institutional Venture Capital & Private Equity Portfolio',
+    timeline: '6-Week Bespoke Web Architecture Sprint',
+    tagline: 'Zero-Bloat Institutional Web Platform with 0.3s Global Edge Load & Dark Mode Glassmorphism',
+    tools: ['Figma', 'Semantic HTML5', 'Vanilla CSS3', 'JavaScript', 'Cloudflare Edge'],
+    ownership: '100% Clean Semantic Source Code & Master Figma UI Tokens',
+    desc: 'High-security editorial web platform engineered for an international venture capital firm, featuring interactive portfolio investments filtering, LP investor portal login, and sub-second load times.',
+    problem: 'Stuck with a sluggish WordPress site taking 7.2s to load, failing institutional security checks, and delivering a disjointed mobile experience to high-net-worth investors.',
+    whatWeDid: 'Engineered a bespoke, hand-coded frontend architecture with 0.3s edge loading, sleek obsidian dark-mode glassmorphism, dynamic portfolio filtering, and institutional compliance standards.',
+    before: '7.2s slow load, bloated plugins, poor mobile presentation for tier-1 fund managers.',
+    after: '0.3s sub-second edge load, 100/100 Core Web Vitals, 38 qualified institutional investor calls booked.',
+    results: [
+      { num: '0.3s', label: 'Global Edge Load Speed' },
+      { num: '100/100', label: 'Lighthouse Performance Score' },
+      { num: '38', label: 'Institutional LP Calls Booked' }
+    ],
+    clientQuote: 'The speed and architectural precision of our new web platform perfectly mirrors our investment standard. Our partners and institutional LPs were blown away.',
+    quoteAuthor: 'Arthur Pendelton, Managing Partner at Apex Global Capital',
+    image: 'assets/images/web-design.jpg',
+    metrics: '0.3s Speed • 100/100 Lighthouse',
+    gallery: [
+      { src: 'assets/images/web-design.jpg', title: 'Institutional Venture Desktop Experience', desc: 'Editorial Dark Mode Typography & Clean Glassmorphism' },
+      { src: 'assets/images/velocity-web.jpg', title: 'Portfolio Analytics Interface', desc: 'Interactive Venture Metric Dashboards' }
+    ],
+    deliverables: [
+      'Custom Bespoke Web Architecture (Zero Framework Bloat)',
+      'Interactive Venture Capital Portfolio Filtering Engine',
+      'Institutional SEO, OpenGraph Protocols & Security Hardening',
+      'Figma Master Component Library & Design Token System',
+      'Global Edge CDN Deployment with 100/100 Lighthouse Score'
+    ]
+  },
+  {
+    id: 19,
+    category: 'web',
+    categoryLabel: 'Web Design & Development',
+    title: 'Kinetics AI Enterprise Machine Learning Platform & Interface',
+    client: 'Kinetics Intelligence Lab (San Francisco • Tokyo)',
+    industry: 'Enterprise Artificial Intelligence & Neural Compute SaaS',
+    timeline: '5-Week Architecture & Frontend Sprint',
+    tagline: 'Ultra-Low Latency Neural Sandbox with 0.28s Vercel Edge Speed & Dark Mode Glassmorphism',
+    tools: ['Figma', 'Semantic HTML5', 'Vanilla CSS3', 'WebSockets', 'Vercel Edge Network'],
+    ownership: '100% Hand-Coded Web Architecture & Component Design System',
+    desc: 'High-throughput enterprise AI web application featuring real-time neural sandbox playground, API documentation suite, ARR pricing calculators, and sub-second edge deployment.',
+    problem: 'Bloated React framework template was dragging load speeds past 6.8 seconds, causing 52% bounce rates among senior engineers and CTOs evaluating their AI API.',
+    whatWeDid: 'Engineered an ultra-fast vanilla frontend with zero runtime bloat, interactive model latency testing widget, dark obsidian cyber-gold theme, and streamlined enterprise trial booking flows.',
+    before: '6.8s slow load time, 52% technical evaluation bounce rate, complicated navigation.',
+    after: '0.28s instant edge load speed (99/100 Core Web Vitals), 3.8x lift in developer API signups, $2.4M new enterprise ARR pipeline.',
+    results: [
+      { num: '0.28s', label: 'Global Edge Load Speed' },
+      { num: '3.8x', label: 'Developer Sign-Up Lift' },
+      { num: '+$2.4M', label: 'Enterprise ARR Pipeline' }
+    ],
+    clientQuote: 'Engineers love speed. Create and Arise delivered a blistering fast, aesthetically flawless developer platform that established our authority with Silicon Valley CTOs immediately.',
+    quoteAuthor: 'Dr. Kenji Sato, VP of Engineering at Kinetics Intelligence',
+    image: 'assets/images/promo-saas-ai.jpg',
+    metrics: '0.28s Edge Speed • 3.8x Signups',
+    gallery: [
+      { src: 'assets/images/promo-saas-ai.jpg', title: 'Neural Compute Dashboard', desc: 'Real-Time Telemetry & Throughput Monitor' },
+      { src: 'assets/images/web-design.jpg', title: 'Developer Documentation Portal', desc: 'Clean Minimalist API Reference Architecture' }
+    ],
+    deliverables: [
+      'Bespoke Hand-Coded Frontend Architecture (Zero Framework Bloat)',
+      'Interactive Live Machine Learning Sandbox Widget',
+      'Technical Developer Documentation & Code Playground Layout',
+      'Full Dark Mode Glassmorphism & Enterprise UI Design Tokens',
+      'Global Vercel Edge Deployment with 99/100 Core Web Vitals'
+    ]
+  },
+  {
+    id: 20,
+    category: 'ads',
+    categoryLabel: 'Digital Ads Marketing',
+    title: 'Chrono Swiss Precision Horology Multi-Channel Direct-Response Campaign',
+    client: 'Chrono Swiss Luxury Horology Atelier (Geneva)',
+    industry: 'Haute Horlogerie, Mechanical Chronographs & Luxury Timepieces',
+    timeline: '60-Day High-Ticket Acquisition Sprint',
+    tagline: 'High-Net-Worth Meta & Google Search Funnel Drove $580K in Direct Mechanical Timepiece Sales at 4.85x Blended ROAS',
+    tools: ['Meta Ads Manager', 'Google Search Ads', 'Figma', 'Klaviyo', 'Triple Whale'],
+    ownership: '100% Commercial Ad Assets, High-Ticket Funnel Scripts & Retargeting Blueprint',
+    desc: 'High-converting luxury performance campaign targeting high-net-worth collectors with cinematic watch movement macros, Swiss heritage copywriting, and white-glove concierge checkout funnels.',
+    problem: 'Struggling to sell $2,400+ luxury automatic watches online through generic product carousel ads, suffering from high cost per click and zero luxury prestige differentiation.',
+    whatWeDid: 'Engineered an ultra-premium direct response funnel: captured macro movement escapement mechanics, wrote prestige-driven founder copy, and built private VIP concierge scheduling landing pages.',
+    before: '$480 CAC, 1.1x ROAS, high bounce rate on generic Shopify store.',
+    after: '$580,000 in tracked luxury watch sales, blended ROAS climbed to 4.85x, and average order value increased to $2,850.',
+    results: [
+      { num: '$580K', label: 'Tracked Direct Sales' },
+      { num: '4.85x', label: 'Blended Ad Spend ROAS' },
+      { num: '$2,850', label: 'Average Order Value' }
+    ],
+    clientQuote: 'Create and Arise proved that fine Swiss mechanical watches can be successfully acquired through direct digital ads without degrading our luxury prestige.',
+    quoteAuthor: 'Philippe Mercier, Managing Director at Chrono Swiss',
+    image: 'assets/images/luxury-watch.jpg',
+    metrics: '$580K Sales • 4.85x Blended ROAS',
+    gallery: [
+      { src: 'assets/images/luxury-watch.jpg', title: 'Chronograph Macro Video Ad', desc: 'Swiss Movement Escapement & Sapphire Crystal Macro' },
+      { src: 'assets/images/digital-ads.jpg', title: 'High-Net-Worth Retargeting Matrix', desc: 'Multi-Variant Luxury Private Client Ad Suite' }
+    ],
+    deliverables: [
+      '16x High-Ticket Watch Movement Cinematography Ad Creatives',
+      'Prestige Copywriting Matrix for High-Net-Worth Collectors',
+      'Google Search Exact-Match Luxury Watch Intent Campaigns',
+      'Private VIP Concierge Checkout Funnel Architecture',
+      'Triple Whale First-Party Attribution & ROAS Dashboard'
+    ]
+  },
+  {
+    id: 21,
+    category: 'social',
+    categoryLabel: 'Social Media Management',
+    title: 'Soma Movement Lab Mindful Fitness Community & Content Hub',
+    client: 'Soma Pilates & Mindful Movement Studios',
+    industry: 'Boutique Pilates, Reformer Studios & Wellness Lifestyle',
+    timeline: 'Ongoing Monthly Social Architecture',
+    tagline: 'Sculpted Studio Aesthetics, Form-Correction Carousels & +390% Community Engagement',
+    tools: ['Adobe Lightroom', 'Photoshop', 'Canva Pro', 'Planoly', 'Meta Business Suite'],
+    ownership: '100% Curated Photo Asset Library & Master Instagram Templates',
+    desc: 'Editorial social media curation and organic community growth featuring serene studio photography, anatomical movement breakdown carousels, instructor spotlights, and retreat promos.',
+    problem: 'Sporadic, low-res smartphone gym photos with generic fitness quotes that failed to convey their luxury reformer studio experience or justify $45/class pricing.',
+    whatWeDid: 'Curated an ethereal neutral-toned Instagram grid, produced bi-weekly movement flow reels with calm audio, published educational posture carousels, and ran local studio influencer takeovers.',
+    before: 'Inconsistent feed, 0.4% engagement, half-empty morning beginner classes.',
+    after: '+390% community engagement surge, 28,000+ organic post saves, 100% studio class capacity booked out 3 weeks in advance.',
+    results: [
+      { num: '+390%', label: 'Community Engagement Surge' },
+      { num: '28k+', label: 'Organic Saves & Shares' },
+      { num: '100%', label: 'Class Booking Capacity' }
+    ],
+    clientQuote: 'Create and Arise gave our studio the luxury editorial aura it deserved. Our waitlists for classes have never been longer, all powered by our organic Instagram community.',
+    quoteAuthor: 'Maya Sterling, Founder & Lead Instructor at Soma Lab',
+    image: 'assets/images/smm/gym-weights.jpg',
+    metrics: '+390% Engagement • 28k Saves',
+    gallery: [
+      { src: 'assets/images/smm/gym-weights.jpg', title: 'Mindful Strength & Form Series', desc: 'Anatomical Precision Studio Carousel' },
+      { src: 'assets/images/smm/walking-sneakers.jpg', title: 'Recovery & Studio Lifestyle', desc: 'Clean Minimalist Aesthetic Social Asset' },
+      { src: 'assets/images/smm/gym-strength.jpg', title: 'Movement Flow Sequence', desc: 'Instructor Technique Demonstration Reel' }
+    ],
+    deliverables: [
+      '24x Monthly Curated Editorial Feed Assets & Form Carousels',
+      '6x High-Resolution Movement Flow & ASMR Studio Reels',
+      'Daily Class Schedule Highlights & Interactive Story Polls',
+      'Local Wellness Brand Collaborations & Cross-Promotions',
+      'Monthly Community Growth & Follower Conversion Analytics'
+    ]
+  },
+  {
+    id: 22,
+    category: 'branding',
+    categoryLabel: 'Graphics & Branding',
+    title: 'Vanguard Roasters Reserve Single-Origin Packaging & Merch Ecosystem',
+    client: 'Vanguard Specialty Roasters (Melbourne • Baguio)',
+    industry: 'Artisan Specialty Coffee, Retail Food & Wholesale Distribution',
+    timeline: '4-Week Comprehensive Brand & Packaging Sprint',
+    tagline: 'Embossed Foil Retail Shopping Bags, Roasted Bean Pouches & 3.5x Retail Perceived Value',
+    tools: ['Adobe Illustrator', 'Photoshop', 'Cinema 4D', 'Die-Line Engineering', 'Print Finishing'],
+    ownership: '100% Vector Packaging Blueprints & Commercial Master Rights',
+    desc: 'Artisan roastery visual identity and physical packaging suite featuring custom typography, gold-embossed matte paper carry bags, degassing-valve coffee pouches, and merchandise caps.',
+    problem: 'Exceptional highland specialty coffee beans were held back by standard brown generic bags with paper stickers, limiting wholesale café adoption and retail shelf pricing to $7.',
+    whatWeDid: 'Crafted a bespoke luxury roastery identity: custom serif crest emblem, tactile matte white and black foil shopping bags, origin-certified roast labels, and premium embroidered barista caps.',
+    before: 'Generic packaging, uninspired branding, unable to secure high-end café accounts.',
+    after: 'Onboarded into 24 premium partner cafés across two regions, raised retail bag price to $24.50 (3.5x lift), +280% holiday gift sales.',
+    results: [
+      { num: '3.5x', label: 'Retail Price Point ($7 → $24.50)' },
+      { num: '24', label: 'Partner Cafés Onboarded' },
+      { num: '100%', label: 'Vector Production Blueprints' }
+    ],
+    clientQuote: 'Our packaging now matches the world-class quality of our roast. Wholesale café owners immediately took our brand seriously as a top-shelf luxury option.',
+    quoteAuthor: 'Liam Thorne, Head Roaster at Vanguard Specialty',
+    image: 'assets/Mock ups/7.png',
+    metrics: '3.5x Retail Lift • 24 Partner Cafés',
+    gallery: [
+      { src: 'assets/Mock ups/7.png', title: 'Matte White Luxury Shopper Bag', desc: 'Gold Foil Stamped Roastery Carry Bag' },
+      { src: 'assets/Mock ups/5.png', title: 'Takeout Emblem Hot Cup', desc: 'Matte Black 2025 Gold Monogram Cup' },
+      { src: 'assets/Mock ups/2.png', title: 'Kraft Handled Boutique Bags', desc: 'Artisan Retail Merchandise Packaging' }
+    ],
+    deliverables: [
+      'Master Roastery Crest & Monogram Suite (AI, SVG, EPS, PDF)',
+      'Custom Gusseted Coffee Bag Die-Lines with Degassing Valve Specs',
+      'Matte Foil-Stamped Retail Shopping Bags & Carry Packs',
+      'Barista Merchandise Suite (Embroidered Caps, Aprons, Mugs)',
+      '100% Print-Ready Vector Blueprints for Factory Production'
+    ]
+  },
+  {
+    id: 23,
+    category: 'web',
+    categoryLabel: 'Web Design & Development',
+    title: 'Estate Prime High-Net-Worth Private Real Estate Portal',
+    client: 'Estate Prime Luxury Properties (Zurich • Bali)',
+    industry: 'Ultra-Luxury Residential Real Estate & Private Island Sales',
+    timeline: '5-Week Editorial Web Architecture Sprint',
+    tagline: 'Full-Screen Architectural Cinematic Tours, Private VIP Inquiry Engine & 0.35s Speed',
+    tools: ['Figma', 'Semantic HTML5', 'Vanilla CSS3', 'JavaScript', 'Cloudflare CDN'],
+    ownership: '100% Hand-Coded Frontend Codebase & Master Component UI Kit',
+    desc: 'Editorial luxury real estate digital platform showcasing multimillion-dollar villas and estates with cinematic full-screen galleries, interactive floorplan viewer, and encrypted VIP buyer consultation scheduling.',
+    problem: 'Outdated, sluggish real estate template burdened by slow MLS plugins that crashed on mobile and failed to impress international ultra-high-net-worth property buyers.',
+    whatWeDid: 'Engineered a bespoke editorial showcase with 0.35s instant loading, full-bleed retina photography grids, interactive property feature sliders, and discrete private showing booking flows.',
+    before: 'Slow 7.5s load time, clunky mobile browsing, 0 digital international buyer inquiries.',
+    after: '0.35s sub-second edge load, 99.8% mobile responsiveness score, €14.5M in qualified private showing inquiries generated in 90 days.',
+    results: [
+      { num: '0.35s', label: 'Sub-Second Global Edge Load' },
+      { num: '€14.5M', label: 'Qualified Buyer Pipeline' },
+      { num: '99.8%', label: 'Mobile Performance Score' }
+    ],
+    clientQuote: 'The website exudes the quiet luxury our clientele expects. It functions like an elite private architectural catalog, creating instant trust with multi-million euro investors.',
+    quoteAuthor: 'Dominic Van Der Bilt, Managing Director at Estate Prime',
+    image: 'assets/images/luxury-estate.jpg',
+    metrics: '0.35s Load • €14.5M Pipeline',
+    gallery: [
+      { src: 'assets/images/luxury-estate.jpg', title: 'Luxury Villa Architectural Showcase', desc: 'Full-Bleed Modernist Editorial Web Layout' },
+      { src: 'assets/images/web-design.jpg', title: 'Private Buyer Inquiry Portal', desc: 'Secure High-Net-Worth VIP Booking Interface' }
+    ],
+    deliverables: [
+      'Custom Editorial Real Estate Web Architecture (Zero Bloat)',
+      'Dynamic High-Resolution Property Showcase & Filter Engine',
+      'Interactive 3D Spatial Floorplan & Feature Highlights',
+      'Encrypted Private VIP Buyer Consultation Scheduling Flow',
+      '100% Mobile & Retina Display Global Optimization'
+    ]
+  },
+  {
+    id: 24,
+    category: 'ads',
+    categoryLabel: 'Digital Ads Marketing',
+    title: 'OuraCore Biometric Smart Ring Omnichannel Meta & Google Performance Sprint',
+    client: 'OuraCore Biometric Wearables & Health Tech',
+    industry: 'Health Tech, Biometric Smart Rings & Sleep Optimization Hardware',
+    timeline: '90-Day Omnichannel Scale Campaign',
+    tagline: 'Dual Meta & Google Ad Funnel Generated 8,200 Hardware Orders at 4.42x ROAS with -$32 CPA Reduction',
+    tools: ['Meta Ads Manager', 'Google Ads Performance Max', 'TikTok Ads', 'Figma', 'Triple Whale'],
+    ownership: '100% Commercial Ad Assets, Video Hooks & Landing Page Frameworks',
+    desc: 'High-velocity digital advertising campaign scaling direct hardware sales across Meta, Google PMax, and YouTube Shorts through scientific proof and biohacker creator hooks.',
+    problem: 'Entering a hardware market dominated by venture-backed incumbents, struggling with a prohibitive $110 customer acquisition cost that made scaling impossible.',
+    whatWeDid: 'Rebuilt the acquisition engine around circadian health benefits: produced split-screen sleep score comparison creatives, launched titanium durability stress tests, and deployed dynamic sizing kit quiz funnels.',
+    before: '$110 CPA, negative cashflow on paid ads, low click-through rate (0.9%).',
+    after: '8,200 units sold in 90 days, CPA reduced by $32 to $78, achieving a sustained 4.42x blended ROAS across all channels.',
+    results: [
+      { num: '8,200', label: 'Smart Rings Sold' },
+      { num: '4.42x', label: 'Blended Ad ROAS' },
+      { num: '-$32', label: 'CPA Reduction' }
+    ],
+    clientQuote: 'The ad creatives were scientific yet deeply emotionally compelling. We scaled our hardware shipments by 300% without seeing any drop in ROAS.',
+    quoteAuthor: 'Dr. Aris Thorne, CEO & Co-Founder of OuraCore',
+    image: 'assets/images/smart-ring.jpg',
+    metrics: '8.2K Units • 4.42x Blended ROAS',
+    gallery: [
+      { src: 'assets/images/smart-ring.jpg', title: 'Titanium Smart Ring Hero Ad', desc: 'Biometric Sleep & HRV Tracking Creative' },
+      { src: 'assets/images/digital-ads.jpg', title: 'Omnichannel Performance Blueprint', desc: 'Multi-Variant Meta & Google PMax Funnel Matrix' }
+    ],
+    deliverables: [
+      '24x High-Converting Hardware Video Ad Variations',
+      'Interactive Ring Sizing Quiz Funnel Page Architecture',
+      'Google Performance Max Feed Optimization & Assets',
+      'Circadian Biohacking UGC Creator Scripting Matrix',
+      'First-Party Server-Side Conversion API Setup'
+    ]
+  },
+  {
+    id: 25,
+    category: 'social',
+    categoryLabel: 'Social Media Management',
+    title: 'Harvest & Hearth Farm-to-Table Culinary Social Ecosystem',
+    client: 'Harvest & Hearth Organic Culinary Collective',
+    industry: 'Farm-to-Table Gastronomy, Organic Produce & Artisanal Dining',
+    timeline: 'Ongoing Monthly Social Architecture',
+    tagline: 'Sensory Culinary ASMR Reels, Chef Process Storytelling & +280% Table Reservation Surge',
+    tools: ['Adobe Premiere Pro', 'Lightroom', 'CapCut Pro', 'Meta Business Suite', 'OpenTable Sync'],
+    ownership: '100% Curated Food Photography Library & Master Reel Assets',
+    desc: 'Artisanal culinary social media management featuring daily farm-to-table behind-the-scenes reels, plating tutorials, seasonal harvest announcements, and direct table reservation integrations.',
+    problem: 'Relying solely on word-of-mouth with a neglected social profile featuring blurry customer reposts, resulting in sluggish weekday dinner reservations and low brand awareness.',
+    whatWeDid: 'Produced a weekly schedule of ASMR sizzle and harvest video reels, clean rustic photography of signature seasonal dishes, chef commentary, and an integrated reservation booking link in bio.',
+    before: 'Neglected feed, 0.5% engagement, empty Tuesday-Thursday dinner tables.',
+    after: '+280% reservation surge, 65,000+ organic video shares, fully booked weekend seatings 4 weeks in advance.',
+    results: [
+      { num: '+280%', label: 'Table Reservation Lift' },
+      { num: '65k+', label: 'Organic Video Shares' },
+      { num: '99%', label: 'Weekend Seating Occupancy' }
+    ],
+    clientQuote: 'Our social media transformed into our primary booking engine. Guests fly in from across the region specifically citing our seasonal harvest videos on Instagram.',
+    quoteAuthor: 'Chef Mateo Alcantara, Executive Chef at Harvest & Hearth',
+    image: 'assets/images/smm/healthy-bowl.jpg',
+    metrics: '+280% Bookings • 65k Shares',
+    gallery: [
+      { src: 'assets/images/smm/healthy-bowl.jpg', title: 'Farm-Fresh Culinary Showcase', desc: 'Organic Superfood Plating Social Post' },
+      { src: 'assets/images/smm/coffee-reel.jpg', title: 'Artisanal Beverage Craft', desc: 'Behind-The-Counter Sensory Social Reel' },
+      { src: 'assets/images/smm/productivity-desk.jpg', title: 'Morning Kitchen Prep Story', desc: 'Chef Recipe Philosophy & Harvest Notes' }
+    ],
+    deliverables: [
+      '24x Monthly High-Definition Food & Farm Lifestyle Feed Assets',
+      '8x Cinematic ASMR Kitchen Preparation & Plating Reels',
+      'Daily Stories Featuring Daily Specials & Producer Spotlights',
+      'OpenTable & Google Business Reservation Flow Optimization',
+      'Monthly Dining Demographic & Reservation Conversion Reporting'
+    ]
+  },
+  {
+    id: 26,
+    category: 'branding',
+    categoryLabel: 'Graphics & Branding',
+    title: 'Thynk Unlimited Luxury Apparel Identity & Garment Merch Suite',
+    client: 'Thynk Unlimited Heavyweight Streetwear Lab',
+    industry: 'Premium Streetwear, Heavyweight Garments & Textile Design',
+    timeline: '4-Week Comprehensive Garment Identity Sprint',
+    tagline: 'Debossed Heavyweight Garment Hangtags, Woven Neck Labels & 100% Vector Blueprint Handover',
+    tools: ['Adobe Illustrator', 'Photoshop', 'Textile Die-Line Specs', 'Pantone TCX', 'Screenprint Vectors'],
+    ownership: '100% Commercial Vector Source Rights (AI, SVG, PDF) & Factory Specs',
+    desc: 'Complete garment branding and physical merchandise identity for an architectural streetwear label, featuring blind-debossed hangtags, woven damask neck labels, silicone patch specs, and typography systems.',
+    problem: 'Premium 500 GSM heavyweight garments were undermined by generic off-the-shelf paper tags and cheap thermal stickers that damaged the perceived value of $140 hoodies.',
+    whatWeDid: 'Engineered a bespoke garment trim package: thick 800 GSM black core hangtags with metallic bronze eyelets, custom woven damask neck labels, laser-etched silicone badges, and polybag packaging graphics.',
+    before: 'Cheap stock tags, low perceived quality, return rate of 18% due to unboxing letdown.',
+    after: 'Sold out 12,000 units on launch day, unboxing return rate dropped below 2%, average order value expanded by 45%.',
+    results: [
+      { num: '12k', label: 'Units Sold on Launch Day' },
+      { num: '<2%', label: 'Unboxing Return Rate' },
+      { num: '100%', label: 'Factory-Certified Blueprints' }
+    ],
+    clientQuote: 'The garment trim package made our pieces feel like Balenciaga or Fear of God. Every hangtag, neck label, and care tag screamed obsessive high fashion craftsmanship.',
+    quoteAuthor: 'Marcus Sterling, Founder & Creative Director at Thynk Unlimited',
+    image: 'assets/Mock ups/6.png',
+    metrics: '12k Units Sold • 100% Vector Rights',
+    gallery: [
+      { src: 'assets/Mock ups/6.png', title: 'Luxury Apparel Hangtag Suite', desc: '800 GSM Heavyweight Matte Garment Tag with Bronze Eyelet' },
+      { src: 'assets/Mock ups/8.png', title: 'Apparel Signature Tee Packaging', desc: 'Folded Branded T-Shirt Presentation' },
+      { src: 'assets/Mock ups/1.png', title: 'Embroidered Scripture Merch Cap', desc: 'High-Density Stitching Textile Specification' }
+    ],
+    deliverables: [
+      'Master Streetwear Logo & Monogram Vector Suite (AI, EPS, SVG, PDF)',
+      '800 GSM Custom Die-Cut Hangtag Specifications with Foil Finishes',
+      'High-Density Woven Damask Neck Label & Wash Care Label Blueprints',
+      'Silicone & Laser-Cut Patch Artwork for Heavyweight Fleece',
+      'Full Commercial Rights & Factory-Ready Print Handoff'
+    ]
+  },
+  {
+    id: 27,
+    category: 'web',
+    categoryLabel: 'Web Design & Development',
+    title: 'Nexus Web3 DeFi Institutional Protocol Interface & Portal',
+    client: 'Nexus Decentralized Protocol & Venture Labs',
+    industry: 'Decentralized Finance, Blockchain Infrastructure & Web3 Security',
+    timeline: '6-Week High-Security Frontend & Design Sprint',
+    tagline: 'Ultra-Secure Clean Frontend, Live WebSockets Pricing Feeds & 0.32s Edge Performance',
+    tools: ['Figma', 'Semantic HTML5', 'Vanilla CSS3', 'JavaScript', 'WebSockets API'],
+    ownership: '100% Hand-Crafted Codebase & Figma Design Tokens (Zero Bloat)',
+    desc: 'Institutional-grade Web3 decentralized application interface engineered with lightning-fast vanilla code, featuring live liquidity pool monitors, wallet connect workflows, and real-time order routing.',
+    problem: 'Previous Web3 template was bloated with 14MB of redundant npm packages, lagging on mobile browsers and suffering from wallet connection timeouts that lost institutional liquidity providers.',
+    whatWeDid: 'Rebuilt the interface from the ground up using ultra-lean semantic HTML5 and vanilla JavaScript, integrated sub-second WebSockets price feeds, dark cyberpunk glassmorphism, and seamless wallet onboarding.',
+    before: '14MB bloated bundle, 6.4s load time, high drop-off during wallet connection.',
+    after: '0.32s instant edge load speed, zero runtime framework latency, $45M in total value locked (TVL) onboarded in 60 days.',
+    results: [
+      { num: '0.32s', label: 'Edge Load Speed' },
+      { num: '$45M', label: 'Total Value Locked (TVL)' },
+      { num: '99/100', label: 'Lighthouse Security & Speed' }
+    ],
+    clientQuote: 'Web3 users demand instantaneous response times. Create and Arise delivered a blazing fast, institutional-grade interface that handled millions in transaction volume flawlessly.',
+    quoteAuthor: 'Viktor Reznov, Lead Core Developer at Nexus Protocol',
+    image: 'assets/images/hero-agency.jpg',
+    metrics: '0.32s Speed • $45M TVL Onboarded',
+    gallery: [
+      { src: 'assets/images/hero-agency.jpg', title: 'Protocol Interface Overview', desc: 'Dark Cyberpunk Glassmorphism & High-Security UI' },
+      { src: 'assets/images/velocity-web.jpg', title: 'Real-Time Telemetry Interface', desc: 'WebSockets Liquidity Pool Visualizer' }
+    ],
+    deliverables: [
+      'Ultra-Lean Frontend Architecture with Zero Framework Overhead',
+      'Real-Time WebSockets Financial Ticker & Liquidity Monitor',
+      'Web3 Wallet Connection Integration (MetaMask, WalletConnect)',
+      'Figma Master Component Library & Institutional Design System',
+      'Global Edge CDN Deployment with 99/100 Core Web Vitals'
+    ]
+  },
+  {
+    id: 28,
+    category: 'ads',
+    categoryLabel: 'Digital Ads Marketing',
+    title: 'Strata Cloud B2B Enterprise LinkedIn & Search Acquisition',
+    client: 'Strata Cloud Workflow & Automation Suite',
+    industry: 'Enterprise B2B SaaS, Cloud Automation & DevOps Tools',
+    timeline: '60-Day Enterprise Lead Generation Sprint',
+    tagline: 'High-Intent B2B Retargeting Funnel Generated 180+ Enterprise Demo Bookings at 3.9x Pipeline ROAS',
+    tools: ['LinkedIn Campaign Manager', 'Google Search Ads', 'Figma', 'HubSpot CRM', 'Leadfeeder'],
+    ownership: '100% Commercial Ad Assets, Copy Matrix & Lead Funnel Blueprints',
+    desc: 'Targeted B2B performance advertising campaign across LinkedIn Sponsored Content and Google Search intent keywords, driving C-level tech decision makers into high-converting product demo funnels.',
+    problem: 'Wasting $24,000/month on generic broad-match Google ads with low intent, resulting in an unsustainable $280 cost per qualified sales demo and zero Fortune 500 engagement.',
+    whatWeDid: 'Restructured the B2B acquisition funnel: designed compelling statistic-backed carousel ads for LinkedIn, wrote exact-match search ad copy targeting enterprise pain points, and engineered interactive ROI calculator landing pages.',
+    before: '$280 cost per demo, poor lead qualification, low sales pipeline velocity.',
+    after: '180+ qualified enterprise demo bookings in 60 days, cost per demo reduced to $94, generating 3.9x tracked sales pipeline return.',
+    results: [
+      { num: '180+', label: 'Enterprise Demos Booked' },
+      { num: '-66%', label: 'Cost Per Demo ($280 → $94)' },
+      { num: '3.9x', label: 'Pipeline ROAS Return' }
+    ],
+    clientQuote: 'Create and Arise transformed our B2B lead generation. We went from chasing unqualified clicks to speaking directly with CTOs and enterprise directors every single week.',
+    quoteAuthor: 'Samantha Wei, VP of Demand Generation at Strata Cloud',
+    image: 'assets/images/smm/productivity-desk.jpg',
+    metrics: '180+ Demos • 3.9x Pipeline ROAS',
+    gallery: [
+      { src: 'assets/images/smm/productivity-desk.jpg', title: 'Executive Workflow Ad Suite', desc: 'High-Intent Enterprise Productivity Creative' },
+      { src: 'assets/images/digital-ads.jpg', title: 'Multi-Variant B2B Funnel Matrix', desc: 'LinkedIn Carousel & Search Ad Architecture' }
+    ],
+    deliverables: [
+      '24x B2B Carousel & Static LinkedIn Ad Creative Sets',
+      'Exact-Match Google Search Campaign Keyword & Ad Copy Matrix',
+      'Interactive ARR & Cloud ROI Calculator Landing Funnel Layout',
+      'HubSpot CRM & Lead Attribution Tracking Architecture',
+      'Weekly Pipeline Velocity & Qualified Opportunity Reports'
+    ]
+  },
+  {
+    id: 29,
+    category: 'social',
+    categoryLabel: 'Social Media Management',
+    title: 'Ceremony Kyoto Matcha Bar Viral TikTok & Aesthetic Reels Curation',
+    client: 'Ceremony Kyoto Matcha Bar & Botanical Tea Guild',
+    industry: 'Specialty Japanese Tea, Ceremonial Grade Matcha & Lifestyle Cafe',
+    timeline: '90-Day Organic Viral Content Sprint',
+    tagline: 'Sensory Micro-Pour Reels & ASMR Whisking Generated 4.2M Organic Impressions & Daily 45-Minute Cafe Queues',
+    tools: ['Instagram Reels', 'TikTok', 'CapCut Pro', 'Canva Pro', 'Figma', 'Meta Business Suite'],
+    ownership: '100% Commercial Source Rights Handover & Video Assets',
+    desc: 'Bespoke short-form video strategy highlighting ceremonial grade tea rituals, calming ASMR whisking audio, and minimalist Japanese cafe aesthetics.',
+    problem: 'Opening a specialty matcha bar in a competitive urban neighborhood with slow initial customer footfall and zero organic TikTok traction despite high-grade artisanal tea.',
+    whatWeDid: 'Crafted a sensory short-form video strategy: filmed 4K macro whisking ASMR reels, launched daily latte art transition videos, scripted educational matcha grading guides, and designed a cohesive sage-green Instagram feed.',
+    before: 'Under 500 impressions/week, empty morning hours, stagnant follower growth.',
+    after: '4.2M+ viral TikTok & Instagram impressions, 45-minute daily lines outside the cafe, +380% walk-in beverage sales.',
+    results: [
+      { num: '4.2M+', label: 'Organic Video Views' },
+      { num: '+380%', label: 'Walk-In Beverage Sales' },
+      { num: '19.4%', label: 'Average Save & Share Rate' }
+    ],
+    clientQuote: 'Create and Arise captured our craft with such reverence and artistry. Our reels went completely viral, and people travel across cities just to visit our matcha bar.',
+    quoteAuthor: 'Kenji & Mei Takahashi, Founders of Ceremony Matcha',
+    image: 'assets/images/smm/matcha-latte.jpg',
+    metrics: '4.2M Views • +380% Footfall',
+    gallery: [
+      { src: 'assets/images/smm/matcha-latte.jpg', title: 'Ceremonial Whisking ASMR', desc: '4K Macro Pour & Micro-Foam Texture Reel' },
+      { src: 'assets/images/smm/coffee-reel.jpg', title: 'Cafe Aesthetics 9-Grid', desc: 'Minimalist Sage & Earth Feed Curation' }
+    ],
+    deliverables: [
+      '24x High-Definition Short-Form TikTok & Instagram Reels',
+      'Curated Wabi-Sabi Aesthetic 9-Grid Feed Blueprint',
+      'Viral Hook Scripting & Trend Audio Syncing Matrix',
+      'Daily Community Engagement & DM Customer Service',
+      'Monthly Viral Analytics & Retention Growth Reports'
+    ]
+  },
+  {
+    id: 30,
+    category: 'social',
+    categoryLabel: 'Social Media Management',
+    title: 'Aethel Minimalist Workspace Daily Creator Content & Desk Reels',
+    client: 'Aethel Workspace Gear & Desk Setup Laboratory',
+    industry: 'Minimalist Ergonomics, Mechanical Keyboards & Creator Workspaces',
+    timeline: '60-Day Tech Creator Growth Retainer',
+    tagline: 'Clean Desk Aesthetic Carousels & Sound-Design Reels Drove 120K New Followers & 8.4x Bio Link Clicks',
+    tools: ['Instagram Reels', 'TikTok', 'CapCut Pro', 'Lightroom Mobile', 'Figma', 'Notion'],
+    ownership: '100% Commercial Source Rights Handover & Video Assets',
+    desc: 'High-production desk setup transformations, mechanical keyboard sound checks, and minimalist productivity carousels positioning Aethel as the premier workspace brand.',
+    problem: 'Selling premium $180 desk mats and aluminum laptop stands with standard commercial product photos that generated near-zero engagement on Instagram and TikTok.',
+    whatWeDid: 'Transformed their feed into a digital sanctuary for creators: filmed satisfying ASMR keyboard typing reels, curated minimalist dual-monitor desk transformations, and designed carousel guides on deep-work routines.',
+    before: 'Low engagement rate (0.8%), high ad dependency, flat organic website traffic.',
+    after: '120K+ new organic tech followers, 8.4x increase in bio link store clicks, and 3 sold-out desk mat collection drops.',
+    results: [
+      { num: '120K+', label: 'Organic Tech Followers' },
+      { num: '8.4x', label: 'Bio Link Store Clicks' },
+      { num: '1.2M', label: 'Average Monthly Reach' }
+    ],
+    clientQuote: 'The aesthetic quality is mind-blowing. Create and Arise understood our community culture down to the exact typing sounds and golden hour lighting.',
+    quoteAuthor: 'Marcus Vance, Product Lead at Aethel Workspace',
+    image: 'assets/images/smm/desk_laptop_coffee_1791823735947.jpg',
+    metrics: '120K Followers • 8.4x Bio Clicks',
+    gallery: [
+      { src: 'assets/images/smm/desk_laptop_coffee_1791823735947.jpg', title: 'Workspace ASMR Routine', desc: 'Mechanical Keyboard Typing & Coffee Flow' },
+      { src: 'assets/images/smm/productivity-desk.jpg', title: 'Deep Work Carousel Guide', desc: 'Educational 10-Slide Focus Routine' }
+    ],
+    deliverables: [
+      '20x 4K Cinematic Desk Setup Video Reels & Sound Bites',
+      '10x High-Save Educational Ergonomic Carousels',
+      'Weekly Instagram Story Interactive AMA & Desk Polls',
+      'Custom Aesthetic Filter & Color Grading LUT Package',
+      'Affiliate Creator Outreach & Content Collaboration Briefs'
+    ]
+  },
+  {
+    id: 31,
+    category: 'social',
+    categoryLabel: 'Social Media Management',
+    title: 'Summit Athletics High-Altitude Trail & Outdoor Reels Series',
+    client: 'Summit Athletics & High-Altitude Trail Collective',
+    industry: 'Outdoor Technical Apparel, Mountain Trail Running & Adventure Gear',
+    timeline: '4-Month Mountain Content Campaign',
+    tagline: 'Cinematographic Mountain Trail Short-Form Content Positioned Brand as Top Mountain Gear Community',
+    tools: ['GoPro Hero12', 'CapCut Pro', 'Instagram Reels', 'TikTok', 'Figma', 'Sprout Social'],
+    ownership: '100% Commercial Source Rights Handover & Video Assets',
+    desc: 'Rugged high-altitude running reels, waterproof gear stress-test clips, and inspiring mountain athlete stories building an elite outdoor community.',
+    problem: 'Struggling to stand out against incumbent mega-brands in trail running without spending hundreds of thousands in traditional billboard advertising.',
+    whatWeDid: 'Produced high-adrenaline vertical video campaigns on ridge trails, captured waterproof gear torture tests in mountain rainfall, and curated user-generated summit photos.',
+    before: 'Fragmented brand voice, low community participation, stagnant reels view counts.',
+    after: '3.2M organic impressions across outdoor runner hashtags, +92K community members, and a 94% positive community sentiment score.',
+    results: [
+      { num: '3.2M', label: 'Mountain Trail Views' },
+      { num: '+92K', label: 'Active Trail Community' },
+      { num: '94%', label: 'Positive Brand Sentiment' }
+    ],
+    clientQuote: 'Every video makes you want to lace up and climb a mountain. Create and Arise gave Summit Athletics an authentic, rugged soul online.',
+    quoteAuthor: 'Christian Thorne, Founder of Summit Athletics',
+    image: 'assets/images/smm/mountain-runner.jpg',
+    metrics: '+92K Community • 3.2M Reach',
+    gallery: [
+      { src: 'assets/images/smm/mountain-runner.jpg', title: 'Alpine Ridge Sprint POV', desc: 'Cinematic High-Altitude Trail Run Video' },
+      { src: 'assets/images/smm/walking-sneakers.jpg', title: 'Vibram Grip Breakdown Carousel', desc: 'Technical Mountain Footwear Review' }
+    ],
+    deliverables: [
+      '16x High-Adrenaline Vertical Mountain Trail Clips',
+      '8x Multi-Slide Technical Gear Anatomy Carousels',
+      'Bi-Weekly Community Trail Challenge Story Prompts',
+      'Curated User-Generated Content Repost Engine',
+      'Audience Demographics & Elevation Engagement Metrics'
+    ]
+  },
+  {
+    id: 32,
+    category: 'social',
+    categoryLabel: 'Social Media Management',
+    title: 'Strada Urban Footwear Drops & Street-Style Community Grid',
+    client: 'Strada Footwear Co. (Contemporary Sneaker Brand)',
+    industry: 'Sustainable Lifestyle Sneakers & Contemporary Streetwear Footwear',
+    timeline: '90-Day Sneaker Drop Launch Retainer',
+    tagline: 'Street-Style POV Reels & Sneaker Styling Carousels Drove 3 Sold-Out Seasonal Launches in Under 24h',
+    tools: ['Instagram Reels', 'TikTok', 'CapCut Pro', 'Lightroom Mobile', 'Canva Pro', 'Later'],
+    ownership: '100% Commercial Source Rights Handover & Video Assets',
+    desc: 'Urban pavement walk cycles, on-foot styling carousels, and minimalist sneaker unboxings driving massive organic hype for seasonal footwear drops.',
+    problem: 'Launching a new sustainable sneaker line with intense competition from fast-fashion brands and zero established social proof.',
+    whatWeDid: 'Engineered a street-style video framework: filmed low-angle pavement walk tests, created 7-day outfit styling guides, and orchestrated limited drop countdown stories with VIP DM links.',
+    before: 'Overlooked product launches, low follower retention, high refund inquiries.',
+    after: '3 consecutive seasonal drops sold out in under 24 hours, average reel engagement climbed to 14.8%, and gained +65K Gen-Z followers.',
+    results: [
+      { num: '3x', label: 'Sold-Out Launches (<24h)' },
+      { num: '14.8%', label: 'Average Reel Engagement' },
+      { num: '+65K', label: 'Gen-Z Footwear Followers' }
+    ],
+    clientQuote: 'Our sneaker drops feel like cultural moments now. The styling reels are effortlessly cool and directly converted into instant sell-outs.',
+    quoteAuthor: 'Elena Cruz, Creative Director at Strada Footwear',
+    image: 'assets/images/smm/walking-sneakers.jpg',
+    metrics: '3 Sold-Out Drops • 14.8% Engagement',
+    gallery: [
+      { src: 'assets/images/smm/walking-sneakers.jpg', title: 'Street-Level Pavement Walk', desc: 'Low-Angle Sneaker Movement & Flexibility' },
+      { src: 'assets/images/smm/desk_productivity_journal_1791823682257.jpg', title: 'Recycled Box Unboxing ASMR', desc: 'Eco-Craft Packaging Reveal Video' }
+    ],
+    deliverables: [
+      '24x Street-Level On-Foot Video Reels & Transitions',
+      '12x 7-Day Outfit Styling Carousels for Sneakerheads',
+      'Interactive VIP Drop Countdown Story Sequences',
+      'Influencer Gifting Social Briefs & Repost Management',
+      'Drop Conversion Tracking & Viral Audio Trend Analysis'
+    ]
+  },
+  {
+    id: 33,
+    category: 'social',
+    categoryLabel: 'Social Media Management',
+    title: 'Hydra Core Functional Hydration TikTok Challenge & UGC Engine',
+    client: 'Hydra Core Performance Hydration & Flasks',
+    industry: 'Eco-Friendly Insulated Flasks & Daily Functional Wellness',
+    timeline: '60-Day TikTok Viral Challenge',
+    tagline: 'Viral #HydrateDaily TikTok Trend Drove 8.7M Hashtag Views & Scaled Monthly DTC Flask Orders by +245%',
+    tools: ['TikTok', 'Instagram Reels', 'CapCut Pro', 'Canva Pro', 'Figma', 'Hootsuite'],
+    ownership: '100% Commercial Source Rights Handover & Video Assets',
+    desc: 'High-impact temperature ice-drop experiments, aesthetic gym-bag essentials reels, and community hydration tracking challenges.',
+    problem: 'Selling durable stainless steel flasks that looked like dozens of competitors on Amazon, generating zero emotional brand affinity or viral interest.',
+    whatWeDid: 'Launched the #HydrateDaily challenge: created dynamic ice-cube drop test videos, daily water habit carousels, and partnered with fitness micro-creators for authentic day-in-the-life features.',
+    before: 'Flat DTC sales, Amazon price war pressure, near-zero branded hashtag usage.',
+    after: '8.7M hashtag impressions on TikTok, +245% jump in direct DTC bottle sales, and over 42,000 user-submitted stitch videos.',
+    results: [
+      { num: '8.7M', label: 'TikTok Hashtag Impressions' },
+      { num: '+245%', label: 'Direct DTC Online Orders' },
+      { num: '42K', label: 'User Stitch Submissions' }
+    ],
+    clientQuote: 'Our bottles became an everyday fashion accessory on TikTok. Create and Arise turned a simple water bottle into a viral lifestyle phenomenon.',
+    quoteAuthor: 'Liam Gallagher, Co-Founder of Hydra Core',
+    image: 'assets/images/smm/water-bottle.jpg',
+    metrics: '8.7M #Tag Views • +245% Orders',
+    gallery: [
+      { src: 'assets/images/smm/water-bottle.jpg', title: 'Ice-Drop Thermal Test Reel', desc: '24-Hour Ice Retention Proof Video' },
+      { src: 'assets/images/smm/gym-weights.jpg', title: 'Everyday Gym Carry Carousel', desc: 'Color-Matched Hydration & Fitness Gear' }
+    ],
+    deliverables: [
+      '18x High-Retention TikTok Video Shorts & Ice Tests',
+      'Official #HydrateDaily Brand Challenge Creative Assets',
+      '8x Educational Hydration Science Infographic Carousels',
+      'Daily TikTok Comment Moderation & Duet Reposts',
+      'DTC Order Attribution & Viral Audio Licensing Guide'
+    ]
+  },
+  {
+    id: 34,
+    category: 'social',
+    categoryLabel: 'Social Media Management',
+    title: 'Iron & Oak Functional Strength Gym Community & PR Transformation Clips',
+    client: 'Iron & Oak Athletic Club (Strength & Conditioning Facility)',
+    industry: 'Strength Conditioning, Olympic Weightlifting & Gym Community',
+    timeline: '6-Month Organic Club Retainer',
+    tagline: 'High-Energy Barbell PR Reels & Member Spotlights Increased In-Person Gym Memberships by +175%',
+    tools: ['Instagram Reels', 'TikTok', 'CapCut Pro', 'Lightroom Mobile', 'Figma', 'Meta Suite'],
+    ownership: '100% Commercial Source Rights Handover & Video Assets',
+    desc: 'Cinematic slow-motion barbell lifts, chalk-dust explosion reels, and member transformation spotlights building a tight-knit fitness powerhouse.',
+    problem: 'Local gym had premium Eleiko equipment and expert coaches but an inactive Instagram that looked like an abandoned facility, losing memberships to big commercial chains.',
+    whatWeDid: 'Built an authentic community media hub: filmed member personal record celebrations with dramatic lighting, created technique coaching carousels, and ran weekly transformation stories.',
+    before: 'Empty social feed, 12 average post likes, reliant on expensive printed flyers.',
+    after: '2.6M local reel reach, +175% increase in paid recurring memberships, and 410+ monthly direct message gym inquiries.',
+    results: [
+      { num: '+175%', label: 'New Gym Memberships' },
+      { num: '2.6M', label: 'Local Reel Impressions' },
+      { num: '410+', label: 'Monthly DM Inquiries' }
+    ],
+    clientQuote: 'Our gym floor has never been more vibrant. Prospective members walk in every day saying they saw our lifters on Instagram and had to join.',
+    quoteAuthor: 'Coach David Miller, Head Strength Coach at Iron & Oak',
+    image: 'assets/images/smm/gym-strength.jpg',
+    metrics: '+175% Memberships • 2.6M Reach',
+    gallery: [
+      { src: 'assets/images/smm/gym-strength.jpg', title: 'Deadlift PR Cinematic Reel', desc: 'Chalk Dust & 4K High-Frame Rate Lift' },
+      { src: 'assets/images/smm/gym-weights.jpg', title: 'Barbell Form Breakdown Carousel', desc: 'Step-by-Step Biomechanics Guide' }
+    ],
+    deliverables: [
+      '24x Cinematic Heavy Lift & Technique Reels',
+      '12x Biomechanics & Lifting Safety Educational Carousels',
+      'Weekly Member Spotlight Story Takeovers & Q&As',
+      'Local Geo-Targeted Hashtag Optimization Strategy',
+      'Monthly Lead Generation & Direct Message Conversion Audits'
+    ]
+  },
+  {
+    id: 35,
+    category: 'social',
+    categoryLabel: 'Social Media Management',
+    title: 'Artisan Cupping Lab Pour-Over ASMR & Morning Routine Content',
+    client: 'Origin Roast Lab & Artisan Espresso Guild',
+    industry: 'Specialty Third-Wave Coffee, Subscriptions & Barista Training',
+    timeline: '90-Day Sensory Content Sprint',
+    tagline: 'Crisp ASMR Grind & Pour-Over Reels Converted 5,400 Monthly Coffee Bean Subscription Boxes',
+    tools: ['Instagram Reels', 'TikTok', 'CapCut Pro', 'Figma', 'Canva Pro', 'Later'],
+    ownership: '100% Commercial Source Rights Handover & Video Assets',
+    desc: 'Warm golden-hour coffee brewing reels, barista kettle pour-overs, and sensory flavor wheel carousels that made specialty coffee accessible and irresistible.',
+    problem: 'Third-wave coffee roastery had incredible single-origin beans but seemed intimidating to everyday coffee drinkers, causing low online bean subscription sales.',
+    whatWeDid: 'Demystified specialty coffee with soothing ASMR reels: kettle water pouring, bean grinding sounds, brew ratio carousels, and beginner-friendly home barista tips.',
+    before: 'Technical jargon that alienated beginners, under 200 monthly subscriptions.',
+    after: '5,400 active monthly coffee subscriptions, 9.2% average post engagement rate, and +320% jump in website referral traffic.',
+    results: [
+      { num: '5,400', label: 'Monthly Subscriptions' },
+      { num: '9.2%', label: 'Average Post Engagement' },
+      { num: '+320%', label: 'Website Referral Traffic' }
+    ],
+    clientQuote: 'They made specialty coffee feel warm, welcoming, and deeply satisfying. Our bean subscription program exploded as a direct result of their content.',
+    quoteAuthor: 'Mateo Rossi, Master Roaster at Origin Roast Lab',
+    image: 'assets/images/smm/hands-coffee.jpg',
+    metrics: '5.4K Subscriptions • 9.2% Engagement',
+    gallery: [
+      { src: 'assets/images/smm/hands-coffee.jpg', title: 'Gooseneck Kettle ASMR Bloom', desc: 'Golden Hour Specialty Brew Capture' },
+      { src: 'assets/images/smm/coffee-reel.jpg', title: 'Barista Latte Art Swan Reel', desc: 'Precision Milk Frothing Technique' }
+    ],
+    deliverables: [
+      '20x Golden-Hour Pour-Over & Latte Art Video Reels',
+      '10x Home Barista Brew Ratio & Grind Size Carousels',
+      'Weekly Instagram Coffee Q&A Story Highlight Architecture',
+      'Sensory Sound Design & Royalty-Free Audio Syncing',
+      'Subscription Box Unboxing Campaign Coordination'
+    ]
+  },
+  {
+    id: 36,
+    category: 'social',
+    categoryLabel: 'Social Media Management',
+    title: 'Maison Pierre Artisan French Patisserie & Sourdough Bakery Reels',
+    client: 'Maison Pierre Artisan Boulangerie & Patisserie',
+    industry: 'Artisan French Bakery, Slow-Fermented Sourdough & Laminated Pastry',
+    timeline: '90-Day Sensory Content Sprint',
+    tagline: 'Hypnotic Croissant Flake ASMR & Sourdough Crumb Reveal Reels Generated 5.8M Views & Sold Out Morning Bakes Daily',
+    tools: ['Instagram Reels', 'TikTok', 'CapCut Pro', 'Lightroom Mobile', 'Meta Business Suite'],
+    ownership: '100% Commercial Source Rights Handover & Video Assets',
+    desc: 'Sensory slow-motion croissant flaking, oven spring bread expansion timelapses, and golden-hour French bakery aesthetics driving viral foodie queues.',
+    problem: 'Artisan bakery waking up at 3:00 AM to bake world-class pastries but posting dark, blurry phone photos, leaving afternoon pastry cases unsold.',
+    whatWeDid: 'Captured the tactile magic of French baking: produced crisp ASMR reels of croissant dough lamination, filmed steaming sourdough crust cracks, and launched 7:00 AM daily fresh-bake countdown stories.',
+    before: 'Stagnant local reach, 30% leftover pastries at closing time, flat morning foot traffic.',
+    after: '5.8M viral views across TikTok and Reels, bakery sells out completely by 11:30 AM every single day, and catering pre-orders booked 2 months in advance.',
+    results: [
+      { num: '5.8M', label: 'Viral Bakery Views' },
+      { num: '100%', label: 'Daily Sellout by 11:30 AM' },
+      { num: '24.2%', label: 'Average Save & Share Rate' }
+    ],
+    clientQuote: 'People arrive before we even unlock our doors with their phones open showing our croissant reels. Create and Arise turned our humble bakery into a culinary destination.',
+    quoteAuthor: 'Chef Pierre Laurent, Master Baker at Maison Pierre',
+    image: 'assets/images/smm/artisan-bakery.jpg',
+    metrics: '5.8M Views • 100% Daily Sellout',
+    gallery: [
+      { src: 'assets/images/smm/artisan-bakery.jpg', title: 'Golden Croissant & Sourdough Counter', desc: 'Artisan Display & Morning Sunlight ASMR Reel' },
+      { src: 'assets/images/smm/coffee-reel.jpg', title: 'Morning Cafe & Pastry Pairing', desc: 'Cappuccino & Viennoiserie Aesthetic Reel' }
+    ],
+    deliverables: [
+      '24x Crisp Dough Lamination & Sourdough Crumb ASMR Reels',
+      'Daily 7:00 AM Fresh-Out-Of-The-Oven Instagram Story Alerts',
+      'Artisan French Aesthetic 9-Grid Photography Feed Blueprint',
+      'Local Foodie & Travel Influencer Tasting Event Series',
+      'Weekend Special Pastry Pre-Order DM Automation Flow'
+    ]
+  },
+  {
+    id: 37,
+    category: 'social',
+    categoryLabel: 'Social Media Management',
+    title: 'Deep Work Journal Productivity Systems & Mindset Carousels',
+    client: 'Deep Work Publishing & Daily Journal Lab',
+    industry: 'Executive Productivity, Cognitive Habit Tracking & Stationery',
+    timeline: '60-Day Habit Content Sprint',
+    tagline: 'Clean Aesthetic Journaling Reels & Time-Blocking Visual Guides Drove $160K in DTC Q4 Planner Sales',
+    tools: ['Instagram Reels', 'TikTok', 'CapCut Pro', 'Figma', 'Notion', 'Buffer'],
+    ownership: '100% Commercial Source Rights Handover & Video Assets',
+    desc: 'Satisfying fountain-pen journaling clips, morning time-blocking guides, and science-backed cognitive focus carousels that made planners an executive essential.',
+    problem: 'Launching a premium $42 linen-bound daily planner entering the crowded Q4 new-year planning season with zero brand differentiation.',
+    whatWeDid: 'Positioned the journal as a cognitive performance tool: created aesthetic 60-second morning routine videos, designed step-by-step time-blocking carousels, and shared real executives’ weekly reviews.',
+    before: 'Zero social presence, no pre-orders, high customer skepticism regarding price.',
+    after: '$160,000 in direct DTC Q4 planner sales, 4.8M hashtag reach across productivity feeds, and a 28.5% story link click-through rate.',
+    results: [
+      { num: '$160K', label: 'Direct DTC Planner Sales' },
+      { num: '4.8M', label: 'Productivity Hashtag Reach' },
+      { num: '28.5%', label: 'Story Link CTR' }
+    ],
+    clientQuote: 'They did not just showcase a journal; they sold a high-performance lifestyle. Create and Arise sold out our entire first print run in 6 weeks.',
+    quoteAuthor: 'Alexander Hayes, Author & Founder of Deep Work Lab',
+    image: 'assets/images/smm/desk_productivity_journal_1791823682257.jpg',
+    metrics: '$160K Q4 Sales • 4.8M Impressions',
+    gallery: [
+      { src: 'assets/images/smm/desk_productivity_journal_1791823682257.jpg', title: 'Morning Planning Routine Reel', desc: 'Fountain Pen Habit Log & Timer ASMR' },
+      { src: 'assets/images/smm/laptop-workspace.jpg', title: '5 Time-Blocking Rules Carousel', desc: 'High-Retention Executive Carousel' }
+    ],
+    deliverables: [
+      '18x Aesthetic Morning Routine & Habit Tracking Reels',
+      '10x Cognitive Science Productivity Infographic Carousels',
+      'Daily Motivational Quote Story Layouts & Wallpapers',
+      'Interactive Goal-Setting Notion Template Social Teasers',
+      'Q4 Holiday Launch Countdown Story Strategy'
+    ]
+  },
+  {
+    id: 38,
+    category: 'social',
+    categoryLabel: 'Social Media Management',
+    title: 'PURPOSE / STUDIO™ TikTok Fashion Feeds & Streetwear Runway Cuts',
+    client: 'PURPOSE / STUDIO™ (Verified Fashion Lab)',
+    industry: 'Luxury Heavyweight Streetwear, Drop Culture & Digital Lookbooks',
+    timeline: 'Ongoing Drop Content Retainer',
+    tagline: 'Raw Brutalist Aesthetic Reels & Behind-The-Scenes 500 GSM Cut-and-Sew Drove 100K Viral Shares',
+    tools: ['TikTok Shop', 'Instagram Reels', 'CapCut Pro', 'Figma', 'Premiere Pro', 'Later'],
+    ownership: '100% Commercial Source Rights Handover & Video Assets',
+    desc: 'Architectural streetwear garment zooms, Tokyo night lookbooks, and 500 GSM heavyweight cotton drop teasers engineered for viral TikTok reach.',
+    problem: 'Fashion brand relied on static e-commerce lookbooks that failed to convey the premium tactile heft and architectural silhouette of 500 GSM cotton.',
+    whatWeDid: 'Pioneered an industrial brutalist vertical video format: filmed macro texture cuts of custom metal zippers, runway walk transitions, and interactive sizing guides for TikTok Shop.',
+    before: 'Slow drop sellouts, low engagement on static posts, lack of viral community shares.',
+    after: '100K+ viral video shares across TikTok and Reels, 4.8M impressions, and an 88% waitlist conversion rate on Drop 03.',
+    results: [
+      { num: '100K+', label: 'Viral Reel & TikTok Shares' },
+      { num: '4.8M', label: 'Organic Streetwear Reach' },
+      { num: '88%', label: 'Drop Waitlist Conversion' }
+    ],
+    clientQuote: 'Create and Arise gave our clothing the cinematic gravitas it deserves. The tactile macro videos made our 500 GSM fabric impossible to ignore.',
+    quoteAuthor: 'Jerome & The PURPOSE / STUDIO™ Lab Team',
+    image: 'assets/images/purpose-hoodie-black.jpg',
+    metrics: '100K Viral Shares • 4.8M Views',
+    gallery: [
+      { src: 'assets/images/purpose-hoodie-black.jpg', title: 'Vintage Washed Black Pullover', desc: '500 GSM Custom Heavyweight Loopback Cotton' },
+      { src: 'assets/images/purpose-studio-editorial.jpg', title: 'Architectural Runway Campaign', desc: 'Heavyweight Streetwear Silhouette & Drape' }
+    ],
+    deliverables: [
+      '20x Cinematic Heavyweight Streetwear Lookbook Reels',
+      '8x Fabric Science & 500 GSM Sizing Carousels',
+      'TikTok Shop Live Shopping Video Overlays & Sounds',
+      'Brutalist Monospaced Instagram Story Drop Sequences',
+      'Exclusive Drop Waitlist Telegram & DM Automation Links'
+    ]
+  },
+  {
+    id: 39,
+    category: 'social',
+    categoryLabel: 'Social Media Management',
+    title: 'Aura Glow Clean Clinical Skincare Community & Ingredient Deep Dives',
+    client: 'Aura Glow Dermaceuticals & Skin Lab',
+    industry: 'Clean Dermatological Skincare & Barrier Repair Formulas',
+    timeline: '90-Day Skin Education Retainer',
+    tagline: 'Dermatologist-Approved Micro-Educational Carousels & Routine Reels Reduced Customer Acquisition Cost by 48%',
+    tools: ['Instagram Reels', 'TikTok', 'CapCut Pro', 'Canva Pro', 'Figma', 'Planoly'],
+    ownership: '100% Commercial Source Rights Handover & Video Assets',
+    desc: 'Glass-skin routine reels, pipet dropper texture ASMR, and science-backed barrier repair carousels educating skincare enthusiasts.',
+    problem: 'Skincare market overwhelmed by empty influencer claims, leading to consumer distrust and skyrocketing Facebook ad acquisition costs.',
+    whatWeDid: 'Shifted focus to transparent science: created macro dropper texture videos, busted viral skincare myths with cosmetic chemistry facts, and documented 30-day barrier repair trials.',
+    before: 'Skyrocketing $42 CAC on paid ads, low organic trust, high cart abandonment.',
+    after: '48% reduction in organic blended customer acquisition cost, 1.9M educational video views, and 38,000 skincare routine saves.',
+    results: [
+      { num: '-48%', label: 'Customer Acquisition Cost' },
+      { num: '1.9M', label: 'Educational Video Views' },
+      { num: '38K', label: 'Routine Bookmark Saves' }
+    ],
+    clientQuote: 'They established us as dermatological authorities rather than just another beauty brand. Our organic sales have never been healthier.',
+    quoteAuthor: 'Dr. Evelyn Ward, Lead Chemist at Aura Glow',
+    image: 'assets/images/smm/skincare-serum.jpg',
+    metrics: '-48% CAC • 1.9M Video Views',
+    gallery: [
+      { src: 'assets/images/smm/skincare-serum.jpg', title: 'Ceramide Barrier Texture Video', desc: 'Dropper Dispenser & Glass Skin Proof' },
+      { src: 'assets/images/smm/desk_laptop_coffee_1791823735947.jpg', title: 'Ingredient Mythbusting Carousel', desc: 'Niacinamide vs Vitamin C Guide' }
+    ],
+    deliverables: [
+      '22x Macro Skincare Application & Dropper Texture Reels',
+      '12x Cosmetic Science & Ingredient Breakdown Carousels',
+      'Weekly "Ask a Cosmetic Chemist" Interactive Stories',
+      'UGC Dermatologist Review Aggregation & Reels Compilation',
+      'Organic Skin Profile Quiz Instagram Link Integration'
+    ]
+  },
+  {
+    id: 40,
+    category: 'social',
+    categoryLabel: 'Social Media Management',
+    title: 'Verdant Living Sustainable Home Essentials & Aesthetic Unboxings',
+    client: 'Verdant Living Eco-Home Goods & Botanicals',
+    industry: 'Zero-Waste Homeware, Linen Textiles & Botanical Living',
+    timeline: '60-Day Green Lifestyle Sprint',
+    tagline: 'Calming Earth-Tone Video Aesthetics & Unboxing Reels Generated 1.4M Views and $82K In First-Quarter Revenue',
+    tools: ['Instagram Reels', 'TikTok', 'CapCut Pro', 'Lightroom Mobile', 'Figma', 'Later'],
+    ownership: '100% Commercial Source Rights Handover & Video Assets',
+    desc: 'Linen bedding sunlight timelapses, plant-care carousels, and plastic-free unboxings inspiring sustainable mindful home spaces.',
+    problem: 'Eco-friendly homeware products perceived as bland or unrefined, leading to low repeat purchases and lackluster Instagram aesthetic.',
+    whatWeDid: 'Crafted a serene earth-tone social aesthetic: filmed sunlit linen bedroom routines, designed botanical care carousels, and highlighted plastic-free kraft packaging unboxings.',
+    before: 'Mismatched feed colors, low emotional engagement, $14K quarterly social sales.',
+    after: '1.4M earth-tone aesthetic impressions, $82,000 in tracked first-quarter social revenue, and a 12.4% follower-to-buyer conversion rate.',
+    results: [
+      { num: '$82K', label: 'Tracked Social Revenue' },
+      { num: '1.4M', label: 'Earth-Tone Impressions' },
+      { num: '12.4%', label: 'Follower-to-Buyer Rate' }
+    ],
+    clientQuote: 'Create and Arise made sustainable living feel luxurious, peaceful, and desirable. Our sales skyrocketed while staying true to our eco values.',
+    quoteAuthor: 'Hannah Lindqvist, Co-Founder of Verdant Living',
+    image: 'assets/Mock ups/2.png',
+    metrics: '$82K Revenue • 1.4M Views',
+    gallery: [
+      { src: 'assets/Mock ups/2.png', title: 'Zero-Waste Kraft Bag Unboxing', desc: '100% Recycled Packaging Showcase' },
+      { src: 'assets/images/smm/healthy-bowl.jpg', title: 'Eco Kitchen Routine Reel', desc: 'Linen Napkin & Sustainable Storage' }
+    ],
+    deliverables: [
+      '18x Sunlit Home Routine & Textile Movement Reels',
+      '8x Botanical Care & Non-Toxic Cleaning Carousels',
+      'Aesthetic Earth-Tone Color Palette Curation Guide',
+      'Zero-Waste Packaging ASMR Unboxing Reel Series',
+      'Monthly E-Commerce Checkout Attribution Analytics'
+    ]
+  },
+  {
+    id: 41,
+    category: 'social',
+    categoryLabel: 'Social Media Management',
+    title: 'Komorebi Pottery Studio Artisanal Clay ASMR & Workshop Reels',
+    client: 'Komorebi Ceramic Arts & Workshop Studio',
+    industry: 'Handcrafted Ceramics, Wheel Throwing Classes & Home Decor',
+    timeline: '4-Month Cultural & Class Retainer',
+    tagline: 'Hypnotic Wheel-Throwing Reels & Glaze Kiln Reveals Booked Out 6 Months of Private Pottery Classes',
+    tools: ['Instagram Reels', 'TikTok', 'CapCut Pro', 'Lightroom Mobile', 'Canva Pro', 'Figma'],
+    ownership: '100% Commercial Source Rights Handover & Video Assets',
+    desc: 'Hypnotic wheel-spinning ASMR, clay trimming ribbon curls, and kiln opening reveals captivating millions of craft enthusiasts worldwide.',
+    problem: 'Pottery studio struggled to fill weekday wheel-throwing workshops, relying on unpredictable walk-ins and local word of mouth.',
+    whatWeDid: 'Captured the meditative beauty of ceramic craft: produced soothing wheel-throwing ASMR reels, filmed kiln-opening reaction videos, and built an automated DM booking workflow for weekend workshops.',
+    before: '50% empty studio benches, irregular social updates, low workshop pre-bookings.',
+    after: '6 consecutive months of sold-out private and group pottery classes, 3.4M viral ASMR views, and over 22,000 direct booking inquiries.',
+    results: [
+      { num: '6 Mo.', label: 'Sold-Out Classes Advance' },
+      { num: '3.4M', label: 'Clay Craft ASMR Views' },
+      { num: '22K+', label: 'Direct Booking Inquiries' }
+    ],
+    clientQuote: 'Our pottery wheels have never stopped spinning. People watch our soothing reels and immediately book workshops for dates, birthdays, and gifts.',
+    quoteAuthor: 'Sora Tanaka, Ceramic Artist at Komorebi Studio',
+    image: 'assets/Mock ups/9.png',
+    metrics: '6 Mos Booked • 3.4M Views',
+    gallery: [
+      { src: 'assets/Mock ups/9.png', title: 'Signature Glazed Ceramic Mug', desc: 'Kiln Unloading ASMR & Golden Hour Cup' },
+      { src: 'assets/Mock ups/5.png', title: 'Clay Trimming Close-Up Video', desc: 'Spun Clay Ribbon Shaving Macro' }
+    ],
+    deliverables: [
+      '20x Meditative Clay Wheel & Trimming ASMR Reels',
+      '10x Glazing & Kiln Reveal Multi-Slide Carousel Posts',
+      'Automated ManyChat DM Class Booking Response System',
+      'Weekly Student Creation Showcase Stories & Tags',
+      'High-Resolution Studio Ceramic Photography Catalog'
+    ]
+  },
+  {
+    id: 42,
+    category: 'social',
+    categoryLabel: 'Social Media Management',
+    title: 'Volt Urban Electric Mobility & Micro-Transit Reels',
+    client: 'Volt Mobility Lab (Electric Commuter & Micro-Transit)',
+    industry: 'Clean Tech, Electric Micro-Mobility & Urban E-Bikes',
+    timeline: '90-Day City Commute Campaign',
+    tagline: 'POV City Commuter Reels & Carbon-Offset Graphic Carousels Drove 1,800 Pre-Orders for Generation II E-Commuter',
+    tools: ['Instagram Reels', 'TikTok', 'CapCut Pro', 'GoPro Hero12', 'Figma', 'Hootsuite'],
+    ownership: '100% Commercial Source Rights Handover & Video Assets',
+    desc: 'Fast-paced first-person urban commute reels, bypass-the-traffic timelapses, and sleek electric micro-mobility hardware reels built for metropolitan professionals.',
+    problem: 'Launching a premium $1,600 electric commuter bike struggling to stand out from cheap imported scooters, with zero organic video presence.',
+    whatWeDid: 'Positioned Volt as the modern professional’s commute superpower: filmed side-by-side subway vs. e-bike race videos, created battery range stress tests, and showcased seamless minimalist folding mechanisms.',
+    before: 'Low brand credibility, under 1,000 views per post, high pre-order hesitation.',
+    after: '1,800 paid pre-orders secured, 3.8M organic reel views across metropolitan commuter hashtags, and 420+ dealer test-ride bookings.',
+    results: [
+      { num: '1,800', label: 'Paid Pre-Orders' },
+      { num: '3.8M', label: 'Commuter Video Views' },
+      { num: '420+', label: 'Dealer Test Rides' }
+    ],
+    clientQuote: 'The subway vs. e-bike race reel was genius and went completely viral in three major cities. Create and Arise made urban mobility look exhilarating and essential.',
+    quoteAuthor: 'Julian Sterling, Founder & Lead Engineer at Volt Mobility',
+    image: 'assets/images/urban-mobility.jpg',
+    metrics: '1.8K Pre-Orders • 3.8M Views',
+    gallery: [
+      { src: 'assets/images/urban-mobility.jpg', title: 'Urban Commuter POV Ride', desc: 'Bypassing Rush Hour Traffic in 4K 60fps' },
+      { src: 'assets/images/smm/mountain-runner.jpg', title: 'Weatherproof Rain Test Reel', desc: 'IP67 Waterproof Electronics Proof' }
+    ],
+    deliverables: [
+      '20x Fast-Paced Metropolitan Commute POV Reels',
+      '8x Commute Cost vs Subway Savings Educational Carousels',
+      'Interactive City Commute Time Calculator Stories',
+      'Local Urban Bike Shop Partner Repost & Co-Marketing Hub',
+      'Pre-Order Milestone Countdown & Backer Update Social Kit'
+    ]
+  },
+  {
+    id: 43,
+    category: 'social',
+    categoryLabel: 'Social Media Management',
+    title: 'Atelier Lumière Fine Jewelry & Diamond Studio Macro Reels',
+    client: 'Atelier Lumière Fine Jewelry & Haute Joaillerie',
+    industry: 'Bespoke Solid Gold Jewelry, Conflict-Free Diamonds & Heirloom Craft',
+    timeline: '4-Month Luxury Artisan Retainer',
+    tagline: 'Macro Diamond Facet Sparkle Reels & Hand-Engraving Videos Generated $340K in Custom Engagement Ring Commissions',
+    tools: ['Instagram Reels', 'TikTok', 'CapCut Pro', 'Macro Lens Rig', 'Figma', 'Later'],
+    ownership: '100% Commercial Source Rights Handover & Video Assets',
+    desc: '4K microscopic diamond prong setting, liquid gold melting crucibles, and bespoke heirloom engagement ring reveals captivating luxury buyers worldwide.',
+    problem: 'Independent master jeweler creating museum-grade engagement rings but relying solely on referrals, with no modern digital presence to attract affluent millennials.',
+    whatWeDid: 'Captured the hypnotic intimacy of high jewelry: filmed 100x macro diamond facet light refractions, documented custom wax carving for bespoke clients, and built a private VIP DM consultation concierge.',
+    before: 'Only 2-3 custom orders/month, 80 followers on Instagram, invisible to international buyers.',
+    after: '$340,000 in custom engagement ring commissions in 4 months, 4.6M views on hand-engraving reels, and a 6-month bespoke design waiting list.',
+    results: [
+      { num: '$340K', label: 'Custom Ring Commissions' },
+      { num: '4.6M', label: 'Macro Jewelry Views' },
+      { num: '6 Mo.', label: 'Custom Commission Waitlist' }
+    ],
+    clientQuote: 'The macro sparkle and craftsmanship they captured took our breath away. Clients now fly across the country and message us on Instagram to craft their forever rings.',
+    quoteAuthor: 'Claire & Antoine Delacroix, Master Jewelers at Atelier Lumière',
+    image: 'assets/images/smm/luxury-jewelry.jpg',
+    metrics: '$340K Commissions • 4.6M Views',
+    gallery: [
+      { src: 'assets/images/smm/luxury-jewelry.jpg', title: 'Diamond Solitaire Light Refraction', desc: '4K Macro Facet Sparkle & Solid Gold Band' },
+      { src: 'assets/Mock ups/12.png', title: 'Luxury Velvet Box Presentation', desc: 'Heirloom Packaging & Wax Seal Certificate' }
+    ],
+    deliverables: [
+      '24x Micro-Macro Diamond Prong Setting & Gemstone Sparkle Reels',
+      '12x Conflict-Free Diamond Grading & Gold Carat Guides',
+      'Private VIP Direct Message Consultation Booking Workflow',
+      'Luxury Velvet & Golden Light Editorial 9-Grid Layout Strategy',
+      'Custom Wedding Band Pairings & Story Highlight Archive'
+    ]
   }
 ];
 
@@ -824,10 +1943,24 @@ function initPortfolio() {
   const viewModeBtns = document.querySelectorAll('.view-mode-btn');
   const searchInput = document.getElementById('portfolioSearchInput');
   const searchClear = document.getElementById('portfolioSearchClear');
+  const countText = document.getElementById('portfolioCountText');
+  const resetFilterBtn = document.getElementById('portfolioResetFilterBtn');
+  const quickTagChips = document.querySelectorAll('.quick-tag-chip');
 
   let currentFilter = 'all';
   let currentSearchQuery = '';
   let currentViewMode = 'grid'; // 'grid' or 'matrix'
+
+  function escapeHTML(str) {
+    if (!str) return '';
+    return str.replace(/[&<>'"]/g, tag => ({
+      '&': '&amp;',
+      '<': '&lt;',
+      '>': '&gt;',
+      "'": '&#39;',
+      '"': '&quot;'
+    }[tag] || tag));
+  }
 
   function getFilteredData() {
     return portfolioData.filter(item => {
@@ -850,10 +1983,63 @@ function initPortfolio() {
     });
   }
 
+  function resetAllFilters() {
+    currentFilter = 'all';
+    currentSearchQuery = '';
+    if (searchInput) searchInput.value = '';
+    if (searchClear) searchClear.style.display = 'none';
+
+    filterBtns.forEach(b => {
+      const isAll = b.getAttribute('data-filter') === 'all';
+      b.classList.toggle('active', isAll);
+      b.setAttribute('aria-selected', isAll ? 'true' : 'false');
+    });
+
+    quickTagChips.forEach(c => c.classList.remove('active'));
+    renderPortfolio();
+  }
+
+  function updateStatusFeedback(totalShown) {
+    if (countText) {
+      if (currentSearchQuery) {
+        countText.innerHTML = `Found <strong>${totalShown}</strong> project${totalShown === 1 ? '' : 's'} matching "<em>${escapeHTML(currentSearchQuery)}</em>"`;
+      } else if (currentFilter !== 'all') {
+        const catMap = {
+          branding: 'Graphics &amp; Branding',
+          web: 'Web Design &amp; Dev',
+          ads: 'Digital Ads',
+          social: 'Social Media'
+        };
+        const catName = catMap[currentFilter] || currentFilter;
+        countText.innerHTML = `Showing <strong>${totalShown}</strong> in <strong>${catName}</strong>`;
+      } else {
+        countText.innerHTML = `Showing <strong>${totalShown}</strong> verified case studies`;
+      }
+    }
+
+    if (resetFilterBtn) {
+      if (currentFilter !== 'all' || currentSearchQuery !== '') {
+        resetFilterBtn.style.display = 'inline-flex';
+      } else {
+        resetFilterBtn.style.display = 'none';
+      }
+    }
+
+    quickTagChips.forEach(chip => {
+      const tag = chip.getAttribute('data-tag');
+      if (tag && currentSearchQuery.toLowerCase() === tag.toLowerCase()) {
+        chip.classList.add('active');
+      } else {
+        chip.classList.remove('active');
+      }
+    });
+  }
+
   function renderPortfolio() {
     if (!portfolioGrid) return;
 
     const filtered = getFilteredData();
+    updateStatusFeedback(filtered.length);
 
     if (filtered.length === 0) {
       portfolioGrid.innerHTML = `
@@ -861,7 +2047,7 @@ function initPortfolio() {
           <div style="font-size: 2.5rem; margin-bottom: 0.75rem;">🔍</div>
           <h4 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 0.5rem; color: var(--text-main);">No matching projects found</h4>
           <p style="color: var(--text-muted); font-size: 0.9rem; max-width: 450px; margin: 0 auto 1.5rem;">
-            We couldn't find any case studies matching "${currentSearchQuery}". Try adjusting your keywords or clearing filters.
+            We couldn't find any case studies matching "${escapeHTML(currentSearchQuery)}". Try adjusting your keywords or clearing filters.
           </p>
           <button type="button" class="btn btn-secondary btn-sm" id="resetPortfolioSearchBtn">
             <span>Reset Filters &amp; Search</span>
@@ -871,14 +2057,7 @@ function initPortfolio() {
 
       const resetBtn = document.getElementById('resetPortfolioSearchBtn');
       if (resetBtn) {
-        resetBtn.addEventListener('click', () => {
-          currentFilter = 'all';
-          currentSearchQuery = '';
-          if (searchInput) searchInput.value = '';
-          if (searchClear) searchClear.style.display = 'none';
-          filterBtns.forEach(b => b.classList.toggle('active', b.getAttribute('data-filter') === 'all'));
-          renderPortfolio();
-        });
+        resetBtn.addEventListener('click', resetAllFilters);
       }
     } else {
       portfolioGrid.innerHTML = filtered.map(item => `
@@ -957,13 +2136,31 @@ function initPortfolio() {
     if (items.length === 0) {
       matrixContainer.innerHTML = `
         <div style="text-align: center; padding: 3rem 1.5rem; color: var(--text-muted);">
-          No case studies match the current search criteria in Matrix View.
+          <div style="font-size: 2rem; margin-bottom: 0.5rem;">🔍</div>
+          <p style="margin-bottom: 1rem;">No case studies match the current search criteria in Table View.</p>
+          <button type="button" class="btn btn-secondary btn-sm" id="matrixResetBtn">
+            <span>Reset Filters</span>
+          </button>
         </div>
       `;
+      const mReset = document.getElementById('matrixResetBtn');
+      if (mReset) mReset.addEventListener('click', resetAllFilters);
       return;
     }
 
     matrixContainer.innerHTML = `
+      <div class="matrix-banner">
+        <div class="matrix-banner-text">
+          <span class="matrix-banner-icon">📋</span>
+          <div>
+            <strong>Executive ROI &amp; Scope Matrix</strong>
+            <p>Comparing client starting bottlenecks, agency execution, and commercial results side-by-side.</p>
+          </div>
+        </div>
+        <button type="button" class="btn btn-secondary btn-sm" id="matrixBackToGridBtn">
+          <span>⊞ Switch to Visual Gallery</span>
+        </button>
+      </div>
       <div class="matrix-table-wrapper">
         <table class="matrix-table">
           <thead>
@@ -986,10 +2183,10 @@ function initPortfolio() {
                 <td>
                   <span class="portfolio-badge" style="position: static; display: inline-block;">${item.categoryLabel}</span>
                 </td>
-                <td style="max-width: 200px; font-size: 0.82rem; color: var(--text-muted);">
+                <td style="max-width: 220px; font-size: 0.82rem; color: var(--text-muted);">
                   ${item.problem}
                 </td>
-                <td style="max-width: 240px; font-size: 0.82rem; color: var(--text-main);">
+                <td style="max-width: 250px; font-size: 0.82rem; color: var(--text-main);">
                   ${item.whatWeDid}
                 </td>
                 <td>
@@ -1013,14 +2210,50 @@ function initPortfolio() {
         </table>
       </div>
     `;
+
+    const backToGridBtn = document.getElementById('matrixBackToGridBtn');
+    if (backToGridBtn) {
+      backToGridBtn.addEventListener('click', () => {
+        const gridBtn = document.querySelector('.view-mode-btn[data-view="grid"]');
+        if (gridBtn) gridBtn.click();
+      });
+    }
   }
 
-  // Filter Buttons
+  // Filter Category Buttons
   filterBtns.forEach(btn => {
     btn.addEventListener('click', () => {
-      filterBtns.forEach(b => b.classList.remove('active'));
+      filterBtns.forEach(b => {
+        b.classList.remove('active');
+        b.setAttribute('aria-selected', 'false');
+      });
       btn.classList.add('active');
+      btn.setAttribute('aria-selected', 'true');
       currentFilter = btn.getAttribute('data-filter') || 'all';
+      renderPortfolio();
+    });
+  });
+
+  // Reset Button
+  if (resetFilterBtn) {
+    resetFilterBtn.addEventListener('click', resetAllFilters);
+  }
+
+  // Quick Discovery Tags
+  quickTagChips.forEach(chip => {
+    chip.addEventListener('click', () => {
+      const tag = chip.getAttribute('data-tag');
+      if (!tag) return;
+      if (currentSearchQuery.toLowerCase() === tag.toLowerCase()) {
+        // Toggle off
+        currentSearchQuery = '';
+        if (searchInput) searchInput.value = '';
+        if (searchClear) searchClear.style.display = 'none';
+      } else {
+        currentSearchQuery = tag;
+        if (searchInput) searchInput.value = tag;
+        if (searchClear) searchClear.style.display = 'block';
+      }
       renderPortfolio();
     });
   });
