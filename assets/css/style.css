@@ -2756,6 +2756,7 @@ select {
   display: inline-flex;
   align-items: center;
   gap: 0.85rem;
+  width: auto;
   max-width: 100%;
 }
 
@@ -2770,17 +2771,19 @@ select {
   color: var(--color-primary);
   white-space: nowrap;
   user-select: none;
+  flex-shrink: 0;
 }
 
 .portfolio-dropdown-label svg {
   color: var(--color-primary);
   opacity: 0.9;
+  flex-shrink: 0;
 }
 
 .portfolio-dropdown-box {
   position: relative;
-  display: inline-block;
-  min-width: 290px;
+  display: block;
+  width: 320px;
   max-width: 100%;
 }
 
@@ -2789,8 +2792,9 @@ select {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 1rem;
-  padding: 0.65rem 1.25rem;
+  gap: 0.75rem;
+  min-height: 44px;
+  padding: 0.65rem 1.15rem;
   background: rgba(22, 26, 40, 0.85);
   border: 1px solid rgba(245, 158, 11, 0.35);
   border-radius: var(--radius-full);
@@ -2802,6 +2806,7 @@ select {
   box-shadow: 0 4px 18px rgba(0, 0, 0, 0.35);
   user-select: none;
   font-family: inherit;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .portfolio-dropdown-trigger:hover {
@@ -2818,13 +2823,14 @@ select {
 }
 
 .dropdown-trigger-main {
-  display: inline-flex;
+  display: flex;
   align-items: center;
-  gap: 0.65rem;
+  gap: 0.6rem;
   font-size: 0.92rem;
   font-weight: 700;
   color: var(--text-main);
   min-width: 0;
+  flex: 1;
 }
 
 .dropdown-trigger-icon {
@@ -2837,6 +2843,7 @@ select {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  min-width: 0;
 }
 
 .dropdown-trigger-count {
@@ -2866,10 +2873,12 @@ select {
   top: calc(100% + 8px);
   left: 0;
   right: 0;
-  background: rgba(14, 17, 27, 0.97);
+  width: 100%;
+  max-width: 100%;
+  background: rgba(14, 17, 27, 0.98);
   border: 1px solid rgba(245, 158, 11, 0.25);
   border-radius: var(--radius-md);
-  padding: 0.5rem;
+  padding: 0.45rem;
   box-shadow: 0 18px 45px rgba(0, 0, 0, 0.75), 0 0 25px rgba(245, 158, 11, 0.12);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
@@ -2877,7 +2886,10 @@ select {
   display: none;
   flex-direction: column;
   gap: 0.3rem;
-  min-width: 290px;
+  max-height: min(360px, 65vh);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
 }
 
 .portfolio-dropdown-box.is-open .portfolio-dropdown-menu {
@@ -2898,11 +2910,12 @@ select {
 
 .portfolio-dropdown-item.filter-btn {
   width: 100%;
+  min-height: 42px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 0.75rem;
-  padding: 0.65rem 0.95rem;
+  gap: 0.65rem;
+  padding: 0.65rem 0.85rem;
   background: transparent;
   border: 1px solid transparent;
   border-radius: var(--radius-sm);
@@ -2916,13 +2929,16 @@ select {
   user-select: none;
   box-shadow: none;
   transform: none;
+  -webkit-tap-highlight-color: transparent;
 }
 
-.portfolio-dropdown-item.filter-btn:hover {
+.portfolio-dropdown-item.filter-btn:hover,
+.portfolio-dropdown-item.filter-btn:focus-visible {
   background: rgba(255, 255, 255, 0.06);
   color: var(--text-main);
   border-color: rgba(255, 255, 255, 0.08);
   transform: translateX(3px);
+  outline: none;
 }
 
 .portfolio-dropdown-item.filter-btn.active {
@@ -2934,10 +2950,11 @@ select {
 }
 
 .dropdown-item-info {
-  display: inline-flex;
+  display: flex;
   align-items: center;
-  gap: 0.65rem;
+  gap: 0.6rem;
   min-width: 0;
+  flex: 1;
 }
 
 .dropdown-item-info .filter-icon {
@@ -2948,12 +2965,15 @@ select {
 
 .dropdown-item-label {
   white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  min-width: 0;
 }
 
 .dropdown-item-meta {
   display: inline-flex;
   align-items: center;
-  gap: 0.55rem;
+  gap: 0.5rem;
   flex-shrink: 0;
 }
 
@@ -2977,34 +2997,12 @@ select {
   color: var(--color-primary);
   transition: opacity 0.15s ease, transform 0.15s ease;
   transform: scale(0.6);
+  flex-shrink: 0;
 }
 
 .portfolio-dropdown-item.filter-btn.active .dropdown-item-check {
   opacity: 1;
   transform: scale(1);
-}
-
-@media (max-width: 600px) {
-  .portfolio-dropdown-container {
-    flex-direction: column;
-    align-items: stretch;
-    width: 100%;
-    gap: 0.45rem;
-  }
-
-  .portfolio-dropdown-box {
-    width: 100%;
-    min-width: 0;
-  }
-
-  .portfolio-dropdown-trigger {
-    width: 100%;
-  }
-
-  .portfolio-dropdown-menu {
-    width: 100%;
-    min-width: 0;
-  }
 }
 
 /* Tier 2: Utility Bar (Status Counter + Search + View Switcher) */
@@ -3020,15 +3018,6 @@ select {
   padding: 0.75rem 1.25rem;
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-}
-
-@media (max-width: 860px) {
-  .portfolio-utility-bar {
-    flex-direction: column;
-    align-items: stretch;
-    gap: 0.85rem;
-    padding: 0.85rem;
-  }
 }
 
 .portfolio-status-info {
@@ -3092,13 +3081,6 @@ select {
   flex-wrap: wrap;
 }
 
-@media (max-width: 860px) {
-  .portfolio-tools-group {
-    width: 100%;
-    justify-content: space-between;
-  }
-}
-
 .portfolio-search-box {
   display: flex;
   align-items: center;
@@ -3111,14 +3093,6 @@ select {
   min-width: 260px;
   max-width: 340px;
   transition: all var(--transition-fast);
-}
-
-@media (max-width: 860px) {
-  .portfolio-search-box {
-    flex: 1;
-    min-width: 0;
-    max-width: 100%;
-  }
 }
 
 .portfolio-search-box:focus-within {
@@ -3198,6 +3172,171 @@ select {
   border: 1px solid rgba(245, 158, 11, 0.3);
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
   font-weight: 700;
+}
+
+/* ==========================================================================
+   Comprehensive Responsive Control Hub (Dropdown, Utility Bar & Search)
+   ========================================================================== */
+
+/* Tablet & Mobile Landscape (max-width: 860px) */
+@media (max-width: 860px) {
+  .portfolio-category-dropdown-area {
+    width: 100%;
+  }
+
+  .portfolio-dropdown-container {
+    width: 100%;
+    max-width: 500px;
+    justify-content: center;
+  }
+
+  .portfolio-dropdown-box {
+    flex: 1;
+    width: 100%;
+    min-width: 0;
+  }
+
+  .portfolio-utility-bar {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.85rem;
+    padding: 0.85rem;
+  }
+
+  .portfolio-tools-group {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .portfolio-search-box {
+    flex: 1;
+    min-width: 0;
+    max-width: 100%;
+  }
+}
+
+/* Phablet / Standard Mobile (max-width: 640px) */
+@media (max-width: 640px) {
+  .portfolio-hub {
+    gap: 0.85rem;
+    margin-bottom: 2rem;
+  }
+
+  .portfolio-dropdown-container {
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+    max-width: 100%;
+    gap: 0.45rem;
+  }
+
+  .portfolio-dropdown-label {
+    font-size: 0.76rem;
+  }
+
+  .portfolio-dropdown-box {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .portfolio-dropdown-trigger {
+    width: 100%;
+    padding: 0.6rem 1rem;
+    font-size: 0.88rem;
+  }
+
+  .portfolio-dropdown-menu {
+    left: 0;
+    right: 0;
+    width: 100%;
+    min-width: 0;
+  }
+
+  .portfolio-quick-tags {
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    padding-bottom: 0.35rem;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .portfolio-quick-tags::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+/* Small Mobile (max-width: 480px) */
+@media (max-width: 480px) {
+  .portfolio-utility-bar {
+    padding: 0.75rem;
+    gap: 0.75rem;
+  }
+
+  .portfolio-status-info {
+    font-size: 0.8rem;
+    justify-content: space-between;
+  }
+
+  .portfolio-tools-group {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.6rem;
+    width: 100%;
+  }
+
+  .portfolio-search-box {
+    width: 100%;
+    min-width: 0;
+    max-width: 100%;
+  }
+
+  .portfolio-view-switch {
+    width: 100%;
+    display: flex;
+  }
+
+  .view-mode-btn {
+    flex: 1;
+    justify-content: center;
+    padding: 0.48rem 0.5rem;
+    font-size: 0.78rem;
+  }
+
+  .dropdown-trigger-main {
+    font-size: 0.88rem;
+    gap: 0.5rem;
+  }
+
+  .dropdown-trigger-count {
+    font-size: 0.68rem;
+    padding: 0.1rem 0.45rem;
+  }
+
+  .portfolio-dropdown-item.filter-btn {
+    padding: 0.6rem 0.75rem;
+    font-size: 0.84rem;
+  }
+}
+
+/* Ultra-Compact Mobile (max-width: 360px) */
+@media (max-width: 360px) {
+  .portfolio-dropdown-trigger {
+    padding: 0.55rem 0.75rem;
+    gap: 0.35rem;
+  }
+
+  .dropdown-trigger-main {
+    font-size: 0.82rem;
+  }
+
+  .dropdown-trigger-icon {
+    font-size: 0.95rem;
+  }
+
+  .portfolio-dropdown-item.filter-btn {
+    padding: 0.55rem 0.65rem;
+    font-size: 0.8rem;
+  }
 }
 
 /* Quick Explore Tags Strip */
