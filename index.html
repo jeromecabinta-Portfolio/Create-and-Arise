@@ -26,7 +26,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
-    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Syne:wght@600;700;800&family=JetBrains+Mono:wght@400;600&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Manrope:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Syne:wght@600;700;800&family=JetBrains+Mono:wght@400;600&display=swap"
     rel="stylesheet">
 
   <!-- Stylesheet -->
@@ -814,242 +814,375 @@
       </div>
     </section>
 
-    <!-- VIEW 2: SERVICES (4 Core Services) -->
+    <!-- VIEW 2: SERVICES (Hypermakarios Services Network Catalog) -->
     <section class="tab-view" id="view-services" aria-label="Services Catalog">
       <div class="container">
-        <div class="section-header">
-          <span class="section-tag">&#9889; What We Do</span>
-          <h2 class="section-title">Comprehensive Creative &amp; <span class="gradient-text">Digital Services</span>
-          </h2>
-          <p class="section-desc">
-            From breathtaking graphic brand identities to revenue-generating ad campaigns and high-speed web
-            experiences, we engineer every asset to stand out and deliver results.
-          </p>
-        </div>
 
-        <div class="services-grid">
-          <!-- Service 1: Graphic Design & Brand Identity -->
-          <article class="service-card">
-            <div class="service-header">
-              <div class="service-icon-box icon-amber">
-                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                  stroke-linecap="round" stroke-linejoin="round">
+        <!-- Services Hero Banner (Hypermakarios Style) -->
+        <header class="services-hero-banner brand-dark">
+          <div class="site-container">
+            <div class="services-hero-badge">
+              <span class="badge-dot"></span>
+              <span>Create &amp; Arise &bull; Creative Design &amp; Digital Studio</span>
+            </div>
+            <h1 class="hero-heading">Explore services crafted for creative excellence.</h1>
+            <p>
+              Find a service package that fits your brand vision. Every service below is delivered with disciplined
+              craftsmanship, faithful stewardship, and high-ROI execution.
+            </p>
+          </div>
+        </header>
+
+        <!-- Services Directory (Catalog, Live Search & Filters) -->
+        <div class="site-service-directory" aria-labelledby="service-directory-heading">
+          <div class="site-service-directory__intro">
+            <div>
+              <h2 id="service-directory-heading">Find what you need</h2>
+              <p id="service-search-help">Search services by title, description, or capability.</p>
+            </div>
+          </div>
+
+          <div class="site-service-directory__tools">
+            <div class="site-service-directory__search-row">
+              <label class="site-service-directory__search" for="serviceSearchInput">
+                <span class="app-icon" aria-hidden="true">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                  </svg>
+                </span>
+                <input type="search" id="serviceSearchInput"
+                  placeholder="Search services or companies (e.g. logo, website, ads, reels)..." autocomplete="off"
+                  aria-describedby="service-search-help">
+                <button type="button" id="clearServiceSearch" class="search-clear-btn" aria-label="Clear search"
+                  style="display: none;">&times;</button>
+              </label>
+              <p class="site-service-directory__count" aria-live="polite">
+                Showing <strong id="visibleCount" style="color: var(--hm-site-gold);">4</strong> of <span
+                  id="totalCount">4</span> published services
+              </p>
+            </div>
+          </div>
+
+          <!-- Services Grid (4 Flagship Create & Arise Services) -->
+          <div class="site-service-directory__grid" id="servicesGrid">
+
+            <!-- Service 4: Graphic Design & Brand Identity (Create & Arise) -->
+            <article class="service-offer" data-service-id="create-graphics" data-company="create-and-arise"
+              data-tags="branding graphics create-and-arise all"
+              style="--offer-primary: #d97706; --offer-accent: #f59e0b;">
+              <div class="service-offer__media">
+                <img src="assets/images/branding-graphics.jpg" alt="Graphic Design & Brand Identity" loading="lazy">
+                <span class="service-offer__category-tag"
+                  style="background: rgba(245, 158, 11, 0.85); color: #0b1220;">★ Flagship Studio</span>
+              </div>
+              <div class="service-offer__badge">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round">
                   <path d="M12 19l7-7 3 3-7 7-3-3z"></path>
                   <path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"></path>
                   <path d="M2 2l7.586 7.586"></path>
                   <circle cx="11" cy="11" r="2"></circle>
                 </svg>
               </div>
-              <span class="service-number">01</span>
-            </div>
-            <h3 class="service-title">Graphic Design &amp; Brand Identity</h3>
-            <p class="service-desc">
-              Visual storytelling that commands attention. We craft high-impact brand identities, bespoke logo systems,
-              marketing collaterals, and pitch decks with uncompromised artistic polish.
-            </p>
-            <ul class="service-feature-list">
-              <li class="service-feature-item">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
-                  <polyline points="20 6 9 17 4 12"></polyline>
-                </svg>
-                <span>Logo &amp; Visual Identity System</span>
-              </li>
-              <li class="service-feature-item">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
-                  <polyline points="20 6 9 17 4 12"></polyline>
-                </svg>
-                <span>Brand Guidelines &amp; Typography Sets</span>
-              </li>
-              <li class="service-feature-item">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
-                  <polyline points="20 6 9 17 4 12"></polyline>
-                </svg>
-                <span>Packaging, Pitch Decks &amp; Print Assets</span>
-              </li>
-              <li class="service-feature-item">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
-                  <polyline points="20 6 9 17 4 12"></polyline>
-                </svg>
-                <span>Custom Vector Art &amp; Infographics</span>
-              </li>
-            </ul>
-            <button type="button" onclick="selectServiceInEstimator('graphics')" class="service-action-link"
-              style="background:none;border:none;cursor:pointer;">Estimate Package &rarr;</button>
-          </article>
+              <div class="service-offer__body">
+                <h3 class="service-offer__title">Graphic Design &amp; Brand Identity</h3>
+                <div class="service-offer__company">
+                  <span>Offered by Create &amp; Arise</span>
+                  <span class="company-verified" title="Verified Studio">✓</span>
+                </div>
+                <p class="service-offer__description">
+                  Visual storytelling that commands attention. We craft high-impact brand identities, bespoke logo
+                  systems, marketing collaterals, and pitch decks with uncompromised artistic polish.
+                </p>
+                <ul class="service-offer__features">
+                  <li class="service-offer__feature-item">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                      <polyline points="20 6 9 17 4 12"></polyline>
+                    </svg>
+                    <span>Logo &amp; Visual Identity System</span>
+                  </li>
+                  <li class="service-offer__feature-item">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                      <polyline points="20 6 9 17 4 12"></polyline>
+                    </svg>
+                    <span>Brand Guidelines &amp; Typography Sets</span>
+                  </li>
+                  <li class="service-offer__feature-item">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                      <polyline points="20 6 9 17 4 12"></polyline>
+                    </svg>
+                    <span>Packaging, Pitch Decks &amp; Print Assets</span>
+                  </li>
+                  <li class="service-offer__feature-item">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                      <polyline points="20 6 9 17 4 12"></polyline>
+                    </svg>
+                    <span>Custom Vector Art &amp; Infographics</span>
+                  </li>
+                </ul>
+                <button type="button" onclick="selectServiceInEstimator('graphics')" class="service-offer__action">
+                  <span>Estimate Package</span>
+                  <span class="app-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                      stroke-linejoin="round">
+                      <path d="M5 12h14m-6-6 6 6-6 6"></path>
+                    </svg>
+                  </span>
+                </button>
+              </div>
+            </article>
 
-          <!-- Service 2: Web Design & Development -->
-          <article class="service-card">
-            <div class="service-header">
-              <div class="service-icon-box icon-cyan">
-                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                  stroke-linecap="round" stroke-linejoin="round">
+            <!-- Service 5: Web Design & Development (Create & Arise) -->
+            <article class="service-offer" data-service-id="create-web" data-company="create-and-arise"
+              data-tags="web create-and-arise all" style="--offer-primary: #0891b2; --offer-accent: #06b6d4;">
+              <div class="service-offer__media">
+                <img src="assets/images/web-design.jpg" alt="Web Design & Development" loading="lazy">
+                <span class="service-offer__category-tag" style="background: rgba(6, 182, 212, 0.85); color: #0b1220;">★
+                  Flagship Studio</span>
+              </div>
+              <div class="service-offer__badge">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round">
                   <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
                   <line x1="8" y1="21" x2="16" y2="21"></line>
                   <line x1="12" y1="17" x2="12" y2="21"></line>
                 </svg>
               </div>
-              <span class="service-number">02</span>
-            </div>
-            <h3 class="service-title">Web Design &amp; Development</h3>
-            <p class="service-desc">
-              Fast, responsive, and visually mesmerizing websites engineered for conversions. We turn your website into
-              a 24/7 digital salesperson that builds trust and accelerates sales.
-            </p>
-            <ul class="service-feature-list">
-              <li class="service-feature-item">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
-                  <polyline points="20 6 9 17 4 12"></polyline>
-                </svg>
-                <span>Modern UI/UX Responsive Layouts</span>
-              </li>
-              <li class="service-feature-item">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
-                  <polyline points="20 6 9 17 4 12"></polyline>
-                </svg>
-                <span>High-Converting Landing Pages</span>
-              </li>
-              <li class="service-feature-item">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
-                  <polyline points="20 6 9 17 4 12"></polyline>
-                </svg>
-                <span>SEO Optimization &amp; Lightning Speed</span>
-              </li>
-              <li class="service-feature-item">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
-                  <polyline points="20 6 9 17 4 12"></polyline>
-                </svg>
-                <span>Interactive Lead Capture Integrations</span>
-              </li>
-            </ul>
-            <button type="button" onclick="selectServiceInEstimator('web')" class="service-action-link"
-              style="background:none;border:none;cursor:pointer;">Estimate Package &rarr;</button>
-          </article>
+              <div class="service-offer__body">
+                <h3 class="service-offer__title">Web Design &amp; Development</h3>
+                <div class="service-offer__company">
+                  <span>Offered by Create &amp; Arise</span>
+                  <span class="company-verified" title="Verified Studio">✓</span>
+                </div>
+                <p class="service-offer__description">
+                  Fast, responsive, and visually mesmerizing websites engineered for conversions. We turn your website
+                  into a 24/7 digital salesperson that builds trust and accelerates sales.
+                </p>
+                <ul class="service-offer__features">
+                  <li class="service-offer__feature-item">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                      <polyline points="20 6 9 17 4 12"></polyline>
+                    </svg>
+                    <span>Modern UI/UX Responsive Layouts</span>
+                  </li>
+                  <li class="service-offer__feature-item">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                      <polyline points="20 6 9 17 4 12"></polyline>
+                    </svg>
+                    <span>High-Converting Landing Pages</span>
+                  </li>
+                  <li class="service-offer__feature-item">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                      <polyline points="20 6 9 17 4 12"></polyline>
+                    </svg>
+                    <span>SEO Optimization &amp; Lightning Speed</span>
+                  </li>
+                  <li class="service-offer__feature-item">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                      <polyline points="20 6 9 17 4 12"></polyline>
+                    </svg>
+                    <span>Interactive Lead Capture Integrations</span>
+                  </li>
+                </ul>
+                <button type="button" onclick="selectServiceInEstimator('web')" class="service-offer__action">
+                  <span>Estimate Package</span>
+                  <span class="app-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                      stroke-linejoin="round">
+                      <path d="M5 12h14m-6-6 6 6-6 6"></path>
+                    </svg>
+                  </span>
+                </button>
+              </div>
+            </article>
 
-          <!-- Service 3: Digital Ads & Campaign Marketing -->
-          <article class="service-card">
-            <div class="service-header">
-              <div class="service-icon-box icon-rose">
-                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                  stroke-linecap="round" stroke-linejoin="round">
+            <!-- Service 6: Digital Ads & Campaign Marketing (Create & Arise) -->
+            <article class="service-offer" data-service-id="create-ads" data-company="create-and-arise"
+              data-tags="marketing ads create-and-arise all" style="--offer-primary: #e11d48; --offer-accent: #f43f5e;">
+              <div class="service-offer__media">
+                <img src="assets/images/digital-ads.jpg" alt="Digital Ads & Campaign Marketing" loading="lazy">
+                <span class="service-offer__category-tag" style="background: rgba(244, 63, 94, 0.85); color: #0b1220;">★
+                  Flagship Studio</span>
+              </div>
+              <div class="service-offer__badge">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round">
                   <line x1="12" y1="20" x2="12" y2="10"></line>
                   <line x1="18" y1="20" x2="18" y2="4"></line>
                   <line x1="6" y1="20" x2="6" y2="16"></line>
                 </svg>
               </div>
-              <span class="service-number">03</span>
-            </div>
-            <h3 class="service-title">Digital Ads &amp; Campaign Marketing</h3>
-            <p class="service-desc">
-              Maximize your Return on Ad Spend (ROAS). We design data-backed paid advertising strategies across Meta
-              (Facebook &amp; Instagram), Google Ads, and TikTok with high-converting creative copies.
-            </p>
-            <ul class="service-feature-list">
-              <li class="service-feature-item">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
-                  <polyline points="20 6 9 17 4 12"></polyline>
-                </svg>
-                <span>Meta, Google &amp; TikTok Ad Campaigns</span>
-              </li>
-              <li class="service-feature-item">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
-                  <polyline points="20 6 9 17 4 12"></polyline>
-                </svg>
-                <span>Target Audience Modeling &amp; Retargeting</span>
-              </li>
-              <li class="service-feature-item">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
-                  <polyline points="20 6 9 17 4 12"></polyline>
-                </svg>
-                <span>A/B Creative &amp; Copy Split Testing</span>
-              </li>
-              <li class="service-feature-item">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
-                  <polyline points="20 6 9 17 4 12"></polyline>
-                </svg>
-                <span>Weekly Transparent Analytics &amp; ROAS Growth</span>
-              </li>
-            </ul>
-            <button type="button" onclick="selectServiceInEstimator('ads')" class="service-action-link"
-              style="background:none;border:none;cursor:pointer;">Estimate Package &rarr;</button>
-          </article>
+              <div class="service-offer__body">
+                <h3 class="service-offer__title">Digital Ads &amp; Campaign Marketing</h3>
+                <div class="service-offer__company">
+                  <span>Offered by Create &amp; Arise</span>
+                  <span class="company-verified" title="Verified Studio">✓</span>
+                </div>
+                <p class="service-offer__description">
+                  Maximize your Return on Ad Spend (ROAS). We design data-backed paid advertising strategies across Meta
+                  (Facebook &amp; Instagram), Google Ads, and TikTok with high-converting creative copies.
+                </p>
+                <ul class="service-offer__features">
+                  <li class="service-offer__feature-item">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                      <polyline points="20 6 9 17 4 12"></polyline>
+                    </svg>
+                    <span>Meta, Google &amp; TikTok Ad Campaigns</span>
+                  </li>
+                  <li class="service-offer__feature-item">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                      <polyline points="20 6 9 17 4 12"></polyline>
+                    </svg>
+                    <span>Target Audience Modeling &amp; Retargeting</span>
+                  </li>
+                  <li class="service-offer__feature-item">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                      <polyline points="20 6 9 17 4 12"></polyline>
+                    </svg>
+                    <span>A/B Creative &amp; Copy Split Testing</span>
+                  </li>
+                  <li class="service-offer__feature-item">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                      <polyline points="20 6 9 17 4 12"></polyline>
+                    </svg>
+                    <span>Weekly Transparent Analytics &amp; ROAS Growth</span>
+                  </li>
+                </ul>
+                <button type="button" onclick="selectServiceInEstimator('ads')" class="service-offer__action">
+                  <span>Estimate Package</span>
+                  <span class="app-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                      stroke-linejoin="round">
+                      <path d="M5 12h14m-6-6 6 6-6 6"></path>
+                    </svg>
+                  </span>
+                </button>
+              </div>
+            </article>
 
-          <!-- Service 4: Social Media Management -->
-          <article class="service-card">
-            <div class="service-header">
-              <div class="service-icon-box icon-emerald">
-                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                  stroke-linecap="round" stroke-linejoin="round">
+            <!-- Service 7: Social Media Management (Create & Arise) -->
+            <article class="service-offer" data-service-id="create-social" data-company="create-and-arise"
+              data-tags="social marketing create-and-arise all"
+              style="--offer-primary: #059669; --offer-accent: #10b981;">
+              <div class="service-offer__media">
+                <img src="assets/images/kingdom-social.jpg" alt="Social Media Management" loading="lazy">
+                <span class="service-offer__category-tag"
+                  style="background: rgba(16, 185, 129, 0.85); color: #0b1220;">★ Flagship Studio</span>
+              </div>
+              <div class="service-offer__badge">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round">
                   <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
                 </svg>
               </div>
-              <span class="service-number">04</span>
-            </div>
-            <h3 class="service-title">Social Media Management</h3>
-            <p class="service-desc">
-              Build a loyal community and consistent visual feed. We handle complete social media strategy, daily
-              aesthetic carousels, engaging copywriting, community replies, and growth scheduling.
-            </p>
-            <ul class="service-feature-list">
-              <li class="service-feature-item">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
-                  <polyline points="20 6 9 17 4 12"></polyline>
-                </svg>
-                <span>Monthly Content Calendar &amp; Grid Curation</span>
-              </li>
-              <li class="service-feature-item">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
-                  <polyline points="20 6 9 17 4 12"></polyline>
-                </svg>
-                <span>High-Impact Graphic Carousels &amp; Posts</span>
-              </li>
-              <li class="service-feature-item">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
-                  <polyline points="20 6 9 17 4 12"></polyline>
-                </svg>
-                <span>Audience Engagement &amp; Inquiries Support</span>
-              </li>
-              <li class="service-feature-item">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
-                  <polyline points="20 6 9 17 4 12"></polyline>
-                </svg>
-                <span>Hashtag Strategy &amp; Growth Reports</span>
-              </li>
-            </ul>
-            <button type="button" onclick="selectServiceInEstimator('social')" class="service-action-link"
-              style="background:none;border:none;cursor:pointer;">Estimate Package &rarr;</button>
-          </article>
-        </div>
+              <div class="service-offer__body">
+                <h3 class="service-offer__title">Social Media Management</h3>
+                <div class="service-offer__company">
+                  <span>Offered by Create &amp; Arise</span>
+                  <span class="company-verified" title="Verified Studio">✓</span>
+                </div>
+                <p class="service-offer__description">
+                  Build a loyal community and consistent visual feed. We handle complete social media strategy, daily
+                  aesthetic carousels, engaging copywriting, community replies, and growth scheduling.
+                </p>
+                <ul class="service-offer__features">
+                  <li class="service-offer__feature-item">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                      <polyline points="20 6 9 17 4 12"></polyline>
+                    </svg>
+                    <span>Monthly Content Calendar &amp; Grid Curation</span>
+                  </li>
+                  <li class="service-offer__feature-item">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                      <polyline points="20 6 9 17 4 12"></polyline>
+                    </svg>
+                    <span>High-Impact Graphic Carousels &amp; Posts</span>
+                  </li>
+                  <li class="service-offer__feature-item">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                      <polyline points="20 6 9 17 4 12"></polyline>
+                    </svg>
+                    <span>Audience Engagement &amp; Inquiries Support</span>
+                  </li>
+                  <li class="service-offer__feature-item">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                      <polyline points="20 6 9 17 4 12"></polyline>
+                    </svg>
+                    <span>Hashtag Strategy &amp; Growth Reports</span>
+                  </li>
+                </ul>
+                <button type="button" onclick="selectServiceInEstimator('social')" class="service-offer__action">
+                  <span>Estimate Package</span>
+                  <span class="app-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                      stroke-linejoin="round">
+                      <path d="M5 12h14m-6-6 6 6-6 6"></path>
+                    </svg>
+                  </span>
+                </button>
+              </div>
+            </article>
 
-        <!-- Services Bottom 4-Way CTA Banner -->
-        <div class="about-cta-box" style="margin-top: 3.5rem;">
-          <span class="section-tag"
-            style="background: rgba(245, 158, 11, 0.2); border-color: rgba(245, 158, 11, 0.5);">&#128640; Next Step
-            &bull; Zero Guesswork</span>
-          <h3 class="about-cta-title">Ready to Elevate Your Brand With High-ROI Services?</h3>
-          <p class="about-cta-desc">
-            Choose the exact way you'd like to get started today — from a 1-on-1 discovery call to our instant package
-            cost calculator:
-          </p>
-          <div class="about-cta-buttons">
-            <button type="button" onclick="openBookCallModal()" class="btn btn-book-call btn-glow">
-              <span>📅 Book a Free Consultation</span>
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                <line x1="5" y1="12" x2="19" y2="12"></line>
-                <polyline points="12 5 19 12 12 19"></polyline>
-              </svg>
-            </button>
-            <button type="button" onclick="switchTab('estimator')" class="btn btn-primary">
-              <span>🧮 Request a Quote</span>
-            </button>
-            <button type="button" onclick="openAuditModal()" class="btn btn-audit">
-              <span>🔍 Get Your Free Audit</span>
-            </button>
-            <button type="button" onclick="startProjectPrompt()" class="btn btn-secondary"
-              style="border-color: rgba(16, 185, 129, 0.4); color: #10b981;">
-              <span>⚡ Start Your Project</span>
-            </button>
+            <!-- Empty State for Directory Search -->
+            <div class="site-service-directory__empty" id="servicesEmptyState" style="display: none;">
+              <div class="empty-icon-wrap">
+                <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                  <circle cx="11" cy="11" r="8"></circle>
+                  <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                </svg>
+              </div>
+              <h3>No matching services found</h3>
+              <p>We couldn't find any services matching "<span id="emptyQueryText"
+                  style="color: var(--hm-site-gold); font-weight: 600;"></span>".</p>
+              <button type="button" class="brand-button brand-button--gold" onclick="resetServiceFilters()">
+                Reset All Filters
+              </button>
+            </div>
+
           </div>
         </div>
+
+        <!-- Scope Section (Hypermakarios Layout) -->
+        <section class="services-scope" aria-labelledby="service-scope-heading">
+          <div class="services-scope__grid">
+            <h2 id="service-scope-heading">Scope starts with a conversation.</h2>
+            <div class="services-scope__copy">
+              <p>Each company can confirm the responsibilities, expected result, tools, schedule, and availability for
+                its published services.</p>
+              <p>Commercial terms, deliverables, and timelines are confirmed directly during the discovery consultation.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <!-- Services Closing Section (Hypermakarios Closing Banner) -->
+        <section class="services-closing brand-dark" aria-labelledby="service-contact-heading">
+          <div class="services-closing__grid">
+            <div class="services-closing__content">
+              <h2 id="service-contact-heading">Not sure where to start?</h2>
+              <p>Tell us what you need and we can help you find the right company or creative package to speak with.</p>
+            </div>
+            <div class="services-closing__actions">
+              <button type="button" onclick="openBookCallModal()" class="brand-button brand-button--gold">
+                <span>Book Consultation</span>
+                <span class="app-icon" aria-hidden="true">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M5 12h14m-6-6 6 6-6 6"></path>
+                  </svg>
+                </span>
+              </button>
+              <button type="button" onclick="switchTab('estimator')" class="brand-button brand-button--outline">
+                <span>Instant Package Estimator</span>
+              </button>
+              <button type="button" onclick="openAuditModal()" class="brand-button brand-button--outline">
+                <span>Free Brand Audit</span>
+              </button>
+            </div>
+          </div>
+        </section>
 
       </div>
     </section>
@@ -1681,41 +1814,106 @@
 
         <!-- Organized Portfolio Navigation & Control Hub -->
         <div class="portfolio-hub">
-          <!-- Primary Service Category Tabs -->
-          <div class="portfolio-category-nav" role="tablist" aria-label="Portfolio Categories">
-            <button class="filter-btn active" data-filter="all" role="tab" aria-selected="true">
-              <span class="filter-icon">✦</span>
-              <span>All Work</span>
-              <span class="filter-count">43</span>
-            </button>
-            <button class="filter-btn" data-filter="branding" role="tab" aria-selected="false">
-              <span class="filter-icon">🎨</span>
-              <span>Graphics &amp; Branding</span>
-              <span class="filter-count">10</span>
-            </button>
-            <button class="filter-btn" data-filter="web" role="tab" aria-selected="false">
-              <span class="filter-icon">💻</span>
-              <span>Web Design &amp; Dev</span>
-              <span class="filter-count">7</span>
-            </button>
-            <button class="filter-btn" data-filter="ads" role="tab" aria-selected="false">
-              <span class="filter-icon">🎯</span>
-              <span>Digital Ads</span>
-              <span class="filter-count">5</span>
-            </button>
-            <button class="filter-btn" data-filter="social" role="tab" aria-selected="false">
-              <span class="filter-icon">📱</span>
-              <span>Social Media</span>
-              <span class="filter-count">21</span>
-            </button>
+          <!-- Primary Service Category Dropdown Selector -->
+          <div class="portfolio-category-dropdown-area">
+            <div class="portfolio-dropdown-container">
+              <span class="portfolio-dropdown-label">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+                  <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon>
+                </svg>
+                <span>Category:</span>
+              </span>
+
+              <div class="portfolio-dropdown-box" id="portfolioDropdown">
+                <button type="button" class="portfolio-dropdown-trigger" id="portfolioDropdownTrigger" aria-haspopup="listbox" aria-expanded="false" aria-label="Filter portfolio by category">
+                  <div class="dropdown-trigger-main">
+                    <span class="dropdown-trigger-icon" id="dropdownTriggerIcon">✦</span>
+                    <span class="dropdown-trigger-text" id="dropdownTriggerText">All Work</span>
+                    <span class="dropdown-trigger-count" id="dropdownTriggerCount">43</span>
+                  </div>
+                  <svg class="dropdown-trigger-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+                    <polyline points="6 9 12 15 18 9"></polyline>
+                  </svg>
+                </button>
+
+                <div class="portfolio-dropdown-menu" id="portfolioDropdownMenu" role="listbox" aria-label="Portfolio Category Options">
+                  <button type="button" class="portfolio-dropdown-item filter-btn active" data-filter="all" role="option" aria-selected="true" tabindex="0">
+                    <div class="dropdown-item-info">
+                      <span class="filter-icon">✦</span>
+                      <span class="dropdown-item-label">All Work</span>
+                    </div>
+                    <div class="dropdown-item-meta">
+                      <span class="filter-count">43</span>
+                      <svg class="dropdown-item-check" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true">
+                        <polyline points="20 6 9 17 4 12"></polyline>
+                      </svg>
+                    </div>
+                  </button>
+
+                  <button type="button" class="portfolio-dropdown-item filter-btn" data-filter="branding" role="option" aria-selected="false" tabindex="0">
+                    <div class="dropdown-item-info">
+                      <span class="filter-icon">🎨</span>
+                      <span class="dropdown-item-label">Graphics &amp; Branding</span>
+                    </div>
+                    <div class="dropdown-item-meta">
+                      <span class="filter-count">10</span>
+                      <svg class="dropdown-item-check" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true">
+                        <polyline points="20 6 9 17 4 12"></polyline>
+                      </svg>
+                    </div>
+                  </button>
+
+                  <button type="button" class="portfolio-dropdown-item filter-btn" data-filter="web" role="option" aria-selected="false" tabindex="0">
+                    <div class="dropdown-item-info">
+                      <span class="filter-icon">💻</span>
+                      <span class="dropdown-item-label">Web Design &amp; Dev</span>
+                    </div>
+                    <div class="dropdown-item-meta">
+                      <span class="filter-count">7</span>
+                      <svg class="dropdown-item-check" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true">
+                        <polyline points="20 6 9 17 4 12"></polyline>
+                      </svg>
+                    </div>
+                  </button>
+
+                  <button type="button" class="portfolio-dropdown-item filter-btn" data-filter="ads" role="option" aria-selected="false" tabindex="0">
+                    <div class="dropdown-item-info">
+                      <span class="filter-icon">🎯</span>
+                      <span class="dropdown-item-label">Digital Ads</span>
+                    </div>
+                    <div class="dropdown-item-meta">
+                      <span class="filter-count">5</span>
+                      <svg class="dropdown-item-check" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true">
+                        <polyline points="20 6 9 17 4 12"></polyline>
+                      </svg>
+                    </div>
+                  </button>
+
+                  <button type="button" class="portfolio-dropdown-item filter-btn" data-filter="social" role="option" aria-selected="false" tabindex="0">
+                    <div class="dropdown-item-info">
+                      <span class="filter-icon">📱</span>
+                      <span class="dropdown-item-label">Social Media</span>
+                    </div>
+                    <div class="dropdown-item-meta">
+                      <span class="filter-count">21</span>
+                      <svg class="dropdown-item-check" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true">
+                        <polyline points="20 6 9 17 4 12"></polyline>
+                      </svg>
+                    </div>
+                  </button>
+                </div>
+              </div>
+            </div>
           </div>
 
           <!-- Utility Bar: Live Counter & Feedback (Left) + Search & View Switcher (Right) -->
           <div class="portfolio-utility-bar">
             <div class="portfolio-status-info" id="portfolioStatusInfo">
               <span class="portfolio-status-dot"></span>
-              <span class="portfolio-count-text" id="portfolioCountText">Showing <strong>43</strong> verified case studies</span>
-              <button type="button" class="portfolio-reset-pill" id="portfolioResetFilterBtn" style="display: none;" title="Show all case studies">
+              <span class="portfolio-count-text" id="portfolioCountText">Showing <strong>43</strong> verified case
+                studies</span>
+              <button type="button" class="portfolio-reset-pill" id="portfolioResetFilterBtn" style="display: none;"
+                title="Show all case studies">
                 <span>✕ Show all</span>
               </button>
             </div>
@@ -1723,7 +1921,8 @@
             <div class="portfolio-tools-group">
               <!-- Live Real-Time Search Bar -->
               <div class="portfolio-search-box">
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                  aria-hidden="true">
                   <circle cx="11" cy="11" r="8"></circle>
                   <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
                 </svg>
@@ -1744,7 +1943,8 @@
                   </svg>
                   <span>Gallery</span>
                 </button>
-                <button type="button" class="view-mode-btn" data-view="matrix" title="Structured Case Study Metrics Table">
+                <button type="button" class="view-mode-btn" data-view="matrix"
+                  title="Structured Case Study Metrics Table">
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
                     <line x1="8" y1="6" x2="21" y2="6"></line>
                     <line x1="8" y1="12" x2="21" y2="12"></line>

@@ -99,6 +99,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initNavigation();
   initPortfolio();
   initCostCalculator();
+  initServicesDirectory();
   initTestimonialCarousel();
   initFaqAccordion();
   initContactForm();
@@ -1946,10 +1947,50 @@ function initPortfolio() {
   const countText = document.getElementById('portfolioCountText');
   const resetFilterBtn = document.getElementById('portfolioResetFilterBtn');
   const quickTagChips = document.querySelectorAll('.quick-tag-chip');
+  const dropdownBox = document.getElementById('portfolioDropdown');
+  const dropdownTrigger = document.getElementById('portfolioDropdownTrigger');
+  const dropdownTriggerIcon = document.getElementById('dropdownTriggerIcon');
+  const dropdownTriggerText = document.getElementById('dropdownTriggerText');
+  const dropdownTriggerCount = document.getElementById('dropdownTriggerCount');
 
   let currentFilter = 'all';
   let currentSearchQuery = '';
   let currentViewMode = 'grid'; // 'grid' or 'matrix'
+
+  function openCategoryDropdown() {
+    if (dropdownBox) {
+      dropdownBox.classList.add('is-open');
+      dropdownTrigger?.setAttribute('aria-expanded', 'true');
+    }
+  }
+
+  function closeCategoryDropdown() {
+    if (dropdownBox) {
+      dropdownBox.classList.remove('is-open');
+      dropdownTrigger?.setAttribute('aria-expanded', 'false');
+    }
+  }
+
+  function toggleCategoryDropdown() {
+    if (dropdownBox && dropdownBox.classList.contains('is-open')) {
+      closeCategoryDropdown();
+    } else {
+      openCategoryDropdown();
+    }
+  }
+
+  function syncDropdownTrigger(filterVal) {
+    const targetItem = document.querySelector(`.portfolio-dropdown-item[data-filter="${filterVal}"]`);
+    if (targetItem) {
+      const icon = targetItem.querySelector('.filter-icon')?.textContent || '✦';
+      const label = targetItem.querySelector('.dropdown-item-label')?.textContent || 'All Work';
+      const count = targetItem.querySelector('.filter-count')?.textContent || portfolioData.length;
+
+      if (dropdownTriggerIcon) dropdownTriggerIcon.textContent = icon;
+      if (dropdownTriggerText) dropdownTriggerText.textContent = label;
+      if (dropdownTriggerCount) dropdownTriggerCount.textContent = count;
+    }
+  }
 
   function escapeHTML(str) {
     if (!str) return '';
@@ -1994,6 +2035,9 @@ function initPortfolio() {
       b.classList.toggle('active', isAll);
       b.setAttribute('aria-selected', isAll ? 'true' : 'false');
     });
+
+    syncDropdownTrigger('all');
+    closeCategoryDropdown();
 
     quickTagChips.forEach(c => c.classList.remove('active'));
     renderPortfolio();
@@ -2220,7 +2264,29 @@ function initPortfolio() {
     }
   }
 
-  // Filter Category Buttons
+  // Filter Category Dropdown Trigger Toggle
+  if (dropdownTrigger) {
+    dropdownTrigger.addEventListener('click', (e) => {
+      e.stopPropagation();
+      toggleCategoryDropdown();
+    });
+  }
+
+  // Close dropdown when clicking outside
+  document.addEventListener('click', (e) => {
+    if (dropdownBox && !dropdownBox.contains(e.target)) {
+      closeCategoryDropdown();
+    }
+  });
+
+  // Close dropdown on Escape key
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      closeCategoryDropdown();
+    }
+  });
+
+  // Filter Category Buttons (Dropdown Options)
   filterBtns.forEach(btn => {
     btn.addEventListener('click', () => {
       filterBtns.forEach(b => {
@@ -2230,7 +2296,25 @@ function initPortfolio() {
       btn.classList.add('active');
       btn.setAttribute('aria-selected', 'true');
       currentFilter = btn.getAttribute('data-filter') || 'all';
+
+      syncDropdownTrigger(currentFilter);
+      closeCategoryDropdown();
       renderPortfolio();
+    });
+
+    // Arrow navigation support
+    btn.addEventListener('keydown', (e) => {
+      const items = Array.from(filterBtns);
+      const index = items.indexOf(btn);
+      if (e.key === 'ArrowDown') {
+        e.preventDefault();
+        const next = items[(index + 1) % items.length];
+        next.focus();
+      } else if (e.key === 'ArrowUp') {
+        e.preventDefault();
+        const prev = items[(index - 1 + items.length) % items.length];
+        prev.focus();
+      }
     });
   });
 
@@ -2309,6 +2393,8 @@ function initPortfolio() {
       }
     }
   });
+
+  syncDropdownTrigger(currentFilter);
 
   renderPortfolio();
 }
@@ -2674,6 +2760,118 @@ window.selectServiceInEstimator = function (serviceKey) {
   const sObj = serviceBasePrices[serviceKey];
   showToast(`✨ Selected ${sObj ? sObj.name : 'Service'} in Cost Estimator`);
 };
+
+/* --------------------------------------------------------------------------
+   5b. Hypermakarios Services Directory Filter & Search Controller
+   -------------------------------------------------------------------------- */
+function initServicesDirectory() {
+  const searchInput = document.getElementById('serviceSearchInput');
+  const clearBtn = document.getElementById('clearServiceSearch');
+  const filterPills = document.querySelectorAll('.service-filter-pill');
+  const cards = document.querySelectorAll('.service-offer');
+  const countElem = document.getElementById('visibleCount');
+  const totalElem = document.getElementById('totalCount');
+  const emptyState = document.getElementById('servicesEmptyState');
+  const querySpan = document.getElementById('emptyQueryText');
+
+  if (!cards.length) return;
+
+  let currentFilter = 'all';
+  let currentSearch = '';
+
+  function filterCards() {
+    let visible = 0;
+    const term = currentSearch.trim().toLowerCase();
+
+    cards.forEach(card => {
+      const title = (card.querySelector('.service-offer__title')?.textContent || '').toLowerCase();
+      const desc = (card.querySelector('.service-offer__description')?.textContent || '').toLowerCase();
+      const company = (card.querySelector('.service-offer__company')?.textContent || '').toLowerCase();
+      const features = (card.querySelector('.service-offer__features')?.textContent || '').toLowerCase();
+      const cardTags = (card.getAttribute('data-tags') || '').toLowerCase().split(' ');
+      const cardCompany = (card.getAttribute('data-company') || '').toLowerCase();
+
+      // Check Category / Company Filter
+      let matchesFilter = false;
+      if (currentFilter === 'all') {
+        matchesFilter = true;
+      } else if (currentFilter === 'create-and-arise') {
+        matchesFilter = cardCompany.includes('create-and-arise');
+      } else if (currentFilter === 'anchorplan') {
+        matchesFilter = cardCompany.includes('anchorplan');
+      } else {
+        matchesFilter = cardTags.includes(currentFilter) || cardTags.some(t => t.includes(currentFilter));
+      }
+
+      // Check Search Term
+      let matchesSearch = true;
+      if (term) {
+        matchesSearch = title.includes(term) || desc.includes(term) || company.includes(term) || features.includes(term);
+      }
+
+      if (matchesFilter && matchesSearch) {
+        card.style.display = 'flex';
+        visible++;
+      } else {
+        card.style.display = 'none';
+      }
+    });
+
+    if (countElem) countElem.textContent = visible;
+    if (totalElem) totalElem.textContent = cards.length;
+
+    if (emptyState) {
+      if (visible === 0) {
+        emptyState.style.display = 'block';
+        if (querySpan) querySpan.textContent = term || currentFilter;
+      } else {
+        emptyState.style.display = 'none';
+      }
+    }
+
+    if (clearBtn) {
+      clearBtn.style.display = term ? 'flex' : 'none';
+    }
+  }
+
+  if (searchInput) {
+    searchInput.addEventListener('input', (e) => {
+      currentSearch = e.target.value;
+      filterCards();
+    });
+  }
+
+  if (clearBtn) {
+    clearBtn.addEventListener('click', () => {
+      if (searchInput) searchInput.value = '';
+      currentSearch = '';
+      filterCards();
+      searchInput?.focus();
+    });
+  }
+
+  filterPills.forEach(pill => {
+    pill.addEventListener('click', () => {
+      filterPills.forEach(p => p.classList.remove('active'));
+      pill.classList.add('active');
+      currentFilter = pill.getAttribute('data-filter') || 'all';
+      filterCards();
+    });
+  });
+
+  window.resetServiceFilters = function () {
+    if (searchInput) searchInput.value = '';
+    currentSearch = '';
+    currentFilter = 'all';
+    filterPills.forEach(p => {
+      if (p.getAttribute('data-filter') === 'all') p.classList.add('active');
+      else p.classList.remove('active');
+    });
+    filterCards();
+  };
+
+  filterCards();
+}
 
 /* --------------------------------------------------------------------------
    6. Testimonials & Reviews Filter Controller
