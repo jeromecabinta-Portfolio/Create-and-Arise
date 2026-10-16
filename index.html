@@ -30,7 +30,7 @@
     rel="stylesheet">
 
   <!-- Stylesheet -->
-  <link rel="stylesheet" href="assets/css/style.css?v=3.9">
+  <link rel="stylesheet" href="assets/css/style.css?v=4.2">
 
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="assets/Logo/Logo.png">
@@ -201,16 +201,23 @@
             design, strategic digital ads, and social media management to scale visionary leaders worldwide.
           </p>
 
-          <!-- One Focused Primary Call-to-Action (CTA) -->
+          <!-- One Focused Primary Call-to-Action (CTA) + Watch Reel -->
           <div class="hero-cta-single-container">
-            <button type="button" onclick="openBookCallModal()" class="btn btn-primary btn-hero-primary btn-glow"
-              id="heroPrimaryCta" title="Schedule a free 20-min strategy call">
-              <span>📅 Book a Free Strategy Call</span>
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                <line x1="5" y1="12" x2="19" y2="12"></line>
-                <polyline points="12 5 19 12 12 19"></polyline>
-              </svg>
-            </button>
+            <div class="hero-cta-button-group">
+              <button type="button" onclick="openBookCallModal()" class="btn btn-primary btn-hero-primary btn-glow"
+                id="heroPrimaryCta" title="Schedule a free 20-min strategy call">
+                <span>📅 Book a Free Strategy Call</span>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                  <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+              </button>
+              <button type="button" onclick="window.focusHeroVideo && window.focusHeroVideo()" class="btn btn-secondary btn-hero-video"
+                id="heroWatchVideoCta" title="Watch our official brand showreel video">
+                <span class="play-pulse-dot">▶</span>
+                <span>Watch Reel</span>
+              </button>
+            </div>
             <p class="hero-cta-helper">
               <span>✨ 100% Free consultation &bull; Or <a href="#estimator"
                   onclick="switchTab('estimator'); return false;" class="hero-helper-link">Calculate Project Cost
@@ -240,9 +247,10 @@
         </div>
 
         <!-- Hero Visual Composition with Professional Browser Mockup Shell -->
-        <div class="hero-visual">
-          <div class="hero-browser-frame">
-            <!-- Browser Header Bar -->
+        <!-- Hero Visual Composition with Dynamic Showcase Shell -->
+        <div class="hero-visual" id="heroVisualWrapper">
+          <div class="hero-browser-frame" id="heroMockupFrame">
+            <!-- Browser Header Bar with Responsive Mode Switcher -->
             <div class="hero-browser-header">
               <div class="browser-dots">
                 <span class="browser-dot dot-red"></span>
@@ -250,32 +258,82 @@
                 <span class="browser-dot dot-green"></span>
               </div>
               <div class="browser-address-bar">
-                <span>🔒 createandarise.com/showcase</span>
-                <span class="browser-live-tag">● Live Portfolio</span>
+                <span class="address-text">🔒 createandarise.com/showreel</span>
+                <span class="browser-live-tag">● 4K Reel</span>
+              </div>
+              <!-- Desktop / Mobile Reel Mockup Switcher -->
+              <div class="hero-mockup-mode-pills" role="tablist" aria-label="Mockup view modes">
+                <button type="button" class="mockup-mode-pill active" id="btnModeDesktop" onclick="setHeroMockupMode('desktop')" title="Widescreen Desktop Showcase">💻 Wide</button>
+                <button type="button" class="mockup-mode-pill" id="btnModePhone" onclick="setHeroMockupMode('phone')" title="Mobile Portrait Reel View">📱 Reel</button>
               </div>
             </div>
 
-            <!-- Showcase Visual Inner -->
-            <div class="hero-card-inner">
-              <img src="assets/images/hero-agency.jpg" alt="Create and Arise Creative Agency Showcase"
-                class="hero-image" width="800" height="450">
+            <!-- Showcase Visual Inner with Ambient Glow Backdrop + Crisp Centered Video -->
+            <div class="hero-card-inner" id="heroCardInner">
+              <!-- Soft ambient reflection video for widescreen mode -->
+              <video class="hero-video-ambient" id="heroVideoAmbient" autoplay loop muted playsinline aria-hidden="true">
+                <source src="assets/videos/vid.mp4" type="video/mp4">
+              </video>
+
+              <!-- Main crisp uncropped video -->
+              <video id="heroVideo" class="hero-video fit-contain" autoplay loop muted playsinline preload="auto" poster="assets/images/hero-agency.jpg" aria-label="Create and Arise Creative Agency Showcase Video">
+                <source src="assets/videos/vid.mp4" type="video/mp4">
+                <source src="assets/Video/vid.mp4" type="video/mp4">
+                <source src="assets/vid.mp4" type="video/mp4">
+                <img src="assets/images/hero-agency.jpg" alt="Create and Arise Creative Agency Showcase" class="hero-image" width="800" height="450">
+              </video>
+
+              <!-- Video Controls Overlay -->
+              <div class="hero-video-controls" id="heroVideoControls" aria-label="Showreel controls">
+                <button type="button" class="video-control-btn" id="heroVideoPlayPauseBtn" aria-label="Pause or play video" title="Pause / Play Video">
+                  <svg class="icon-pause" width="13" height="13" viewBox="0 0 24 24" fill="currentColor">
+                    <rect x="6" y="4" width="4" height="16" rx="1"></rect>
+                    <rect x="14" y="4" width="4" height="16" rx="1"></rect>
+                  </svg>
+                  <svg class="icon-play" width="13" height="13" viewBox="0 0 24 24" fill="currentColor" style="display:none;">
+                    <polygon points="6 4 20 12 6 20 6 4"></polygon>
+                  </svg>
+                </button>
+                <button type="button" class="video-control-btn sound-btn" id="heroVideoMuteBtn" aria-label="Toggle sound" title="Toggle audio (sound)">
+                  <svg class="icon-muted" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+                    <line x1="23" y1="9" x2="17" y2="15"></line>
+                    <line x1="17" y1="9" x2="23" y2="15"></line>
+                  </svg>
+                  <svg class="icon-unmuted" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none;">
+                    <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+                    <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+                  </svg>
+                  <span class="video-sound-text" id="heroVideoSoundText">Sound Off</span>
+                </button>
+                <button type="button" class="video-control-btn fit-btn" id="heroVideoFitBtn" onclick="toggleHeroVideoFit()" aria-label="Toggle Fit or Fill" title="Toggle Fit (Entire Video) / Fill (Full Bleed)">
+                  <span id="heroVideoFitText">Fit</span>
+                </button>
+                <button type="button" class="video-control-btn fullscreen-btn" id="heroVideoFullscreenBtn" aria-label="Fullscreen video" title="Fullscreen">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path>
+                  </svg>
+                </button>
+              </div>
             </div>
           </div>
 
-          <!-- Floating Interactive Badges -->
-          <div class="floating-badge floating-badge-1">
-            <div class="badge-icon gold">&#9733;</div>
-            <div>
-              <div class="badge-title">5.0 Star Rating</div>
-              <div class="badge-desc">100+ Visionary Brands Scaled</div>
+          <!-- Floating Interactive Badges (Responsive Bar on Mobile) -->
+          <div class="hero-visual-badges-bar">
+            <div class="floating-badge floating-badge-1">
+              <div class="badge-icon gold">&#9733;</div>
+              <div>
+                <div class="badge-title">5.0 Star Rating</div>
+                <div class="badge-desc">100+ Visionary Brands Scaled</div>
+              </div>
             </div>
-          </div>
 
-          <div class="floating-badge floating-badge-2">
-            <div class="badge-icon purple">&#128640;</div>
-            <div>
-              <div class="badge-title">Data-Driven Growth</div>
-              <div class="badge-desc">+320% Average Ad ROAS</div>
+            <div class="floating-badge floating-badge-2">
+              <div class="badge-icon purple">&#128640;</div>
+              <div>
+                <div class="badge-title">Data-Driven Growth</div>
+                <div class="badge-desc">+320% Average Ad ROAS</div>
+              </div>
             </div>
           </div>
         </div>
@@ -3770,7 +3828,7 @@
   </div>
 
   <!-- Application Logic & Automated Chatbot Scripts -->
-  <script src="assets/js/app.js?v=7.0"></script>
+  <script src="assets/js/app.js?v=7.2"></script>
   <script src="assets/js/chatbot.js?v=2.4"></script>
 </body>
 

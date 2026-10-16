@@ -50,7 +50,14 @@ const MIME_TYPES = {
   '.png': 'image/png',
   '.svg': 'image/svg+xml',
   '.ico': 'image/x-icon',
-  '.json': 'application/json'
+  '.json': 'application/json',
+  '.mp4': 'video/mp4',
+  '.webm': 'video/webm',
+  '.ogg': 'video/ogg',
+  '.mov': 'video/quicktime',
+  '.woff2': 'font/woff2',
+  '.woff': 'font/woff',
+  '.ttf': 'font/ttf'
 };
 
 /**
@@ -518,7 +525,7 @@ const server = http.createServer((req, res) => {
   
   const filePath = path.join(__dirname, decodeURIComponent(reqPath));
   
-  fs.readFile(filePath, (err, content) => {
+  fs.stat(filePath, (err, stat) => {
     if (err) {
       if (err.code === 'ENOENT') {
         res.writeHead(404, { 'Content-Type': 'text/plain' });
@@ -527,14 +534,40 @@ const server = http.createServer((req, res) => {
         res.writeHead(500);
         res.end(`Server Error: ${err.code}`);
       }
+      return;
+    }
+
+    if (stat.isDirectory()) {
+      res.writeHead(403);
+      res.end('Directory listing forbidden');
+      return;
+    }
+
+    const ext = path.extname(filePath).toLowerCase();
+    const contentType = MIME_TYPES[ext] || 'application/octet-stream';
+    const range = req.headers.range;
+
+    if (range && (ext === '.mp4' || ext === '.webm' || ext === '.ogg')) {
+      const parts = range.replace(/bytes=/, '').split('-');
+      const start = parseInt(parts[0], 10);
+      const end = parts[1] ? parseInt(parts[1], 10) : stat.size - 1;
+      const chunksize = (end - start) + 1;
+      const file = fs.createReadStream(filePath, { start, end });
+      res.writeHead(206, {
+        'Content-Range': `bytes ${start}-${end}/${stat.size}`,
+        'Accept-Ranges': 'bytes',
+        'Content-Length': chunksize,
+        'Content-Type': contentType
+      });
+      file.pipe(res);
     } else {
-      const ext = path.extname(filePath).toLowerCase();
-      const contentType = MIME_TYPES[ext] || 'application/octet-stream';
-      res.writeHead(200, { 
+      res.writeHead(200, {
         'Content-Type': contentType,
+        'Content-Length': stat.size,
+        'Accept-Ranges': 'bytes',
         'Cache-Control': 'no-cache, no-store, must-revalidate'
       });
-      res.end(content);
+      fs.createReadStream(filePath).pipe(res);
     }
   });
 });

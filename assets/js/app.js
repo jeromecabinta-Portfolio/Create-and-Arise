@@ -4124,3 +4124,205 @@ function openFeedbackModal() {
     };
   }
 }
+
+/* --------------------------------------------------------------------------
+   HERO VIDEO SHOWREEL CONTROLLER
+   -------------------------------------------------------------------------- */
+function initHeroVideo() {
+  const vid = document.getElementById('heroVideo');
+  const ambientVid = document.getElementById('heroVideoAmbient');
+  const playPauseBtn = document.getElementById('heroVideoPlayPauseBtn');
+  const muteBtn = document.getElementById('heroVideoMuteBtn');
+  const fsBtn = document.getElementById('heroVideoFullscreenBtn');
+  const soundText = document.getElementById('heroVideoSoundText');
+
+  if (!vid) return;
+
+  function updatePlayState(isPlaying) {
+    if (!playPauseBtn) return;
+    const pauseIcon = playPauseBtn.querySelector('.icon-pause');
+    const playIcon = playPauseBtn.querySelector('.icon-play');
+    if (pauseIcon && playIcon) {
+      pauseIcon.style.display = isPlaying ? 'block' : 'none';
+      playIcon.style.display = isPlaying ? 'none' : 'block';
+    }
+    playPauseBtn.setAttribute('aria-label', isPlaying ? 'Pause video' : 'Play video');
+    playPauseBtn.setAttribute('title', isPlaying ? 'Pause Video' : 'Play Video');
+    if (ambientVid) {
+      if (isPlaying && ambientVid.paused) ambientVid.play().catch(() => {});
+      else if (!isPlaying && !ambientVid.paused) ambientVid.pause();
+    }
+  }
+
+  function updateMuteState(isMuted) {
+    if (!muteBtn) return;
+    const iconMuted = muteBtn.querySelector('.icon-muted');
+    const iconUnmuted = muteBtn.querySelector('.icon-unmuted');
+    if (iconMuted && iconUnmuted) {
+      iconMuted.style.display = isMuted ? 'block' : 'none';
+      iconUnmuted.style.display = isMuted ? 'none' : 'block';
+    }
+    if (soundText) {
+      soundText.textContent = isMuted ? 'Sound Off' : 'Sound On';
+    }
+    muteBtn.setAttribute('title', isMuted ? 'Unmute Sound' : 'Mute Sound');
+  }
+
+  // Play / Pause Click
+  if (playPauseBtn) {
+    playPauseBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      if (vid.paused) {
+        vid.play().catch(() => {});
+        updatePlayState(true);
+      } else {
+        vid.pause();
+        updatePlayState(false);
+      }
+    });
+  }
+
+  // Click on video directly to toggle play/pause
+  vid.addEventListener('click', () => {
+    if (vid.paused) {
+      vid.play().catch(() => {});
+      updatePlayState(true);
+    } else {
+      vid.pause();
+      updatePlayState(false);
+    }
+  });
+
+  // Sound Toggle Click
+  if (muteBtn) {
+    muteBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      vid.muted = !vid.muted;
+      updateMuteState(vid.muted);
+      if (!vid.muted && vid.paused) {
+        vid.play().catch(() => {});
+        updatePlayState(true);
+      }
+    });
+  }
+
+  // Fullscreen Click
+  if (fsBtn) {
+    fsBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      if (vid.requestFullscreen) {
+        vid.requestFullscreen();
+      } else if (vid.webkitRequestFullscreen) {
+        vid.webkitRequestFullscreen();
+      } else if (vid.msRequestFullscreen) {
+        vid.msRequestFullscreen();
+      }
+    });
+  }
+
+  // Video Events Sync
+  vid.addEventListener('play', () => updatePlayState(true));
+  vid.addEventListener('pause', () => updatePlayState(false));
+  vid.addEventListener('volumechange', () => updateMuteState(vid.muted));
+  vid.addEventListener('timeupdate', () => {
+    if (ambientVid && Math.abs(ambientVid.currentTime - vid.currentTime) > 0.5) {
+      ambientVid.currentTime = vid.currentTime;
+    }
+  });
+
+  // Autoplay attempt
+  const playPromise = vid.play();
+  if (playPromise !== undefined) {
+    playPromise.catch(() => {
+      vid.muted = true;
+      vid.play().catch(() => {});
+    });
+  }
+
+  // On mobile screens, automatically default to mobile reel mode for optimal viewing
+  if (window.innerWidth <= 640 && typeof setHeroMockupMode === 'function') {
+    setHeroMockupMode('phone');
+  }
+}
+
+// Switch between Desktop Widescreen Mockup and Mobile Phone Reel Mockup
+window.setHeroMockupMode = function(mode) {
+  const wrapper = document.getElementById('heroVisualWrapper');
+  const btnDesktop = document.getElementById('btnModeDesktop');
+  const btnPhone = document.getElementById('btnModePhone');
+  const ambientVid = document.getElementById('heroVideoAmbient');
+
+  if (!wrapper) return;
+
+  const isPhone = (mode === 'phone');
+  wrapper.classList.toggle('mode-phone', isPhone);
+
+  if (btnDesktop) btnDesktop.classList.toggle('active', !isPhone);
+  if (btnPhone) btnPhone.classList.toggle('active', isPhone);
+
+  if (ambientVid) {
+    if (isPhone) ambientVid.pause();
+    else ambientVid.play().catch(() => {});
+  }
+
+  if (typeof showToast === 'function') {
+    showToast(isPhone ? '📱 Switched to 9:16 Mobile Reel Mockup' : '💻 Switched to Widescreen Desktop Showcase');
+  }
+};
+
+// Toggle between Fit (entire video visible) and Fill (zoomed to cover frame)
+window.toggleHeroVideoFit = function() {
+  const vid = document.getElementById('heroVideo');
+  const fitText = document.getElementById('heroVideoFitText');
+  if (!vid) return;
+
+  const isContain = vid.classList.contains('fit-contain');
+  if (isContain) {
+    vid.classList.remove('fit-contain');
+    vid.classList.add('fit-cover');
+    if (fitText) fitText.textContent = 'Fill';
+    if (typeof showToast === 'function') showToast('🔍 Video Fill mode (full bleed)');
+  } else {
+    vid.classList.remove('fit-cover');
+    vid.classList.add('fit-contain');
+    if (fitText) fitText.textContent = 'Fit';
+    if (typeof showToast === 'function') showToast('📐 Video Fit mode (entire video visible)');
+  }
+};
+
+window.focusHeroVideo = function () {
+  const vid = document.getElementById('heroVideo');
+  const frame = document.querySelector('.hero-browser-frame');
+  if (vid) {
+    vid.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    if (vid.paused) {
+      vid.play().catch(() => {});
+    }
+    vid.muted = false;
+    const soundText = document.getElementById('heroVideoSoundText');
+    const muteBtn = document.getElementById('heroVideoMuteBtn');
+    if (muteBtn) {
+      const iconMuted = muteBtn.querySelector('.icon-muted');
+      const iconUnmuted = muteBtn.querySelector('.icon-unmuted');
+      if (iconMuted) iconMuted.style.display = 'none';
+      if (iconUnmuted) iconUnmuted.style.display = 'block';
+    }
+    if (soundText) soundText.textContent = 'Sound On';
+
+    if (frame) {
+      frame.classList.add('video-focused-glow');
+      setTimeout(() => frame.classList.remove('video-focused-glow'), 2500);
+    }
+    if (typeof showToast === 'function') {
+      showToast('🔊 Agency showreel playing with sound!');
+    }
+  }
+};
+
+// Initialize on DOM ready or immediately if already loaded
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initHeroVideo);
+} else {
+  initHeroVideo();
+}
+
