@@ -467,6 +467,10 @@ select {
   gap: 0.4rem;
 }
 
+.top-fb-link:hover {
+  color: var(--color-primary) !important;
+}
+
 @media (max-width: 680px) {
   .top-bar-info .hide-mobile {
     display: none;
@@ -978,6 +982,27 @@ select {
   .bottom-motto {
     font-size: 0.75rem;
   }
+}
+
+.bottom-fb-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  color: var(--text-muted);
+  text-decoration: none;
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 0.2rem 0.55rem;
+  border-radius: var(--radius-sm);
+  background: var(--bg-surface-elevated);
+  border: 1px solid var(--border-subtle);
+  transition: all var(--transition-fast);
+}
+
+.bottom-fb-link:hover {
+  color: #ffffff;
+  background: #1877f2;
+  border-color: #1877f2;
 }
 
 .bottom-email-link {

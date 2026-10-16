@@ -40,6 +40,7 @@ const OWNER_EMAIL = process.env.OWNER_EMAIL || 'createandarise05@gmail.com';
 const STUDIO_NAME = 'Create and Arise';
 const STUDIO_PHONE = '+63 927 468 2635';
 const STUDIO_BASE = 'La Trinidad, Benguet, Philippines (GMT+8)';
+const STUDIO_FACEBOOK = 'https://www.facebook.com/CreateAndArise2023';
 
 const MIME_TYPES = {
   '.html': 'text/html',
@@ -176,6 +177,9 @@ function buildClientInquiryEmailHtml({ name, email, ref, services, budget, phone
         <a href="https://wa.me/639274682635?text=${encodeURIComponent(`Hi Jerome! I received my inquiry confirmation (Ref: ${ref}). Looking forward to connecting!`)}" style="display: inline-block; background: #10b981; color: #0a0b10; font-weight: 700; font-size: 14px; padding: 12px 24px; border-radius: 8px; text-decoration: none; margin: 4px;">
           💬 Chat on WhatsApp (+63 927 468 2635)
         </a>
+        <a href="${STUDIO_FACEBOOK}" target="_blank" style="display: inline-block; background: #1877f2; color: #ffffff; font-weight: 700; font-size: 14px; padding: 12px 20px; border-radius: 8px; text-decoration: none; margin: 4px;">
+          🌐 Facebook (@CreateAndArise2023)
+        </a>
         <a href="mailto:${OWNER_EMAIL}?subject=${encodeURIComponent(`Inquiry Follow-up (${ref})`)}" style="display: inline-block; background: rgba(255,255,255,0.08); color: #f8fafc; font-weight: 600; font-size: 14px; padding: 12px 20px; border-radius: 8px; text-decoration: none; margin: 4px; border: 1px solid rgba(255,255,255,0.15);">
           ✉️ Direct Studio Email
         </a>
@@ -188,7 +192,7 @@ function buildClientInquiryEmailHtml({ name, email, ref, services, budget, phone
         &ldquo;May the favor of the Lord our God rest on us; establish the work of our hands.&rdquo; &bull; Psalm 90:17
       </p>
       <div><strong>Create and Arise Studio</strong> &bull; ${STUDIO_BASE}</div>
-      <div>WhatsApp: ${STUDIO_PHONE} &bull; Email: ${OWNER_EMAIL}</div>
+      <div>WhatsApp: ${STUDIO_PHONE} &bull; Email: ${OWNER_EMAIL} &bull; FB: <a href="${STUDIO_FACEBOOK}" style="color: #60a5fa; text-decoration: none;">facebook.com/CreateAndArise2023</a></div>
       <div style="margin-top: 8px; color: #475569; font-size: 11px;">
         This automated confirmation was sent because you submitted a project inquiry on createandarise.com.
       </div>

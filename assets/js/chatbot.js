@@ -127,13 +127,24 @@
     },
     {
       keywords: ['contact', 'hire', 'book', 'talk', 'email', 'phone', 'whatsapp', 'messenger', 'consultation', 'call', 'meeting'],
-      response: `We'd love to partner with you! Here is how you can connect directly with our creative team:\n\n• 📝 **Booking Form:** Scroll to our free project consultation form.\n• 📱 **WhatsApp:** +63 927 468 2635\n• 💬 **FB Messenger:** m.me/createandarise\n• ✉️ **Direct Email:** createandarise05@gmail.com\n\n✨ **Instant Confirmation:** When you submit an inquiry, you will immediately receive an automated confirmation email with your project reference ID!\n⏱️ We respond to all project inquiries within 24 weekday business hours!`,
+      response: `We'd love to partner with you! Here is how you can connect directly with our creative team:\n\n• 📝 **Booking Form:** Scroll to our free project consultation form.\n• 📱 **WhatsApp:** +63 927 468 2635\n• 🌐 **Facebook Page:** [facebook.com/CreateAndArise2023](https://www.facebook.com/CreateAndArise2023)\n• 💬 **FB Messenger:** [m.me/CreateAndArise2023](https://m.me/CreateAndArise2023)\n• ✉️ **Direct Email:** createandarise05@gmail.com\n\n✨ **Instant Confirmation:** When you submit an inquiry, you will immediately receive an automated confirmation email with your project reference ID!\n⏱️ We respond to all project inquiries within 24 weekday business hours!`,
       actions: [
-        { label: '📝 Fill Project Consultation Form', callback: 'scrollToContact' },
+        { label: '📝 Fill Consultation Form', callback: 'scrollToContact' },
+        { label: '🌐 Open Facebook Page', callback: 'openFacebook' },
         { label: '💬 Chat on WhatsApp', callback: 'openWhatsApp' },
         { label: '📋 Copy Direct Email', callback: 'copyEmail' }
       ],
       chips: ['Cost Estimator', 'Services', 'Working Hours', 'Branding']
+    },
+    {
+      keywords: ['facebook', 'fb', 'fanpage', 'meta page', 'createandarise2023', 'social link', 'facebook link'],
+      response: `🌐 **Connect with Create and Arise on Facebook:**\n\nFollow our official Facebook page to explore our latest creative projects, branding showcases, behind-the-scenes designs, and agency updates!\n\n• 🔗 **Official Page:** [facebook.com/CreateAndArise2023](https://www.facebook.com/CreateAndArise2023)\n• 💬 **Messenger:** [m.me/CreateAndArise2023](https://m.me/CreateAndArise2023)\n\nWe would love to connect with you and your business!`,
+      actions: [
+        { label: '🌐 Open Facebook Page', callback: 'openFacebook' },
+        { label: '💬 Send FB Message', callback: 'openMessenger' },
+        { label: '📝 Start Consultation', callback: 'scrollToContact' }
+      ],
+      chips: ['Contact Us', 'Services', 'Cost Estimator', 'Working Hours']
     },
     {
       keywords: ['confirmation', 'email confirmation', 'receipt', 'confirmation email', 'receive email', 'confirm inquiry', 'inquiry confirmation'],
@@ -578,6 +589,14 @@
 
       case 'openWhatsApp':
         window.open('https://wa.me/639274682635?text=Hello%20Create%20and%20Arise!%20I%20am%20chatting%20with%20AriseBot%20and%20would%20like%20to%20inquire%20about%20a%20project.', '_blank');
+        break;
+
+      case 'openFacebook':
+        window.open('https://www.facebook.com/CreateAndArise2023', '_blank');
+        break;
+
+      case 'openMessenger':
+        window.open('https://m.me/CreateAndArise2023', '_blank');
         break;
 
       case 'openPurposeProject':
