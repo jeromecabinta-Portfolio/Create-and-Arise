@@ -1248,14 +1248,73 @@
     <!-- VIEW 3: ABOUT THE COMPANY (Who We Are, Story, Mission, Values, Why Choose Us) -->
     <section class="tab-view faith-mission-section" id="view-mission" aria-label="About the Company">
       <div class="container">
-        <div class="section-header">
-          <span class="section-tag">&#128214; About Create and Arise</span>
-          <h2 class="section-title">Empowering Visionary Brands To <span class="gradient-text">Arise &amp; Shine</span>
-          </h2>
-          <p class="section-desc">
-            Founded on biblical stewardship, world-class artistic polish, and revenue-focused engineering, we exist to
-            help businesses lead with honor and distinction.
-          </p>
+        <!-- About Us Header (Text Beside Video) -->
+        <div class="about-header-split">
+          <!-- Text Side (Left) -->
+          <div class="about-header-text-col">
+            <span class="section-tag" style="margin-bottom: 0.85rem;">&#128214; About Create and Arise</span>
+            <h2 class="section-title about-split-title">Empowering Visionary Brands To <span class="gradient-text">Arise &amp; Shine</span>
+            </h2>
+            <p class="section-desc about-split-desc">
+              Founded on biblical stewardship, world-class artistic polish, and revenue-focused engineering, we exist to
+              help businesses lead with honor and distinction.
+            </p>
+          </div>
+
+          <!-- Video Side (Right - Beside the Text) -->
+          <div class="about-header-video-col">
+            <div class="about-video-frame" id="aboutVideoFrame">
+              <!-- Ambient soft reflection video for radiant glowing aura -->
+              <video class="about-video-ambient" id="aboutVideoAmbient" autoplay loop muted playsinline aria-hidden="true">
+                <source src="assets/videos/Vid1.mp4" type="video/mp4">
+                <source src="assets/Vid1.mp4" type="video/mp4">
+              </video>
+
+              <!-- Main crisp 9:16 portrait animation video -->
+              <video id="aboutVideo" class="about-anim-video" autoplay loop muted playsinline preload="auto" aria-label="Create and Arise 3D Studio Animation Reel">
+                <source src="assets/videos/Vid1.mp4" type="video/mp4">
+                <source src="assets/Vid1.mp4" type="video/mp4">
+                <source src="assets/Video/Vid1.mp4" type="video/mp4">
+              </video>
+
+              <!-- Video Controls Bar -->
+              <div class="about-video-controls" id="aboutVideoControls" aria-label="About animation controls">
+                <button type="button" class="video-control-btn" id="aboutVideoPlayPauseBtn" aria-label="Pause or play video" title="Pause / Play Video">
+                  <svg class="icon-pause" width="13" height="13" viewBox="0 0 24 24" fill="currentColor">
+                    <rect x="6" y="4" width="4" height="16" rx="1"></rect>
+                    <rect x="14" y="4" width="4" height="16" rx="1"></rect>
+                  </svg>
+                  <svg class="icon-play" width="13" height="13" viewBox="0 0 24 24" fill="currentColor" style="display:none;">
+                    <polygon points="6 4 20 12 6 20 6 4"></polygon>
+                  </svg>
+                </button>
+
+                <button type="button" class="video-control-btn sound-btn" id="aboutVideoMuteBtn" aria-label="Toggle sound" title="Toggle audio (sound)">
+                  <svg class="icon-muted" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+                    <line x1="23" y1="9" x2="17" y2="15"></line>
+                    <line x1="17" y1="9" x2="23" y2="15"></line>
+                  </svg>
+                  <svg class="icon-unmuted" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none;">
+                    <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+                    <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+                  </svg>
+                  <span class="video-sound-text" id="aboutVideoSoundText">Sound Off</span>
+                </button>
+
+                <button type="button" class="video-control-btn fullscreen-btn" id="aboutVideoFullscreenBtn" aria-label="Fullscreen video" title="Fullscreen">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path>
+                  </svg>
+                </button>
+              </div>
+
+              <!-- Real-time Scrubber Progress Bar -->
+              <div class="about-video-progress-wrap" id="aboutVideoProgressWrap" title="Click to seek">
+                <div class="about-video-progress-bar" id="aboutVideoProgressBar"></div>
+              </div>
+            </div>
+          </div>
         </div>
 
         <!-- 1. WHO WE ARE (Studio Overview & Key Stats) -->

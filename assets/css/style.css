@@ -2805,6 +2805,304 @@ select {
   letter-spacing: 0.1em;
 }
 
+/* ==========================================================================
+   About Us Header Split (Text Beside Video)
+   ========================================================================== */
+.about-header-split {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: clamp(1.5rem, 3.5vw, 3.25rem);
+  align-items: center;
+  max-width: 1060px;
+  margin: 0 auto clamp(1.75rem, 4vw, 3.25rem);
+  width: 100%;
+}
+
+.about-header-text-col {
+  text-align: left;
+  min-width: 0;
+}
+
+.about-header-text-col .section-tag {
+  display: inline-flex;
+  margin-bottom: 0.85rem;
+}
+
+.about-split-title {
+  text-align: left;
+  font-size: clamp(1.85rem, 3.5vw, 2.85rem);
+  line-height: 1.2;
+  margin-bottom: 1.15rem;
+  letter-spacing: -0.02em;
+  word-break: break-word;
+}
+
+.about-split-desc {
+  text-align: left;
+  font-size: clamp(0.95rem, 1.8vw, 1.12rem);
+  color: var(--text-muted);
+  line-height: 1.75;
+  max-width: 580px;
+  margin: 0;
+}
+
+.about-header-video-col {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  width: 100%;
+  min-width: 0;
+}
+
+.about-video-frame {
+  position: relative;
+  width: 100%;
+  max-width: clamp(210px, 22vw, 270px);
+  max-height: min(62vh, 460px);
+  aspect-ratio: 9 / 16;
+  border-radius: 20px;
+  overflow: hidden;
+  background: #000;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  box-shadow: 
+    0 20px 50px -10px rgba(0, 0, 0, 0.75),
+    0 0 35px rgba(245, 158, 11, 0.15);
+  isolation: isolate;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease, border-color 0.3s ease;
+  margin: 0 auto;
+}
+
+@media (hover: hover) {
+  .about-video-frame:hover {
+    transform: translateY(-4px);
+    border-color: rgba(245, 158, 11, 0.45);
+    box-shadow: 
+      0 28px 65px -12px rgba(0, 0, 0, 0.85),
+      0 0 50px rgba(245, 158, 11, 0.25);
+  }
+}
+
+.about-anim-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  border-radius: inherit;
+  cursor: pointer;
+  position: relative;
+  z-index: 2;
+  transition: opacity 0.2s ease;
+}
+
+.about-video-ambient {
+  position: absolute;
+  top: -10%;
+  left: -10%;
+  width: 120%;
+  height: 120%;
+  object-fit: cover;
+  filter: blur(28px) brightness(0.65) saturate(1.4);
+  opacity: 0.45;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.about-video-controls {
+  position: absolute;
+  bottom: 12px;
+  right: 10px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  background: rgba(15, 17, 26, 0.88);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  padding: 4px 7px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
+  z-index: 5;
+  transition: all 0.2s ease;
+}
+
+.about-video-progress-wrap {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: rgba(255, 255, 255, 0.15);
+  z-index: 6;
+  cursor: pointer;
+}
+
+.about-video-progress-bar {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, #f59e0b, #8b5cf6);
+  transition: width 0.1s linear;
+}
+
+/* ==========================================================================
+   Responsive Breakpoints for About Us Video & Header
+   ========================================================================== */
+
+/* Laptop / Medium Desktop (<= 1024px) */
+@media (max-width: 1024px) {
+  .about-header-split {
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 1.75rem;
+  }
+  .about-video-frame {
+    max-width: 235px;
+  }
+}
+
+/* Tablet Portrait & Large Phones (<= 860px) */
+@media (max-width: 860px) {
+  .about-header-split {
+    grid-template-columns: 1fr;
+    gap: 1.75rem;
+    text-align: center;
+  }
+  .about-header-text-col {
+    text-align: center;
+  }
+  .about-split-title {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .about-split-desc {
+    text-align: center;
+    margin: 0 auto;
+  }
+  .about-video-frame {
+    max-width: 230px;
+    max-height: min(52vh, 410px);
+  }
+}
+
+/* Standard Mobile (<= 640px) */
+@media (max-width: 640px) {
+  .about-header-split {
+    gap: 1.35rem;
+    margin-bottom: 2rem;
+  }
+  .about-split-title {
+    font-size: clamp(1.6rem, 5.8vw, 2.1rem);
+    line-height: 1.22;
+    margin-bottom: 0.75rem;
+  }
+  .about-split-desc {
+    font-size: 0.94rem;
+    line-height: 1.6;
+  }
+  .about-video-frame {
+    max-width: min(210px, 62vw);
+    max-height: min(48vh, 375px);
+    border-radius: 16px;
+  }
+  .about-video-controls {
+    bottom: 8px;
+    right: 8px;
+    padding: 3px 5px;
+    gap: 4px;
+  }
+  .about-video-controls .video-control-btn {
+    width: 27px;
+    height: 27px;
+  }
+  .about-video-controls .sound-btn {
+    padding: 0 6px;
+  }
+  .about-video-controls .fullscreen-btn {
+    width: 25px;
+    height: 25px;
+  }
+}
+
+/* Small Mobile (<= 400px) */
+@media (max-width: 400px) {
+  .about-header-split {
+    gap: 1.15rem;
+  }
+  .about-split-title {
+    font-size: clamp(1.45rem, 5.5vw, 1.75rem);
+  }
+  .about-split-desc {
+    font-size: 0.88rem;
+    line-height: 1.55;
+  }
+  .about-video-frame {
+    max-width: min(190px, 60vw);
+    max-height: min(44vh, 340px);
+    border-radius: 14px;
+  }
+  .about-video-controls {
+    bottom: 8px;
+    right: 8px;
+    padding: 2px 5px;
+    gap: 3px;
+  }
+  .about-video-controls .video-control-btn {
+    width: 25px;
+    height: 25px;
+  }
+  .about-video-controls .video-sound-text {
+    display: none !important;
+  }
+  .about-video-controls .sound-btn {
+    padding: 0 6px;
+  }
+  .about-video-controls .fullscreen-btn {
+    width: 23px;
+    height: 23px;
+  }
+}
+
+/* Extra Small (<= 340px) */
+@media (max-width: 340px) {
+  .about-split-title {
+    font-size: 1.35rem;
+  }
+  .about-video-frame {
+    max-width: 170px;
+    max-height: 40vh;
+  }
+}
+
+/* Mobile Landscape & Short Viewports (min-width: 560px and max-height: 520px) */
+@media (min-width: 560px) and (max-height: 520px) and (orientation: landscape) {
+  .about-header-split {
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 1.25rem;
+    text-align: left;
+    align-items: center;
+    margin-bottom: 1.5rem;
+  }
+  .about-header-text-col {
+    text-align: left;
+  }
+  .about-split-title {
+    text-align: left;
+    font-size: 1.45rem;
+    margin-bottom: 0.4rem;
+  }
+  .about-split-desc {
+    text-align: left;
+    font-size: 0.85rem;
+    line-height: 1.5;
+    margin: 0;
+  }
+  .about-video-frame {
+    max-width: 155px;
+    max-height: 68vh;
+    border-radius: 14px;
+  }
+}
+
 /* Mission & Vision Cards */
 .mission-vision-grid {
   display: grid;
