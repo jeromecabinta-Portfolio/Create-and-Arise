@@ -262,6 +262,7 @@ window.switchTab = function (tabName) {
   allViews.forEach(v => v.classList.remove('active'));
   targetView.classList.add('active');
   targetView.scrollTop = 0; // Reset internal scroll position
+  window.scrollTo({ top: 0, behavior: 'instant' });
 
   // Update active navbar indicator
   allNavLinks.forEach(link => {
@@ -3955,12 +3956,18 @@ window.startProjectPrompt = function () {
 function initModals() {
   window.openModal = function (modalId) {
     const modal = document.getElementById(modalId);
-    if (modal) modal.classList.add('active');
+    if (modal) {
+      modal.classList.add('active');
+      document.body.classList.add('modal-open');
+    }
   };
 
   window.closeModal = function (modalId) {
     const modal = document.getElementById(modalId);
     if (modal) modal.classList.remove('active');
+    if (!document.querySelector('.modal-overlay.active')) {
+      document.body.classList.remove('modal-open');
+    }
   };
 
   // Close when clicking overlay backdrop
@@ -3968,6 +3975,9 @@ function initModals() {
     overlay.addEventListener('click', (e) => {
       if (e.target === overlay) {
         overlay.classList.remove('active');
+        if (!document.querySelector('.modal-overlay.active')) {
+          document.body.classList.remove('modal-open');
+        }
       }
     });
   });
@@ -3976,6 +3986,7 @@ function initModals() {
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') {
       document.querySelectorAll('.modal-overlay.active').forEach(m => m.classList.remove('active'));
+      document.body.classList.remove('modal-open');
     }
   });
 }
