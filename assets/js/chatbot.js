@@ -8,7 +8,7 @@
   const botKnowledge = [
     {
       keywords: ['hi', 'hello', 'hey', 'kumusta', 'magandang', 'greetings', 'start', 'morning', 'afternoon', 'evening'],
-      response: `Hello and welcome to **Create and Arise**! ✨\n\nI'm **AriseBot**, your AI creative and digital growth assistant. We are a Christian-founded creative agency based in the Philippines, helping visionary brands arise through world-class graphics, high-converting websites, digital ads marketing, and social media management.\n\nHow can I help you today?`,
+      response: `Hello and welcome to **Create and Arise**! ✨\n\nI'm **AriseBot**, your AI creative and digital growth assistant. We are a Christian-founded creative design & digital studio based in the Philippines, helping visionary brands arise through world-class graphics, high-converting websites, digital ads marketing, and social media management.\n\nHow can I help you today?`,
       actions: [
         { label: '🎨 Explore Services', callback: 'showServicesMenu' },
         { label: '💰 Check Pricing & Cost', callback: 'showPricingMenu' },
@@ -138,7 +138,7 @@
     },
     {
       keywords: ['facebook', 'fb', 'fanpage', 'meta page', 'createandarise2023', 'social link', 'facebook link'],
-      response: `🌐 **Connect with Create and Arise on Facebook:**\n\nFollow our official Facebook page to explore our latest creative projects, branding showcases, behind-the-scenes designs, and agency updates!\n\n• 🔗 **Official Page:** [facebook.com/CreateAndArise2023](https://www.facebook.com/CreateAndArise2023)\n• 💬 **Messenger:** [m.me/CreateAndArise2023](https://m.me/CreateAndArise2023)\n\nWe would love to connect with you and your business!`,
+      response: `🌐 **Connect with Create and Arise on Facebook:**\n\nFollow our official Facebook page to explore our latest creative projects, branding showcases, behind-the-scenes designs, and studio updates!\n\n• 🔗 **Official Page:** [facebook.com/CreateAndArise2023](https://www.facebook.com/CreateAndArise2023)\n• 💬 **Messenger:** [m.me/CreateAndArise2023](https://m.me/CreateAndArise2023)\n\nWe would love to connect with you and your business!`,
       actions: [
         { label: '🌐 Open Facebook Page', callback: 'openFacebook' },
         { label: '💬 Send FB Message', callback: 'openMessenger' },
@@ -178,7 +178,7 @@
       chips: ['Live Project', 'Case Studies', 'Web Design', 'Contact']
     },
     {
-      keywords: ['team', 'members', 'staff', 'who works', 'people', 'collective', 'who is on the team', 'agency team', 'leadership'],
+      keywords: ['team', 'members', 'staff', 'who works', 'people', 'collective', 'who is on the team', 'studio team', 'agency team', 'leadership'],
       response: `👥 **Meet the Create and Arise Team:**\n\nOur multidisciplinary collective combines faith-driven stewardship with premier creative mastery:\n\n• **Elijah Morales** — Founder & Executive Creative Director\n• **Jerome Cabinta** — Web Developer & UI Implementation\n• **Hannah Grace Santos** — Senior Brand & Packaging Designer\n• **Caleb Tan** — Digital Ads & Growth Strategist\n• **Faith Dela Cruz** — Social Media & Content Strategist\n\nEvery project is handled with direct communication and dedicated weekday sprints!`,
       actions: [
         { label: '📖 View Team Profiles', callback: 'scrollToMission' },

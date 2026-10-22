@@ -247,14 +247,19 @@ window.switchTab = function (tabName) {
   if (!tabName) tabName = 'home';
   tabName = tabName.replace('#', '').replace('view-', '').toLowerCase();
 
-  const validTabs = ['home', 'services', 'mission', 'portfolio', 'estimator', 'testimonials', 'faq', 'contact'];
+  // Route 'about' to 'mission' or 'about'
+  if (tabName === 'about') tabName = 'mission';
+
+  const validTabs = ['home', 'services', 'mission', 'team', 'portfolio', 'estimator', 'testimonials', 'faq', 'contact'];
   if (!validTabs.includes(tabName)) {
     tabName = 'home';
   }
 
   const allViews = document.querySelectorAll('.tab-view');
   const allNavLinks = document.querySelectorAll('.nav-link');
-  const targetView = document.getElementById(`view-${tabName}`);
+  let targetView = document.getElementById(`view-${tabName}`);
+  if (!targetView && tabName === 'mission') targetView = document.getElementById('view-about');
+  if (!targetView && tabName === 'about') targetView = document.getElementById('view-mission');
 
   if (!targetView) return;
 
@@ -266,7 +271,11 @@ window.switchTab = function (tabName) {
 
   // Update active navbar indicator
   allNavLinks.forEach(link => {
-    link.classList.toggle('active', link.getAttribute('data-tab') === tabName);
+    const linkTab = link.getAttribute('data-tab');
+    const isActive = (linkTab === tabName) || 
+      (tabName === 'mission' && (linkTab === 'about' || linkTab === 'mission')) ||
+      (tabName === 'about' && (linkTab === 'about' || linkTab === 'mission'));
+    link.classList.toggle('active', isActive);
   });
 
   // Update URL hash smoothly
@@ -275,7 +284,7 @@ window.switchTab = function (tabName) {
   }
 
   // Handle video autoplay / muting across tab switches
-  if (tabName === 'mission') {
+  if (tabName === 'mission' || tabName === 'about') {
     const aboutVid = document.getElementById('aboutVideo');
     if (aboutVid && aboutVid.paused) {
       aboutVid.play().catch(() => {});
@@ -353,7 +362,7 @@ const portfolioData = [
     categoryLabel: 'Graphics & Branding',
     title: 'Create & Arise Master Brand Collateral & Merchandise Suite',
     client: 'Create and Arise Official Studio Brand Identity',
-    industry: 'Faith-Led Creative Agency & Business Consultancy (La Trinidad, Benguet)',
+    industry: 'Faith-Led Creative Studio & Business Consultancy (La Trinidad, Benguet)',
     timeline: 'Comprehensive Master Brand Architecture',
     tagline: 'Official Luxury Identity, Print Packaging, Executive Stationery & Merchandise Ecosystem',
     tools: ['Photoshop', 'Canva', 'Adobe Illustrator'],
@@ -921,7 +930,7 @@ const portfolioData = [
     tagline: 'High-Value Productivity Carousels, Founder Spotlights & +520% Inbound Leads',
     tools: ['Figma', 'Photoshop', 'LinkedIn Creator Studio', 'Buffer', 'Brand Typography'],
     ownership: '100% Branded Carousel System & Reusable Canva/Figma Templates',
-    desc: 'B2B social media strategy and thought leadership content ecosystem tailored for tech founders, creative agencies, and modern hybrid professionals across LinkedIn and Instagram.',
+    desc: 'B2B social media strategy and thought leadership content ecosystem tailored for tech founders, creative brands, and modern hybrid professionals across LinkedIn and Instagram.',
     problem: 'Stale corporate posts about empty desks that sounded like generic real estate listings, failing to attract high-paying tech startup teams or private studio memberships.',
     whatWeDid: 'Transformed their feed into a hub for startup productivity: crisp dark-mode typography carousels, founder spotlight video clips, remote-work workflow tips, and targeted community event promos.',
     before: 'Generic empty office photos, zero corporate inquiries via social, 12 likes/post.',
@@ -2214,7 +2223,7 @@ function initPortfolio() {
           <span class="matrix-banner-icon">📋</span>
           <div>
             <strong>Executive ROI &amp; Scope Matrix</strong>
-            <p>Comparing client starting bottlenecks, agency execution, and commercial results side-by-side.</p>
+            <p>Comparing client starting bottlenecks, studio execution, and commercial results side-by-side.</p>
           </div>
         </div>
         <button type="button" class="btn btn-secondary btn-sm" id="matrixBackToGridBtn">
@@ -2900,10 +2909,13 @@ function initTestimonialCarousel() {
 
   filterBtns.forEach(btn => {
     btn.addEventListener('click', () => {
-      filterBtns.forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-
       const filter = btn.getAttribute('data-filter');
+      if (!filter) return;
+
+      filterBtns.forEach(b => {
+        if (b.hasAttribute('data-filter')) b.classList.remove('active');
+      });
+      btn.classList.add('active');
 
       cards.forEach(card => {
         const category = card.getAttribute('data-category');
@@ -4265,10 +4277,7 @@ function initHeroVideo() {
     });
   }
 
-  // On mobile screens, automatically default to mobile reel mode for optimal viewing
-  if (window.innerWidth <= 640 && typeof setHeroMockupMode === 'function') {
-    setHeroMockupMode('phone');
-  }
+  // Video initialized cleanly in borderless responsive format
 }
 
 // Switch between Desktop Widescreen Mockup and Mobile Phone Reel Mockup
@@ -4340,7 +4349,7 @@ window.focusHeroVideo = function () {
       setTimeout(() => frame.classList.remove('video-focused-glow'), 2500);
     }
     if (typeof showToast === 'function') {
-      showToast('🔊 Agency showreel playing with sound!');
+      showToast('🔊 Studio showreel playing with sound!');
     }
   }
 };
@@ -4523,5 +4532,339 @@ if (document.readyState === 'loading') {
 } else {
   initMediaPlayers();
 }
+
+/* --------------------------------------------------------------------------
+   STRATEGIC ARTICLE READER & LEGAL MODAL CONTROLLERS
+   -------------------------------------------------------------------------- */
+const strategicArticles = [
+  {
+    id: 1,
+    title: "Why Conversion-Driven Web Design Outperforms Generic Templates (And What to Do Instead)",
+    category: "Web Design & CRO",
+    date: "October 2026",
+    readTime: "4 min read",
+    author: "Jerome Cabinta",
+    authorRole: "Founder & Lead Web Developer",
+    authorAvatar: "JC",
+    image: "assets/images/web-design.jpg",
+    subtitle: "The hidden commercial cost of multi-purpose theme bloat, and the engineering principles that yield 4.8x conversion lifts.",
+    highlights: [
+      { num: "0.4s", label: "Custom Load Speed (vs 8.4s Template)" },
+      { num: "4.8x", label: "Average Conversion Lift" },
+      { num: "99/100", label: "Google Core Web Vitals" }
+    ],
+    sections: [
+      {
+        heading: "The Bloated Template Trap",
+        text: "Off-the-shelf templates look attractive in previews, but they are built to cater to everyone at once. They bundle 150+ unused CSS/JS libraries, 18 font weights, and convoluted page-builder DOM structures that delay mobile First Contentful Paint (FCP) by 4 to 8 seconds. In real-world commerce, a 1-second delay reduces conversions by up to 27%."
+      },
+      {
+        heading: "Engineered for Conversion Velocity",
+        text: "Create and Arise builds websites from clean, hand-crafted semantic HTML, modular CSS, and purposeful vanilla JavaScript. By eliminating heavy dependencies, our web platforms consistently hit sub-500ms response times. We structure the layout around the natural 'F-Pattern' gaze path, placing high-contrast visual anchors and interactive quotation tools directly where prospective clients make decisions."
+      },
+      {
+        heading: "5-Point Conversion Architecture Checklist",
+        list: [
+          "<strong>Speed Baseline:</strong> Total page payload under 1.5MB and mobile interactive time &lt; 1.0s.",
+          "<strong>Single Primary Action:</strong> Clear above-the-fold value proposition with frictionless booking or quotation.",
+          "<strong>Friction-Free Multi-Step Forms:</strong> Chunking form inputs into micro-steps increases completion rates by 42%.",
+          "<strong>Contextual Social Proof:</strong> Placing verified metrics and client results right next to conversion triggers.",
+          "<strong>Sticky Navigation Anchors:</strong> Seamless header controls that allow users to convert at any scroll depth."
+        ]
+      }
+    ],
+    ctaService: "Web Design & Development",
+    ctaKey: "web"
+  },
+  {
+    id: 2,
+    title: "The Psychology of Visual Branding: How Cohesive Identity Builds Long-Term Customer Trust",
+    category: "Brand Identity & Design Psychology",
+    date: "October 2026",
+    readTime: "5 min read",
+    author: "Jerome Cabinta & Elijah Morales",
+    authorRole: "Creative Directors, Create and Arise",
+    authorAvatar: "CA",
+    image: "assets/images/graphic_branding_showcase_1790782413205.jpg",
+    subtitle: "Why consumers formulate commercial trust in under 50 milliseconds, and how color harmony signals premium valuation.",
+    highlights: [
+      { num: "50ms", label: "Subconscious First Impression Window" },
+      { num: "3.4x", label: "Average Order Value with Bespoke Branding" },
+      { num: "100%", label: "Commercial Vector & Source IP Rights" }
+    ],
+    sections: [
+      {
+        heading: "The Neuro-Aesthetics of Trust",
+        text: "Human cognitive processing assesses visual hierarchy, balance, and color harmony within 50 milliseconds (0.05 seconds). When a potential buyer lands on your brand touchpoint, their subconscious immediately computes whether your business represents authority or amateurism before reading a single line of copy."
+      },
+      {
+        heading: "The Peril of Fragmented Brand Collateral",
+        text: "Using disjointed Canva templates, inconsistent typography, and low-resolution raster graphics causes 'brand cognitive dissonance.' When social ads look different from packaging, or when the website uses different fonts from the sales deck, customers perceive risk and demand discounts. A disciplined design system eliminates this friction."
+      },
+      {
+        heading: "4 Pillars of an Enduring Brand Identity",
+        list: [
+          "<strong>Primary Monogram &amp; Iconography:</strong> A distinct, mathematically balanced symbol that scales from 16px favicon to outdoor billboard.",
+          "<strong>Disciplined Color Tokens:</strong> Curated palette (Obsidian Dark for exclusivity, Amber Gold for warmth and excellence, Emerald for psychological trust).",
+          "<strong>Typography Hierarchy:</strong> Clear distinction between editorial display serifs and clean, modern sans-serif body type.",
+          "<strong>Full Commercial IP Handover:</strong> Vector source deliverables (AI, SVG, EPS, PDF, Figma) ensuring lifetime operational freedom."
+        ]
+      }
+    ],
+    ctaService: "Graphic Design & Brand Identity",
+    ctaKey: "graphics"
+  },
+  {
+    id: 3,
+    title: "Why Ad Creatives Fatigue (And How Strategic Funnel Optimization Sustains 3x ROAS)",
+    category: "Digital Paid Ads & ROAS",
+    date: "October 2026",
+    readTime: "4 min read",
+    author: "Create and Arise Performance Marketing Team",
+    authorRole: "Paid Ads & Growth Strategists",
+    authorAvatar: "PA",
+    image: "assets/images/digital-ads.jpg",
+    subtitle: "How to escape rising CPA and ad exhaustion through modular creative testing and landing page congruence.",
+    highlights: [
+      { num: "3.8x", label: "Average Return on Ad Spend (ROAS)" },
+      { num: "7-Day", label: "Iterative Creative Refresh Cadence" },
+      { num: "-42%", label: "Reduction in Cost Per Acquisition (CPA)" }
+    ],
+    sections: [
+      {
+        heading: "The 14-Day Creative Fatigue Cliff",
+        text: "In algorithmic ad platforms like Meta, TikTok, and Google, creative fatigue occurs when audience frequency surpasses 2.5 to 3.0. Click-Through Rates (CTR) drop sharply, while Cost Per Acquisition (CPA) spikes by 40% to 70%. Media buyers often blame targeting, when in reality the ad creative has simply lost its novelty."
+      },
+      {
+        heading: "Dynamic Creative Testing (DCT) Engine",
+        text: "We combat creative fatigue with modular sprint testing: 3 distinct emotional hooks (Pain Point, Positive Transformation, Counter-Intuitive Fact) multiplied by 2 visual formats (Clean Static Vector vs High-Energy Motion Reel) and 2 compelling CTAs. This systematically reveals breakout winners without wasting client ad budget."
+      },
+      {
+        heading: "The Landing Page Congruence Rule",
+        list: [
+          "<strong>Visual &amp; Verbal Mirroring:</strong> The headline on the landing page must immediately echo the promise made in the ad creative.",
+          "<strong>Eliminate Navigation Leaks:</strong> Paid traffic landing pages must minimize distracting outbound links to maximize the primary conversion.",
+          "<strong>Mobile-First Load Speeds:</strong> Ad traffic bounces immediately if pages take longer than 1.5s to render.",
+          "<strong>Social Proof Escalation:</strong> Retargeting ads must feature customer video testimonials and quantified business outcomes."
+        ]
+      }
+    ],
+    ctaService: "Digital Ads & Paid Campaigns",
+    ctaKey: "ads"
+  }
+];
+
+window.openArticleModal = function (articleId) {
+  const article = strategicArticles.find(a => a.id === parseInt(articleId));
+  if (!article) return;
+
+  const modal = document.getElementById('articleModal');
+  const body = document.getElementById('articleModalBody');
+  if (!modal || !body) return;
+
+  body.innerHTML = `
+    <div class="article-reader-container">
+      <!-- Article Header -->
+      <div class="article-reader-header">
+        <div class="article-reader-meta-row">
+          <span class="section-tag" style="margin-bottom: 0;">${article.category}</span>
+          <span class="article-reader-chip">⏱️ ${article.readTime}</span>
+          <span class="article-reader-chip">📅 ${article.date}</span>
+        </div>
+        <h2 id="articleModalTitle" class="article-reader-title">${article.title}</h2>
+        <p class="article-reader-subtitle">${article.subtitle}</p>
+
+        <!-- Author Strip -->
+        <div class="article-reader-author-strip">
+          <div class="author-avatar">${article.authorAvatar}</div>
+          <div class="author-details">
+            <div class="author-name">${article.author}</div>
+            <div class="author-role">${article.authorRole}</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Hero Image -->
+      <div class="article-reader-media">
+        <img src="${article.image}" alt="${article.title}" class="article-reader-img">
+      </div>
+
+      <!-- Key Metric Highlights -->
+      <div class="article-reader-highlights">
+        ${article.highlights.map(h => `
+          <div class="article-highlight-box">
+            <div class="highlight-num">${h.num}</div>
+            <div class="highlight-lbl">${h.label}</div>
+          </div>
+        `).join('')}
+      </div>
+
+      <!-- Article Content Sections -->
+      <div class="article-reader-content">
+        ${article.sections.map(sec => `
+          <div class="article-content-section">
+            <h3 class="article-section-h3">${sec.heading}</h3>
+            ${sec.text ? `<p class="article-paragraph">${sec.text}</p>` : ''}
+            ${sec.list ? `
+              <ul class="article-checklist">
+                ${sec.list.map(li => `<li>${li}</li>`).join('')}
+              </ul>
+            ` : ''}
+          </div>
+        `).join('')}
+      </div>
+
+      <!-- Article Action Ribbons -->
+      <div class="article-reader-footer-box">
+        <div class="article-footer-left">
+          <div style="font-weight: 700; color: #f8fafc; font-size: 1.05rem; margin-bottom: 0.25rem;">
+            Ready to implement this strategy for your business?
+          </div>
+          <p style="color: var(--text-muted); font-size: 0.86rem; margin: 0;">
+            Speak directly with Jerome Cabinta and our creative specialists.
+          </p>
+        </div>
+        <div class="article-footer-actions">
+          <button type="button" class="btn btn-primary btn-glow" onclick="closeModal('articleModal'); switchTab('estimator');">
+            <span>Estimate ${article.ctaService.split('&')[0].trim()} Package</span>
+          </button>
+          <button type="button" class="btn btn-book-call" onclick="closeModal('articleModal'); openBookCallModal();">
+            <span>📅 Book Free Call</span>
+          </button>
+          <button type="button" class="btn btn-secondary" onclick="closeModal('articleModal')">
+            <span>Close Guide</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  `;
+
+  if (typeof window.openModal === 'function') {
+    window.openModal('articleModal');
+  } else {
+    modal.classList.add('active');
+  }
+};
+
+/* --------------------------------------------------------------------------
+   TRANSPARENT LEGAL & IP MODAL CONTROLLER
+   -------------------------------------------------------------------------- */
+const legalContent = {
+  privacy: `
+    <div class="legal-doc-wrap">
+      <h4 class="legal-doc-title">Client Privacy &amp; Data Stewardship Policy</h4>
+      <p class="legal-updated">Last Updated: October 2026 &bull; Compliant with Global Best Practices &amp; RA 10173</p>
+      
+      <div class="legal-doc-section">
+        <h5>1. Purpose-Driven Data Stewardship</h5>
+        <p>At Create and Arise, our Christian faith guides our business integrity. We collect only the information necessary to fulfill project requirements, communications, and bookings (client name, verified email, telephone/WhatsApp contact, and project specifications). We treat your data as a sacred trust.</p>
+      </div>
+
+      <div class="legal-doc-section">
+        <h5>2. Absolute Zero Data Selling or Third-Party Disclosures</h5>
+        <p>We do not sell, rent, monetize, or disclose client contact information or proprietary business materials to any advertising networks, third-party brokers, or data harvesters. All project communications remain strictly between your team and Create and Arise.</p>
+      </div>
+
+      <div class="legal-doc-section">
+        <h5>3. Non-Disclosure &amp; Commercial Confidentiality</h5>
+        <p>All brand assets, unreleased product ideas, pitch decks, sales figures, and proprietary codebase files shared with us during discovery calls or production sprints are held under strict commercial confidentiality. We are always willing to sign a bilateral mutual Non-Disclosure Agreement (NDA) prior to project kick-off.</p>
+      </div>
+
+      <div class="legal-doc-section">
+        <h5>4. Data Erasure &amp; Portability Rights</h5>
+        <p>Clients retain full rights to request complete deletion of their contact records, message history, and server logs at any time by emailing <strong>createandarise05@gmail.com</strong>. All verified erasure requests are executed within 48 business hours.</p>
+      </div>
+    </div>
+  `,
+  terms: `
+    <div class="legal-doc-wrap">
+      <h4 class="legal-doc-title">Terms of Service &amp; Project Engagements</h4>
+      <p class="legal-updated">Last Updated: October 2026 &bull; Professional Creative Standard</p>
+      
+      <div class="legal-doc-section">
+        <h5>1. Service Scope &amp; Structured Sprints</h5>
+        <p>All graphic design, web design, paid ad management, and social media deliverables are outlined in a transparent written scope of work or itemized quotation before commencement. Production operates Monday to Friday, 8:00 AM to 6:00 PM PHT. Weekends are reserved for spiritual rest and family.</p>
+      </div>
+
+      <div class="legal-doc-section">
+        <h5>2. Milestone Payment Model</h5>
+        <p>Standard fixed-scope projects operate on a 50% initial commitment deposit to secure the studio sprint schedule, and 50% upon final client sign-off and before production source handover. Monthly retainer contracts are billed at the beginning of each 30-day cycle with no lock-in contracts.</p>
+      </div>
+
+      <div class="legal-doc-section">
+        <h5>3. Revisions &amp; Quality Guarantee</h5>
+        <p>We provide multiple dedicated revision rounds during active sprint phases to guarantee that the final deliverable matches your vision. Revisions must align with the approved creative brief. Significant structural pivots beyond the initial brief are accommodated via a clear, written change-order agreement.</p>
+      </div>
+
+      <div class="legal-doc-section">
+        <h5>4. Cancellation &amp; Fair Settlement</h5>
+        <p>Either party may terminate an engagement with written notice. In the event of early cancellation, the client is only billed for work successfully executed up to the date of notice, and all completed files are handed over promptly.</p>
+      </div>
+    </div>
+  `,
+  ip: `
+    <div class="legal-doc-wrap">
+      <h4 class="legal-doc-title">100% Intellectual Property Handover Guarantee</h4>
+      <p class="legal-updated">Full Commercial Rights &bull; Zero Vendor Lock-In &bull; Lifetime Commercial Freedom</p>
+      
+      <div class="legal-doc-section">
+        <h5>1. Complete Commercial Ownership Transfer</h5>
+        <p>Upon settlement of the final project invoice, <strong>all intellectual property rights, trademarks, copyright ownership, and commercial exploitation rights</strong> for all finalized assets created specifically for your project transfer 100% to you (the Client).</p>
+      </div>
+
+      <div class="legal-doc-section">
+        <h5>2. Unrestricted Source Asset Handover</h5>
+        <p>Unlike agencies that withhold native working files to force expensive retainers, Create and Arise provides complete, organized source deliverables:
+        <ul style="margin: 0.5rem 0 0.5rem 1.25rem; color: var(--text-main); font-size: 0.88rem; line-height: 1.6;">
+          <li><strong>Graphic &amp; Brand Assets:</strong> Editable Adobe Illustrator (.AI), vector EPS, SVG, print-ready PDF, and high-res PNG/WebP exports.</li>
+          <li><strong>Web Platforms:</strong> Fully unminified source code (HTML, CSS, JS), modular component files, and server configuration files with zero obfuscation.</li>
+          <li><strong>Design Systems:</strong> Comprehensive Figma workspace links with full editing and component permissions.</li>
+        </ul>
+        </p>
+      </div>
+
+      <div class="legal-doc-section">
+        <h5>3. Zero Royalty Claims &amp; No Vendor Lock-In</h5>
+        <p>Create and Arise claims zero perpetual royalties, zero licensing fees, and zero vendor lock-in. You are free to modify, expand, commercialize, or re-license your assets forever.</p>
+      </div>
+
+      <div class="legal-doc-section">
+        <h5>4. Portfolio Showcase Rights</h5>
+        <p>Create and Arise reserves only the standard industry courtesy right to display non-confidential project snapshots in our creative portfolio, unless the client specifically requests a private white-label engagement under NDA.</p>
+      </div>
+    </div>
+  `
+};
+
+window.openLegalModal = function (tabName) {
+  if (!tabName) tabName = 'privacy';
+  const modal = document.getElementById('legalModal');
+  const body = document.getElementById('legalModalBody');
+  if (!modal || !body) return;
+
+  window.switchLegalTab(tabName);
+
+  if (typeof window.openModal === 'function') {
+    window.openModal('legalModal');
+  } else {
+    modal.classList.add('active');
+  }
+};
+
+window.switchLegalTab = function (tabName, btnElem) {
+  const body = document.getElementById('legalModalBody');
+  if (!body) return;
+
+  const content = legalContent[tabName] || legalContent.privacy;
+  body.innerHTML = content;
+
+  document.querySelectorAll('.legal-tab-btn').forEach(btn => btn.classList.remove('active'));
+  if (btnElem) {
+    btnElem.classList.add('active');
+  } else {
+    const defaultBtn = document.getElementById(`legalTabBtn${tabName.charAt(0).toUpperCase() + tabName.slice(1)}`);
+    if (defaultBtn) defaultBtn.classList.add('active');
+  }
+};
 
 

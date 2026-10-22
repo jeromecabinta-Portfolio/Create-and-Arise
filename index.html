@@ -6,18 +6,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <!-- SEO Meta Tags -->
-  <title>Create and Arise | Web Design, Graphic Design, Digital Ads & Social Media Agency</title>
+  <title>Create and Arise | Web Design, Graphic Design, Digital Ads & Creative Studio</title>
   <meta name="description"
-    content="Create and Arise is a premier Christian-led creative agency based in the Philippines. We specialize in purpose-driven Graphic Design, Web Design, Digital Ads Marketing, and Social Media Management. Website developed by team web developer Jerome Cabinta.">
+    content="Create and Arise is a premier Christian-led creative design and digital studio based in the Philippines. We specialize in purpose-driven Graphic Design, Web Design, Digital Ads Marketing, and Social Media Management. Website developed by team web developer Jerome Cabinta.">
   <meta name="keywords"
-    content="Jerome Cabinta, Jerome Cabinta developer, Create and Arise, Graphic Design Philippines, Web Design Agency, Digital Ads Marketing, Social Media Management, Christian Creative Agency, Philippines Digital Marketing">
+    content="Jerome Cabinta, Jerome Cabinta developer, Create and Arise, Graphic Design Philippines, Web Design Studio, Digital Ads Marketing, Social Media Management, Christian Creative Studio, Philippines Digital Studio">
   <meta name="author" content="Create and Arise Team">
   <meta name="developer" content="Jerome Cabinta (Web Developer)">
   <meta name="creator" content="Create and Arise">
 
   <!-- Open Graph / Social Sharing -->
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Create and Arise | Creative Design & Digital Marketing Agency">
+  <meta property="og:title" content="Create and Arise | Creative Design & Digital Studio">
   <meta property="og:description"
     content="Empowering visionary brands with purpose-driven graphic design, high-converting websites, digital ads, and social media management.">
   <meta property="og:image" content="assets/images/hero-agency.jpg">
@@ -30,7 +30,8 @@
     rel="stylesheet">
 
   <!-- Stylesheet -->
-  <link rel="stylesheet" href="assets/css/style.css?v=6.0.0">
+  <link rel="stylesheet" href="assets/css/style.css?v=6.1.0">
+  <link rel="stylesheet" href="assets/css/propfix-theme.css?v=1.2.0">
 
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="assets/Logo/Logo.png">
@@ -46,8 +47,11 @@
     <div class="ambient-orb orb-3"></div>
   </div>
 
-  <!-- Top Announcement Bar: Live Hours & Studio Status -->
-  <aside class="top-announcement-bar">
+  <!-- Master Fixed Header Container (Top Info Bar + Main Navigation Bar) -->
+  <header class="site-header-master" id="siteHeaderMaster"
+    style="position: fixed !important; top: 0 !important; left: 0 !important; right: 0 !important; width: 100% !important; z-index: 1000 !important; display: flex !important; flex-direction: column !important; box-shadow: 0 4px 24px rgba(0, 0, 0, 0.45);">
+    <!-- Top Announcement Bar: Live Hours & Studio Status -->
+    <aside class="top-announcement-bar">
     <div class="container top-bar-content">
       <div class="business-status-chip" id="liveStatusBadge">
         <span class="status-dot online"></span>
@@ -60,8 +64,10 @@
         <a href="https://www.facebook.com/CreateAndArise2023" target="_blank" rel="noopener noreferrer"
           class="top-info-item top-fb-link hide-mobile" title="Follow Create and Arise on Facebook"
           style="color: inherit; text-decoration: none; transition: color var(--transition-fast);">
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="color: #1877f2;">
-            <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"
+            style="color: #1877f2;">
+            <path
+              d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
           </svg>
           <span>FB: @CreateAndArise2023</span>
         </a>
@@ -69,10 +75,12 @@
     </div>
   </aside>
 
-  <!-- Navigation Header (Tab Bar) -->
-  <header class="site-header">
+    <!-- Navigation Header (Main Navbar) -->
+    <div class="site-header">
     <div class="container navbar">
-      <a href="#home" class="brand-logo" onclick="switchTab('home'); return false;" aria-label="Create and Arise Home">
+      <a href="#home" class="brand-logo"
+        onclick="switchTab('home'); window.scrollTo({top:0, behavior:'smooth'}); return false;"
+        aria-label="Create and Arise Home">
         <div class="brand-logo-img-box">
           <img src="assets/Logo/Logo.png" alt="Create and Arise Official Logo" class="brand-logo-img" width="44"
             height="44">
@@ -83,7 +91,7 @@
         </div>
       </a>
 
-      <!-- Navigation Tabs & Slide-in Mobile Drawer -->
+      <!-- Navigation Links -->
       <nav class="nav-links" id="navLinks" aria-label="Main Navigation">
         <!-- Mobile Drawer Header -->
         <div class="nav-drawer-header">
@@ -100,44 +108,83 @@
           </button>
         </div>
 
-        <button type="button" class="nav-link active" data-tab="home"><span class="nav-icon">🏠</span>
-          <span>Home</span></button>
-        <button type="button" class="nav-link" data-tab="services"><span class="nav-icon">⚡</span>
-          <span>Services</span></button>
-        <button type="button" class="nav-link" data-tab="mission"><span class="nav-icon">📖</span> <span>About
-            Us</span></button>
-        <button type="button" class="nav-link" data-tab="portfolio"><span class="nav-icon">🎨</span>
-          <span>Portfolio</span></button>
-        <button type="button" class="nav-link" data-tab="estimator"><span class="nav-icon">🧮</span> <span>Cost
-            Estimator</span></button>
-        <button type="button" class="nav-link" data-tab="testimonials"><span class="nav-icon">⭐</span>
-          <span>Reviews</span></button>
-        <button type="button" class="nav-link" data-tab="faq"><span class="nav-icon">❓</span> <span>FAQs</span></button>
-        <button type="button" class="nav-link" data-tab="contact"><span class="nav-icon">✉️</span>
-          <span>Contact</span></button>
+        <button type="button" class="nav-link active" data-tab="home"
+          onclick="scrollToSection('hero-home'); switchTab('home'); return false;">
+          <span>Home</span>
+        </button>
+        <button type="button" class="nav-link" data-tab="about"
+          onclick="scrollToSection('about-us-section'); return false;">
+          <span>About Us</span>
+        </button>
+
+        <!-- Services with PropFix Dropdown Menu (Responsive Accordion on Mobile / Hover on Desktop) -->
+        <div class="nav-link-dropdown-wrap">
+          <button type="button" class="nav-link nav-dropdown-trigger" data-tab="services" id="servicesDropdownBtn"
+            aria-haspopup="true" aria-expanded="false" onclick="handleServicesDropdown(event)">
+            <span>Services</span>
+            <svg class="dropdown-chevron-icon" width="12" height="12" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </button>
+          <div class="nav-link-dropdown-menu" id="servicesDropdownMenu" role="menu"
+            aria-labelledby="servicesDropdownBtn">
+            <a href="#services" onclick="filterServicesCatalog('web'); return false;" class="dropdown-item-link"
+              role="menuitem">
+              <span>🌐 Web Design &amp; Development</span>
+            </a>
+            <a href="#services" onclick="filterServicesCatalog('graphics'); return false;" class="dropdown-item-link"
+              role="menuitem">
+              <span>🎨 Graphic Design &amp; Branding</span>
+            </a>
+            <a href="#services" onclick="filterServicesCatalog('ads'); return false;" class="dropdown-item-link"
+              role="menuitem">
+              <span>🚀 Digital Ads &amp; Marketing</span>
+            </a>
+            <a href="#services" onclick="filterServicesCatalog('social'); return false;" class="dropdown-item-link"
+              role="menuitem">
+              <span>📱 Social Media Management</span>
+            </a>
+            <a href="#services" onclick="filterServicesCatalog('all'); return false;"
+              class="dropdown-item-link dropdown-item-link-all" role="menuitem">
+              <span>⚡ View Full Services Catalog &rarr;</span>
+            </a>
+          </div>
+        </div>
+
+        <button type="button" class="nav-link" data-tab="team"
+          onclick="switchTab('team'); return false;">
+          <span>Meet Our Team</span>
+        </button>
+        <button type="button" class="nav-link" data-tab="portfolio" onclick="switchTab('portfolio'); return false;">
+          <span>Portfolio</span>
+        </button>
+        <button type="button" class="nav-link" data-tab="testimonials"
+          onclick="switchTab('testimonials'); return false;">
+          <span>Reviews</span>
+        </button>
+        <button type="button" class="nav-link" data-tab="estimator" onclick="switchTab('estimator'); return false;">
+          <span>Cost Estimator</span>
+        </button>
+        <button type="button" class="nav-link" data-tab="contact" onclick="switchTab('contact'); return false;">
+          <span>Contact</span>
+        </button>
 
         <div class="mobile-drawer-cta-section">
-          <button type="button" onclick="openBookCallModal()" class="btn btn-book-call btn-sm"
+          <button type="button" onclick="openBookCallModal()" class="btn btn-secondary btn-sm"
             style="width: 100%; justify-content: center; margin-bottom: 0.65rem;">
             <span>📅 Book a Free Call</span>
           </button>
-          <button type="button" onclick="openAuditModal()" class="btn btn-audit btn-sm"
+          <button type="button" onclick="openAuditModal()" class="btn btn-secondary btn-sm"
             style="width: 100%; justify-content: center; margin-bottom: 0.65rem;">
-            <span>🔍 Get Free Audit</span>
-          </button>
-          <button type="button" onclick="switchTab('contact')" class="btn btn-primary btn-sm"
-            style="width: 100%; justify-content: center; margin-bottom: 0.65rem;">
-            <span>✉️ Start Consultation</span>
-          </button>
-          <button type="button" onclick="switchTab('estimator')" class="btn btn-secondary btn-sm"
-            style="width: 100%; justify-content: center;">
-            <span>🧮 Cost Estimator</span>
+            <span>🔍 Free 5-Point Audit</span>
           </button>
           <a href="https://www.facebook.com/CreateAndArise2023" target="_blank" rel="noopener noreferrer"
             class="btn btn-outline btn-sm"
-            style="width: 100%; justify-content: center; margin-top: 0.65rem; border-color: rgba(24, 119, 242, 0.4); color: #1877f2; gap: 0.4rem;">
+            style="width: 100%; justify-content: center; margin-top: 0.5rem; border-color: rgba(24, 119, 242, 0.4); color: #1877f2; gap: 0.4rem;">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-              <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+              <path
+                d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
             </svg>
             <span>Facebook: @CreateAndArise2023</span>
           </a>
@@ -165,25 +212,7 @@
           </svg>
         </button>
 
-        <button type="button" onclick="openBookCallModal()" class="btn btn-book-call btn-sm header-cta-btn"
-          title="Schedule a 20-min strategy call">
-          <span>📅 Book a Call</span>
-        </button>
-
-        <button type="button" onclick="openAuditModal()" class="btn btn-audit btn-sm header-cta-btn"
-          title="Claim a free 5-point brand & website teardown">
-          <span>🔍 Free Audit</span>
-        </button>
-
-        <button type="button" onclick="switchTab('contact')" class="btn btn-primary btn-sm header-cta-btn btn-quote"
-          title="Get an Instant Custom Quote">
-          <span>Get a Quote</span>
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-            <path d="M5 12h14M12 5l7 7-7 7" />
-          </svg>
-        </button>
-
-        <!-- Modern Animated Burger Toggle -->
+        <!-- Mobile Menu Toggle -->
         <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle Navigation Menu"
           aria-expanded="false" title="Menu">
           <span class="burger-bar"></span>
@@ -192,689 +221,656 @@
         </button>
       </div>
     </div>
-  </header>
+  </div>
+</header>
 
   <!-- Main Viewport App Container (Tab Views) -->
-  <main class="app-view-container" id="appMain">
+  <main class="app-view-container" id="appMain" style="padding-top: var(--site-header-height, 114px) !important;">
 
     <!-- VIEW 1: HOME (Comprehensive Clear Homepage) -->
+    <!-- VIEW 1: HOME (PropFix.ie Design Layout for Create and Arise) -->
     <section class="tab-view active" id="view-home" aria-label="Home Overview">
-      <div class="container hero-grid">
-        <div class="hero-content">
-          <div class="hero-badge-container">
-            <span class="section-tag">&#10024; Purpose-Driven Creative &amp; Digital Growth Agency</span>
-            <span class="hero-location-badge">&#127477;&#127469; La Trinidad, Benguet, Philippines &bull; Serving Global
-              Visionaries</span>
+
+      <!-- 1. PROPFIX HERO SECTION (Left Copy & Proof + Right Interactive Free Quote Quiz) -->
+      <section class="pf-hero-section" id="hero-home">
+        <div class="pf-hero-container">
+
+          <!-- Left Column: High-Converting Headline, Checklist & Google Review Badge -->
+          <div class="pf-hero-left">
+            <div class="pf-eyebrow">
+              <span>&#10024; Purpose-Driven Creative &amp; Digital Growth Studio</span>
+            </div>
+
+            <h1 class="pf-hero-title">
+              Reliable Creative &amp;<br>
+              <span class="pf-accent-word">Digital Growth Services</span>
+            </h1>
+
+            <p class="pf-hero-desc">
+              From bespoke web design to high-impact branding and paid ads, Create and Arise helps visionary businesses
+              and founders across the globe elevate their impact with trusted craftsmanship and dependable service.
+            </p>
+
+            <!-- Checklist Items with Themed Checkmarks (PropFix Style) -->
+            <ul class="pf-checklist">
+              <li class="pf-check-item">
+                <span class="pf-check-icon">&#10003;</span>
+                <span>Free, No-Obligation Quotations</span>
+              </li>
+              <li class="pf-check-item">
+                <span class="pf-check-icon">&#10003;</span>
+                <span>Experienced Creative Team</span>
+              </li>
+              <li class="pf-check-item">
+                <span class="pf-check-icon">&#10003;</span>
+                <span>Quality Workmanship &amp; Proven ROI</span>
+              </li>
+            </ul>
+
+            <!-- Google Review Rating Badge (PropFix Exact Style) -->
+            <div class="pf-google-badge">
+              <div class="pf-google-logo" aria-hidden="true">
+                <svg width="24" height="24" viewBox="0 0 24 24">
+                  <path fill="#4285F4"
+                    d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.82-2.4 3.68v3.05h3.88c2.27-2.09 3.66-5.17 3.66-9.17z" />
+                  <path fill="#34A853"
+                    d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.88-3.05c-1.08.72-2.45 1.16-4.05 1.16-3.12 0-5.77-2.1-6.72-4.93H1.25v3.15C3.26 21.36 7.36 24 12 24z" />
+                  <path fill="#FBBC05"
+                    d="M5.28 14.27c-.25-.72-.38-1.49-.38-2.27s.13-1.55.38-2.27V6.58H1.25C.45 8.18 0 9.99 0 12s.45 3.82 1.25 5.42l4.03-3.15z" />
+                  <path fill="#EA4335"
+                    d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.36 0 3.26 2.64 1.25 6.58l4.03 3.15c.95-2.83 3.6-4.98 6.72-4.98z" />
+                </svg>
+              </div>
+              <div class="pf-google-info">
+                <div class="pf-google-stars-row">
+                  <span class="pf-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+                  <span class="pf-score">5.0 / 5</span>
+                </div>
+                <div class="pf-google-text">One of the Philippines' highest-rated creative studios on Google</div>
+                <div class="pf-google-subtext">Based on 100+ verified client engagements &amp; global 5-star reviews
+                </div>
+              </div>
+            </div>
+
+            <!-- Action Link / Calculate Project Cost -->
+            <div style="display: flex; align-items: center; gap: 1.25rem; flex-wrap: wrap; margin-top: 0.5rem;">
+              <button type="button" onclick="openBookCallModal()" class="btn btn-secondary btn-sm"
+                style="border-radius: var(--pf-radius-full); padding: 0.55rem 1.15rem; gap: 0.4rem;">
+                <span>📅 Book a Free 20-Min Call</span>
+              </button>
+              <button type="button" onclick="openAuditModal()" class="btn btn-secondary btn-sm"
+                style="border-radius: var(--pf-radius-full); padding: 0.55rem 1.15rem; gap: 0.4rem;">
+                <span>🔍 Get Free 5-Point Audit</span>
+              </button>
+              <a href="#estimator" onclick="switchTab('estimator'); return false;"
+                style="font-size: 0.88rem; color: var(--color-primary); text-decoration: underline; font-weight: 600;">
+                Calculate Project Cost &rarr;
+              </a>
+            </div>
           </div>
 
-          <h1 class="hero-title">
-            We Build High-Converting <span class="gradient-text">Brands &amp; Websites</span> That Make You <span
-              class="gradient-text-purple">Arise.</span>
-          </h1>
+          <!-- Right Column: Interactive Multi-Step Quote Quiz Card (PropFix Signature) -->
+          <div class="pf-quiz-card pf-quiz-container">
+            <div class="pf-quiz-header">
+              <h2 class="pf-quiz-title">Get Free Creative Quotes</h2>
+              <p class="pf-quiz-subtitle">Instant quote estimate delivered in under 3 minutes</p>
+            </div>
 
-          <p class="hero-lead">
-            Create and Arise is a Christian-led creative agency delivering high-impact visual branding, modern web
-            design, strategic digital ads, and social media management to scale visionary leaders worldwide.
-          </p>
+            <!-- Step Progress Indicator -->
+            <div class="pf-quiz-progress-wrap">
+              <div class="pf-quiz-progress-fill"></div>
+            </div>
+            <div class="pf-step-label">Step 1 of 3: What service do you require?</div>
 
-          <!-- One Focused Primary Call-to-Action (CTA) + Watch Reel -->
-          <div class="hero-cta-single-container">
-            <div class="hero-cta-button-group">
-              <button type="button" onclick="openBookCallModal()" class="btn btn-primary btn-hero-primary btn-glow"
-                id="heroPrimaryCta" title="Schedule a free 20-min strategy call">
-                <span>📅 Book a Free Strategy Call</span>
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <!-- Quiz Form -->
+            <form class="pf-quiz-form">
+              <input type="hidden" name="service" value="Web Design &amp; Development">
+              <input type="hidden" name="timeline" value="ASAP">
+
+              <!-- STEP 1: Services Selection Grid -->
+              <div class="pf-step-1">
+                <div class="pf-quiz-services-grid">
+                  <div class="pf-service-option-card selected" data-service="Web Design &amp; Development">
+                    <div class="pf-service-opt-icon">&#127760;</div>
+                    <div class="pf-service-opt-name">Web Design &amp; Development</div>
+                  </div>
+                  <div class="pf-service-option-card" data-service="Graphic Design &amp; Brand Identity">
+                    <div class="pf-service-opt-icon">&#127912;</div>
+                    <div class="pf-service-opt-name">Graphic Design &amp; Branding</div>
+                  </div>
+                  <div class="pf-service-option-card" data-service="Digital Ads &amp; Paid Campaigns">
+                    <div class="pf-service-opt-icon">&#128640;</div>
+                    <div class="pf-service-opt-name">Digital Ads &amp; Marketing</div>
+                  </div>
+                  <div class="pf-service-option-card" data-service="Social Media Management">
+                    <div class="pf-service-opt-icon">&#128241;</div>
+                    <div class="pf-service-opt-name">Social Media Management</div>
+                  </div>
+                </div>
+                <p style="font-size: 0.78rem; color: #64748b; text-align: center; margin: 0;">Click any service to
+                  proceed to timeline</p>
+              </div>
+
+              <!-- STEP 2: Timeline Selection (Hidden initially) -->
+              <div class="pf-step-2" style="display: none;">
+                <div class="pf-timeline-options-grid">
+                  <div class="pf-pill-option selected" data-timeline="ASAP (Within this week)">
+                    <span>&#9889; ASAP (Within this week)</span>
+                    <span style="font-size: 0.8rem; color: #d97706;">&rarr;</span>
+                  </div>
+                  <div class="pf-pill-option" data-timeline="This Month">
+                    <span>&#128197; This month</span>
+                    <span style="font-size: 0.8rem; color: #d97706;">&rarr;</span>
+                  </div>
+                  <div class="pf-pill-option" data-timeline="Next Month">
+                    <span>&#128198; Next month</span>
+                    <span style="font-size: 0.8rem; color: #d97706;">&rarr;</span>
+                  </div>
+                  <div class="pf-pill-option" data-timeline="In the future / Planning">
+                    <span>&#128161; In the future / Planning</span>
+                    <span style="font-size: 0.8rem; color: #d97706;">&rarr;</span>
+                  </div>
+                </div>
+                <div class="pf-quiz-nav-row">
+                  <button type="button" class="pf-btn-back pf-back-to-step-1">&larr; Change Service</button>
+                </div>
+              </div>
+
+              <!-- STEP 3: Client Details & Submission (Hidden initially) -->
+              <div class="pf-step-3" style="display: none;">
+                <div class="pf-quiz-fields-grid">
+                  <div class="pf-form-row-2">
+                    <input type="text" name="first_name" class="pf-input-control" placeholder="First Name *" required>
+                    <input type="text" name="last_name" class="pf-input-control" placeholder="Last Name *" required>
+                  </div>
+                  <input type="email" name="email" class="pf-input-control" placeholder="Business Email *" required>
+                  <input type="tel" name="phone" class="pf-input-control"
+                    placeholder="Phone or WhatsApp Number (e.g. +63 927...)">
+                  <textarea name="details" class="pf-input-control pf-textarea-control"
+                    placeholder="Brief project summary, budget, or website URL..."></textarea>
+                </div>
+                <div class="pf-quiz-nav-row">
+                  <button type="button" class="pf-btn-back pf-back-to-step-2">&larr; Back</button>
+                  <button type="submit" class="pf-btn-submit">
+                    <span>Get Free Quote</span>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                      stroke-width="2.5">
+                      <line x1="5" y1="12" x2="19" y2="12"></line>
+                      <polyline points="12 5 19 12 12 19"></polyline>
+                    </svg>
+                  </button>
+                </div>
+                <p style="font-size: 0.72rem; color: #64748b; text-align: center; margin-top: 0.65rem;">
+                  🔒 100% Free &bull; No obligation &bull; Response within 24 weekday business hours
+                </p>
+              </div>
+            </form>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- 2. PROPFIX ABOUT SECTION -->
+      <section class="pf-section pf-section-light" id="about-us-section">
+        <div class="pf-about-grid">
+          <div class="pf-about-text">
+            <div class="pf-eyebrow">
+              <span>&#128214; Christian Creative &amp; Digital Studio</span>
+            </div>
+            <h2 class="pf-section-title" style="margin-bottom: 0.5rem;">
+              About Create and Arise<span class="pf-dot">.studio</span>
+            </h2>
+            <p>
+              At Create and Arise, we're committed to helping visionary brands elevate their digital presence with
+              quality craftsmanship, honest advice, and dependable service. Founded by web developer <strong>Jerome
+                Cabinta</strong> and based in La Trinidad, Benguet, Philippines, we combine skilled creative design with
+              strategic digital marketing to deliver smooth, high-converting experiences from start to finish.
+            </p>
+            <p>
+              Our experienced team provides a wide range of creative and digital growth solutions, including
+              high-converting web design, custom brand identity, digital ad campaign management, and strategic social
+              media curation. Whether it's an ambitious complete rebrand or a high-speed custom web application, we take
+              pride in delivering lasting results, transparent communication, and treating every brand with the care and
+              excellence it deserves.
+            </p>
+            <div style="display: flex; align-items: center; gap: 1rem; margin-top: 0.5rem; flex-wrap: wrap;">
+              <button type="button" onclick="switchTab('mission')" class="btn-propfix-quote"
+                style="font-size: 0.88rem; padding: 0.6rem 1.25rem;">
+                <span>Read Full Story &amp; Mission</span>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
                   <line x1="5" y1="12" x2="19" y2="12"></line>
                   <polyline points="12 5 19 12 12 19"></polyline>
                 </svg>
               </button>
-              <button type="button" onclick="window.focusHeroVideo && window.focusHeroVideo()" class="btn btn-secondary btn-hero-video"
-                id="heroWatchVideoCta" title="Watch our official brand showreel video">
-                <span class="play-pulse-dot">▶</span>
-                <span>Watch Reel</span>
+              <button type="button" onclick="openBookCallModal()" class="btn btn-secondary btn-sm"
+                style="border-radius: var(--pf-radius-full); padding: 0.6rem 1.25rem;">
+                <span>📅 Schedule Founder Call</span>
               </button>
             </div>
-            <p class="hero-cta-helper">
-              <span>✨ 100% Free consultation &bull; Or <a href="#estimator"
-                  onclick="switchTab('estimator'); return false;" class="hero-helper-link">Calculate Project Cost
-                  &rarr;</a></span>
-            </p>
           </div>
 
-          <!-- Highlight Numbers & Trust Proof -->
-          <div class="hero-highlights">
-            <div class="highlight-item">
-              <span class="highlight-number">100+</span>
-              <span class="highlight-label">Brands Elevated</span>
-            </div>
-            <div class="highlight-item">
-              <span class="highlight-number">99.4%</span>
-              <span class="highlight-label">Client Satisfaction</span>
-            </div>
-            <div class="highlight-item">
-              <span class="highlight-number">+320%</span>
-              <span class="highlight-label">Average Ad ROAS</span>
-            </div>
-            <div class="highlight-item">
-              <span class="highlight-number">100%</span>
-              <span class="highlight-label">Faith &amp; Integrity</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Hero Visual Composition with Professional Browser Mockup Shell -->
-        <!-- Hero Visual Composition with Dynamic Showcase Shell -->
-        <div class="hero-visual" id="heroVisualWrapper">
-          <div class="hero-browser-frame" id="heroMockupFrame">
-            <!-- Browser Header Bar with Responsive Mode Switcher -->
-            <div class="hero-browser-header">
-              <div class="browser-dots">
-                <span class="browser-dot dot-red"></span>
-                <span class="browser-dot dot-yellow"></span>
-                <span class="browser-dot dot-green"></span>
-              </div>
-              <div class="browser-address-bar">
-                <span class="address-text">🔒 createandarise.com/showreel</span>
-                <span class="browser-live-tag">● 4K Reel</span>
-              </div>
-              <!-- Desktop / Mobile Reel Mockup Switcher -->
-              <div class="hero-mockup-mode-pills" role="tablist" aria-label="Mockup view modes">
-                <button type="button" class="mockup-mode-pill active" id="btnModeDesktop" onclick="setHeroMockupMode('desktop')" title="Widescreen Desktop Showcase">💻 Wide</button>
-                <button type="button" class="mockup-mode-pill" id="btnModePhone" onclick="setHeroMockupMode('phone')" title="Mobile Portrait Reel View">📱 Reel</button>
-              </div>
-            </div>
-
-            <!-- Showcase Visual Inner with Ambient Glow Backdrop + Crisp Centered Video -->
-            <div class="hero-card-inner" id="heroCardInner">
-              <!-- Soft ambient reflection video for widescreen mode -->
-              <video class="hero-video-ambient" id="heroVideoAmbient" autoplay loop muted playsinline aria-hidden="true">
-                <source src="assets/videos/vid.mp4" type="video/mp4">
-              </video>
-
-              <!-- Main crisp uncropped video -->
-              <video id="heroVideo" class="hero-video fit-contain" autoplay loop muted playsinline preload="auto" poster="assets/images/hero-agency.jpg" aria-label="Create and Arise Creative Agency Showcase Video">
-                <source src="assets/videos/vid.mp4" type="video/mp4">
-                <source src="assets/Video/vid.mp4" type="video/mp4">
-                <source src="assets/vid.mp4" type="video/mp4">
-                <img src="assets/images/hero-agency.jpg" alt="Create and Arise Creative Agency Showcase" class="hero-image" width="800" height="450">
-              </video>
-
-              <!-- Video Controls Overlay -->
-              <div class="hero-video-controls" id="heroVideoControls" aria-label="Showreel controls">
-                <button type="button" class="video-control-btn" id="heroVideoPlayPauseBtn" aria-label="Pause or play video" title="Pause / Play Video">
-                  <svg class="icon-pause" width="13" height="13" viewBox="0 0 24 24" fill="currentColor">
-                    <rect x="6" y="4" width="4" height="16" rx="1"></rect>
-                    <rect x="14" y="4" width="4" height="16" rx="1"></rect>
-                  </svg>
-                  <svg class="icon-play" width="13" height="13" viewBox="0 0 24 24" fill="currentColor" style="display:none;">
-                    <polygon points="6 4 20 12 6 20 6 4"></polygon>
-                  </svg>
-                </button>
-                <button type="button" class="video-control-btn sound-btn" id="heroVideoMuteBtn" aria-label="Toggle sound" title="Toggle audio (sound)">
-                  <svg class="icon-muted" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
-                    <line x1="23" y1="9" x2="17" y2="15"></line>
-                    <line x1="17" y1="9" x2="23" y2="15"></line>
-                  </svg>
-                  <svg class="icon-unmuted" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none;">
-                    <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
-                    <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path>
-                  </svg>
-                  <span class="video-sound-text" id="heroVideoSoundText">Sound Off</span>
-                </button>
-                <button type="button" class="video-control-btn fit-btn" id="heroVideoFitBtn" onclick="toggleHeroVideoFit()" aria-label="Toggle Fit or Fill" title="Toggle Fit (Entire Video) / Fill (Full Bleed)">
-                  <span id="heroVideoFitText">Fit</span>
-                </button>
-                <button type="button" class="video-control-btn fullscreen-btn" id="heroVideoFullscreenBtn" aria-label="Fullscreen video" title="Fullscreen">
-                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path>
-                  </svg>
-                </button>
-              </div>
-            </div>
-          </div>
-
-          <!-- Floating Interactive Badges (Responsive Bar on Mobile) -->
-          <div class="hero-visual-badges-bar">
-            <div class="floating-badge floating-badge-1">
-              <div class="badge-icon gold">&#9733;</div>
+          <div class="pf-about-cards-col">
+            <div class="pf-about-feature-box">
+              <div class="pf-feature-box-icon">&#10013;</div>
               <div>
-                <div class="badge-title">5.0 Star Rating</div>
-                <div class="badge-desc">100+ Visionary Brands Scaled</div>
+                <h4 style="font-weight: 700; font-size: 1.05rem; margin-bottom: 0.25rem;">Christian Stewardship &amp;
+                  Integrity</h4>
+                <p style="font-size: 0.88rem; margin: 0; line-height: 1.55;">Rooted in Colossians 3:23 — we work with
+                  all our hearts, offering transparent quotations and uncompromising honesty.</p>
               </div>
             </div>
-
-            <div class="floating-badge floating-badge-2">
-              <div class="badge-icon purple">&#128640;</div>
+            <div class="pf-about-feature-box">
+              <div class="pf-feature-box-icon">&#9889;</div>
               <div>
-                <div class="badge-title">Data-Driven Growth</div>
-                <div class="badge-desc">+320% Average Ad ROAS</div>
+                <h4 style="font-weight: 700; font-size: 1.05rem; margin-bottom: 0.25rem;">Fast &amp; Simple Process</h4>
+                <p style="font-size: 0.88rem; margin: 0; line-height: 1.55;">Clear milestones, rapid prototype
+                  turnarounds, and direct contact with the developers and designers building your project.</p>
+              </div>
+            </div>
+            <div class="pf-about-feature-box">
+              <div class="pf-feature-box-icon">&#128640;</div>
+              <div>
+                <h4 style="font-weight: 700; font-size: 1.05rem; margin-bottom: 0.25rem;">Conversion &amp; ROI Focused
+                </h4>
+                <p style="font-size: 0.88rem; margin: 0; line-height: 1.55;">Every color choice, typography pair, layout
+                  element, and ad creative is strategically built to turn visitors into loyal clients.</p>
               </div>
             </div>
           </div>
         </div>
-      </div>
+      </section>
 
-      <!-- ===================================================================
-           CLIENT BRANDS & PARTNER LOGOS MARQUEE TICKER
-           =================================================================== -->
-      <div class="logo-marquee-wrapper" aria-label="Trusted Clients &amp; Partners">
-        <div class="logo-marquee-track">
-          <!-- Client & Partner Items (duplicated for seamless continuous loop) -->
-          <a href="https://create-with-purpose.vercel.app" target="_blank" rel="noopener noreferrer"
-            class="marquee-logo-item marquee-link" title="Visit Live Project: PURPOSE / STUDIO™"><span
-              class="logo-icon-chip">🔥</span> <span>PURPOSE / STUDIO™ (Live Project) ↗</span></a>
-          <div class="marquee-logo-item"><span class="logo-icon-chip">⚡</span> <span>Velocity SaaS</span></div>
-          <div class="marquee-logo-item"><span class="logo-icon-chip">💎</span> <span>Aurum &amp; Co.</span></div>
-          <div class="marquee-logo-item"><span class="logo-icon-chip">🏃</span> <span>Elevate Athletics</span></div>
-          <div class="marquee-logo-item"><span class="logo-icon-chip">🩺</span> <span>LumbarCare Health</span></div>
-          <div class="marquee-logo-item"><span class="logo-icon-chip">✝️</span> <span>Kingdom Heritage</span></div>
-          <div class="marquee-logo-item"><span class="logo-icon-chip">🏛️</span> <span>Lumina Horizon</span></div>
-          <div class="marquee-logo-item"><span class="logo-icon-chip">🚀</span> <span>Apex Dynamics</span></div>
-          <div class="marquee-logo-item"><span class="logo-icon-chip">🌾</span> <span>Grace &amp; Harvest</span></div>
-          <div class="marquee-logo-item"><span class="logo-icon-chip">🌐</span> <span>Google Partner</span></div>
-          <div class="marquee-logo-item"><span class="logo-icon-chip">♾️</span> <span>Meta Business Partner</span></div>
-          <div class="marquee-logo-item"><span class="logo-icon-chip">🛍️</span> <span>Shopify Partner</span></div>
-          <div class="marquee-logo-item"><span class="logo-icon-chip">🎨</span> <span>Figma Certified</span></div>
-
-          <!-- Duplicate Loop Set -->
-          <a href="https://create-with-purpose.vercel.app" target="_blank" rel="noopener noreferrer"
-            class="marquee-logo-item marquee-link" title="Visit Live Project: PURPOSE / STUDIO™"><span
-              class="logo-icon-chip">🔥</span> <span>PURPOSE / STUDIO™ (Live Project) ↗</span></a>
-          <div class="marquee-logo-item"><span class="logo-icon-chip">⚡</span> <span>Velocity SaaS</span></div>
-          <div class="marquee-logo-item"><span class="logo-icon-chip">💎</span> <span>Aurum &amp; Co.</span></div>
-          <div class="marquee-logo-item"><span class="logo-icon-chip">🏃</span> <span>Elevate Athletics</span></div>
-          <div class="marquee-logo-item"><span class="logo-icon-chip">🩺</span> <span>LumbarCare Health</span></div>
-          <div class="marquee-logo-item"><span class="logo-icon-chip">✝️</span> <span>Kingdom Heritage</span></div>
-          <div class="marquee-logo-item"><span class="logo-icon-chip">🏛️</span> <span>Lumina Horizon</span></div>
-          <div class="marquee-logo-item"><span class="logo-icon-chip">🚀</span> <span>Apex Dynamics</span></div>
-          <div class="marquee-logo-item"><span class="logo-icon-chip">🌾</span> <span>Grace &amp; Harvest</span></div>
-          <div class="marquee-logo-item"><span class="logo-icon-chip">🌐</span> <span>Google Partner</span></div>
-          <div class="marquee-logo-item"><span class="logo-icon-chip">♾️</span> <span>Meta Business Partner</span></div>
-          <div class="marquee-logo-item"><span class="logo-icon-chip">🛍️</span> <span>Shopify Partner</span></div>
-          <div class="marquee-logo-item"><span class="logo-icon-chip">🎨</span> <span>Figma Certified</span></div>
-        </div>
-      </div>
-
-      <!-- ===================================================================
-           AGENCY KEY RESULTS & PERFORMANCE STATISTICS
-           =================================================================== -->
-      <div class="container" style="margin-top: 1rem;">
-        <div class="agency-stats-grid">
-          <div class="stats-counter-card">
-            <div class="stats-counter-num">$2.8M+</div>
-            <div class="stats-counter-title">Client Revenue Generated</div>
-            <div class="stats-counter-desc">Tracked pipeline &amp; sales</div>
+      <!-- 3. PROPFIX SERVICES CARDS SECTION -->
+      <section class="pf-section pf-section-slate" id="services-section">
+        <div class="pf-section-header">
+          <div class="pf-eyebrow">
+            <span>&#9889; Professional Creative Catalog</span>
           </div>
-          <div class="stats-counter-card">
-            <div class="stats-counter-num">150+</div>
-            <div class="stats-counter-title">Projects Delivered</div>
-            <div class="stats-counter-desc">Worldwide client base</div>
-          </div>
-          <div class="stats-counter-card">
-            <div class="stats-counter-num">4.9 ★</div>
-            <div class="stats-counter-title">Average Rating</div>
-            <div class="stats-counter-desc">85+ verified client reviews</div>
-          </div>
-          <div class="stats-counter-card">
-            <div class="stats-counter-num">99.2%</div>
-            <div class="stats-counter-title">On-Time Sprints</div>
-            <div class="stats-counter-desc">Guaranteed Mon&ndash;Fri pacing</div>
-          </div>
-          <div class="stats-counter-card">
-            <div class="stats-counter-num">99.4%</div>
-            <div class="stats-counter-title">Client Satisfaction</div>
-            <div class="stats-counter-desc">85+ verified 5-star reviews</div>
-          </div>
-          <div class="stats-counter-card">
-            <div class="stats-counter-num">100%</div>
-            <div class="stats-counter-title">Commercial Rights</div>
-            <div class="stats-counter-desc">Full source files included</div>
-          </div>
-        </div>
-      </div>
-
-      <!-- ===================================================================
-           HOMEPAGE SECTION 1: WHAT THE COMPANY DOES (Core Disciplines)
-           =================================================================== -->
-      <div class="container home-section">
-        <hr class="home-section-divider">
-        <div class="section-header" style="margin-top: 3.5rem;">
-          <span class="section-tag">&#9889; What The Company Does</span>
-          <h2 class="section-title">Full-Spectrum Creative &amp; <span class="gradient-text">Digital Services</span>
-          </h2>
-          <p class="section-desc">
-            We provide an end-to-end creative ecosystem engineered to elevate brand authority, captivate target
-            audiences, and generate measurable revenue.
+          <h2 class="pf-section-title">Our Services</h2>
+          <p class="pf-section-desc">
+            Purpose-driven creative and digital marketing services with quality workmanship and reliable results for
+            brands worldwide.
           </p>
         </div>
 
-        <div class="what-we-do-grid">
-          <!-- Item 1: Graphic Design -->
-          <article class="what-we-do-card">
-            <div class="what-we-do-icon" style="background: rgba(245, 158, 11, 0.15); color: var(--color-primary);">
-              🎨
+        <div class="pf-services-grid">
+
+          <!-- Service 1: Web Design & Development -->
+          <article class="pf-service-card">
+            <span class="pf-badge-top-right">Most Popular</span>
+            <div
+              style="width: 50px; height: 50px; border-radius: 12px; background: rgba(245, 158, 11, 0.15); color: var(--color-primary); display: flex; align-items: center; justify-content: center; font-size: 1.5rem;">
+              &#127760;
             </div>
-            <h3 class="what-we-do-title">Graphic Design &amp; Brand Identity</h3>
-            <p class="what-we-do-desc">
-              Custom vector logo suites, brand books, luxury packaging, typography guidelines, pitch decks, and print
-              assets crafted with world-class polish.
+            <h3 class="pf-service-card-title">High-Converting Web Design</h3>
+            <p class="pf-service-card-desc">
+              Custom, modern websites engineered for lightning-fast speeds, responsive elegance, and maximum conversion
+              rates.
             </p>
-            <div class="what-we-do-tags">
-              <span class="what-we-do-tag">Vector Logos</span>
-              <span class="what-we-do-tag">Brand Book</span>
-              <span class="what-we-do-tag">Packaging</span>
-              <span class="what-we-do-tag">Pitch Decks</span>
+            <div class="pf-highlights-title">Service Highlights:</div>
+            <ul class="pf-highlights-list">
+              <li class="pf-highlight-item"><span class="pf-bullet-icon">&#10003;</span> Responsive Mobile &amp; Tablet
+                UI/UX</li>
+              <li class="pf-highlight-item"><span class="pf-bullet-icon">&#10003;</span> Lightning-Fast Speed &amp; SEO
+                Architecture</li>
+              <li class="pf-highlight-item"><span class="pf-bullet-icon">&#10003;</span> Custom Landing Pages &amp;
+                E-Commerce</li>
+              <li class="pf-highlight-item"><span class="pf-bullet-icon">&#10003;</span> Lead Capture &amp; Interactive
+                Calculators</li>
+              <li class="pf-highlight-item"><span class="pf-bullet-icon">&#10003;</span> Free Consultation &amp; UX
+                Wireframes</li>
+            </ul>
+            <div class="pf-card-actions">
+              <button type="button" class="pf-btn-card-quote" onclick="switchTab('estimator')">
+                Calculate Project Cost
+              </button>
+              <a href="#services" onclick="switchTab('services'); return false;" class="pf-link-details">
+                <span>Service Details</span> &rarr;
+              </a>
             </div>
-            <button type="button" onclick="selectServiceInEstimator('graphics')" class="what-we-do-link">
-              <span>Estimate Package</span> &rarr;
-            </button>
           </article>
 
-          <!-- Item 2: Web Design -->
-          <article class="what-we-do-card">
-            <div class="what-we-do-icon" style="background: rgba(6, 182, 212, 0.15); color: var(--color-accent);">
-              💻
+          <!-- Service 2: Graphic Design & Branding -->
+          <article class="pf-service-card">
+            <span class="pf-badge-top-right">Brand Identity</span>
+            <div
+              style="width: 50px; height: 50px; border-radius: 12px; background: rgba(139, 92, 246, 0.15); color: var(--color-secondary); display: flex; align-items: center; justify-content: center; font-size: 1.5rem;">
+              &#127912;
             </div>
-            <h3 class="what-we-do-title">High-Converting Web Design</h3>
-            <p class="what-we-do-desc">
-              Fast, responsive UI/UX websites and landing pages engineered with modern glassmorphism, SEO architecture,
-              and interactive lead capture funnels.
+            <h3 class="pf-service-card-title">Graphic Design &amp; Branding</h3>
+            <p class="pf-service-card-desc">
+              Memorable visual brand identities, vector marks, and typography guidelines that elevate your authority and
+              trust.
             </p>
-            <div class="what-we-do-tags">
-              <span class="what-we-do-tag">Responsive UI/UX</span>
-              <span class="what-we-do-tag">Landing Pages</span>
-              <span class="what-we-do-tag">SEO Ready</span>
-              <span class="what-we-do-tag">Fast Speed</span>
+            <div class="pf-highlights-title">Service Highlights:</div>
+            <ul class="pf-highlights-list">
+              <li class="pf-highlight-item"><span class="pf-bullet-icon">&#10003;</span> Custom Logo Marks &amp; Brand
+                Systems</li>
+              <li class="pf-highlight-item"><span class="pf-bullet-icon">&#10003;</span> Brand Style Guides &amp;
+                Typography Sets</li>
+              <li class="pf-highlight-item"><span class="pf-bullet-icon">&#10003;</span> Print, Merch &amp; Packaging
+                Design</li>
+              <li class="pf-highlight-item"><span class="pf-bullet-icon">&#10003;</span> Social Media Asset Kits</li>
+              <li class="pf-highlight-item"><span class="pf-bullet-icon">&#10003;</span> 100% Commercial Rights &amp;
+                Source Files</li>
+            </ul>
+            <div class="pf-card-actions">
+              <button type="button" class="pf-btn-card-quote" onclick="switchTab('estimator')">
+                Calculate Project Cost
+              </button>
+              <a href="#services" onclick="switchTab('services'); return false;" class="pf-link-details">
+                <span>Service Details</span> &rarr;
+              </a>
             </div>
-            <button type="button" onclick="selectServiceInEstimator('web')" class="what-we-do-link">
-              <span>Estimate Package</span> &rarr;
-            </button>
           </article>
 
-          <!-- Item 3: Digital Ads -->
-          <article class="what-we-do-card">
-            <div class="what-we-do-icon" style="background: rgba(244, 63, 94, 0.15); color: #f43f5e;">
-              📈
+          <!-- Service 3: Digital Ads Marketing -->
+          <article class="pf-service-card">
+            <span class="pf-badge-top-right">High ROI</span>
+            <div
+              style="width: 50px; height: 50px; border-radius: 12px; background: rgba(6, 182, 212, 0.15); color: var(--color-accent); display: flex; align-items: center; justify-content: center; font-size: 1.5rem;">
+              &#128640;
             </div>
-            <h3 class="what-we-do-title">Digital Ads &amp; Paid Campaigns</h3>
-            <p class="what-we-do-desc">
-              Full-funnel paid advertising across Meta (FB/IG), Google Ads, and TikTok with high-converting creative
-              copies, audience modeling, and ROAS focus.
+            <h3 class="pf-service-card-title">Digital Ads &amp; Paid Growth</h3>
+            <p class="pf-service-card-desc">
+              Strategic Meta, Google, and TikTok ad campaigns designed to lower client acquisition costs and scale
+              revenue.
             </p>
-            <div class="what-we-do-tags">
-              <span class="what-we-do-tag">Meta &amp; Google Ads</span>
-              <span class="what-we-do-tag">A/B Testing</span>
-              <span class="what-we-do-tag">Retargeting</span>
-              <span class="what-we-do-tag">+320% ROAS</span>
+            <div class="pf-highlights-title">Service Highlights:</div>
+            <ul class="pf-highlights-list">
+              <li class="pf-highlight-item"><span class="pf-bullet-icon">&#10003;</span> High-Converting Ad Creative
+                Production</li>
+              <li class="pf-highlight-item"><span class="pf-bullet-icon">&#10003;</span> Laser-Targeted Audiences &amp;
+                Retargeting</li>
+              <li class="pf-highlight-item"><span class="pf-bullet-icon">&#10003;</span> A/B Copy &amp; Visual Split
+                Testing</li>
+              <li class="pf-highlight-item"><span class="pf-bullet-icon">&#10003;</span> Conversion Tracking &amp; Pixel
+                Integration</li>
+              <li class="pf-highlight-item"><span class="pf-bullet-icon">&#10003;</span> Transparent Weekly ROAS Reports
+              </li>
+            </ul>
+            <div class="pf-card-actions">
+              <button type="button" class="pf-btn-card-quote" onclick="switchTab('estimator')">
+                Calculate Project Cost
+              </button>
+              <a href="#services" onclick="switchTab('services'); return false;" class="pf-link-details">
+                <span>Service Details</span> &rarr;
+              </a>
             </div>
-            <button type="button" onclick="selectServiceInEstimator('ads')" class="what-we-do-link">
-              <span>Estimate Package</span> &rarr;
-            </button>
           </article>
 
-          <!-- Item 4: Social Media -->
-          <article class="what-we-do-card">
-            <div class="what-we-do-icon" style="background: rgba(16, 185, 129, 0.15); color: #10b981;">
-              📱
+          <!-- Service 4: Social Media Management -->
+          <article class="pf-service-card">
+            <span class="pf-badge-top-right">Engaging</span>
+            <div
+              style="width: 50px; height: 50px; border-radius: 12px; background: rgba(16, 185, 129, 0.15); color: #10b981; display: flex; align-items: center; justify-content: center; font-size: 1.5rem;">
+              &#128241;
             </div>
-            <h3 class="what-we-do-title">Social Media Management</h3>
-            <p class="what-we-do-desc">
-              Complete brand grid management featuring monthly 30-day content calendars, aesthetic carousels, persuasive
-              copywriting, and community growth.
+            <h3 class="pf-service-card-title">Social Media Management</h3>
+            <p class="pf-service-card-desc">
+              Consistent, aesthetic, and engaging social content strategy to cultivate community and establish brand
+              authority.
             </p>
-            <div class="what-we-do-tags">
-              <span class="what-we-do-tag">Content Calendar</span>
-              <span class="what-we-do-tag">Aesthetic Grids</span>
-              <span class="what-we-do-tag">Copywriting</span>
-              <span class="what-we-do-tag">Community Growth</span>
+            <div class="pf-highlights-title">Service Highlights:</div>
+            <ul class="pf-highlights-list">
+              <li class="pf-highlight-item"><span class="pf-bullet-icon">&#10003;</span> Monthly Content Calendars &amp;
+                Strategy</li>
+              <li class="pf-highlight-item"><span class="pf-bullet-icon">&#10003;</span> HD Video Reels, Shorts &amp;
+                TikToks</li>
+              <li class="pf-highlight-item"><span class="pf-bullet-icon">&#10003;</span> Carousel &amp; Static Feed
+                Curations</li>
+              <li class="pf-highlight-item"><span class="pf-bullet-icon">&#10003;</span> Engaging Copywriting &amp;
+                Hashtag Research</li>
+              <li class="pf-highlight-item"><span class="pf-bullet-icon">&#10003;</span> Free Social Strategy Audit</li>
+            </ul>
+            <div class="pf-card-actions">
+              <button type="button" class="pf-btn-card-quote" onclick="switchTab('estimator')">
+                Calculate Project Cost
+              </button>
+              <a href="#services" onclick="switchTab('services'); return false;" class="pf-link-details">
+                <span>Service Details</span> &rarr;
+              </a>
             </div>
-            <button type="button" onclick="selectServiceInEstimator('social')" class="what-we-do-link">
-              <span>Estimate Package</span> &rarr;
-            </button>
           </article>
+
+        </div>
+      </section>
+
+      <!-- 4. HIGH-IMPACT PROPFIX CTA BANNER -->
+      <section class="pf-cta-banner-section">
+        <div class="pf-cta-banner-content">
+          <h2 class="pf-cta-banner-title">Ready to Give Your Brand a Fresh New Look?</h2>
+          <p class="pf-cta-banner-desc">
+            Partner with the Philippines' premier creative design and digital marketing studio &mdash;
+            calculate your project scope online or schedule a free strategy session.
+          </p>
+          <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+            <button type="button" class="btn btn-primary" onclick="switchTab('estimator')"
+              style="padding: 0.85rem 2rem; font-size: 1.05rem; font-weight: 700;">
+              <span>Calculate Project Cost &rarr;</span>
+            </button>
+            <button type="button" class="btn btn-secondary" onclick="openBookCallModal()"
+              style="padding: 0.85rem 1.75rem; font-size: 1.02rem;">
+              <span>📅 Book Strategy Call</span>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- 5. "HOW IT WORKS" (PropFix Grid Pattern & 4 Numbered Step Cards) -->
+      <section class="pf-how-it-works-section" id="how-it-works-section">
+        <div class="pf-section-header">
+          <div class="pf-eyebrow">
+            <span>&#128640; Transparent Collaboration</span>
+          </div>
+          <h2 class="pf-section-title">How It Works</h2>
+          <p class="pf-section-desc">
+            Four simple steps to calculate your project scope and find the perfect creative solution for your brand.
+          </p>
         </div>
 
-        <div style="text-align: center; margin-top: 2.25rem;">
-          <button type="button" onclick="switchTab('services')" class="btn btn-secondary">
-            <span>Explore All 5 Service Catalogs In Depth &rarr;</span>
+        <div class="pf-steps-grid">
+          <!-- Step 1 -->
+          <div class="pf-step-card">
+            <div class="pf-step-num-badge">1</div>
+            <h3 class="pf-step-title">Tell Us About Your Project</h3>
+            <p class="pf-step-desc">
+              Calculate your project estimate or schedule a discovery call. Tell us about your brand, goals, design
+              inspirations, and desired project timeline.
+            </p>
+          </div>
+
+          <!-- Step 2 -->
+          <div class="pf-step-card">
+            <div class="pf-step-num-badge">2</div>
+            <h3 class="pf-step-title">Receive an Initial Estimate</h3>
+            <p class="pf-step-desc">
+              Based on the information you provide, we'll give you a transparent price range and answer any questions
+              you may have. We'll arrange a convenient time to discuss your brand in detail.
+            </p>
+          </div>
+
+          <!-- Step 3 -->
+          <div class="pf-step-card">
+            <div class="pf-step-num-badge">3</div>
+            <h3 class="pf-step-title">Discovery &amp; Final Quotation</h3>
+            <p class="pf-step-desc">
+              We assess the project scope, confirm deliverables and milestones, and provide a fixed, no-obligation
+              quotation before any creative work begins.
+            </p>
+          </div>
+
+          <!-- Step 4 -->
+          <div class="pf-step-card">
+            <div class="pf-step-num-badge">4</div>
+            <h3 class="pf-step-title">We Complete the Work</h3>
+            <p class="pf-step-desc">
+              Whether you're looking for web design, branding, or ad management, our team designs, builds, and launches
+              your project with regular sprint updates and ongoing care.
+            </p>
+          </div>
+        </div>
+
+        <div style="text-align: center;">
+          <button type="button" class="btn btn-primary" onclick="openBookCallModal()"
+            style="padding: 0.85rem 2.2rem; font-size: 1.02rem; font-weight: 700;">
+            <span>Book a Discovery Call &rarr;</span>
           </button>
         </div>
-      </div>
+      </section>
 
-      <!-- ===================================================================
-           HOMEPAGE SECTION 2: WHO IT HELPS (Target Audiences)
-           =================================================================== -->
-      <div class="container home-section">
-        <hr class="home-section-divider">
-        <div class="section-header" style="margin-top: 3.5rem;">
-          <span class="section-tag">&#127919; Who It Helps</span>
-          <h2 class="section-title">Built for Visionary Leaders &amp; <span class="gradient-text">Growing Brands</span>
-          </h2>
-          <p class="section-desc">
-            We partner with entrepreneurs, leaders, and creators at every stage of growth to help them stand out, build
-            trust, and dominate their niches.
+      <!-- 6. "WHY CHOOSE CREATE AND ARISE?" (8 Dark Feature Cards Grid) -->
+      <section class="pf-why-section" id="why-choose-us-section">
+        <div class="pf-section-header">
+          <div class="pf-eyebrow" style="color: var(--color-primary);">
+            <span>&#128142; Proven Guarantees</span>
+          </div>
+          <h2 class="pf-section-title">Why Choose Create and Arise?</h2>
+          <p class="pf-section-desc" style="color: #94a3b8;">
+            We make finding trusted creative professionals simple, transparent, and affordable.
           </p>
         </div>
 
-        <div class="who-we-help-grid">
-          <!-- Audience 1: Visionary Founders & Businesses -->
-          <article class="audience-card">
-            <div class="audience-header">
-              <div class="audience-icon">🏢</div>
-              <span class="audience-badge">Scaling Enterprises</span>
-            </div>
-            <h3 class="audience-title">Visionary Founders &amp; Growing Businesses</h3>
-            <p class="audience-desc">
-              Companies looking to elevate brand authority, command premium market positioning, and turn website traffic
-              into consistent, qualified B2B/B2C client inquiries.
-            </p>
-            <div class="audience-solutions-list">
-              <div class="audience-solution-item">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
-                  <polyline points="20 6 9 17 4 12"></polyline>
-                </svg>
-                <span>Complete Brand Visual Identity Systems</span>
-              </div>
-              <div class="audience-solution-item">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
-                  <polyline points="20 6 9 17 4 12"></polyline>
-                </svg>
-                <span>High-Converting SaaS &amp; Corporate Websites</span>
-              </div>
-              <div class="audience-solution-item">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
-                  <polyline points="20 6 9 17 4 12"></polyline>
-                </svg>
-                <span>Multi-Platform Paid Advertising &amp; ROAS Growth</span>
-              </div>
-            </div>
-          </article>
+        <div class="pf-why-grid">
+          <div class="pf-why-card">
+            <div class="pf-why-icon-box">&#128188;</div>
+            <h3 class="pf-why-title">Experienced Professionals</h3>
+            <p class="pf-why-desc">Skilled designers and web developers with years of proven experience across
+              international and local projects.</p>
+          </div>
 
-          <!-- Audience 2: Kingdom-Minded & Faith Organizations -->
-          <article class="audience-card">
-            <div class="audience-header">
-              <div class="audience-icon purple">✝️</div>
-              <span class="audience-badge"
-                style="color: var(--color-secondary-light); border-color: rgba(139, 92, 246, 0.3);">Faith &amp;
-                Purpose</span>
-            </div>
-            <h3 class="audience-title">Kingdom-Minded &amp; Faith-Driven Leaders</h3>
-            <p class="audience-desc">
-              Ministries, Christian authors, publishers, non-profits, and ethical enterprises who value uncompromised
-              integrity, shared spiritual values, and world-class craft.
-            </p>
-            <div class="audience-solutions-list">
-              <div class="audience-solution-item">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
-                  <polyline points="20 6 9 17 4 12"></polyline>
-                </svg>
-                <span>Inspiring Biblical Graphics &amp; Social Carousels</span>
-              </div>
-              <div class="audience-solution-item">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
-                  <polyline points="20 6 9 17 4 12"></polyline>
-                </svg>
-                <span>High-Impact Ministry Graphics &amp; Social Campaigns</span>
-              </div>
-              <div class="audience-solution-item">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
-                  <polyline points="20 6 9 17 4 12"></polyline>
-                </svg>
-                <span>Donor, Ministry &amp; Event Registration Websites</span>
-              </div>
-            </div>
-          </article>
+          <div class="pf-why-card">
+            <div class="pf-why-icon-box">&#128196;</div>
+            <h3 class="pf-why-title">Honest, Transparent Quotations</h3>
+            <p class="pf-why-desc">Clear, transparent pricing with no hidden costs, surprise scope creeps, or unexpected
+              recurring fees.</p>
+          </div>
 
-          <!-- Audience 3: E-Commerce & DTC Brands -->
-          <article class="audience-card">
-            <div class="audience-header">
-              <div class="audience-icon cyan">🛍️</div>
-              <span class="audience-badge"
-                style="color: var(--color-accent); border-color: rgba(6, 182, 212, 0.3);">E-Commerce &amp; DTC</span>
-            </div>
-            <h3 class="audience-title">E-Commerce &amp; Direct-to-Consumer Brands</h3>
-            <p class="audience-desc">
-              Online store owners wanting eye-catching packaging design, high-converting product landing pages, and
-              revenue-boosting digital ad creatives.
-            </p>
-            <div class="audience-solutions-list">
-              <div class="audience-solution-item">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
-                  <polyline points="20 6 9 17 4 12"></polyline>
-                </svg>
-                <span>Product Packaging &amp; Unboxing Experience Design</span>
-              </div>
-              <div class="audience-solution-item">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
-                  <polyline points="20 6 9 17 4 12"></polyline>
-                </svg>
-                <span>High-Speed Shopify &amp; Custom Store Frontends</span>
-              </div>
-              <div class="audience-solution-item">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
-                  <polyline points="20 6 9 17 4 12"></polyline>
-                </svg>
-                <span>Dynamic Ad Variations for Meta &amp; Google Testing</span>
-              </div>
-            </div>
-          </article>
+          <div class="pf-why-card">
+            <div class="pf-why-icon-box">&#127942;</div>
+            <h3 class="pf-why-title">Quality Workmanship</h3>
+            <p class="pf-why-desc">We take immense pride in crafting every website, brand asset, and ad campaign to the
+              highest industry standard.</p>
+          </div>
 
-          <!-- Audience 4: Coaches, Consultants & Creators -->
-          <article class="audience-card">
-            <div class="audience-header">
-              <div class="audience-icon emerald">🎙️</div>
-              <span class="audience-badge" style="color: #10b981; border-color: rgba(16, 185, 129, 0.3);">Experts &amp;
-                Creators</span>
-            </div>
-            <h3 class="audience-title">Coaches, Consultants &amp; Creators</h3>
-            <p class="audience-desc">
-              High-ticket experts needing an authoritative web presence, conversion-focused social media marketing to
-              build massive trust, and pitch decks that close premium client packages.
-            </p>
-            <div class="audience-solutions-list">
-              <div class="audience-solution-item">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
-                  <polyline points="20 6 9 17 4 12"></polyline>
-                </svg>
-                <span>Personal Brand Visual Architecture</span>
-              </div>
-              <div class="audience-solution-item">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
-                  <polyline points="20 6 9 17 4 12"></polyline>
-                </svg>
-                <span>High-Converting Social Media Content Strategy</span>
-              </div>
-              <div class="audience-solution-item">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
-                  <polyline points="20 6 9 17 4 12"></polyline>
-                </svg>
-                <span>High-Ticket Offer Decks &amp; Booking Funnels</span>
-              </div>
-            </div>
-          </article>
+          <div class="pf-why-card">
+            <div class="pf-why-icon-box">&#128737;</div>
+            <h3 class="pf-why-title">Respect for Your Brand</h3>
+            <p class="pf-why-desc">We work carefully, honor your core vision, keep confidential assets tidy, and treat
+              your business as if it were our own.</p>
+          </div>
+
+          <div class="pf-why-card">
+            <div class="pf-why-icon-box">&#128172;</div>
+            <h3 class="pf-why-title">Reliable Communication</h3>
+            <p class="pf-why-desc">From your first enquiry to final launch, we'll keep you informed at every milestone
+              via WhatsApp, email, or Slack.</p>
+          </div>
+
+          <div class="pf-why-card">
+            <div class="pf-why-icon-box">&#9989;</div>
+            <h3 class="pf-why-title">Free, No-Obligation Quotations</h3>
+            <p class="pf-why-desc">Friendly advice, wireframe insights, and expert strategic recommendations with zero
+              sales pressure.</p>
+          </div>
+
+          <div class="pf-why-card">
+            <div class="pf-why-icon-box">&#10013;</div>
+            <h3 class="pf-why-title">Christian-Led Business Integrity</h3>
+            <p class="pf-why-desc">Proudly rooted in Benguet, Philippines, serving global visionaries with biblical
+              stewardship and genuine care.</p>
+          </div>
+
+          <div class="pf-why-card">
+            <div class="pf-why-icon-box">&#129309;</div>
+            <h3 class="pf-why-title">Committed to Customer Satisfaction</h3>
+            <p class="pf-why-desc">We're dedicated to delivering measurable results, smooth user experiences, and visual
+              designs you'll be proud of.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 7. STATISTICS COUNTER BAR -->
+      <div class="pf-stats-bar-section">
+        <div class="pf-stats-bar-container">
+          <div class="pf-stat-item">
+            <div class="pf-stat-val">100+</div>
+            <div class="pf-stat-lbl">Happy Visionaries &amp; Brands</div>
+          </div>
+          <div class="pf-stat-item">
+            <div class="pf-stat-val">5+</div>
+            <div class="pf-stat-lbl">Years Creative Experience</div>
+          </div>
+          <div class="pf-stat-item">
+            <div class="pf-stat-val">3</div>
+            <div class="pf-stat-lbl">Minutes for Initial Quote</div>
+          </div>
         </div>
       </div>
 
-      <!-- ===================================================================
-           HOMEPAGE SECTION 3: VALUE PROPOSITION (Why Choose Us)
-           =================================================================== -->
-      <div class="container home-section">
-        <hr class="home-section-divider">
-        <div class="section-header" style="margin-top: 3.5rem;">
-          <span class="section-tag">&#128142; Main Benefits &amp; Value Proposition</span>
-          <h2 class="section-title">Why Purpose-Driven Leaders <span class="gradient-text">Partner With Us</span></h2>
-          <p class="section-desc">
-            We merge world-class visual artistry with measurable business metrics and unwavering Christian stewardship.
+      <!-- 8. OUR ARTICLES / INSIGHTS SECTION -->
+      <section class="pf-section pf-section-light" id="articles-section">
+        <div class="pf-section-header">
+          <div class="pf-eyebrow">
+            <span>&#128221; Educational Resources</span>
+          </div>
+          <h2 class="pf-section-title">Our Articles</h2>
+          <p class="pf-section-desc">
+            Explore our latest strategic guides on conversion design, brand psychology, and high-ROI digital marketing.
           </p>
         </div>
 
-        <div class="value-prop-grid">
-          <!-- Value 1 -->
-          <article class="value-prop-card">
-            <div class="value-prop-top">
-              <span class="value-prop-number">01</span>
-              <span style="font-size: 1.5rem;">🛡️</span>
+        <div class="pf-articles-grid">
+          <!-- Article 1 -->
+          <article class="pf-article-card" onclick="openArticleModal(1)" style="cursor: pointer;" tabindex="0" role="button" aria-label="Read strategic guide: Why Conversion-Driven Web Design Outperforms Generic Templates">
+            <div class="pf-article-img-wrap">
+              <img src="assets/images/web-design.jpg" alt="Web Design Strategy" class="pf-article-img">
+              <span class="pf-article-cat-badge">Web Design &amp; CRO</span>
             </div>
-            <h3 class="value-prop-title">Biblical Integrity &amp; Faithful Stewardship</h3>
-            <p class="value-prop-desc">
-              We treat your budget, deadlines, and brand trust as a sacred responsibility. Total transparency, zero
-              hidden fees, honest communication, and unwavering dedication to excellence.
-            </p>
-            <div class="value-prop-metric">
-              <span>&#10003;</span>
-              <span>100% Christian Diligence &amp; Honor</span>
-            </div>
-          </article>
-
-          <!-- Value 2 -->
-          <article class="value-prop-card">
-            <div class="value-prop-top">
-              <span class="value-prop-number">02</span>
-              <span style="font-size: 1.5rem;">📊</span>
-            </div>
-            <h3 class="value-prop-title">Conversion &amp; Revenue-Focused Craft</h3>
-            <p class="value-prop-desc">
-              We don't build vanity designs. Every visual layout, color palette, typography hierarchy, and digital
-              strategy is engineered to convert casual visitors into loyal paying customers.
-            </p>
-            <div class="value-prop-metric">
-              <span>&#10003;</span>
-              <span>+320% Average Client Ad ROAS Lift</span>
+            <div class="pf-article-body">
+              <div class="pf-article-date">&#128197; October 2026 &bull; 4 min read</div>
+              <h3 class="pf-article-title">Why Conversion-Driven Web Design Outperforms Generic Templates (And What to
+                Do Instead)</h3>
+              <button type="button" onclick="event.stopPropagation(); openArticleModal(1);" class="pf-article-read-more" aria-label="Read full strategic guide on conversion web design">
+                <span>READ STRATEGY GUIDE</span> &rarr;
+              </button>
             </div>
           </article>
 
-          <!-- Value 3 -->
-          <article class="value-prop-card">
-            <div class="value-prop-top">
-              <span class="value-prop-number">03</span>
-              <span style="font-size: 1.5rem;">⚡</span>
+          <!-- Article 2 -->
+          <article class="pf-article-card" onclick="openArticleModal(2)" style="cursor: pointer;" tabindex="0" role="button" aria-label="Read strategic guide: The Psychology of Visual Branding">
+            <div class="pf-article-img-wrap">
+              <img src="assets/images/graphic_branding_showcase_1790782413205.jpg" alt="Brand Identity Psychology"
+                class="pf-article-img">
+              <span class="pf-article-cat-badge">Brand Identity</span>
             </div>
-            <h3 class="value-prop-title">Dedicated Weekday Sprints (Mon&ndash;Fri)</h3>
-            <p class="value-prop-desc">
-              Intense, dedicated weekday focus with real-time Slack and WhatsApp collaboration, regular milestone
-              previews, and prompt replies during active business hours.
-            </p>
-            <div class="value-prop-metric">
-              <span>&#10003;</span>
-              <span>24-Hour Weekday Inquiry Guarantee</span>
+            <div class="pf-article-body">
+              <div class="pf-article-date">&#128197; October 2026 &bull; 5 min read</div>
+              <h3 class="pf-article-title">The Psychology of Visual Branding: How Cohesive Identity Builds Long-Term
+                Customer Trust</h3>
+              <button type="button" onclick="event.stopPropagation(); openArticleModal(2);" class="pf-article-read-more" aria-label="Read full strategic guide on visual branding psychology">
+                <span>READ STRATEGY GUIDE</span> &rarr;
+              </button>
             </div>
           </article>
 
-          <!-- Value 4 -->
-          <article class="value-prop-card">
-            <div class="value-prop-top">
-              <span class="value-prop-number">04</span>
-              <span style="font-size: 1.5rem;">🌐</span>
+          <!-- Article 3 -->
+          <article class="pf-article-card" onclick="openArticleModal(3)" style="cursor: pointer;" tabindex="0" role="button" aria-label="Read strategic guide: Why Ad Creatives Fatigue">
+            <div class="pf-article-img-wrap">
+              <img src="assets/images/digital-ads.jpg" alt="Digital Ads and ROAS" class="pf-article-img">
+              <span class="pf-article-cat-badge">Digital Ads &amp; ROAS</span>
             </div>
-            <h3 class="value-prop-title">Global Tier-1 Quality at High ROI</h3>
-            <p class="value-prop-desc">
-              Based in La Trinidad, Benguet, Philippines, we deliver Silicon Valley and London caliber execution at
-              3x&ndash;5x greater value compared to Western agencies without compromising polish.
-            </p>
-            <div class="value-prop-metric">
-              <span>&#10003;</span>
-              <span>Trusted Across USA, Australia, UK &amp; PH</span>
+            <div class="pf-article-body">
+              <div class="pf-article-date">&#128197; October 2026 &bull; 4 min read</div>
+              <h3 class="pf-article-title">Why Ad Creatives Fatigue (And How Strategic Funnel Optimization Sustains 3x
+                ROAS)</h3>
+              <button type="button" onclick="event.stopPropagation(); openArticleModal(3);" class="pf-article-read-more" aria-label="Read full strategic guide on ad fatigue and ROAS">
+                <span>READ STRATEGY GUIDE</span> &rarr;
+              </button>
             </div>
           </article>
         </div>
-      </div>
-
-      <!-- ===================================================================
-           HOMEPAGE SECTION 4: CLEAR 4-WAY CALL-TO-ACTION (CTA) MATRIX
-           =================================================================== -->
-      <div class="container" style="margin-bottom: 2.5rem;">
-        <div class="homepage-cta-banner">
-          <div class="cta-banner-header">
-            <span class="section-tag"
-              style="background: rgba(245, 158, 11, 0.2); border-color: rgba(245, 158, 11, 0.5);">&#128640; Take Action
-              Today &bull; No Guesswork</span>
-            <h2 class="cta-banner-title">Ready to Make Your Brand <span class="gradient-text">Arise?</span></h2>
-            <p class="cta-banner-desc">
-              Don't guess what to do next. Choose the exact way you want to partner with Create and Arise today:
-            </p>
-          </div>
-
-          <div class="cta-action-matrix-4col">
-            <!-- Action 1: Book a Free Consultation -->
-            <div class="cta-matrix-card featured-purple">
-              <span class="cta-matrix-badge badge-purple-bg">01 &bull; 1-on-1 Discovery</span>
-              <div class="cta-matrix-icon"
-                style="background: rgba(139, 92, 246, 0.15); color: var(--color-secondary-light);">📅</div>
-              <h3 class="cta-matrix-title">Book a Free Consultation</h3>
-              <p class="cta-matrix-desc">
-                Schedule a complimentary 20-minute strategy call on Google Meet or Zoom to discuss your goals, creative
-                vision, and tailored delivery milestones.
-              </p>
-              <button type="button" onclick="openBookCallModal()" class="btn btn-book-call cta-card-btn">
-                <span>Book 20-Min Call</span>
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
-                  <line x1="16" y1="2" x2="16" y2="6"></line>
-                  <line x1="8" y1="2" x2="8" y2="6"></line>
-                  <line x1="3" y1="10" x2="21" y2="10"></line>
-                </svg>
-              </button>
-            </div>
-
-            <!-- Action 2: Request a Quote -->
-            <div class="cta-matrix-card featured">
-              <span class="cta-matrix-badge badge-amber-bg">02 &bull; Instant Calculator</span>
-              <div class="cta-matrix-icon" style="background: rgba(245, 158, 11, 0.15); color: var(--color-primary);">🧮
-              </div>
-              <h3 class="cta-matrix-title">Request a Quote</h3>
-              <p class="cta-matrix-desc">
-                Select your required deliverables in our Interactive Cost Estimator to view immediate itemized package
-                pricing in USD, PHP, AUD, EUR, or GBP.
-              </p>
-              <button type="button" onclick="switchTab('estimator')" class="btn btn-primary cta-card-btn">
-                <span>Estimate Package</span>
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                  <path d="M5 12h14M12 5l7 7-7 7" />
-                </svg>
-              </button>
-            </div>
-
-            <!-- Action 3: Get Your Free Audit -->
-            <div class="cta-matrix-card featured-cyan">
-              <span class="cta-matrix-badge badge-cyan-bg">03 &bull; $300 Free Value</span>
-              <div class="cta-matrix-icon" style="background: rgba(6, 182, 212, 0.15); color: var(--color-accent);">🔍
-              </div>
-              <h3 class="cta-matrix-title">Get Your Free Audit</h3>
-              <p class="cta-matrix-desc">
-                Receive a personalized 5-point brand, UX, and conversion teardown of your current website or social
-                presence within 48 weekday hours. 100% free.
-              </p>
-              <button type="button" onclick="openAuditModal()" class="btn btn-audit cta-card-btn">
-                <span>Claim Free Audit</span>
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                  <circle cx="11" cy="11" r="8"></circle>
-                  <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-                </svg>
-              </button>
-            </div>
-
-            <!-- Action 4: Start Your Project -->
-            <div class="cta-matrix-card featured-emerald">
-              <span class="cta-matrix-badge badge-emerald-bg">04 &bull; Sprint Onboarding</span>
-              <div class="cta-matrix-icon" style="background: rgba(16, 185, 129, 0.15); color: #10b981;">⚡</div>
-              <h3 class="cta-matrix-title">Start Your Project</h3>
-              <p class="cta-matrix-desc">
-                Ready to begin immediately? Send your project brief to lock in your dedicated Mon&ndash;Fri sprint slot
-                and receive a formal proposal in 24h.
-              </p>
-              <button type="button" onclick="startProjectPrompt()" class="btn btn-secondary cta-card-btn"
-                style="border-color: rgba(16, 185, 129, 0.4); color: #10b981;">
-                <span>Start Project Now</span>
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                  <line x1="22" y1="2" x2="11" y2="13"></line>
-                  <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
-                </svg>
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
+      </section>
 
       <!-- Compact Motto Strip inside Home -->
       <div class="motto-banner" style="margin-top: 2rem;">
@@ -1269,7 +1265,8 @@
           <!-- Text Side (Left) -->
           <div class="about-header-text-col">
             <span class="section-tag" style="margin-bottom: 0.85rem;">&#128214; About Create and Arise</span>
-            <h2 class="section-title about-split-title">Empowering Visionary Brands To <span class="gradient-text">Arise &amp; Shine</span>
+            <h2 class="section-title about-split-title">Empowering Visionary Brands To <span class="gradient-text">Arise
+                &amp; Shine</span>
             </h2>
             <p class="section-desc about-split-desc">
               Founded on biblical stewardship, world-class artistic polish, and revenue-focused engineering, we exist to
@@ -1281,13 +1278,15 @@
           <div class="about-header-video-col">
             <div class="about-video-frame" id="aboutVideoFrame">
               <!-- Ambient soft reflection video for radiant glowing aura -->
-              <video class="about-video-ambient" id="aboutVideoAmbient" autoplay loop muted playsinline aria-hidden="true">
+              <video class="about-video-ambient" id="aboutVideoAmbient" autoplay loop muted playsinline
+                aria-hidden="true">
                 <source src="assets/videos/Vid1.mp4" type="video/mp4">
                 <source src="assets/Vid1.mp4" type="video/mp4">
               </video>
 
               <!-- Main crisp 9:16 portrait animation video -->
-              <video id="aboutVideo" class="about-anim-video" autoplay loop muted playsinline preload="auto" aria-label="Create and Arise 3D Studio Animation Reel">
+              <video id="aboutVideo" class="about-anim-video" autoplay loop muted playsinline preload="auto"
+                aria-label="Create and Arise 3D Studio Animation Reel">
                 <source src="assets/videos/Vid1.mp4" type="video/mp4">
                 <source src="assets/Vid1.mp4" type="video/mp4">
                 <source src="assets/Video/Vid1.mp4" type="video/mp4">
@@ -1295,32 +1294,41 @@
 
               <!-- Video Controls Bar -->
               <div class="about-video-controls" id="aboutVideoControls" aria-label="About animation controls">
-                <button type="button" class="video-control-btn" id="aboutVideoPlayPauseBtn" aria-label="Pause or play video" title="Pause / Play Video">
+                <button type="button" class="video-control-btn" id="aboutVideoPlayPauseBtn"
+                  aria-label="Pause or play video" title="Pause / Play Video">
                   <svg class="icon-pause" width="13" height="13" viewBox="0 0 24 24" fill="currentColor">
                     <rect x="6" y="4" width="4" height="16" rx="1"></rect>
                     <rect x="14" y="4" width="4" height="16" rx="1"></rect>
                   </svg>
-                  <svg class="icon-play" width="13" height="13" viewBox="0 0 24 24" fill="currentColor" style="display:none;">
+                  <svg class="icon-play" width="13" height="13" viewBox="0 0 24 24" fill="currentColor"
+                    style="display:none;">
                     <polygon points="6 4 20 12 6 20 6 4"></polygon>
                   </svg>
                 </button>
 
-                <button type="button" class="video-control-btn sound-btn" id="aboutVideoMuteBtn" aria-label="Toggle sound" title="Toggle audio (sound)">
-                  <svg class="icon-muted" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <button type="button" class="video-control-btn sound-btn" id="aboutVideoMuteBtn"
+                  aria-label="Toggle sound" title="Toggle audio (sound)">
+                  <svg class="icon-muted" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
                     <line x1="23" y1="9" x2="17" y2="15"></line>
                     <line x1="17" y1="9" x2="23" y2="15"></line>
                   </svg>
-                  <svg class="icon-unmuted" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none;">
+                  <svg class="icon-unmuted" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none;">
                     <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
                     <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path>
                   </svg>
                   <span class="video-sound-text" id="aboutVideoSoundText">Sound Off</span>
                 </button>
 
-                <button type="button" class="video-control-btn fullscreen-btn" id="aboutVideoFullscreenBtn" aria-label="Fullscreen video" title="Fullscreen">
-                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path>
+                <button type="button" class="video-control-btn fullscreen-btn" id="aboutVideoFullscreenBtn"
+                  aria-label="Fullscreen video" title="Fullscreen">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path
+                      d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3">
+                    </path>
                   </svg>
                 </button>
               </div>
@@ -1341,7 +1349,7 @@
               <h3 style="font-size: 1.85rem; font-weight: 800; margin-bottom: 1rem;">A Purpose-Driven Creative &amp;
                 Digital Growth Studio</h3>
               <p class="about-who-lead">
-                <strong>Create and Arise</strong> is an independent creative agency based in <strong>La Trinidad,
+                <strong>Create and Arise</strong> is an independent creative studio based in <strong>La Trinidad,
                   Benguet, Philippines</strong>, partnering with visionary founders, businesses, and Kingdom enterprises
                 worldwide.
               </p>
@@ -1418,272 +1426,33 @@
           </div>
         </div>
 
-        <!-- 2.5 FOUNDER & EXECUTIVE CREATIVE DIRECTOR SHOWCASE -->
-        <div class="about-brand-showcase-card">
-          <div class="founder-developer-card-wrapper">
-            <!-- Left: High-Res Portrait & Credential Badge -->
-            <div class="founder-profile-column">
-              <div class="founder-photo-frame">
-                <img src="assets/images/team/elijah-morales.jpg"
-                  alt="Elijah Morales - Founder &amp; Executive Creative Director" class="founder-portrait-img"
-                  width="360" height="460" loading="lazy">
-                <div class="founder-verified-badge">
-                  <span class="verified-icon">👑</span>
-                  <span>Founder &bull; Creative Director</span>
-                </div>
-              </div>
-              <div class="founder-quick-metrics">
-                <div class="founder-metric-pill">
-                  <strong>10+</strong>
-                  <span>Years Visionary Leadership</span>
-                </div>
-                <div class="founder-metric-pill">
-                  <strong>100%</strong>
-                  <span>Faith &amp; Stewardship</span>
-                </div>
-              </div>
-            </div>
-
-            <!-- Middle: Founder Bio & Credentials -->
-            <div class="about-brand-text">
-              <div class="hero-badge-container" style="margin-bottom: 0.65rem;">
-                <span class="section-tag"
-                  style="background: rgba(245, 158, 11, 0.15); border-color: rgba(245, 158, 11, 0.4); color: var(--color-primary);">
-                  👑 Agency Founder &bull; Executive Creative Director &bull; Brand Architect
-                </span>
-              </div>
-              <h3
-                style="font-size: clamp(1.45rem, 3vw, 1.95rem); font-weight: 800; margin-bottom: 0.4rem; font-family: var(--font-display);">
-                Meet the Founder: <span class="gradient-text">Elijah Morales</span>
-              </h3>
-              <div class="founder-role-title">
-                <span>Founder &amp; Creative Director</span> &bull;
-                <span>Brand Strategist</span> &bull;
-                <span>Christian Author</span> &bull;
-                <span>Business Consultant</span>
-              </div>
-
-              <p style="font-size: 0.93rem; color: var(--text-muted); line-height: 1.7; margin-bottom: 0.85rem;">
-                <strong>Elijah Morales</strong> is the visionary founder and executive creative director of
-                <strong>Create and Arise</strong>. Guided by the foundational scripture of Isaiah 60:1—<em>&ldquo;Arise,
-                  shine; for your light has come&rdquo;</em>—he established the studio in La Trinidad, Benguet,
-                Philippines to prove that premier artistic craft, world-class digital innovation, and uncompromising
-                Christian stewardship belong together.
-              </p>
-              <p style="font-size: 0.92rem; color: var(--text-muted); line-height: 1.7; margin-bottom: 1.25rem;">
-                As a brand architect, business consultant, and Christian author (author of <em>"Talk Like a Leader"</em>
-                and <em>"Aligning Your Journey with God's Eternal Promise"</em>), Elijah leads our creative
-                collective—collaborating closely with web developer Jerome Cabinta and senior creative specialists—to
-                elevate visionary founders, ministries, and global brands with enduring visual authority.
-              </p>
-
-              <!-- Tags -->
-              <div class="founder-skill-tags">
-                <span class="service-chip-tag">🎨 Brand Strategy &amp; Identity</span>
-                <span class="service-chip-tag">✨ Executive Creative Direction</span>
-                <span class="service-chip-tag">📚 Published Author &amp; Speaker</span>
-                <span class="service-chip-tag">✝️ Christian Stewardship</span>
-                <span class="service-chip-tag">💼 Business Consulting</span>
-              </div>
-
-              <div class="founder-cta-row">
-                <button type="button" class="btn btn-book-call btn-sm" onclick="openBookCallModal()">
-                  <span>📅 Consult with Elijah</span>
-                </button>
-                <a href="https://wa.me/639274682635?text=Hi%20Elijah!%20I'm%20reaching%20out%20to%20Create%20and%20Arise."
-                  target="_blank" rel="noopener" class="btn btn-outline btn-sm"
-                  style="border-color: rgba(16, 185, 129, 0.4); color: #10b981;">
-                  <span>💬 WhatsApp Elijah</span>
-                </a>
-                <button type="button" class="btn btn-secondary btn-sm"
-                  onclick="switchTab('portfolio'); setTimeout(() => openCaseStudyById(1), 150);">
-                  <span>🎨 View Brand Suite &rarr;</span>
-                </button>
-              </div>
-            </div>
-
-            <!-- Right: Published Works & Official Brand Mockups -->
-            <div class="about-mockup-preview-strip">
-              <div class="about-mockup-pill-card"
-                onclick="switchTab('portfolio'); setTimeout(() => openCaseStudyById(1), 150);"
-                title="View Published Works &amp; Books by Elijah Morales">
-                <img src="assets/Mock ups/10.png" alt="Authored Books by Elijah Morales" loading="lazy">
-                <span>📚 Published Books</span>
-              </div>
-              <div class="about-mockup-pill-card"
-                onclick="switchTab('portfolio'); setTimeout(() => openCaseStudyById(1), 150);"
-                title="View Executive Brand Collateral">
-                <img src="assets/Mock ups/4.png" alt="Elijah Morales Executive Business Card" loading="lazy">
-                <span>💳 Business Card</span>
-              </div>
-              <div class="about-mockup-pill-card"
-                onclick="switchTab('portfolio'); setTimeout(() => openCaseStudyById(1), 150);"
-                title="View Luxury Gift Bag">
-                <img src="assets/Mock ups/12.png" alt="Isaiah 60:1 Ribbon Gift Bag" loading="lazy">
-                <span>🛍️ Ribbon Gift Bag</span>
-              </div>
-              <div class="about-mockup-pill-card"
-                onclick="switchTab('portfolio'); setTimeout(() => openCaseStudyById(1), 150);"
-                title="View Embroidered Cap">
-                <img src="assets/Mock ups/1.png" alt="Colossians 3:23 Embroidered Cap" loading="lazy">
-                <span>🧢 Apparel Cap</span>
-              </div>
-              <div class="about-mockup-pill-card"
-                onclick="switchTab('portfolio'); setTimeout(() => openCaseStudyById(1), 150);"
-                title="View Signature Brand T-Shirt">
-                <img src="assets/Mock ups/8.png" alt="Signature Brand T-Shirt" loading="lazy">
-                <span>👕 Signature Tee</span>
-              </div>
-              <div class="about-mockup-pill-card"
-                onclick="switchTab('portfolio'); setTimeout(() => openCaseStudyById(1), 150);"
-                title="View Ceramic Brand Mug">
-                <img src="assets/Mock ups/9.png" alt="Ceramic Brand Mug" loading="lazy">
-                <span>☕ Ceramic Mug</span>
-              </div>
-            </div>
+        <!-- Bridge Card: Meet Our Team -->
+        <div class="team-bridge-card"
+          style="text-align: center; margin: 3.5rem auto 2.5rem; padding: 2.75rem 2rem; background: var(--bg-surface-elevated); border: 1.5px solid var(--border-subtle); border-radius: var(--radius-lg); max-width: 860px; box-shadow: var(--shadow-md);">
+          <div class="hero-badge-container" style="justify-content: center; margin-bottom: 0.85rem;">
+            <span class="section-tag"
+              style="background: rgba(245, 158, 11, 0.15); border-color: rgba(245, 158, 11, 0.4); color: var(--color-primary);">
+              👥 Dedicated Creative &amp; Engineering Collective
+            </span>
           </div>
-        </div>
-
-        <!-- 2.6 AGENCY TEAM COLLECTIVE -->
-        <div class="agency-team-section">
-          <div style="text-align: center; margin-bottom: 2.25rem;">
-            <div class="hero-badge-container" style="justify-content: center; margin-bottom: 0.65rem;">
-              <span class="section-tag"
-                style="background: rgba(139, 92, 246, 0.12); border-color: rgba(139, 92, 246, 0.35); color: var(--color-secondary-light);">
-                👥 The Artisans &amp; Strategists
-              </span>
-            </div>
-            <h3
-              style="font-size: clamp(1.65rem, 3.2vw, 2.25rem); font-weight: 800; font-family: var(--font-display); margin-bottom: 0.5rem;">
-              Meet the <span class="gradient-text">Create and Arise</span> Team
-            </h3>
-            <p
-              style="color: var(--text-muted); font-size: 0.95rem; max-width: 660px; margin: 0 auto; line-height: 1.6;">
-              A multidisciplinary collective of Christian creatives, performance marketers, and web engineers combining
-              sacred stewardship with commercial excellence.
-            </p>
-          </div>
-
-          <div class="team-cards-grid">
-            <!-- 1. Elijah Morales - Founder & Creative Director -->
-            <div class="team-member-card">
-              <div class="team-member-avatar-wrap">
-                <img src="assets/images/team/elijah-morales.jpg" alt="Elijah Morales - Founder &amp; Creative Director"
-                  class="team-member-img" width="120" height="120" loading="lazy">
-              </div>
-              <span class="team-member-badge">🎯 Founder &bull; Director</span>
-              <h4 class="team-member-name">Elijah Morales</h4>
-              <div class="team-member-role">Founder &amp; Creative Director</div>
-              <p class="team-member-bio">
-                Directs overall agency vision, brand strategy, and creative execution with a steadfast commitment to
-                Christian stewardship and commercial excellence.
-              </p>
-              <div class="team-member-skills">
-                <span class="team-skill-tag">Brand Strategy</span>
-                <span class="team-skill-tag">Creative Direction</span>
-                <span class="team-skill-tag">Leadership</span>
-              </div>
-            </div>
-
-            <!-- 2. Jerome Cabinta - Web Developer -->
-            <div class="team-member-card">
-              <div class="team-member-avatar-wrap">
-                <img src="assets/images/jerome-cabinta.png" alt="Jerome Cabinta - Web Developer"
-                  class="team-member-img cutout-fit" width="120" height="120" loading="lazy">
-              </div>
-              <span class="team-member-badge"
-                style="background: rgba(6, 182, 212, 0.12); border-color: rgba(6, 182, 212, 0.35); color: var(--color-accent);">💻
-                Web Developer</span>
-              <h4 class="team-member-name">Jerome Cabinta</h4>
-              <div class="team-member-role">Web Developer &amp; UI Implementation</div>
-              <p class="team-member-bio">
-                Built and engineered the Create and Arise website using semantic HTML5, modern vanilla CSS architecture,
-                and JavaScript for sub-0.4s load speed.
-              </p>
-              <div class="team-member-skills">
-                <span class="team-skill-tag">Semantic HTML5</span>
-                <span class="team-skill-tag">Vanilla CSS</span>
-                <span class="team-skill-tag">UI Performance</span>
-              </div>
-              <div class="team-member-project-badge">
-                <a href="https://create-with-purpose.vercel.app" target="_blank" rel="noopener noreferrer"
-                  class="team-project-link-btn" title="View Jerome's Live Project: PURPOSE / STUDIO™">
-                  <span class="pulse-dot"></span>
-                  <span class="project-btn-text">Live Project: <strong>create-with-purpose.vercel.app</strong></span>
-                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-                    <polyline points="15 3 21 3 21 9"></polyline>
-                    <line x1="10" y1="14" x2="21" y2="3"></line>
-                  </svg>
-                </a>
-              </div>
-            </div>
-
-            <!-- 3. Hannah Grace Santos - Senior Graphic & Visual Designer -->
-            <div class="team-member-card">
-              <div class="team-member-avatar-wrap">
-                <img src="assets/images/team/hannah-santos.jpg" alt="Hannah Grace Santos - Senior Brand Designer"
-                  class="team-member-img" width="120" height="120" loading="lazy">
-              </div>
-              <span class="team-member-badge"
-                style="background: rgba(139, 92, 246, 0.12); border-color: rgba(139, 92, 246, 0.35); color: var(--color-secondary-light);">🎨
-                Senior Designer</span>
-              <h4 class="team-member-name">Hannah Santos</h4>
-              <div class="team-member-role">Senior Visual &amp; Packaging Designer</div>
-              <p class="team-member-bio">
-                Brings visionary brands to life through bespoke vector logos, luxury product packaging, typography, and
-                publication layout design.
-              </p>
-              <div class="team-member-skills">
-                <span class="team-skill-tag">Visual Identity</span>
-                <span class="team-skill-tag">Packaging Design</span>
-                <span class="team-skill-tag">Print &amp; Editorial</span>
-              </div>
-            </div>
-
-            <!-- 4. Caleb Tan - Digital Ads & Performance Marketing Lead -->
-            <div class="team-member-card">
-              <div class="team-member-avatar-wrap">
-                <img src="assets/images/team/caleb-tan.jpg" alt="Caleb Tan - Digital Ads Specialist"
-                  class="team-member-img" width="120" height="120" loading="lazy">
-              </div>
-              <span class="team-member-badge"
-                style="background: rgba(16, 185, 129, 0.12); border-color: rgba(16, 185, 129, 0.35); color: #10b981;">📈
-                Ads Specialist</span>
-              <h4 class="team-member-name">Caleb Tan</h4>
-              <div class="team-member-role">Digital Ads &amp; Growth Strategist</div>
-              <p class="team-member-bio">
-                Engineers high-ROAS paid media funnels across Meta and Google Ads, turning targeted digital traffic into
-                profitable customer acquisitions.
-              </p>
-              <div class="team-member-skills">
-                <span class="team-skill-tag">Meta Ads</span>
-                <span class="team-skill-tag">Google PPC</span>
-                <span class="team-skill-tag">ROAS Optimization</span>
-              </div>
-            </div>
-
-            <!-- 5. Faith Dela Cruz - Social Media & Content Strategist -->
-            <div class="team-member-card">
-              <div class="team-member-avatar-wrap">
-                <img src="assets/images/team/faith-delacruz.jpg" alt="Faith Dela Cruz - Social Media Lead"
-                  class="team-member-img" width="120" height="120" loading="lazy">
-              </div>
-              <span class="team-member-badge"
-                style="background: rgba(244, 63, 94, 0.12); border-color: rgba(244, 63, 94, 0.35); color: #fb7185;">📱
-                Social Lead</span>
-              <h4 class="team-member-name">Faith Dela Cruz</h4>
-              <div class="team-member-role">Social Media &amp; Content Strategist</div>
-              <p class="team-member-bio">
-                Drives authentic community engagement and organic reach through short-form video reels, TikTok
-                strategies, and purposeful brand storytelling.
-              </p>
-              <div class="team-member-skills">
-                <span class="team-skill-tag">Short-Form Reels</span>
-                <span class="team-skill-tag">Content Planning</span>
-                <span class="team-skill-tag">Organic Reach</span>
-              </div>
-            </div>
+          <h3
+            style="font-size: clamp(1.6rem, 3vw, 2.2rem); font-weight: 800; font-family: var(--font-display); margin-bottom: 0.75rem;">
+            Meet the Minds Behind <span class="gradient-text">Create and Arise</span>
+          </h3>
+          <p
+            style="color: var(--text-muted); font-size: 1rem; max-width: 640px; margin: 0 auto 1.75rem; line-height: 1.7;">
+            Work directly with founder Elijah Morales, lead web developer Jerome Cabinta, and our senior visual design
+            and performance marketing specialists.
+          </p>
+          <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+            <button type="button" onclick="switchTab('team')" class="btn btn-primary"
+              style="padding: 0.75rem 1.85rem; font-weight: 700;">
+              <span>Explore Full Team Bios &amp; Profiles &rarr;</span>
+            </button>
+            <button type="button" onclick="openBookCallModal()" class="btn btn-outline"
+              style="padding: 0.75rem 1.5rem; font-weight: 600;">
+              <span>📅 Book Discovery Call</span>
+            </button>
           </div>
         </div>
 
@@ -1812,7 +1581,7 @@
             </div>
             <h3 class="why-work-title">Global Tier-1 Caliber at 3x&ndash;5x Value</h3>
             <p class="why-work-desc">
-              Based in La Trinidad, Benguet, Philippines, we deliver New York and London agency quality at significantly
+              Based in La Trinidad, Benguet, Philippines, we deliver global tier-1 studio quality at significantly
               higher capital efficiency—maximizing your creative budget without cutting corners.
             </p>
             <div class="why-work-benefit">
@@ -1890,6 +1659,324 @@
       </div>
     </section>
 
+    <!-- VIEW: MEET OUR TEAM (Dedicated Team Collective, Founders, Developer Jerome Cabinta & Senior Specialists) -->
+    <section class="tab-view" id="view-team" aria-label="Meet Our Team">
+      <div class="container">
+        <!-- Team Hero Banner -->
+        <header class="services-hero-banner brand-dark">
+          <div class="site-container">
+            <div class="services-hero-badge">
+              <span class="badge-dot"></span>
+              <span>👥 The Artisans, Engineers &amp; Growth Strategists</span>
+            </div>
+            <h1 class="hero-heading">Meet the <span class="gradient-text">Create and Arise</span> Team.</h1>
+            <p>
+              A multidisciplinary collective of Christian creatives, performance marketers, and web engineers combining
+              sacred stewardship with commercial excellence.
+            </p>
+            <div style="margin-top: 1.25rem; display: flex; gap: 0.75rem; justify-content: center; flex-wrap: wrap;">
+              <button type="button" onclick="switchTab('mission')" class="btn btn-secondary btn-sm"
+                style="border-radius: var(--pf-radius-full); font-size: 0.85rem; padding: 0.5rem 1.25rem; border-color: rgba(245, 158, 11, 0.4); color: var(--color-primary);">
+                <span>📖 Read Studio Story &amp; Biblical Mission &rarr;</span>
+              </button>
+            </div>
+          </div>
+        </header>
+
+        <!-- 1. FOUNDER & EXECUTIVE CREATIVE DIRECTOR SHOWCASE -->
+        <div class="about-brand-showcase-card">
+          <div class="founder-developer-card-wrapper">
+            <!-- Left: High-Res Portrait & Credential Badge -->
+            <div class="founder-profile-column">
+              <div class="founder-photo-frame">
+                <img src="assets/images/team/elijah-morales.jpg"
+                  alt="Elijah Morales - Founder &amp; Executive Creative Director" class="founder-portrait-img"
+                  width="360" height="460" loading="lazy">
+                <div class="founder-verified-badge">
+                  <span class="verified-icon">👑</span>
+                  <span>Founder &bull; Creative Director</span>
+                </div>
+              </div>
+              <div class="founder-quick-metrics">
+                <div class="founder-metric-pill">
+                  <strong>10+</strong>
+                  <span>Years Visionary Leadership</span>
+                </div>
+                <div class="founder-metric-pill">
+                  <strong>100%</strong>
+                  <span>Faith &amp; Stewardship</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Middle: Founder Bio & Credentials -->
+            <div class="about-brand-text">
+              <div class="hero-badge-container" style="margin-bottom: 0.65rem;">
+                <span class="section-tag"
+                  style="background: rgba(245, 158, 11, 0.15); border-color: rgba(245, 158, 11, 0.4); color: var(--color-primary);">
+                  👑 Studio Founder &bull; Executive Creative Director &bull; Brand Architect
+                </span>
+              </div>
+              <h3
+                style="font-size: clamp(1.45rem, 3vw, 1.95rem); font-weight: 800; margin-bottom: 0.4rem; font-family: var(--font-display);">
+                Meet the Founder: <span class="gradient-text">Elijah Morales</span>
+              </h3>
+              <div class="founder-role-title">
+                <span>Founder &amp; Creative Director</span> &bull;
+                <span>Brand Strategist</span> &bull;
+                <span>Christian Author</span> &bull;
+                <span>Business Consultant</span>
+              </div>
+
+              <p style="font-size: 0.93rem; color: var(--text-muted); line-height: 1.7; margin-bottom: 0.85rem;">
+                <strong>Elijah Morales</strong> is the visionary founder and executive creative director of
+                <strong>Create and Arise</strong>. Guided by the foundational scripture of Isaiah 60:1—<em>&ldquo;Arise,
+                  shine; for your light has come&rdquo;</em>—he established the studio in La Trinidad, Benguet,
+                Philippines to prove that premier artistic craft, world-class digital innovation, and uncompromising
+                Christian stewardship belong together.
+              </p>
+              <p style="font-size: 0.92rem; color: var(--text-muted); line-height: 1.7; margin-bottom: 1.25rem;">
+                As a brand architect, business consultant, and Christian author (author of <em>"Talk Like a Leader"</em>
+                and <em>"Aligning Your Journey with God's Eternal Promise"</em>), Elijah leads our creative
+                collective—collaborating closely with web developer Jerome Cabinta and senior creative specialists—to
+                elevate visionary founders, ministries, and global brands with enduring visual authority.
+              </p>
+
+              <!-- Tags -->
+              <div class="founder-skill-tags">
+                <span class="service-chip-tag">🎨 Brand Strategy &amp; Identity</span>
+                <span class="service-chip-tag">✨ Executive Creative Direction</span>
+                <span class="service-chip-tag">📚 Published Author &amp; Speaker</span>
+                <span class="service-chip-tag">✝️ Christian Stewardship</span>
+                <span class="service-chip-tag">💼 Business Consulting</span>
+              </div>
+
+              <div class="founder-cta-row">
+                <button type="button" class="btn btn-book-call btn-sm" onclick="openBookCallModal()">
+                  <span>📅 Consult with Elijah</span>
+                </button>
+                <a href="https://wa.me/639274682635?text=Hi%20Elijah!%20I'm%20reaching%20out%20to%20Create%20and%20Arise."
+                  target="_blank" rel="noopener" class="btn btn-outline btn-sm"
+                  style="border-color: rgba(16, 185, 129, 0.4); color: #10b981;">
+                  <span>💬 WhatsApp Elijah</span>
+                </a>
+                <button type="button" class="btn btn-secondary btn-sm"
+                  onclick="switchTab('portfolio'); setTimeout(() => openCaseStudyById(1), 150);">
+                  <span>🎨 View Brand Suite &rarr;</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- Right: Published Works & Official Brand Mockups -->
+            <div class="about-mockup-preview-strip">
+              <div class="about-mockup-pill-card"
+                onclick="switchTab('portfolio'); setTimeout(() => openCaseStudyById(1), 150);"
+                title="View Published Works &amp; Books by Elijah Morales">
+                <img src="assets/Mock ups/10.png" alt="Authored Books by Elijah Morales" loading="lazy">
+                <span>📚 Published Books</span>
+              </div>
+              <div class="about-mockup-pill-card"
+                onclick="switchTab('portfolio'); setTimeout(() => openCaseStudyById(1), 150);"
+                title="View Executive Brand Collateral">
+                <img src="assets/Mock ups/4.png" alt="Elijah Morales Executive Business Card" loading="lazy">
+                <span>💳 Business Card</span>
+              </div>
+              <div class="about-mockup-pill-card"
+                onclick="switchTab('portfolio'); setTimeout(() => openCaseStudyById(1), 150);"
+                title="View Luxury Gift Bag">
+                <img src="assets/Mock ups/12.png" alt="Isaiah 60:1 Ribbon Gift Bag" loading="lazy">
+                <span>🛍️ Ribbon Gift Bag</span>
+              </div>
+              <div class="about-mockup-pill-card"
+                onclick="switchTab('portfolio'); setTimeout(() => openCaseStudyById(1), 150);"
+                title="View Embroidered Cap">
+                <img src="assets/Mock ups/1.png" alt="Colossians 3:23 Embroidered Cap" loading="lazy">
+                <span>🧢 Apparel Cap</span>
+              </div>
+              <div class="about-mockup-pill-card"
+                onclick="switchTab('portfolio'); setTimeout(() => openCaseStudyById(1), 150);"
+                title="View Signature Brand T-Shirt">
+                <img src="assets/Mock ups/8.png" alt="Signature Brand T-Shirt" loading="lazy">
+                <span>👕 Signature Tee</span>
+              </div>
+              <div class="about-mockup-pill-card"
+                onclick="switchTab('portfolio'); setTimeout(() => openCaseStudyById(1), 150);"
+                title="View Ceramic Brand Mug">
+                <img src="assets/Mock ups/9.png" alt="Ceramic Brand Mug" loading="lazy">
+                <span>☕ Ceramic Mug</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2. STUDIO TEAM COLLECTIVE -->
+        <div class="agency-team-section studio-team-section">
+          <div style="text-align: center; margin-bottom: 2.25rem;">
+            <div class="hero-badge-container" style="justify-content: center; margin-bottom: 0.65rem;">
+              <span class="section-tag"
+                style="background: rgba(139, 92, 246, 0.12); border-color: rgba(139, 92, 246, 0.35); color: var(--color-secondary-light);">
+                👥 The Artisans &amp; Strategists
+              </span>
+            </div>
+            <h3
+              style="font-size: clamp(1.65rem, 3.2vw, 2.25rem); font-weight: 800; font-family: var(--font-display); margin-bottom: 0.5rem;">
+              The <span class="gradient-text">Create and Arise</span> Team Roster
+            </h3>
+            <p
+              style="color: var(--text-muted); font-size: 0.95rem; max-width: 660px; margin: 0 auto; line-height: 1.6;">
+              A multidisciplinary collective of Christian creatives, performance marketers, and web engineers combining
+              sacred stewardship with commercial excellence.
+            </p>
+          </div>
+
+          <div class="team-cards-grid">
+            <!-- 1. Elijah Morales - Founder & Creative Director -->
+            <div class="team-member-card">
+              <div class="team-member-avatar-wrap">
+                <img src="assets/images/team/elijah-morales.jpg" alt="Elijah Morales - Founder &amp; Creative Director"
+                  class="team-member-img" width="120" height="120" loading="lazy">
+              </div>
+              <span class="team-member-badge">🎯 Founder &bull; Director</span>
+              <h4 class="team-member-name">Elijah Morales</h4>
+              <div class="team-member-role">Founder &amp; Creative Director</div>
+              <p class="team-member-bio">
+                Directs overall studio vision, brand strategy, and creative execution with a steadfast commitment to
+                Christian stewardship and commercial excellence.
+              </p>
+              <div class="team-member-skills">
+                <span class="team-skill-tag">Brand Strategy</span>
+                <span class="team-skill-tag">Creative Direction</span>
+                <span class="team-skill-tag">Leadership</span>
+              </div>
+            </div>
+
+            <!-- 2. Jerome Cabinta - Web Developer -->
+            <div class="team-member-card">
+              <div class="team-member-avatar-wrap">
+                <img src="assets/images/jerome-cabinta.png" alt="Jerome Cabinta - Web Developer"
+                  class="team-member-img cutout-fit" width="120" height="120" loading="lazy">
+              </div>
+              <span class="team-member-badge"
+                style="background: rgba(6, 182, 212, 0.12); border-color: rgba(6, 182, 212, 0.35); color: var(--color-accent);">💻
+                Web Developer</span>
+              <h4 class="team-member-name">Jerome Cabinta</h4>
+              <div class="team-member-role">Web Developer &amp; UI Implementation</div>
+              <p class="team-member-bio">
+                Built and engineered the Create and Arise website using semantic HTML5, modern vanilla CSS architecture,
+                and JavaScript for sub-0.4s load speed.
+              </p>
+              <div class="team-member-skills">
+                <span class="team-skill-tag">Semantic HTML5</span>
+                <span class="team-skill-tag">Vanilla CSS</span>
+                <span class="team-skill-tag">UI Performance</span>
+              </div>
+              <div class="team-member-project-badge">
+                <a href="https://create-with-purpose.vercel.app" target="_blank" rel="noopener noreferrer"
+                  class="team-project-link-btn" title="View Jerome's Live Project: PURPOSE / STUDIO™">
+                  <span class="pulse-dot"></span>
+                  <span class="project-btn-text">Live Project: <strong>create-with-purpose.vercel.app</strong></span>
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                    <polyline points="15 3 21 3 21 9"></polyline>
+                    <line x1="10" y1="14" x2="21" y2="3"></line>
+                  </svg>
+                </a>
+              </div>
+            </div>
+
+            <!-- 3. Hannah Grace Santos - Senior Graphic & Visual Designer -->
+            <div class="team-member-card">
+              <div class="team-member-avatar-wrap">
+                <img src="assets/images/team/hannah-santos.jpg" alt="Hannah Grace Santos - Senior Brand Designer"
+                  class="team-member-img" width="120" height="120" loading="lazy">
+              </div>
+              <span class="team-member-badge"
+                style="background: rgba(139, 92, 246, 0.12); border-color: rgba(139, 92, 246, 0.35); color: var(--color-secondary-light);">🎨
+                Senior Designer</span>
+              <h4 class="team-member-name">Hannah Santos</h4>
+              <div class="team-member-role">Senior Visual &amp; Packaging Designer</div>
+              <p class="team-member-bio">
+                Brings visionary brands to life through bespoke vector logos, luxury product packaging, typography, and
+                publication layout design.
+              </p>
+              <div class="team-member-skills">
+                <span class="team-skill-tag">Visual Identity</span>
+                <span class="team-skill-tag">Packaging Design</span>
+                <span class="team-skill-tag">Print &amp; Editorial</span>
+              </div>
+            </div>
+
+            <!-- 4. Caleb Tan - Digital Ads & Performance Marketing Lead -->
+            <div class="team-member-card">
+              <div class="team-member-avatar-wrap">
+                <img src="assets/images/team/caleb-tan.jpg" alt="Caleb Tan - Digital Ads Specialist"
+                  class="team-member-img" width="120" height="120" loading="lazy">
+              </div>
+              <span class="team-member-badge"
+                style="background: rgba(16, 185, 129, 0.12); border-color: rgba(16, 185, 129, 0.35); color: #10b981;">📈
+                Ads Specialist</span>
+              <h4 class="team-member-name">Caleb Tan</h4>
+              <div class="team-member-role">Digital Ads &amp; Growth Strategist</div>
+              <p class="team-member-bio">
+                Engineers high-ROAS paid media funnels across Meta and Google Ads, turning targeted digital traffic into
+                profitable customer acquisitions.
+              </p>
+              <div class="team-member-skills">
+                <span class="team-skill-tag">Meta Ads</span>
+                <span class="team-skill-tag">Google PPC</span>
+                <span class="team-skill-tag">ROAS Optimization</span>
+              </div>
+            </div>
+
+            <!-- 5. Faith Dela Cruz - Social Media & Content Strategist -->
+            <div class="team-member-card">
+              <div class="team-member-avatar-wrap">
+                <img src="assets/images/team/faith-delacruz.jpg" alt="Faith Dela Cruz - Social Media Lead"
+                  class="team-member-img" width="120" height="120" loading="lazy">
+              </div>
+              <span class="team-member-badge"
+                style="background: rgba(244, 63, 94, 0.12); border-color: rgba(244, 63, 94, 0.35); color: #fb7185;">📱
+                Social Lead</span>
+              <h4 class="team-member-name">Faith Dela Cruz</h4>
+              <div class="team-member-role">Social Media &amp; Content Strategist</div>
+              <p class="team-member-bio">
+                Drives authentic community engagement and organic reach through short-form video reels, TikTok
+                strategies, and purposeful brand storytelling.
+              </p>
+              <div class="team-member-skills">
+                <span class="team-skill-tag">Short-Form Reels</span>
+                <span class="team-skill-tag">Content Planning</span>
+                <span class="team-skill-tag">Organic Reach</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3. TEAM CONSULTATION CTA ROW -->
+        <div
+          style="text-align: center; margin: 3rem auto 1rem; padding: 2.5rem; background: var(--bg-surface-elevated); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); max-width: 860px;">
+          <h3 style="font-size: 1.75rem; font-weight: 800; font-family: var(--font-display); margin-bottom: 0.65rem;">
+            Ready to Build with Our Team?
+          </h3>
+          <p
+            style="color: var(--text-muted); font-size: 0.95rem; max-width: 620px; margin: 0 auto 1.5rem; line-height: 1.6;">
+            Schedule a free 20-minute discovery call directly with web developer Jerome Cabinta and our creative
+            leaders.
+          </p>
+          <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+            <button type="button" onclick="openBookCallModal()" class="btn btn-primary"
+              style="padding: 0.75rem 1.75rem; font-weight: 700;">
+              <span>📅 Book Discovery Call</span>
+            </button>
+            <button type="button" onclick="switchTab('estimator')" class="btn btn-outline"
+              style="padding: 0.75rem 1.75rem; font-weight: 600;">
+              <span>⚡ Cost Estimator</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- VIEW 4: PORTFOLIO SHOWCASE -->
     <section class="tab-view" id="view-portfolio" aria-label="Portfolio Showcase">
       <div class="container">
@@ -1951,85 +2038,99 @@
           <div class="portfolio-category-dropdown-area">
             <div class="portfolio-dropdown-container">
               <span class="portfolio-dropdown-label">
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                  aria-hidden="true">
                   <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon>
                 </svg>
                 <span>Category:</span>
               </span>
 
               <div class="portfolio-dropdown-box" id="portfolioDropdown">
-                <button type="button" class="portfolio-dropdown-trigger" id="portfolioDropdownTrigger" aria-haspopup="listbox" aria-expanded="false" aria-label="Filter portfolio by category">
+                <button type="button" class="portfolio-dropdown-trigger" id="portfolioDropdownTrigger"
+                  aria-haspopup="listbox" aria-expanded="false" aria-label="Filter portfolio by category">
                   <div class="dropdown-trigger-main">
                     <span class="dropdown-trigger-icon" id="dropdownTriggerIcon">✦</span>
                     <span class="dropdown-trigger-text" id="dropdownTriggerText">All Work</span>
                     <span class="dropdown-trigger-count" id="dropdownTriggerCount">43</span>
                   </div>
-                  <svg class="dropdown-trigger-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+                  <svg class="dropdown-trigger-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2.5" aria-hidden="true">
                     <polyline points="6 9 12 15 18 9"></polyline>
                   </svg>
                 </button>
 
-                <div class="portfolio-dropdown-menu" id="portfolioDropdownMenu" role="listbox" aria-label="Portfolio Category Options">
-                  <button type="button" class="portfolio-dropdown-item filter-btn active" data-filter="all" role="option" aria-selected="true" tabindex="0">
+                <div class="portfolio-dropdown-menu" id="portfolioDropdownMenu" role="listbox"
+                  aria-label="Portfolio Category Options">
+                  <button type="button" class="portfolio-dropdown-item filter-btn active" data-filter="all"
+                    role="option" aria-selected="true" tabindex="0">
                     <div class="dropdown-item-info">
                       <span class="filter-icon">✦</span>
                       <span class="dropdown-item-label">All Work</span>
                     </div>
                     <div class="dropdown-item-meta">
                       <span class="filter-count">43</span>
-                      <svg class="dropdown-item-check" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true">
+                      <svg class="dropdown-item-check" width="15" height="15" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="3" aria-hidden="true">
                         <polyline points="20 6 9 17 4 12"></polyline>
                       </svg>
                     </div>
                   </button>
 
-                  <button type="button" class="portfolio-dropdown-item filter-btn" data-filter="branding" role="option" aria-selected="false" tabindex="0">
+                  <button type="button" class="portfolio-dropdown-item filter-btn" data-filter="branding" role="option"
+                    aria-selected="false" tabindex="0">
                     <div class="dropdown-item-info">
                       <span class="filter-icon">🎨</span>
                       <span class="dropdown-item-label">Graphics &amp; Branding</span>
                     </div>
                     <div class="dropdown-item-meta">
                       <span class="filter-count">10</span>
-                      <svg class="dropdown-item-check" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true">
+                      <svg class="dropdown-item-check" width="15" height="15" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="3" aria-hidden="true">
                         <polyline points="20 6 9 17 4 12"></polyline>
                       </svg>
                     </div>
                   </button>
 
-                  <button type="button" class="portfolio-dropdown-item filter-btn" data-filter="web" role="option" aria-selected="false" tabindex="0">
+                  <button type="button" class="portfolio-dropdown-item filter-btn" data-filter="web" role="option"
+                    aria-selected="false" tabindex="0">
                     <div class="dropdown-item-info">
                       <span class="filter-icon">💻</span>
                       <span class="dropdown-item-label">Web Design &amp; Dev</span>
                     </div>
                     <div class="dropdown-item-meta">
                       <span class="filter-count">7</span>
-                      <svg class="dropdown-item-check" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true">
+                      <svg class="dropdown-item-check" width="15" height="15" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="3" aria-hidden="true">
                         <polyline points="20 6 9 17 4 12"></polyline>
                       </svg>
                     </div>
                   </button>
 
-                  <button type="button" class="portfolio-dropdown-item filter-btn" data-filter="ads" role="option" aria-selected="false" tabindex="0">
+                  <button type="button" class="portfolio-dropdown-item filter-btn" data-filter="ads" role="option"
+                    aria-selected="false" tabindex="0">
                     <div class="dropdown-item-info">
                       <span class="filter-icon">🎯</span>
                       <span class="dropdown-item-label">Digital Ads</span>
                     </div>
                     <div class="dropdown-item-meta">
                       <span class="filter-count">5</span>
-                      <svg class="dropdown-item-check" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true">
+                      <svg class="dropdown-item-check" width="15" height="15" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="3" aria-hidden="true">
                         <polyline points="20 6 9 17 4 12"></polyline>
                       </svg>
                     </div>
                   </button>
 
-                  <button type="button" class="portfolio-dropdown-item filter-btn" data-filter="social" role="option" aria-selected="false" tabindex="0">
+                  <button type="button" class="portfolio-dropdown-item filter-btn" data-filter="social" role="option"
+                    aria-selected="false" tabindex="0">
                     <div class="dropdown-item-info">
                       <span class="filter-icon">📱</span>
                       <span class="dropdown-item-label">Social Media</span>
                     </div>
                     <div class="dropdown-item-meta">
                       <span class="filter-count">21</span>
-                      <svg class="dropdown-item-check" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true">
+                      <svg class="dropdown-item-check" width="15" height="15" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="3" aria-hidden="true">
                         <polyline points="20 6 9 17 4 12"></polyline>
                       </svg>
                     </div>
@@ -2342,7 +2443,7 @@
             </div>
           </div>
 
-          <!-- The Sweet Spot Advantage: 3-Way Agency Comparison Matrix -->
+          <!-- The Sweet Spot Advantage: 3-Way Studio Comparison Matrix -->
           <div class="agency-comparison-section">
             <div class="section-header" style="margin-bottom: 2.5rem; text-align: center;">
               <span class="section-tag">&#9878;&#65039; The Sweet Spot Advantage</span>
@@ -2652,7 +2753,7 @@
             </div>
             <div class="trust-badge-pill">
               <span class="tb-icon">&#127942;</span>
-              <span>Clutch Top Creative Agency</span>
+              <span>Clutch Top Creative Studio</span>
             </div>
             <div class="trust-badge-pill">
               <span class="tb-icon">&#11088;</span>
@@ -2667,12 +2768,16 @@
 
         <!-- 2. Reviews Interactive Category Filter Bar -->
         <div class="reviews-filters-bar">
-          <button type="button" class="review-filter-btn active" data-filter="all">All Reviews (85+)</button>
-          <button type="button" class="review-filter-btn" data-filter="web">Web Design &amp; UI/UX (32)</button>
-          <button type="button" class="review-filter-btn" data-filter="branding">Branding &amp; Graphics (24)</button>
-          <button type="button" class="review-filter-btn" data-filter="ads">Digital Paid Ads (14)</button>
-          <button type="button" class="review-filter-btn" data-filter="ministry">Christian Ministries &amp; Social
-            (15)</button>
+          <div class="reviews-filter-pills-group">
+            <button type="button" class="review-filter-btn active" data-filter="all">All Reviews (85+)</button>
+            <button type="button" class="review-filter-btn" data-filter="web">Web Design &amp; UI/UX (32)</button>
+            <button type="button" class="review-filter-btn" data-filter="branding">Branding &amp; Graphics (24)</button>
+            <button type="button" class="review-filter-btn" data-filter="ads">Digital Paid Ads (14)</button>
+            <button type="button" class="review-filter-btn" data-filter="ministry">Christian Ministries &amp; Social (15)</button>
+          </div>
+          <button type="button" class="leave-review-action-btn" onclick="openFeedbackModal()" aria-label="Submit a verified client review">
+            <span>✍️ Submit a Client Review</span>
+          </button>
         </div>
 
         <!-- 3. Testimonials Grid -->
@@ -2796,7 +2901,7 @@
               <span class="testimonial-service-tag">Christian Ministry</span>
             </div>
             <p class="testimonial-quote">
-              &ldquo;Working with a Christian creative agency that honors the Lord with such diligence and reverence has
+              &ldquo;Working with a Christian creative studio that honors the Lord with such diligence and reverence has
               been a profound blessing. Their monthly 30-day content ecosystem and faith-filled graphics elevated our
               global outreach by over 240%.&rdquo;
             </p>
@@ -2943,7 +3048,7 @@
             <div class="partner-logo-box">
               <span style="font-size: 1.6rem;">🏆</span>
               <span class="partner-logo-name">Clutch 5.0 ★</span>
-              <span class="partner-logo-role">Top Creative Agency</span>
+              <span class="partner-logo-role">Top Creative Studio</span>
             </div>
           </div>
         </div>
@@ -3177,7 +3282,8 @@
               <div class="contact-detail-row">
                 <div class="contact-icon-box" style="color: #1877f2;">
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                    <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                    <path
+                      d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
                   </svg>
                 </div>
                 <div>
@@ -3238,7 +3344,8 @@
                   class="btn btn-outline btn-sm"
                   style="border-color: rgba(24, 119, 242, 0.4); color: #1877f2; gap: 0.35rem;">
                   <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                    <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                    <path
+                      d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
                   </svg>
                   <span>Facebook Page ↗</span>
                 </a>
@@ -3411,8 +3518,12 @@
                     💬 Chat on WhatsApp
                   </a>
                   <a href="https://www.facebook.com/CreateAndArise2023" target="_blank" rel="noopener noreferrer"
-                    class="btn btn-outline btn-sm" style="border-color: rgba(24, 119, 242, 0.4); color: #1877f2; gap: 0.35rem;">
-                    <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                    class="btn btn-outline btn-sm"
+                    style="border-color: rgba(24, 119, 242, 0.4); color: #1877f2; gap: 0.35rem;">
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                      <path
+                        d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+                    </svg>
                     <span>Facebook Page</span>
                   </a>
                 </div>
@@ -3425,34 +3536,118 @@
 
   </main>
 
-  <!-- Docked Single-Screen App Bottom Bar (Footer) -->
-  <footer class="app-bottom-bar">
-    <div class="container bottom-bar-inner">
-      <div class="bottom-bar-left">
-        <img src="assets/Logo/Logo.png" alt="Create and Arise Logo" class="footer-logo-img" width="26" height="26">
-        <span class="bottom-motto">&ldquo;Arise, shine; for your light has come.&rdquo; &bull; Isaiah 60:1</span>
+  <!-- PropFix-Inspired 4-Column Modern Studio Footer -->
+  <footer class="pf-footer">
+    <div class="pf-footer-top">
+      <!-- Col 1: Brand Info -->
+      <div>
+        <a href="#home" class="brand-logo"
+          onclick="switchTab('home'); window.scrollTo({top:0, behavior:'smooth'}); return false;"
+          style="margin-bottom: 0.75rem;">
+          <div class="brand-logo-img-box">
+            <img src="assets/Logo/Logo.png" alt="Create and Arise Official Logo" class="brand-logo-img" width="38"
+              height="38">
+          </div>
+          <div class="brand-text">
+            <span class="brand-name">CREATE <span style="color: var(--color-primary);">&amp;</span> ARISE</span>
+            <span class="brand-tagline">Creative &bull; Digital &bull; Purpose</span>
+          </div>
+        </a>
+        <p class="pf-footer-desc">
+          For years, Create and Arise has been the Philippines' trusted creative and digital growth studio, connecting
+          visionary brands with reliable, purpose-driven craftsmanship in web development, brand identity, and
+          performance marketing.
+        </p>
+        <p style="font-size: 0.8rem; color: var(--color-primary); margin-top: 0.75rem; font-style: italic;">
+          &ldquo;Arise, shine; for your light has come.&rdquo; &bull; Isaiah 60:1
+        </p>
       </div>
-      <div class="bottom-bar-center hide-tablet">
-        <span>&#128197; Mon &ndash; Fri (8AM &ndash; 6PM PHT) &bull; La Trinidad, Benguet, Philippines</span>
+
+      <!-- Col 2: Services -->
+      <div>
+        <h4 class="pf-footer-col-title">Services</h4>
+        <ul class="pf-footer-links-list">
+          <li><a href="#services" onclick="switchTab('services'); return false;"
+              class="pf-footer-link">Web Design &amp; Development</a></li>
+          <li><a href="#services" onclick="switchTab('services'); return false;"
+              class="pf-footer-link">Graphic Design &amp; Branding</a></li>
+          <li><a href="#services" onclick="switchTab('services'); return false;"
+              class="pf-footer-link">Digital Ads &amp; Paid Campaigns</a></li>
+          <li><a href="#services" onclick="switchTab('services'); return false;"
+              class="pf-footer-link">Social Media Management</a></li>
+          <li><a href="#services" onclick="switchTab('services'); return false;" class="pf-footer-link"
+              style="color: var(--color-primary);">Full Services Catalog &rarr;</a></li>
+        </ul>
       </div>
-      <div class="bottom-bar-right">
-        <a href="https://www.facebook.com/CreateAndArise2023" target="_blank" rel="noopener noreferrer"
-          class="bottom-fb-link" title="Follow Create and Arise on Facebook" aria-label="Create and Arise Facebook Page">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-            <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+
+      <!-- Col 3: Quick Links -->
+      <div>
+        <h4 class="pf-footer-col-title">Quick Links</h4>
+        <ul class="pf-footer-links-list">
+          <li><a href="#home" onclick="scrollToSection('hero-home'); switchTab('home'); return false;"
+              class="pf-footer-link">Home</a></li>
+          <li><a href="#about" onclick="scrollToSection('about-us-section'); return false;" class="pf-footer-link">About
+              Us</a></li>
+          <li><a href="#services" onclick="scrollToSection('services-section'); return false;"
+              class="pf-footer-link">Services</a></li>
+          <li><a href="#team" onclick="switchTab('team'); return false;"
+              class="pf-footer-link">Meet Our Team</a></li>
+          <li><a href="#portfolio" onclick="switchTab('portfolio'); return false;" class="pf-footer-link">Portfolio
+              Showcase</a></li>
+          <li><a href="#estimator" onclick="switchTab('estimator'); return false;" class="pf-footer-link">Cost
+              Estimator</a></li>
+          <li><a href="#reviews" onclick="switchTab('testimonials'); return false;"
+              class="pf-footer-link">Client Reviews</a></li>
+          <li><a href="#contact" onclick="switchTab('contact'); return false;" class="pf-footer-link">Contact Us</a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Col 4: Contact Us -->
+      <div>
+        <h4 class="pf-footer-col-title">Contact Us</h4>
+        <div class="pf-footer-contact-item">
+          <span>📞</span>
+          <a href="tel:+639274682635">+63 927 468 2635 (WhatsApp)</a>
+        </div>
+        <div class="pf-footer-contact-item">
+          <span>✉️</span>
+          <a href="mailto:createandarise05@gmail.com">createandarise05@gmail.com</a>
+        </div>
+        <div class="pf-footer-contact-item">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"
+            style="color: #1877f2; flex-shrink: 0; margin-top: 3px;">
+            <path
+              d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
           </svg>
-          <span>Facebook</span>
-        </a>
-        <button type="button" onclick="openFeedbackModal()" class="bottom-feedback-btn"
-          title="Leave website feedback">
-          ⭐ Leave Feedback
-        </button>
-        <a href="mailto:createandarise05@gmail.com" class="bottom-email-link" title="Direct Email">
-          ✉️ createandarise05@gmail.com
-        </a>
-        <button type="button" onclick="copyEmail(event)" class="bottom-copy-btn"
-          title="Copy email address">Copy</button>
-        <span class="bottom-copyright">&copy; <span id="currentYear">2026</span> Create and Arise</span>
+          <a href="https://www.facebook.com/CreateAndArise2023" target="_blank" rel="noopener noreferrer">Facebook:
+            @CreateAndArise2023</a>
+        </div>
+        <div class="pf-footer-contact-item">
+          <span>📍</span>
+          <span>La Trinidad, Benguet, Philippines (GMT+8)</span>
+        </div>
+        <div class="pf-footer-contact-item" style="margin-top: 0.5rem;">
+          <button type="button" onclick="openFeedbackModal()" class="bottom-feedback-btn"
+            style="background: rgba(255,255,255,0.08); border-radius: var(--pf-radius-full); padding: 0.4rem 0.85rem; font-size: 0.78rem;">
+            ⭐ Rate Website &amp; Leave Feedback
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom Copyright Bar -->
+    <div class="pf-footer-bottom">
+      <div>
+        &copy; 2026 Create and Arise &mdash; Purpose-Driven Creative &amp; Digital Growth Studio.
+      </div>
+      <div class="pf-footer-legal-links">
+        <a href="#about" onclick="switchTab('mission'); return false;">About the Studio</a>
+        <a href="#faq" onclick="switchTab('faq'); return false;">FAQs</a>
+        <a href="#privacy" onclick="openLegalModal('privacy'); return false;">Privacy Policy</a>
+        <a href="#terms" onclick="openLegalModal('terms'); return false;">Terms of Service</a>
+        <a href="#ip" onclick="openLegalModal('ip'); return false;">100% IP Handover</a>
+        <a href="mailto:createandarise05@gmail.com">Direct Support</a>
       </div>
     </div>
   </footer>
@@ -3811,11 +4006,12 @@
           style="width: 100%; justify-content: center; gap: 0.5rem; border-color: rgba(16, 185, 129, 0.4); color: #10b981;">
           <span>💬 Chat Directly on WhatsApp with Studio</span>
         </a>
-        <a id="successFacebookBtn" href="https://www.facebook.com/CreateAndArise2023" target="_blank" rel="noopener noreferrer"
-          class="btn btn-outline"
+        <a id="successFacebookBtn" href="https://www.facebook.com/CreateAndArise2023" target="_blank"
+          rel="noopener noreferrer" class="btn btn-outline"
           style="width: 100%; justify-content: center; gap: 0.5rem; border-color: rgba(24, 119, 242, 0.4); color: #1877f2;">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-            <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+            <path
+              d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
           </svg>
           <span>Connect with Us on Facebook (@CreateAndArise2023)</span>
         </a>
@@ -3837,6 +4033,42 @@
   <!-- Toast Notification Container -->
   <div class="toast-container">
     <div id="siteToast" class="toast"></div>
+  </div>
+
+  <!-- Strategic Article Reader Modal -->
+  <div class="modal-overlay" id="articleModal" role="dialog" aria-modal="true" aria-labelledby="articleModalTitle">
+    <div class="modal-card article-modal-card">
+      <button class="modal-close-btn" onclick="closeModal('articleModal')" aria-label="Close Article Reader">&times;</button>
+      <div id="articleModalBody">
+        <!-- Rendered dynamically by openArticleModal(id) -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Transparent Legal, Privacy & IP Rights Modal -->
+  <div class="modal-overlay" id="legalModal" role="dialog" aria-modal="true" aria-labelledby="legalModalTitle">
+    <div class="modal-card legal-modal-card">
+      <button class="modal-close-btn" onclick="closeModal('legalModal')" aria-label="Close Legal Modal">&times;</button>
+      <div class="legal-modal-header">
+        <span class="section-tag" style="margin-bottom: 0.5rem;">🔒 Legal, Privacy &amp; Commercial IP</span>
+        <h3 id="legalModalTitle" style="font-size: 1.6rem; margin-bottom: 0.4rem;">Create and Arise Client Commitments</h3>
+        <p style="color: var(--text-muted); font-size: 0.88rem; line-height: 1.5;">
+          Transparent terms, strict confidentiality, and 100% full commercial intellectual property handover for all clients.
+        </p>
+        <div class="legal-tab-nav" id="legalTabNav">
+          <button type="button" class="legal-tab-btn active" id="legalTabBtnPrivacy" onclick="switchLegalTab('privacy', this)">Privacy Policy</button>
+          <button type="button" class="legal-tab-btn" id="legalTabBtnTerms" onclick="switchLegalTab('terms', this)">Terms of Service</button>
+          <button type="button" class="legal-tab-btn" id="legalTabBtnIp" onclick="switchLegalTab('ip', this)">100% IP Handover</button>
+        </div>
+      </div>
+      <div id="legalModalBody" class="legal-modal-body">
+        <!-- Tab Content dynamically switched -->
+      </div>
+      <div class="legal-modal-footer">
+        <button type="button" class="btn btn-secondary btn-sm" onclick="closeModal('legalModal')">Close</button>
+        <button type="button" class="btn btn-primary btn-sm" onclick="closeModal('legalModal'); switchTab('contact');">Contact Support</button>
+      </div>
+    </div>
   </div>
 
   <!-- Website Feedback Modal -->
@@ -3954,6 +4186,10 @@
   <!-- Application Logic & Automated Chatbot Scripts -->
   <script src="assets/js/app.js?v=9.0.0"></script>
   <script src="assets/js/chatbot.js?v=2.4"></script>
+
+  <!-- PropFix Interactive & Quiz Scripts -->
+  <script src="assets/js/propfix-interactive.js?v=1.1.0"></script>
+
 </body>
 
 </html>
