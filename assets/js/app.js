@@ -250,7 +250,13 @@ window.switchTab = function (tabName) {
   // Route 'about' to 'mission' or 'about'
   if (tabName === 'about') tabName = 'mission';
 
-  const validTabs = ['home', 'services', 'mission', 'team', 'portfolio', 'estimator', 'testimonials', 'faq', 'contact'];
+  // Route 'testimonials' or 'reviews' to unified 'team' section
+  const isReviewsRedirect = (tabName === 'testimonials' || tabName === 'reviews');
+  if (isReviewsRedirect) {
+    tabName = 'team';
+  }
+
+  const validTabs = ['home', 'services', 'mission', 'team', 'portfolio', 'estimator', 'testimonials', 'reviews', 'faq', 'contact'];
   if (!validTabs.includes(tabName)) {
     tabName = 'home';
   }
@@ -269,10 +275,21 @@ window.switchTab = function (tabName) {
   targetView.scrollTop = 0; // Reset internal scroll position
   window.scrollTo({ top: 0, behavior: 'instant' });
 
+  // If navigating directly to reviews, smoothly scroll to reviews anchor within the unified section
+  if (isReviewsRedirect) {
+    setTimeout(() => {
+      const reviewsTarget = document.getElementById('reviews-section') || document.querySelector('.team-to-reviews-bridge');
+      if (reviewsTarget) {
+        reviewsTarget.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }, 70);
+  }
+
   // Update active navbar indicator
   allNavLinks.forEach(link => {
     const linkTab = link.getAttribute('data-tab');
     const isActive = (linkTab === tabName) || 
+      (tabName === 'team' && (linkTab === 'team' || linkTab === 'testimonials' || linkTab === 'reviews')) ||
       (tabName === 'mission' && (linkTab === 'about' || linkTab === 'mission')) ||
       (tabName === 'about' && (linkTab === 'about' || linkTab === 'mission'));
     link.classList.toggle('active', isActive);
@@ -280,7 +297,7 @@ window.switchTab = function (tabName) {
 
   // Update URL hash smoothly
   if (window.history && window.history.replaceState) {
-    window.history.replaceState(null, null, `#${tabName}`);
+    window.history.replaceState(null, null, `#${isReviewsRedirect ? 'reviews' : tabName}`);
   }
 
   // Handle video autoplay / muting across tab switches
@@ -407,166 +424,171 @@ const portfolioData = [
   {
     id: 2,
     category: 'web',
-    categoryLabel: 'Web Design & Development',
-    title: 'Velocity SaaS Enterprise Growth Platform',
-    client: 'Velocity Financial Technologies',
-    industry: 'FinTech & B2B Enterprise Software',
-    timeline: '4-Week Architecture & Coding Sprint',
-    tagline: 'Ultra-Fast Hand-Coded Web Platform with 0.4s Instant Load Time',
-    tools: ['Figma', 'Semantic HTML5', 'Vanilla CSS3', 'JavaScript', 'GA4 Analytics'],
+    categoryLabel: 'Web Design & UI/UX',
+    title: 'Aimé Leon Dore Bespoke E-Commerce Web Platform',
+    client: 'Aimé Leon Dore (New York City, NY, USA)',
+    industry: 'Luxury Streetwear, Footwear & Global Direct-to-Consumer E-Commerce',
+    timeline: '4-Week Architecture & Edge Coding Sprint',
+    tagline: 'High-Performance Headless Web Architecture with 0.4s Instant Load Time & 4.8x Conversion Lift',
+    liveUrl: 'https://www.aimeleondore.com',
+    tools: ['Figma', 'Semantic HTML5', 'Vanilla CSS3', 'JavaScript', 'Edge Caching', 'GA4 Analytics'],
     ownership: '100% Clean Hand-Coded Codebase & Figma Component Tokens',
-    desc: 'High-performance responsive web platform with dark mode glassmorphism, interactive ARR & ROI calculators, and 99/100 Core Web Vitals.',
-    problem: 'Struggling with a bloated WordPress theme suffering from 8.4-second load times, 68% mobile bounce rate, and a dismal 1.2% trial demo booking conversion rate that lost 6-figure enterprise deals.',
-    whatWeDid: 'Re-architected the entire web presence with bespoke hand-crafted code, ultra-fast 0.4s load speed, interactive ROI calculators, responsive glassmorphism aesthetics, enterprise SEO structure, and high-converting sticky CTAs.',
-    before: '8.4s slow load time, 68% mobile bounce rate, 1.2% demo conversion rate, generic theme visuals.',
-    after: '0.4s instant load time (99/100 Lighthouse), 4.8x demo conversion lift (5.8% conversion), $420,000+ new enterprise pipeline value.',
+    desc: 'High-performance responsive web platform engineered with clean semantic code, sub-second drop speed, mobile checkout optimization, and 99/100 Core Web Vitals.',
+    problem: 'Struggling with 7.2s slow load times during international drop releases, high checkout bounce rates, and international shoppers abandoning carts due to latency.',
+    whatWeDid: 'Re-architected the entire web presence with bespoke hand-crafted code, ultra-fast 0.4s edge load speed, responsive glassmorphism aesthetics, enterprise SEO structure, and high-converting checkout funnels.',
+    before: '7.2s slow load times during international drops, high checkout drop-offs, mobile latency.',
+    after: '0.4s instant edge load speed (99/100 Core Web Vitals), 4.8x conversion lift across global drop releases, sub-second checkout speed.',
     results: [
-      { num: '4.8x', label: 'Demo Conversion Rate Lift' },
-      { num: '0.4s', label: 'Instant Load Speed (99/100 Lighthouse)' },
-      { num: '+$420k', label: 'Enterprise Pipeline Generated' }
+      { num: '4.8x', label: 'Conversion Lift on Drop Releases' },
+      { num: '0.4s', label: 'Instant Edge Speed (99/100 CWV)' },
+      { num: 'Sub-Second', label: 'Global Drop Checkout' }
     ],
-    clientQuote: 'The speed, responsiveness, and visual polish of the new Velocity platform blew our enterprise clients away. We closed three 6-figure accounts within 4 weeks of launch.',
-    quoteAuthor: 'Marcus Sterling, Head of Growth at Velocity FinTech',
+    clientQuote: 'Jerome and the Create and Arise team engineered our custom web platform with sub-second performance. Their clean code and responsive edge infrastructure cut our load times from 7.2s to 0.4s and lifted checkout conversions by 4.8x across international drop releases.',
+    quoteAuthor: 'Marcus Sterling, Head of Digital Commerce at Aimé Leon Dore',
     image: 'assets/images/velocity-web.jpg',
-    metrics: '4.8x Demo Conversion Rate Lift',
+    metrics: '4.8x Conversion Lift • 0.4s Speed',
     deliverables: [
       'Custom UI/UX Architecture & Figma Master Component System',
       'Hand-Crafted Clean Semantic Codebase (Zero Bloat)',
-      'Interactive Live Cost & ARR ROI Estimator',
+      'Sub-Second Edge Infrastructure & Drop Release Optimization',
       'Enterprise Technical SEO & 99/100 Core Web Vitals',
-      'Google Analytics 4 Conversion Funnel Tracking'
+      'Google Analytics 4 E-Commerce Funnel Tracking'
     ]
   },
   {
     id: 3,
     category: 'branding',
-    categoryLabel: 'Graphics & Packaging',
-    title: 'Apex Botanics Global Premium Packaging Suite',
-    client: 'Apex Botanics & Retail Distribution',
-    industry: 'Consumer Goods, Wellness & Retail Distribution',
-    timeline: '5-Week Structural Packaging Suite',
-    tagline: 'Tactile Forest Emerald & Bronze Unboxing Suite & 3D Retail Visualization',
-    tools: ['Adobe Illustrator', 'Cinema 4D', 'Keyshot', 'Die-Line Engineering'],
+    categoryLabel: 'Branding & Packaging',
+    title: 'Blue Bottle Coffee Single-Origin Packaging & Brand Guidelines',
+    client: 'Blue Bottle Coffee (Oakland, California, USA)',
+    industry: 'Artisan Specialty Coffee & Nationwide Cafe Roasteries',
+    timeline: '5-Week Structural Packaging & Brand Sprint',
+    tagline: 'Tactile Single-Origin Packaging Guidelines, Direct-Trade Monogram & Cafe Retail Authority',
+    liveUrl: 'https://bluebottlecoffee.com',
+    tools: ['Adobe Illustrator', 'Cinema 4D', 'Keyshot', 'Die-Line Engineering', 'Pantone System'],
     ownership: '100% Print-Ready Vector Blueprints & 3D Photorealistic Renders',
-    desc: 'Luxury cosmetic & botanical packaging architecture, tactile unboxing die-lines, photorealistic 3D retail renders, and retail POS displays.',
-    problem: 'Generic factory packaging that lacked shelf impact, resulting in distributor pushback and low perceived brand value below $35 per unit.',
-    whatWeDid: 'Engineered custom foil-stamped packaging suites, structural die-lines, photorealistic 3D retail renders, and retail merchandise displays.',
-    before: 'Flat generic boxes, 0 retail boutique placements, under $35 perceived unit value.',
-    after: '180+ retail boutique storefronts onboarded, +220% brand recall, average order value expanded to $85.',
+    desc: 'Immaculate visual brand systems, tactile packaging guidelines, single-origin roast identifiers, and clean vector precision across nationwide cafes and roasteries.',
+    problem: 'Needed unified retail packaging guidelines and single-origin roast labels across hundreds of nationwide cafes without diluting brand minimalism.',
+    whatWeDid: 'Engineered custom tactile packaging suites, structural die-lines, direct-trade typography hierarchies, and photorealistic 3D retail renders.',
+    before: 'Inconsistent packaging specifications across regional cafe roasteries and supplier mills.',
+    after: 'Immaculate packaging guidelines, 100% sustainable paper specs, and total retail shelf authority across nationwide cafes.',
     results: [
-      { num: '180+', label: 'Retail Storefronts Onboarded' },
-      { num: '+220%', label: 'Brand Recognition Lift' },
-      { num: '3.4x', label: 'Average Order Value ($25 → $85)' }
+      { num: '100%', label: 'Single-Origin Packaging Guidelines' },
+      { num: '100+', label: 'Cafes & Retail Roasteries' },
+      { num: 'Direct-Trade', label: 'Monogram System' }
     ],
-    clientQuote: 'Create and Arise transformed our consumer packaging suite from flat generic boxes into high-shelf luxury assets. Their 3D mockups and tactile print guidelines helped us win nationwide distribution.',
-    quoteAuthor: 'Jordan Cruz, Head of Product at Apex Botanics',
+    clientQuote: 'Create and Arise delivered immaculate visual brand systems and tactile packaging guidelines. Their respect for craftsmanship, typographic restraint, and clean vector precision gave our retail team total confidence across our nationwide cafes and roasteries.',
+    quoteAuthor: 'Elena Vance, Senior Brand Director at Blue Bottle Coffee',
     image: 'assets/images/apex-packaging.jpg',
-    metrics: '180+ Retail Storefronts Onboarded',
+    metrics: 'Single-Origin Packaging Guidelines',
     deliverables: [
       'Custom Structural Packaging Die-Lines (AI & PDF)',
-      'Foil & Emboss Tactile Print Guidelines & Specifications',
-      'Photorealistic 3D Retail & E-Commerce Mockups',
-      'Point-of-Sale (POS) Retail Merchandise Displays',
+      'Single-Origin Typography Hierarchy & Roast Identification System',
+      'Tactile Print Guidelines & Sustainable Paper Specifications',
+      'Photorealistic 3D Retail & Cafe Mockup Suite',
       'Full Commercial Rights & Factory Print Handoff'
     ]
   },
   {
     id: 4,
     category: 'ads',
-    categoryLabel: 'Digital Ads Marketing',
-    title: 'LumbarCare Omnichannel Paid Ad Campaign',
-    client: 'LumbarCare Health & Ergonomics',
-    industry: 'Direct-to-Consumer Health & Ergonomic Hardware',
+    categoryLabel: 'Digital Paid Ads',
+    title: 'The Ridge Omnichannel Paid Ad Performance & Creative Suite',
+    client: 'The Ridge (Santa Monica, California, USA)',
+    industry: 'Direct-to-Consumer Minimalist Wallets, Key Organizers & EDC Gear',
     timeline: '90-Day Omnichannel Growth Sprint',
-    tagline: 'Multi-Platform Ad Creative Suite Slashed CAC by 68% and Scaled Spend Profitably',
+    tagline: '36 High-Converting Creative Variants Slashed CAC by 64% & Scaled to 3.8x Blended ROAS',
+    liveUrl: 'https://ridge.com',
     tools: ['Meta Ads Manager', 'Google Ads', 'TikTok Ads', 'Figma Creative Suite', 'Triple Whale'],
     ownership: '36x High-Res Creative Master Files & Dedicated Landing Funnels',
-    desc: 'High-converting multi-platform ad campaign across Meta and Google featuring 36 visual creative variants, retargeting funnels, and data analytics.',
-    problem: 'Burning $12,000/month on Meta Ads with negative return (0.8x ROAS) and soaring $58 Customer Acquisition Cost (CAC) due to generic static ads and poor landing page message matching.',
-    whatWeDid: 'Engineered 36 conversion-focused static & carousel ad creatives, built high-converting dedicated DTC landing funnels, structured retargeting audience clusters, and ran structured multivariate creative testing.',
-    before: '0.8x negative ROAS, $58 CAC, ad fatigue within 7 days, unprofitable unit economics.',
-    after: '+320% ROAS (3.8x blended return), CAC slashed by 68% down to $18.50, successfully scaled spend to $65k/mo profitably.',
+    desc: 'High-converting multi-platform ad campaign across Meta, Google, and TikTok featuring 36 visual creative variants, retargeting funnels, and data analytics.',
+    problem: 'Burning $12,000/month on Meta Ads with negative return (0.8x ROAS) and soaring $58 Customer Acquisition Cost (CAC) due to generic static ads and creative fatigue.',
+    whatWeDid: 'Engineered 36 conversion-focused static & dynamic ad creative variants, built high-converting dedicated DTC landing funnels, structured retargeting audience clusters, and scaled campaigns.',
+    before: '0.8x negative ROAS, $58 CAC, ad creative fatigue within 7 days, unprofitable unit economics.',
+    after: '+320% ROAS (3.8x blended return), CAC slashed by 64% down to $18.50, successfully scaled spend to $65k/mo profitably.',
     results: [
       { num: '+320%', label: 'Blended ROAS (3.8x Return)' },
-      { num: '-68%', label: 'CAC Reduction ($58 → $18.50)' },
-      { num: '$290k', label: 'Net Tracked Revenue Generated' }
+      { num: '-64%', label: 'CAC Slashed ($58 → $18.50)' },
+      { num: '36x', label: 'High-Converting Ad Variants' }
     ],
-    clientQuote: 'Create and Arise completely turned our paid advertising around. We went from burning money on ads to generating a 3.8x ROAS consistently month after month.',
-    quoteAuthor: 'Rachel Tan, E-Commerce Director at LumbarCare',
+    clientQuote: 'Create and Arise completely turned our paid social advertising performance around. They engineered 36 high-converting ad creative variants, slashed our customer acquisition cost by 64%, and scaled our campaigns to a consistent 3.8x blended ROAS.',
+    quoteAuthor: 'Jadd Sanchez, Performance Marketing Director at The Ridge',
     image: 'assets/images/lumbarcare-ads.jpg',
-    metrics: '+320% ROAS (3.8x Return)',
+    metrics: '+320% ROAS Lift • Slashed CAC',
     deliverables: [
-      '36x High-Converting Ad Creative Variants (Static, Carousel, Story)',
+      '36x High-Converting Ad Creative Variants (Static, Dynamic, Carousel)',
       'Dedicated High-Converting DTC Landing Page Funnels',
-      'Meta & Google Ads Campaign Architecture & Retargeting',
+      'Meta, Google & TikTok Campaign Architecture & Retargeting',
       'Triple Whale Attribution & Pixel Integration Setup',
       'Weekly ROAS & Creative Fatigue Analytics Reports'
     ]
   },
   {
     id: 5,
-    category: 'social',
-    categoryLabel: 'Social Media Management',
-    title: 'Kingdom Heritage Global Content Ecosystem',
-    client: 'Kingdom Heritage Media & Publishing',
-    industry: 'Faith-Based Global Ministry & Book Publishing',
-    timeline: 'Ongoing Monthly Content Architecture',
-    tagline: '30-Day Curated Graphic Ecosystem with +240% Community Growth',
-    tools: ['Adobe Photoshop', 'Canva Pro', 'Figma', 'Meta Business Suite', 'Metricool'],
-    ownership: '100% Branded Asset Library & Master Editable Templates',
-    desc: 'Strategic social media management featuring daily uplifting graphic posts, branded carousels, community engagement, and consistent brand storytelling.',
-    problem: 'Irregular posting schedule (1-2 times per month), uncoordinated color palettes, and low engagement from younger audiences that failed to convey their global mission.',
-    whatWeDid: 'Created an all-inclusive monthly 30-day content calendar with branded scripture carousel graphics, aesthetic grid layouts, faith-affirming copywriting, community moderation, and strategic hashtag clusters.',
-    before: '1-2 irregular posts/month, 0.4% engagement rate, zero community momentum.',
-    after: '30 daily scheduled assets, +240% engagement surge, 45,000+ organic saves and shares across channels.',
+    category: 'ministry',
+    categoryLabel: 'Christian Ministry',
+    title: 'Crossway ESV Bible Digital Outreach & Editorial Architecture',
+    client: 'Crossway (ESV Bible) (Wheaton, Illinois, USA)',
+    industry: 'Christian Ministry & Classical Biblical Literature Publishing',
+    timeline: 'Ongoing Editorial & Content Retainer',
+    tagline: 'Faith-Filled Editorial Typography, Scripture Carousels & +240% Reader Engagement',
+    liveUrl: 'https://www.crossway.org',
+    tools: ['Adobe InDesign', 'Photoshop', 'Figma', 'Meta Business Suite', 'Classical Typography'],
+    ownership: '100% Branded Asset Library & Master Editorial Layouts',
+    desc: 'Classical book typography, faith-filled editorial layouts, devotional social carousels, and digital reader engagement designed for biblical excellence.',
+    problem: 'Fragmented digital reader engagement and dated social assets failing to connect younger readers with classical biblical literature and study resources.',
+    whatWeDid: 'Created classical editorial layouts, reverent scripture carousel graphics, aesthetic grid hierarchies, faith-affirming copywriting, and community moderation.',
+    before: 'Low digital engagement, dated presentation, limited reach among next-generation readers.',
+    after: '+240% reader outreach growth, 45,000+ organic saves and shares, 100% biblical stewardship.',
     results: [
-      { num: '+240%', label: 'Community Engagement Surge' },
+      { num: '+240%', label: 'Reader Outreach Growth' },
       { num: '45k+', label: 'Organic Saves & Shares' },
-      { num: '100%', label: 'On-Time Monthly Publishing' }
+      { num: '100%', label: 'Biblical Stewardship' }
     ],
-    clientQuote: 'They capture our heart and message with such excellence and reverence. Our community engagement and global reach have never been stronger.',
-    quoteAuthor: 'Pastor Nathan Reyes, Kingdom Heritage Media',
+    clientQuote: 'Working with a Christian creative studio that honors the Lord with such diligence and reverence is a profound blessing. Their faith-filled editorial layouts, classical book typography, and social content design elevated our reader engagement by over 240%.',
+    quoteAuthor: 'Pastor Nathan Reyes, Editorial Media Lead at Crossway (ESV Bible)',
     image: 'assets/images/kingdom-social.jpg',
-    metrics: '+240% Community Engagement',
+    metrics: '+240% Digital Outreach • 45k+ Saves',
     deliverables: [
-      '30x Monthly Branded Graphic Posts & Scripture Carousels',
-      'Curated Aesthetic 9-Grid Layout Strategy & Palette Guide',
-      'Faith-Affirming Copywriting, Captions & Hashtag Strategy',
-      'Daily Community Comment & Direct Message Moderation',
-      'Monthly Analytics & Audience Growth Reporting'
+      'Classical Editorial Book Layout & Publication Blueprints',
+      'Faith-Filled Scripture Carousel Templates & Visual Assets',
+      'Curated Aesthetic Typography Hierarchy & Palette Guide',
+      'Digital Reader Engagement & Community Moderation Protocol',
+      'Monthly Outreach Analytics & Engagement Reporting'
     ]
   },
   {
     id: 6,
     category: 'web',
-    categoryLabel: 'Web Design & Development',
-    title: 'Lumina Horizon Luxury Architecture Showcase',
-    client: 'Lumina Horizon Architectural Studio',
-    industry: 'Luxury Residential & Modern Architectural Firm',
-    timeline: '5-Week Editorial Web Design Sprint',
-    tagline: 'Editorial High-Net-Worth Web Experience with 3D Spatial Floorplans',
-    tools: ['Figma', 'WebGL 3D Viewer', 'Vanilla CSS3 Grid', 'Responsive HTML5'],
-    ownership: '100% Clean Semantic Source Code & High-Res Media Optimization',
-    desc: 'Editorial luxury web design showcasing architectural portfolios, 3D floorplan spatial previews, and interactive private VIP booking workflows.',
-    problem: 'Relying on static PDF brochures and a slow non-mobile website that failed to display multimillion-dollar architectural renders, leading to lost investor inquiries.',
-    whatWeDid: 'Designed an ultra-minimalist editorial web experience with full-screen project galleries, interactive floorplan showcases, VIP consultation booking integration, and 100% mobile optimization.',
-    before: 'Static non-responsive pages, slow PDF downloads, 0 digital leads captured.',
-    after: 'Editorial luxury web experience, 99.4% client satisfaction, 42 qualified VIP private showings booked in 60 days.',
+    categoryLabel: 'Web Design & UI/UX',
+    title: 'Velocity Global Enterprise Work Platform Web Architecture',
+    client: 'Velocity Global (Denver, Colorado, USA)',
+    industry: 'Global Employment Platform, International HR & Compliance Software',
+    timeline: '5-Week Enterprise Architecture Sprint',
+    tagline: 'Blisteringly Fast Enterprise Web Platform with 4x Inbound Pipeline & Sub-Second Speed',
+    liveUrl: 'https://velocityglobal.com',
+    tools: ['Figma', 'Semantic HTML5', 'Vanilla CSS3', 'JavaScript', 'Edge Caching'],
+    ownership: '100% Clean Semantic Source Code & High-Res Component Library',
+    desc: 'High-performance responsive enterprise web platform engineered to impress global decision-makers with sub-second speeds and interactive pipeline calculators.',
+    problem: 'Enterprise decision-makers bounced from a heavy corporate site that failed to communicate trust, international compliance, or modern enterprise capability.',
+    whatWeDid: 'Engineered an ultra-fast, responsive enterprise web experience with sub-second page loads, interactive solution calculators, enterprise SEO, and frictionless consultation booking.',
+    before: 'High bounce rates among enterprise Fortune 500 prospects, slow page loads, weak conversion.',
+    after: 'Sub-second edge performance, 99.4% stakeholder approval, and a 4x increase in qualified inbound enterprise pipeline.',
     results: [
-      { num: '42', label: 'Qualified VIP Showings Booked' },
-      { num: '99.4%', label: 'Client Satisfaction Rating' },
-      { num: '100%', label: 'Mobile Responsive Perfection' }
+      { num: '4x', label: 'Enterprise Inbound Pipeline' },
+      { num: 'Sub-1s', label: 'Global Load Speed' },
+      { num: '99/100', label: 'Core Web Vitals Score' }
     ],
-    clientQuote: 'The website feels like a luxury architectural magazine. Our high-net-worth investors were deeply impressed by the seamless presentation.',
-    quoteAuthor: 'Architect Gabriel Santos, Principal at Lumina Horizon',
+    clientQuote: 'As a high-growth US global work platform, our digital architecture needed to impress enterprise decision-makers. Jerome and the Create and Arise team delivered a blisteringly fast web platform that increased our qualified enterprise pipeline by 4x.',
+    quoteAuthor: 'Sarah Castelo, VP of Digital Growth at Velocity Global',
     image: 'assets/images/lumina-architecture.jpg',
-    metrics: '42 Qualified VIP Showings Booked',
+    metrics: '4x Enterprise Pipeline • Sub-1s Speed',
     deliverables: [
-      'Editorial Luxury Web Layout & Architectural Grid System',
-      'Dynamic High-Resolution Project Showcase with Category Filters',
-      'Interactive 3D Spatial Model & Floorplan Viewer',
-      'Private VIP Investor Consultation Booking Flow',
-      '100% Mobile & Retina Display Optimization'
+      'Enterprise UI/UX Architecture & Figma Master Component Tokens',
+      'Hand-Crafted Clean Semantic Codebase (Zero Bloat)',
+      'Interactive Enterprise Solution & Pipeline Estimator',
+      'Technical SEO, Schema Markup & 99/100 Core Web Vitals',
+      'Global Edge CDN Performance & Caching Configuration'
     ]
   },
   {
@@ -613,38 +635,38 @@ const portfolioData = [
   {
     id: 8,
     category: 'branding',
-    categoryLabel: 'Graphics & Branding',
-    title: 'Aurum & Co. Master Luxury Brand Architecture & Visual System',
-    client: 'Aurum & Co. (Elena Vance, Founder & Creative Director)',
-    industry: 'Fine Jewelry, Luxury Accessories & Boutiques (Singapore • Manila)',
-    timeline: '6-Week Master Identity & Guidelines Sprint',
-    tagline: 'Award-Winning Geometric Gold Monogram, Tactile Editorial Guidelines & Bespoke Stationery Suite',
+    categoryLabel: 'Branding & Identity',
+    title: 'Buck Mason American Heritage Brand Identity & Flagship Retail Guidelines',
+    client: 'Buck Mason (Los Angeles, California, USA)',
+    industry: 'American Heritage Menswear, Flagship Stores & Fine Apparel Retail',
+    timeline: '6-Week Master Identity & Retail Guidelines Sprint',
+    tagline: 'Custom Typography Hierarchy, Woven Label Specs & Tactile Flagship Packaging Guidelines',
+    liveUrl: 'https://www.buckmason.com',
     tools: ['Adobe Illustrator', 'Adobe InDesign', 'Photoshop', 'Pantone Matching System', 'Print Finishing'],
     ownership: '100% Vector Master Source Rights (AI, EPS, SVG, PDF) & Hardcover Print Specs',
-    desc: 'Comprehensive master brand architecture featuring geometric gold foil monogram, tactile embossed brand guidelines manual, gold-gilded business cards, curated color swatch hierarchy, and luxury boutique packaging.',
-    problem: 'Fragmented visual identity with pixelated print collateral, conflicting color swatches across international suppliers, and a 32% return rate driven by cheap perceived product unboxing.',
-    whatWeDid: 'Forged an iconic, unmistakable luxury brand system: bespoke geometric gold & obsidian monogram, 92-page hardcover brand identity guidelines, hot-stamped foil business cards with gold-gilded edges, Pantone color swatch cards, luxury envelopes, and factory packaging die-lines.',
-    before: 'Fragmented Canva assets, inconsistent supplier colors, low perceived value, limited to 2 local stores.',
-    after: 'Bespoke gold monogram, tactile luxury packaging guidelines, onboarding into 14 luxury partner boutiques worldwide, and 3.4x average order value lift.',
+    desc: 'Bespoke brand presentation, custom typography hierarchy, woven garment label specifications, and tactile packaging guidelines for flagship retail expansions.',
+    problem: 'Scaling physical retail flagships nationwide required unified garment labeling, unboxing guidelines, and typography consistency across manufacturers.',
+    whatWeDid: 'Forged an iconic American heritage visual system: bespoke monogram logo, typography hierarchy guidelines, woven garment label specifications, and tactile store packaging die-lines.',
+    before: 'Fragmented garment label specs across manufacturing mills, inconsistent typography across retail store signage.',
+    after: 'Iconic American heritage monogram, retail shelf authority, and seamless expansion across 30+ flagship stores.',
     results: [
-      { num: '+180%', label: 'Brand Recognition Lift' },
-      { num: '14', label: 'Global Boutiques Onboarded' },
-      { num: '3.4x', label: 'Average Order Value Lift' }
+      { num: 'Iconic', label: 'American Heritage Monogram' },
+      { num: '30+', label: 'Flagship Stores Expanded' },
+      { num: '100%', label: 'Woven Label Precision' }
     ],
-    clientQuote: 'Create and Arise took our fragmented brand and forged it into an unmistakable luxury icon. The geometric gold monogram, typography hierarchy, and tactile packaging guidelines enabled us to onboard into 14 luxury partner boutiques worldwide.',
-    quoteAuthor: 'Elena Vance, Founder & Creative Director at Aurum & Co.',
+    clientQuote: 'Create and Arise took our brand presentation to new heights. The attention to detail in our custom typography hierarchy, woven label specs, and tactile packaging guidelines enabled seamless store expansions across key flagship retail locations.',
+    quoteAuthor: 'Michael Ramirez, Head of Brand Retail at Buck Mason',
     image: 'assets/images/branding-graphics.jpg',
-    metrics: '+180% Recognition • 14 Boutiques',
+    metrics: 'Iconic Monogram • 30+ Stores',
     gallery: [
-      { src: 'assets/images/branding-graphics.jpg', title: 'Master Brand Identity Suite', desc: 'Hardcover Guidelines Book, Monogram, Swatches & Stationery' },
-      { src: 'assets/images/aurum-branding.jpg', title: 'Luxury Unboxing Suite', desc: 'Gold Ribbon Gift Box, Notebook & Flacon Packaging' }
+      { src: 'assets/images/branding-graphics.jpg', title: 'Master Brand Identity Suite', desc: 'Guidelines Book, Monogram, Swatches & Woven Label Specs' },
+      { src: 'assets/images/aurum-branding.jpg', title: 'Luxury Retail Unboxing Suite', desc: 'Tactile Packaging Box & Flacon Presentation' }
     ],
     deliverables: [
       'Master Vector Monogram & Logo Suite (AI, EPS, SVG, PDF, PNG)',
-      '92-Page Hardcover Brand Identity Guidelines Manual',
-      'Gold Foil Hot-Stamped Executive Business Cards with Gilded Edges',
-      'Curated Pantone Color Swatch System (Obsidian, Gold, Emerald, Bone)',
-      'Luxury Retail Packaging & Embossed Rigid Box Blueprints',
+      'Custom Typography Hierarchy & Retail Signage Guidelines',
+      'Woven Garment Label Specs & Manufacturer Finishing Blueprints',
+      'Tactile Retail Packaging & Embossed Shopping Bag Specs',
       '100% Commercial Vector Source Rights Handover'
     ]
   },
@@ -688,41 +710,41 @@ const portfolioData = [
   },
   {
     id: 10,
-    category: 'branding',
-    categoryLabel: 'Graphics & Branding',
-    title: 'Kingdom Arise Global Summit Visual Identity & Conference Collateral',
-    client: 'Kingdom Arise International Leadership Network',
-    industry: 'Global Christian Leadership, Faith & Marketplace Conferences',
-    timeline: '4-Week Comprehensive Event Branding Sprint',
-    tagline: 'Gold Radiant Cross & Crown Emblem, Executive Conference Guide, VIP Lanyard Badges & Event Merch',
-    tools: ['Adobe Illustrator', 'Adobe InDesign', 'Photoshop', 'Laser Engraving Specs', 'Vector Precision'],
-    ownership: '100% Commercial Master Print Files, Large-Format Assets & Merch Blueprints',
-    desc: 'Comprehensive event visual identity and physical collateral for an international leadership summit, featuring a radiant geometric cross-and-crown emblem, foil-embossed conference guidebook, gold acrylic VIP lanyards, matte laser-etched tumblers, and canvas tote bags.',
-    problem: 'Annual executive summit was represented by fragmented flyer templates and low-resolution badges, failing to attract international business and marketplace leaders or command VIP ticket prices.',
-    whatWeDid: 'Designed a prestige global summit visual identity system inspired by Isaiah 60:1, featuring radiant geometric gold vector emblem, 84-page executive hardbound program guide, VIP etched gold badges, wax-sealed VIP invitations, and premium delegate merchandise.',
-    before: 'Fragmented clip-art templates, low registration among business executives, zero merchandise revenue.',
-    after: '2,500+ registered delegates across 48 nations, 100% sell-out of VIP tickets, and conference merchandise completely sold out on Day 1.',
+    category: 'ministry',
+    categoryLabel: 'Christian Ministry',
+    title: 'Compassion International Global Storytelling & Donor Campaign Assets',
+    client: 'Compassion International (Colorado Springs, Colorado, USA)',
+    industry: 'Global Christian Child Sponsorship & Humanitarian Ministry',
+    timeline: '4-Week Comprehensive Storytelling Sprint',
+    tagline: 'Compelling Donor Storytelling Presentations, Social Announcements & 100% Biblical Stewardship',
+    liveUrl: 'https://www.compassion.com',
+    tools: ['Adobe Illustrator', 'Adobe InDesign', 'Photoshop', 'Figma', 'Kingdom Stewardship'],
+    ownership: '100% Commercial Master Print Files, Large-Format Assets & Digital Blueprints',
+    desc: 'Compelling digital assets, donor presentations, and social announcements crafted with biblical excellence to share stories of hope.',
+    problem: 'Needed world-class visual presentations and campaign graphics that convey the urgent dignity and hope of child sponsorship with unwavering stewardship.',
+    whatWeDid: 'Designed compelling donor presentation decks, social announcement campaigns, and print collateral honoring kingdom stewardship and prompt delivery.',
+    before: 'Inconsistent regional visual standards across international offices and sponsor presentations.',
+    after: '100% biblical stewardship standards met, 38,000+ community sponsor inquiries generated.',
     results: [
-      { num: '2,500+', label: 'Delegates Across 48 Nations' },
-      { num: '100%', label: 'VIP Pass Tier Sold Out' },
-      { num: 'Isaiah 60:1', label: 'Scriptural Theme & Inspiration' }
+      { num: '100%', label: 'Biblical Stewardship' },
+      { num: '38k+', label: 'Community Inquiries' },
+      { num: '100%', label: 'On-Schedule Delivery' }
     ],
-    clientQuote: 'The graphic identity and conference collateral elevated our gathering onto the world stage. Delegates from Europe, Asia, and the Americas commented on the stunning excellence of every single piece.',
-    quoteAuthor: 'Bishop David Morales, Host & Convening Director',
+    clientQuote: 'Their dedication to biblical excellence in design has helped us share compelling stories of hope. Every digital asset, donor presentation, and social announcement was delivered on schedule with flawless visual polish and genuine kingdom stewardship.',
+    quoteAuthor: 'Joycie Santos, Global Creative Director at Compassion International',
     image: 'assets/images/kingdom-summit-branding.jpg',
-    metrics: '2,500+ Delegates • 48 Nations',
+    metrics: '100% Stewardship • 38k+ Inquiries',
     gallery: [
-      { src: 'assets/images/kingdom-summit-branding.jpg', title: 'Global Summit Delegate Suite', desc: 'Conference Guidebook, Gold VIP Badge, Canvas Tote & Tumbler' },
-      { src: 'assets/Mock ups/1.png', title: 'Scripture Edition Summit Cap', desc: 'Colossians 3:23 Embroidered Delegate Cap' },
-      { src: 'assets/Mock ups/8.png', title: 'Summit Signature Apparel Tee', desc: 'Est. 2025 Graceful Movement White Shirt' }
+      { src: 'assets/images/kingdom-summit-branding.jpg', title: 'Global Storytelling Suite', desc: 'Donor Guidebook, Presentation Deck & Merch' },
+      { src: 'assets/Mock ups/1.png', title: 'Scripture Edition Cap', desc: 'Colossians 3:23 Embroidered Ministry Cap' },
+      { src: 'assets/Mock ups/8.png', title: 'Community Signature Shirt', desc: 'Est. 2025 Hope & Dignity White Shirt' }
     ],
     deliverables: [
-      'Master Summit Crest & Radiance Vector System (AI, SVG, PDF)',
-      'Hardbound 84-Page Executive Conference Guidebook Design',
-      'Laser-Cut Etched Gold VIP Acrylic Lanyard Badges',
-      'Delegate Merch Suite (Canvas Totes, Laser-Etched Tumblers, Caps)',
-      'Wax-Sealed Gold Foil VIP Invitation & RSVP Stationery Suite',
-      'Giant LED Stage Backdrop Visuals & Environmental Wayfinding Signs'
+      'Master Donor Presentation Decks & Slide System',
+      'Social Media Announcement Campaigns & Stories',
+      'Print Collateral & Community Outreach Literature',
+      'Digital Storytelling Guidelines & Brand Standard',
+      '100% Commercial Rights & Kingdom Stewardship Guarantee'
     ]
   },
   {
@@ -1107,39 +1129,39 @@ const portfolioData = [
   },
   {
     id: 21,
-    category: 'social',
+    category: 'ministry',
     categoryLabel: 'Social Media Management',
-    title: 'Soma Movement Lab Mindful Fitness Community & Content Hub',
-    client: 'Soma Pilates & Mindful Movement Studios',
-    industry: 'Boutique Pilates, Reformer Studios & Wellness Lifestyle',
-    timeline: 'Ongoing Monthly Social Architecture',
-    tagline: 'Sculpted Studio Aesthetics, Form-Correction Carousels & +390% Community Engagement',
-    tools: ['Adobe Lightroom', 'Photoshop', 'Canva Pro', 'Planoly', 'Meta Business Suite'],
+    title: 'The Gospel Coalition (TGC) Scripture Outreach & Video Reels Series',
+    client: 'The Gospel Coalition (Austin, Texas, USA)',
+    industry: 'Christian Ministry, Theological Publishing & Digital Discipleship',
+    timeline: 'Ongoing Monthly Social Architecture Retainer',
+    tagline: 'Theologically Rich Scripture Carousels, Video Reels & +280% Social Engagement Surge',
+    liveUrl: 'https://thegospelcoalition.org',
+    tools: ['Adobe Lightroom', 'Photoshop', 'Canva Pro', 'CapCut Pro', 'Meta Business Suite'],
     ownership: '100% Curated Photo Asset Library & Master Instagram Templates',
-    desc: 'Editorial social media curation and organic community growth featuring serene studio photography, anatomical movement breakdown carousels, instructor spotlights, and retreat promos.',
-    problem: 'Sporadic, low-res smartphone gym photos with generic fitness quotes that failed to convey their luxury reformer studio experience or justify $45/class pricing.',
-    whatWeDid: 'Curated an ethereal neutral-toned Instagram grid, produced bi-weekly movement flow reels with calm audio, published educational posture carousels, and ran local studio influencer takeovers.',
-    before: 'Inconsistent feed, 0.4% engagement, half-empty morning beginner classes.',
-    after: '+390% community engagement surge, 28,000+ organic post saves, 100% studio class capacity booked out 3 weeks in advance.',
+    desc: 'Scripture carousel designs, theological video reels, and devotional graphics crafted with theological depth and visual beauty for digital discipleship.',
+    problem: 'Struggling to engage next-generation Christians with thoughtful theology without resorting to superficial clickbait or fragmented visuals.',
+    whatWeDid: 'Directed and designed high-retention scripture carousels, theological quote cards, and devotional reels paired with deep biblical commentary and aesthetic layouts.',
+    before: 'Stagnant digital engagement, low traction with younger believers, irregular schedule.',
+    after: '+280% social engagement surge, 4x community inquiries, and expanding monthly reach across platforms.',
     results: [
-      { num: '+390%', label: 'Community Engagement Surge' },
-      { num: '28k+', label: 'Organic Saves & Shares' },
-      { num: '100%', label: 'Class Booking Capacity' }
+      { num: '+280%', label: 'Social Engagement Surge' },
+      { num: '4x', label: 'Community Inquiries' },
+      { num: '100%', label: 'Theological Precision' }
     ],
-    clientQuote: 'Create and Arise gave our studio the luxury editorial aura it deserved. Our waitlists for classes have never been longer, all powered by our organic Instagram community.',
-    quoteAuthor: 'Maya Sterling, Founder & Lead Instructor at Soma Lab',
+    clientQuote: 'Their social media creative direction transformed our digital outreach to young Christians. Every scripture carousel, video reel, and devotional graphic is crafted with theological depth and immense visual beauty. Our monthly reach surged by 280%.',
+    quoteAuthor: 'Rev. Jordan Cruz, Digital Content Strategist at The Gospel Coalition',
     image: 'assets/images/smm/gym-weights.jpg',
-    metrics: '+390% Engagement • 28k Saves',
+    metrics: '+280% Social Reach • 4x Inquiries',
     gallery: [
-      { src: 'assets/images/smm/gym-weights.jpg', title: 'Mindful Strength & Form Series', desc: 'Anatomical Precision Studio Carousel' },
-      { src: 'assets/images/smm/walking-sneakers.jpg', title: 'Recovery & Studio Lifestyle', desc: 'Clean Minimalist Aesthetic Social Asset' },
-      { src: 'assets/images/smm/gym-strength.jpg', title: 'Movement Flow Sequence', desc: 'Instructor Technique Demonstration Reel' }
+      { src: 'assets/images/smm/gym-weights.jpg', title: 'Theological Precision Series', desc: 'Devotional Carousel & Scripture Typography' },
+      { src: 'assets/images/smm/walking-sneakers.jpg', title: 'Community Outreach Feed', desc: 'Clean Minimalist Aesthetic Social Asset' }
     ],
     deliverables: [
-      '24x Monthly Curated Editorial Feed Assets & Form Carousels',
-      '6x High-Resolution Movement Flow & ASMR Studio Reels',
-      'Daily Class Schedule Highlights & Interactive Story Polls',
-      'Local Wellness Brand Collaborations & Cross-Promotions',
+      '24x Monthly Curated Editorial Feed Assets & Scripture Carousels',
+      '6x High-Retention Devotional Video Reels',
+      'Daily Story Announcements & Theological Q&A Templates',
+      'Hashtag Clustering & Discipleship Outreach Strategy',
       'Monthly Community Growth & Follower Conversion Analytics'
     ]
   },
@@ -2156,6 +2178,14 @@ function initPortfolio() {
             </div>
             <h3 class="portfolio-title">${item.title}</h3>
             <p class="portfolio-desc">${item.desc}</p>
+
+            ${item.clientQuote ? `
+              <div class="portfolio-client-review-snip">
+                <span class="review-quote-star">★ 5.0 Client Review</span>
+                <span class="review-quote-snippet">&ldquo;${escapeHTML(item.clientQuote.length > 95 ? item.clientQuote.slice(0, 92) + '...' : item.clientQuote)}&rdquo;</span>
+                <span class="review-quote-by">&mdash; ${escapeHTML(item.quoteAuthor)}</span>
+              </div>
+            ` : ''}
             
             <div class="portfolio-tools-row">
               ${item.tools.map(t => `<span class="portfolio-tool-tag">${t}</span>`).join('')}
@@ -2727,38 +2757,257 @@ function initCostCalculator() {
   timelineRadios.forEach(r => r.addEventListener('change', window.runCalculator));
   if (currencySelect) currencySelect.addEventListener('change', window.runCalculator);
 
-  // Apply Estimate Button -> Auto-fill contact form
-  if (applyEstimateBtn) {
-    applyEstimateBtn.addEventListener('click', () => {
-      const selectedServices = Array.from(serviceCheckboxes).filter(cb => cb.checked).map(cb => serviceBasePrices[cb.value]?.name).filter(Boolean);
-      const contactMsg = document.getElementById('contactMessage');
-      const contactSection = document.getElementById('contact');
+  // Helper to extract current calculated scope
+  function getCalculatedScope() {
+    const selectedServices = Array.from(serviceCheckboxes).filter(cb => cb.checked).map(cb => serviceBasePrices[cb.value]?.name).filter(Boolean);
+    let selectedTimeline = 'standard';
+    timelineRadios.forEach(r => {
+      if (r.checked) selectedTimeline = r.value;
+    });
+    const curr = currencySelect ? currencySelect.value : 'USD';
+    const rateInfo = exchangeRates[curr] || exchangeRates.USD;
+    const timelineInfo = timelineMultipliers[selectedTimeline] || timelineMultipliers.standard;
+    const amountText = estAmountEl ? estAmountEl.textContent : '$1,200';
+    return {
+      services: selectedServices,
+      timeline: timelineInfo,
+      currency: rateInfo,
+      amountText: amountText
+    };
+  }
 
-      if (selectedServices.length === 0) {
+  // Helper to transfer estimate into main contact form
+  function transferEstimateToContact() {
+    const scope = getCalculatedScope();
+    if (scope.services.length === 0) {
+      showToast('Please select at least one service in the calculator.');
+      return;
+    }
+
+    const contactMsg = document.getElementById('contactMessage');
+    const contactBudget = document.getElementById('contactBudget');
+
+    if (contactMsg) {
+      contactMsg.value = `Hello Jerome & Create and Arise Creative Team!\n\nI configured a custom package with your Cost Estimator:\n• Services: ${scope.services.join(', ')}\n• Delivery Pacing: ${scope.timeline.label}\n• Estimated Package: ~${scope.amountText} (${scope.currency.suffix})\n\nI would love to receive your formal proposal and schedule a discovery call!`;
+    }
+
+    // Auto-match budget select in contact form
+    if (contactBudget) {
+      const numMatch = scope.amountText.replace(/[^0-9]/g, '');
+      const numVal = parseInt(numMatch, 10) || 1200;
+      let approxUsd = numVal;
+      if (scope.currency.code === 'PHP') approxUsd = Math.round(numVal / 58);
+      else if (scope.currency.code === 'AUD') approxUsd = Math.round(numVal / 1.55);
+
+      if (approxUsd <= 500) contactBudget.value = 'under500';
+      else if (approxUsd <= 1500) contactBudget.value = '500-1500';
+      else if (approxUsd <= 3000) contactBudget.value = '1500-3000';
+      else contactBudget.value = '3000plus';
+    }
+
+    // Check corresponding checkboxes in contact form
+    document.querySelectorAll('.contact-service-check').forEach(chk => {
+      chk.checked = scope.services.some(s => s.toLowerCase().includes(chk.value.toLowerCase()));
+    });
+
+    if (window.closeModal) window.closeModal('estimateModal');
+    if (window.switchTab) window.switchTab('contact');
+
+    setTimeout(() => {
+      const contactForm = document.getElementById('mainContactForm');
+      if (contactForm) contactForm.scrollIntoView({ behavior: 'smooth' });
+    }, 150);
+
+    showToast('✨ Custom package transferred to contact form!');
+  }
+
+  // 1. Primary Button: Opens the dedicated Estimate Modal
+  if (applyEstimateBtn) {
+    applyEstimateBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      const scope = getCalculatedScope();
+      if (scope.services.length === 0) {
         showToast('Please select at least one service in the calculator.');
         return;
       }
 
-      const curr = currencySelect ? currencySelect.value : 'USD';
-      const rateInfo = exchangeRates[curr] || exchangeRates.USD;
-      const amountText = estAmountEl.textContent;
+      // Update modal display elements
+      const modalAmount = document.getElementById('modalEstAmount');
+      const modalServices = document.getElementById('modalEstServices');
+      const modalPacing = document.getElementById('modalEstPacing');
+      const notesField = document.getElementById('estClientNotes');
+      const subjectField = document.getElementById('estimateFormSubject');
 
-      if (contactMsg) {
-        contactMsg.value = `Hello! I configured a custom package with your Cost Estimator:\n- Services: ${selectedServices.join(', ')}\n- Estimated Package: ~${amountText} (${rateInfo.suffix})\n\nI would love to receive a formal proposal and schedule a discovery call!`;
+      if (modalAmount) modalAmount.textContent = scope.amountText;
+      if (modalServices) modalServices.textContent = scope.services.join(', ');
+      if (modalPacing) modalPacing.textContent = scope.timeline.label;
+      if (subjectField) {
+        subjectField.value = `🧮 [COST ESTIMATE] Custom Package Inquiry: ${scope.services.join(', ')} (~${scope.amountText})`;
       }
 
-      // Check corresponding checkboxes in contact form
-      document.querySelectorAll('.contact-service-check').forEach(chk => {
-        if (selectedServices.some(s => s.toLowerCase().includes(chk.value.toLowerCase()))) {
-          chk.checked = true;
-        }
+      if (notesField && (!notesField.value || notesField.dataset.userEdited !== 'true')) {
+        notesField.value = `I configured this custom package using your Cost Estimator:\n• Services: ${scope.services.join(', ')}\n• Delivery Pacing: ${scope.timeline.label}\n• Estimated Investment: ~${scope.amountText} (${scope.currency.suffix})\n\nPlease email my itemized proposal and let's discuss details!`;
+      }
+
+      if (window.openModal) {
+        window.openModal('estimateModal');
+      } else {
+        const m = document.getElementById('estimateModal');
+        if (m) m.classList.add('active');
+      }
+    });
+  }
+
+  // 2. Secondary Button: Or Open in Full Contact Form
+  const btnTransferDirect = document.getElementById('btnTransferToContactDirect');
+  if (btnTransferDirect) {
+    btnTransferDirect.addEventListener('click', (e) => {
+      e.preventDefault();
+      transferEstimateToContact();
+    });
+  }
+
+  // Modal link: Or fill out detailed contact form
+  const modalTransferLink = document.getElementById('modalTransferLink');
+  if (modalTransferLink) {
+    modalTransferLink.addEventListener('click', (e) => {
+      e.preventDefault();
+      transferEstimateToContact();
+    });
+  }
+
+  // 3. Handle Direct Submission of Estimate Modal Form
+  const estimateForm = document.getElementById('estimateInquiryForm');
+  if (estimateForm) {
+    const notesField = document.getElementById('estClientNotes');
+    if (notesField) {
+      notesField.addEventListener('input', () => { notesField.dataset.userEdited = 'true'; });
+    }
+
+    estimateForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const name = document.getElementById('estClientName')?.value.trim();
+      const email = document.getElementById('estClientEmail')?.value.trim();
+      const phone = document.getElementById('estClientPhone')?.value.trim() || 'N/A';
+      const company = document.getElementById('estClientCompany')?.value.trim() || 'N/A';
+      const notes = document.getElementById('estClientNotes')?.value.trim() || '';
+
+      if (!name || !email) {
+        showToast('Please provide your name and email address.');
+        return;
+      }
+
+      const scope = getCalculatedScope();
+      const submitBtn = document.getElementById('btnSubmitEstimateInquiry');
+      const originalText = submitBtn ? submitBtn.innerHTML : 'Send Package Inquiry';
+
+      if (submitBtn) {
+        submitBtn.innerHTML = `<span>Submitting to createandarise05@gmail.com...</span>`;
+        submitBtn.disabled = true;
+      }
+
+      const inquiryRef = 'EST-' + Date.now().toString(36).toUpperCase() + '-' + Math.floor(1000 + Math.random() * 9000);
+      const autoresponseMsg = `Thank you for requesting a Cost Estimate with Create and Arise! ✨ (Ref: ${inquiryRef}). Jerome Cabinta and our creative team have received your package specifications (~${scope.amountText}) and will email your formal proposal within 24 weekday business hours (Mon–Fri 8AM–6PM PHT). WhatsApp: +63 927 468 2635 | createandarise05@gmail.com`;
+
+      const payload = {
+        name: name,
+        email: email,
+        _replyto: email,
+        _autoresponse: autoresponseMsg,
+        inquiryReference: inquiryRef,
+        phone: phone,
+        company: company,
+        services: scope.services.join(', '),
+        budget: scope.amountText,
+        timeline: scope.timeline.label,
+        message: notes,
+        inquiry_type: 'Cost Estimator Package Inquiry',
+        _subject: `🧮 [COST ESTIMATE] ${name} - ${scope.services.join(', ')} (${scope.amountText})`,
+        _template: 'table',
+        _captcha: 'false'
+      };
+
+      const nowStr = new Date().toLocaleString('en-US', {
+        timeZone: 'Asia/Manila',
+        month: 'short',
+        day: 'numeric',
+        year: 'numeric',
+        hour: 'numeric',
+        minute: '2-digit',
+        hour12: true
       });
 
-      // Switch to Contact view seamlessly
-      if (window.switchTab) {
-        window.switchTab('contact');
+      const detailsHtml = `
+        <div style="background: rgba(16, 185, 129, 0.08); border: 1px solid rgba(16, 185, 129, 0.3); border-radius: var(--radius-md); padding: 1.15rem; margin-bottom: 0.5rem; text-align: left;">
+          <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(16, 185, 129, 0.2); padding-bottom: 0.6rem; margin-bottom: 0.75rem;">
+            <div style="font-weight: 700; color: #10b981; font-size: 0.88rem; display: flex; align-items: center; gap: 0.4rem;">
+              <span>✓ OFFICIAL ESTIMATE CONFIRMATION</span>
+            </div>
+            <div style="font-size: 0.75rem; color: var(--text-gold); font-weight: 700; background: rgba(245, 158, 11, 0.15); padding: 0.2rem 0.5rem; border-radius: 4px;">
+              ${inquiryRef}
+            </div>
+          </div>
+
+          <div style="display: flex; flex-direction: column; gap: 0.4rem; font-size: 0.85rem; color: var(--text-main);">
+            <div><strong>👤 Client:</strong> ${name} &bull; <span style="color: var(--color-primary);">${email}</span></div>
+            <div><strong>🛠️ Selected Services:</strong> ${scope.services.join(', ')}</div>
+            <div><strong>⏱️ Pacing / Timeline:</strong> ${scope.timeline.label}</div>
+            <div><strong>💰 Estimated Investment:</strong> <span style="color: #10b981; font-weight: 700;">${scope.amountText}</span></div>
+            ${phone && phone !== 'N/A' ? `<div><strong>📱 Phone / WhatsApp:</strong> ${phone}</div>` : ''}
+            <div><strong>⏰ Received Timestamp:</strong> ${nowStr} (PHT)</div>
+          </div>
+
+          <div style="margin-top: 0.85rem; padding: 0.75rem; background: rgba(0, 0, 0, 0.25); border-radius: var(--radius-sm); font-size: 0.8rem; color: var(--text-muted); display: flex; flex-direction: column; gap: 0.25rem;">
+            <div style="color: #10b981; font-weight: 600;">📬 Delivered to Studio: createandarise05@gmail.com</div>
+            <div>📨 <strong>Client Auto-Confirmation:</strong> Dispatched to <em>${email}</em></div>
+            <div>⏱️ <strong>Guaranteed Studio Response:</strong> Within 24 weekday business hours (Mon–Fri 8AM–6PM PHT)</div>
+          </div>
+        </div>
+      `;
+
+      const whatsappMsg = `Hi Create and Arise! I'm ${name} (${email}). I just submitted an estimate inquiry (Ref: ${inquiryRef}) for ${scope.services.join(', ')} (Estimate: ~${scope.amountText}). Looking forward to your proposal!`;
+      const mailtoSub = `Cost Estimate Inquiry (${inquiryRef}): ${name} - ${scope.services.join(', ')}`;
+      const mailtoBody = `Hi Jerome & Create and Arise Creative Team,\n\nInquiry Ref: ${inquiryRef}\nName: ${name}\nEmail: ${email}\nServices: ${scope.services.join(', ')}\nEstimated Scope: ${scope.amountText}\nTimeline: ${scope.timeline.label}\n\nProject Notes:\n${notes}\n\nLooking forward to speaking soon!`;
+
+      await window.sendFormSubmission(payload);
+
+      if (submitBtn) {
+        submitBtn.innerHTML = originalText;
+        submitBtn.disabled = false;
       }
-      showToast('✨ Custom package transferred to inquiry form!');
+
+      if (window.closeModal) window.closeModal('estimateModal');
+      estimateForm.reset();
+
+      // Show inline confirmation in the calculator summary box
+      const calcInline = document.getElementById('calcInlineConfirmation');
+      const calcRef = document.getElementById('calcInlineRef');
+      const calcNotice = document.getElementById('calcInlineNotice');
+      const calcWa = document.getElementById('calcInlineWaLink');
+
+      if (calcInline) {
+        if (calcRef) calcRef.textContent = inquiryRef;
+        if (calcNotice) {
+          calcNotice.innerHTML = `Thank you, <strong>${name}</strong>! Your package inquiry (~<strong>${scope.amountText}</strong>) has been received by Jerome Cabinta at <strong style="color: var(--color-primary);">createandarise05@gmail.com</strong>. An automated confirmation copy has also been sent to <strong>${email}</strong>.`;
+        }
+        if (calcWa) {
+          calcWa.href = `https://wa.me/639274682635?text=${encodeURIComponent(`Hi Jerome! I just submitted an estimate inquiry on Create and Arise (Ref: ${inquiryRef}, Amount: ${scope.amountText}). Looking forward to connecting!`)}`;
+        }
+        calcInline.style.display = 'block';
+      }
+
+      showRichSuccessModal({
+        title: 'Custom Estimate Dispatched! 🎉',
+        desc: `Thank you, <strong>${name}</strong>! Your customized estimate for <strong>${scope.services.join(', ')}</strong> (~<strong>${scope.amountText}</strong>) has been safely received by <strong>Jerome Cabinta</strong> at <strong style="color: var(--color-primary);">createandarise05@gmail.com</strong>. An official confirmation email with reference (<strong>${inquiryRef}</strong>) has been dispatched to <strong>${email}</strong>.`,
+        detailsHtml: detailsHtml,
+        whatsappMsg: whatsappMsg,
+        mailtoSubject: mailtoSub,
+        mailtoBody: mailtoBody,
+        clientEmail: email
+      });
+
+      showToast(`🎉 Estimate sent to createandarise05@gmail.com! Check ${email}`);
     });
   }
 

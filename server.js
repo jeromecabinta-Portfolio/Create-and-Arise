@@ -337,6 +337,368 @@ function relayToFormSubmit(payload) {
   });
 }
 
+/**
+ * Intelligent AriseBot AI Engine - Studio Knowledge & Semantic Intent Resolver
+ */
+async function generateBotResponse(userMsg, history = []) {
+  const q = userMsg.toLowerCase().trim();
+
+  // 1. If Gemini API Key is configured, attempt live Gemini completion
+  if (process.env.GEMINI_API_KEY) {
+    try {
+      const geminiRes = await queryGeminiAPI(userMsg, history);
+      if (geminiRes && geminiRes.reply) {
+        return geminiRes;
+      }
+    } catch (gErr) {
+      console.warn('[Gemini AI Relay]: Falling back to local intelligence:', gErr.message);
+    }
+  }
+
+  // 2. Client Reviews & Specific Brands (Aimé Leon Dore, Buck Mason, Blue Bottle, The Ridge, Crossway, etc.)
+  if (q.includes('aime') || q.includes('leon dore') || q.includes('streetwear') && (q.includes('client') || q.includes('review'))) {
+    return {
+      reply: `🌟 **Aimé Leon Dore (New York City, NY, USA)**\n\n**Discipline:** Web Design & UI/UX • Luxury Streetwear E-Commerce\n**Stakeholder:** Marcus Sterling, Head of Digital Commerce\n\n💬 *"${escapeMarkdown("Jerome and the Create and Arise team engineered our custom web platform with sub-second performance. Their clean code and responsive edge infrastructure cut our load times from 7.2s to 0.4s and lifted checkout conversions by 4.8x across international drop releases.")}"*\n\n🚀 **Key Outcome:** Sub-0.4s Edge Load Speed & 4.8x Checkout Conversion Lift.\n🌐 **Official Site:** [aimeleondore.com](https://www.aimeleondore.com)`,
+      actions: [
+        { label: '👁️ Deep Dive Case Study (Aimé Leon Dore)', callback: 'openCaseStudy2' },
+        { label: '💻 Explore Web Design Services', callback: 'selectWeb' },
+        { label: '📅 Book a Discovery Call', callback: 'openBookCallModal' }
+      ],
+      chips: ['Blue Bottle Coffee', 'The Ridge', 'Buck Mason', 'Web Design', 'Pricing']
+    };
+  }
+
+  if (q.includes('buck mason') || q.includes('heritage') && (q.includes('brand') || q.includes('review'))) {
+    return {
+      reply: `🌟 **Buck Mason (Los Angeles, California, USA)**\n\n**Discipline:** Graphics & Branding • American Heritage Menswear\n**Stakeholder:** Michael Ramirez, Head of Brand Retail\n\n💬 *"${escapeMarkdown("Create and Arise took our brand presentation to new heights. The attention to detail in our custom typography hierarchy, woven label specs, and tactile packaging guidelines enabled seamless store expansions across key flagship retail locations.")}"*\n\n👔 **Key Outcome:** Bespoke Monogram & Seamless Expansion across 30+ Flagship Stores.\n🌐 **Official Site:** [buckmason.com](https://www.buckmason.com)`,
+      actions: [
+        { label: '👁️ Deep Dive Case Study (Buck Mason)', callback: 'openCaseStudy8' },
+        { label: '🎨 Explore Branding Services', callback: 'selectGraphics' },
+        { label: '📅 Book a Discovery Call', callback: 'openBookCallModal' }
+      ],
+      chips: ['Aimé Leon Dore', 'Blue Bottle Coffee', 'The Ridge', 'Branding', 'Pricing']
+    };
+  }
+
+  if (q.includes('blue bottle') || q.includes('coffee') && (q.includes('packaging') || q.includes('review') || q.includes('client'))) {
+    return {
+      reply: `🌟 **Blue Bottle Coffee (Oakland, California, USA)**\n\n**Discipline:** Branding & Packaging • Artisan Specialty Coffee Roasteries\n**Stakeholder:** Elena Vance, Senior Brand Director\n\n💬 *"${escapeMarkdown("Create and Arise delivered immaculate visual brand systems and tactile packaging guidelines. Their respect for craftsmanship, typographic restraint, and clean vector precision gave our retail team total confidence across our nationwide cafes and roasteries.")}"*\n\n☕ **Key Outcome:** Single-Origin Packaging Guidelines & Direct-Trade Monogram System.\n🌐 **Official Site:** [bluebottlecoffee.com](https://bluebottlecoffee.com)`,
+      actions: [
+        { label: '👁️ Deep Dive Case Study (Blue Bottle)', callback: 'openCaseStudy3' },
+        { label: '🎨 Explore Packaging & Branding', callback: 'selectGraphics' },
+        { label: '📅 Book a Discovery Call', callback: 'openBookCallModal' }
+      ],
+      chips: ['Aimé Leon Dore', 'Buck Mason', 'The Ridge', 'Cost Estimator', 'Contact']
+    };
+  }
+
+  if (q.includes('ridge') || q.includes('wallet') || q.includes('roas') && (q.includes('ad') || q.includes('client'))) {
+    return {
+      reply: `🌟 **The Ridge (Santa Monica, California, USA)**\n\n**Discipline:** Digital Paid Ads & Creative Strategy • High-Growth EDC & DTC\n**Stakeholder:** Jadd Sanchez, Performance Marketing Director\n\n💬 *"${escapeMarkdown("Create and Arise completely turned our paid social advertising performance around. They engineered 36 high-converting ad creative variants, slashed our customer acquisition cost by 64%, and scaled our campaigns to a consistent 3.8x blended ROAS.")}"*\n\n📈 **Key Outcome:** +320% ROAS Lift & Slashed CAC from $58 to $18.50.\n🌐 **Official Site:** [ridge.com](https://ridge.com)`,
+      actions: [
+        { label: '👁️ Deep Dive Case Study (The Ridge)', callback: 'openCaseStudy4' },
+        { label: '📈 Explore Paid Ads Services', callback: 'selectAds' },
+        { label: '📅 Book a Strategy Call', callback: 'openBookCallModal' }
+      ],
+      chips: ['Aimé Leon Dore', 'Buck Mason', 'Digital Ads', 'Pricing', 'Contact']
+    };
+  }
+
+  if (q.includes('crossway') || q.includes('bible') || q.includes('esv') || q.includes('gospel coalition') || q.includes('compassion') || q.includes('church') || q.includes('ministry')) {
+    return {
+      reply: `✝️ **Faith-Driven Ministry Partnerships**\n\nCreate and Arise proudly serves leading Christian organizations and global ministries:\n\n• **Crossway (ESV Bible - Wheaton, IL):** Editorial book typography, scripture carousels & +240% reader outreach.\n• **The Gospel Coalition (Austin, TX):** Theological video reels, social discipleship carousels & +280% reach.\n• **Compassion International (Colorado Springs, CO):** Donor campaign decks, storytelling presentations & 100% biblical stewardship.\n\nEvery project is delivered with reverence, visual polish, and kingdom integrity.`,
+      actions: [
+        { label: '👁️ Crossway Case Study', callback: 'openCaseStudy5' },
+        { label: '👁️ Compassion Case Study', callback: 'openCaseStudy10' },
+        { label: '📅 Schedule Ministry Consultation', callback: 'openBookCallModal' }
+      ],
+      chips: ['Client Reviews', 'Web Design', 'Cost Estimator', 'Our Faith', 'Contact']
+    };
+  }
+
+  // 3. Client Reviews General
+  if (q.includes('review') || q.includes('reviews') || q.includes('testimonial') || q.includes('testimonials') || q.includes('feedback') || q.includes('rating') || q.includes('ratings') || q.includes('satisfied') || q.includes('clients')) {
+    return {
+      reply: `⭐ **Verified Client Reviews & Testimonials**\n\nCreate and Arise maintains a **100% 5-Star Track Record** with visionary brands across the USA and worldwide:\n\n• **Aimé Leon Dore (NYC):** 0.4s load speed & 4.8x conversion lift.\n• **Buck Mason (LA):** Iconic monogram & expansion to 30+ stores.\n• **Blue Bottle Coffee (Oakland):** Single-origin retail packaging guidelines.\n• **The Ridge (Santa Monica):** +320% ROAS lift & CAC slashed by 64%.\n• **Velocity Global (Denver):** 4x enterprise inbound pipeline.\n• **Crossway & TGC:** +240% to +280% digital outreach surge.\n\nAll client websites are live and verified!`,
+      actions: [
+        { label: '⭐ View Client Reviews', callback: 'scrollToReviews' },
+        { label: '🖼️ Explore Portfolio Showcase', callback: 'scrollToPortfolio' },
+        { label: '📅 Book a Discovery Call', callback: 'openBookCallModal' }
+      ],
+      chips: ['Aimé Leon Dore', 'The Ridge', 'Buck Mason', 'Blue Bottle Coffee', 'Pricing']
+    };
+  }
+
+  // 4. Web Design & Development
+  if (q.includes('web') || q.includes('website') || q.includes('landing page') || q.includes('e-commerce') || q.includes('ecommerce') || q.includes('ui') || q.includes('ux') || q.includes('develop') || q.includes('code') || q.includes('shopify') || q.includes('frontend')) {
+    return {
+      reply: `💻 **Web Design & Development at Create and Arise**\n\nWe design and hand-craft high-converting, sub-second responsive websites:\n\n• **Speed & Performance:** 99/100 Core Web Vitals with sub-0.5s edge load speeds (just like our work for Aimé Leon Dore!).\n• **Clean Architecture:** Semantic HTML5, modern vanilla CSS, responsive layouts, zero template bloat.\n• **Conversion Optimization:** Lead capture forms, automated booking integrations, GA4 analytics.\n• **Investment:** Starting at **$750 / ₱43,500** with 2 to 3-week turnaround.\n\nWould you like an instant estimate or a free design audit of your current site?`,
+      actions: [
+        { label: '🧮 Estimate Web Design ($750+)', callback: 'selectWeb' },
+        { label: '👁️ Aimé Leon Dore Case Study', callback: 'openCaseStudy2' },
+        { label: '📅 Book Free 30-Min Strategy Call', callback: 'openBookCallModal' }
+      ],
+      chips: ['Pricing', 'Graphic Design', 'Digital Ads', 'Social Media', 'Book a Call']
+    };
+  }
+
+  // 5. Graphic Design & Branding
+  if (q.includes('graphic') || q.includes('graphics') || q.includes('logo') || q.includes('branding') || q.includes('brand identity') || q.includes('packaging') || q.includes('vector') || q.includes('pitch deck') || q.includes('stationery') || q.includes('merch')) {
+    return {
+      reply: `🎨 **Graphic Design & Brand Identity**\n\nOur foundational craft helps visionary brands command respect and trust:\n\n• **Complete Master Logo Suite:** Primary, secondary, submarks, and favicon vectors (AI, SVG, EPS, PDF, PNG).\n• **Brand Architecture Guidelines:** Color palettes, typography hierarchies, and visual standard books.\n• **Packaging & Unboxing:** Factory-ready die-lines, foil stamping, and 3D photorealistic mockups.\n• **Full Commercial Rights:** 100% source file handover with unlimited commercial rights.\n• **Investment:** Starting at **$450 / ₱25,000** with 2-week delivery.`,
+      actions: [
+        { label: '🧮 Estimate Branding ($450+)', callback: 'selectGraphics' },
+        { label: '👁️ Buck Mason Case Study', callback: 'openCaseStudy8' },
+        { label: '👁️ Blue Bottle Packaging Suite', callback: 'openCaseStudy3' },
+        { label: '📅 Book a Discovery Call', callback: 'openBookCallModal' }
+      ],
+      chips: ['Pricing', 'Web Design', 'Digital Ads', 'Social Media', 'Contact']
+    };
+  }
+
+  // 6. Digital Ads & Growth Marketing
+  if (q.includes('ad') || q.includes('ads') || q.includes('marketing') || q.includes('campaign') || q.includes('meta ads') || q.includes('facebook ads') || q.includes('google ads') || q.includes('tiktok ads') || q.includes('roas') || q.includes('traffic') || q.includes('cac')) {
+    return {
+      reply: `📈 **Digital Ads & Performance Marketing**\n\nWe engineer omnichannel campaigns designed to scale revenue profitably:\n\n• **Platforms:** Meta Ads (Facebook & Instagram), Google Search & Display, TikTok Ads.\n• **High-Converting Creatives:** Static hooks, carousel funnels, and conversion-tested copywriting.\n• **Proven Results:** We slashed CAC by 64% and achieved **+320% ROAS** for high-growth brands like The Ridge.\n• **Full Funnel:** Dedicated landing pages, pixel integration, and weekly ROAS tracking.\n• **Investment:** Starting at **$500 / ₱29,000** per month/sprint.`,
+      actions: [
+        { label: '🧮 Estimate Ads Package ($500+)', callback: 'selectAds' },
+        { label: '👁️ The Ridge Case Study', callback: 'openCaseStudy4' },
+        { label: '📅 Book Paid Ads Consultation', callback: 'openBookCallModal' }
+      ],
+      chips: ['Pricing', 'Web Design', 'Graphic Design', 'Social Media', 'Contact']
+    };
+  }
+
+  // 7. Social Media Management
+  if (q.includes('social') || q.includes('smm') || q.includes('instagram') || q.includes('content calendar') || q.includes('grid') || q.includes('feed') || q.includes('posting') || q.includes('followers')) {
+    return {
+      reply: `📱 **Social Media Management**\n\nTransform your social media channels into an aesthetic, authoritative client magnet:\n\n• **30-Day Content Architecture:** Monthly editorial calendars mapped to your business sales cycle.\n• **Visual Polish:** High-impact branded carousels, aesthetic grids, and devotional/educational assets.\n• **Growth Copywriting:** High-retention hooks, thoughtful captions, and optimized hashtag clusters.\n• **Community Stewardship:** Strategic response protocols and monthly performance analytics.\n• **Investment:** Starting at **$450 / ₱25,000** per month.`,
+      actions: [
+        { label: '🧮 Estimate Social Media ($450+)', callback: 'selectSocial' },
+        { label: '👁️ TGC Discipleship Case Study', callback: 'openCaseStudy21' },
+        { label: '📅 Schedule Social Strategy Call', callback: 'openBookCallModal' }
+      ],
+      chips: ['Pricing', 'Web Design', 'Graphic Design', 'Digital Ads', 'Contact']
+    };
+  }
+
+  // 8. Video Editing / Reels Query
+  if (q.includes('reel') || q.includes('reels') || q.includes('video') || q.includes('tiktok video') || q.includes('shorts') || q.includes('youtube') || q.includes('editing') || q.includes('motion')) {
+    return {
+      reply: `🎬 **Creative Capabilities Note:**\n\nAt **Create and Arise**, our studio is 100% focused on our 4 high-impact core disciplines:\n\n1. **🎨 Graphic Design & Brand Identity**\n2. **💻 Web Design & Development**\n3. **📈 Digital Ads Marketing**\n4. **📱 Social Media Management**\n\nWe do **not** offer standalone freelance video shooting or YouTube editing, which allows us to deliver world-class craft and ROI for our 4 specialized core pillars!\n\nWhich core service can we assist you with today?`,
+      actions: [
+        { label: '🎨 Graphic Design', callback: 'selectGraphics' },
+        { label: '💻 Web Design', callback: 'selectWeb' },
+        { label: '📈 Digital Ads', callback: 'selectAds' },
+        { label: '📱 Social Media Management', callback: 'selectSocial' }
+      ],
+      chips: ['Web Design', 'Graphic Design', 'Pricing', 'Contact']
+    };
+  }
+
+  // 9. Pricing, Rates & Currency
+  if (q.includes('price') || q.includes('pricing') || q.includes('cost') || q.includes('rates') || q.includes('how much') || q.includes('magkano') || q.includes('fee') || q.includes('quote') || q.includes('budget') || q.includes('estimate') || q.includes('currency') || q.includes('php') || q.includes('usd')) {
+    return {
+      reply: `💰 **Transparent Studio Pricing & Packages**\n\nWe offer clear fixed-price packages with zero hidden fees:\n\n• **🎨 Graphic Design & Branding:** from **$450 / ₱25,000**\n• **💻 Web Design & Development:** from **$750 / ₱43,500**\n• **📈 Digital Ads Marketing:** from **$500 / ₱29,000**\n• **📱 Social Media Management:** from **$450 / ₱25,000**\n\n✨ **Options:**\n• Standard Delivery: 2–3 Weeks\n• Express Priority Sprint: 7 Days (+30%)\n• Ongoing Monthly Retainer: 10% Bundle Discount\n\nSupported Currencies: **USD ($), PHP (₱), AUD (A$), EUR (€), GBP (£)**!`,
+      actions: [
+        { label: '🧮 Open Interactive Cost Estimator', callback: 'scrollToEstimator' },
+        { label: '📅 Book a Free Discovery Call', callback: 'openBookCallModal' },
+        { label: '📝 Submit Custom Project Scope', callback: 'scrollToContact' }
+      ],
+      chips: ['Web Design', 'Graphic Design', 'Digital Ads', 'Payment Methods', 'Contact']
+    };
+  }
+
+  // 10. Jerome Cabinta (Developer) & PURPOSE / STUDIO™
+  if (q.includes('jerome') || q.includes('cabinta') || q.includes('developer') || q.includes('who built') || q.includes('who coded') || q.includes('who made') || q.includes('purpose') || q.includes('streetwear')) {
+    return {
+      reply: `👨‍💻 **Meet Web Developer Jerome Cabinta**\n\n**Jerome Cabinta** is the web developer and UI/UX implementation specialist at Create and Arise who built this website from the ground up!\n\n• **Craft:** Clean semantic HTML5, modern vanilla CSS, sub-second edge speeds, and zero template bloat.\n• **Featured Live Project:** [create-with-purpose.vercel.app](https://create-with-purpose.vercel.app) — an interactive 500 GSM heavyweight streetwear platform.\n• **Philosophy:** Excellence in workmanship as working for the Lord (Colossians 3:23).`,
+      actions: [
+        { label: '🚀 Launch PURPOSE / STUDIO™ Live', callback: 'openPurposeProject' },
+        { label: '👁️ Purpose Studio Case Study', callback: 'openCaseStudy7' },
+        { label: '📅 Book Call with Jerome & Team', callback: 'openBookCallModal' },
+        { label: '💬 Chat on WhatsApp', callback: 'openWhatsApp' }
+      ],
+      chips: ['Meet the Team', 'Web Design', 'Client Reviews', 'Pricing', 'Contact']
+    };
+  }
+
+  // 11. Team Collective
+  if (q.includes('team') || q.includes('who are you') || q.includes('members') || q.includes('staff') || q.includes('founder') || q.includes('elijah') || q.includes('collective')) {
+    return {
+      reply: `👥 **The Create and Arise Creative Collective**\n\nBased in the Philippines and serving clients across the USA, UK, Australia, and worldwide:\n\n• **Elijah Morales** — Founder & Executive Creative Director\n• **Jerome Cabinta** — Web Developer & UI/UX Specialist\n• **Hannah Grace Santos** — Senior Brand & Packaging Designer\n• **Caleb Tan** — Digital Ads & Growth Strategist\n• **Faith Dela Cruz** — Social Media & Content Strategist\n\nDedicated weekday sprints, direct Slack/Loom communication, and 100% intellectual property handover!`,
+      actions: [
+        { label: '👥 Meet Our Team & Reviews', callback: 'scrollToTeam' },
+        { label: '📅 Book Discovery Call', callback: 'openBookCallModal' },
+        { label: '💬 WhatsApp Direct Chat', callback: 'openWhatsApp' }
+      ],
+      chips: ['Client Reviews', 'Services', 'Pricing', 'Our Faith', 'Contact']
+    };
+  }
+
+  // 12. Operating Hours & Sabbath
+  if (q.includes('hour') || q.includes('hours') || q.includes('open') || q.includes('schedule') || q.includes('operating') || q.includes('saturday') || q.includes('sunday') || q.includes('weekend') || q.includes('sabbath') || q.includes('closed') || q.includes('available')) {
+    return {
+      reply: `🕒 **Studio Operating Schedule (PHT / GMT+8):**\n\n• **Monday to Friday:** 8:00 AM – 6:00 PM PHT (Active Studio & Build Sprints)\n• **Saturday & Sunday:** Closed for Weekend Sabbath, Rest & Family Renewal\n\n⚡ **Global Asynchronous Collaboration:** We collaborate smoothly with clients in the US (EST/PST), Australia, and Europe with zero midnight meetings. Guaranteed replies within 24 weekday business hours!`,
+      actions: [
+        { label: '📅 Schedule a Discovery Call', callback: 'openBookCallModal' },
+        { label: '📝 Submit Consultation Form', callback: 'scrollToContact' },
+        { label: '💬 Send WhatsApp Message', callback: 'openWhatsApp' }
+      ],
+      chips: ['Services', 'Pricing', 'Meet the Team', 'Contact']
+    };
+  }
+
+  // 13. Payment Methods
+  if (q.includes('payment') || q.includes('pay') || q.includes('gcash') || q.includes('maya') || q.includes('bank') || q.includes('paypal') || q.includes('stripe') || q.includes('wise') || q.includes('credit card')) {
+    return {
+      reply: `💳 **Secure Payment Methods Accepted:**\n\n• **Philippine Clients:** GCash, Maya, BDO, BPI, UnionBank (PHP ₱)\n• **USA & International Clients:** Stripe, PayPal, Wise, Direct International Wire Transfer (USD $, AUD A$, EUR €, GBP £)\n\n💼 **Terms:** 50% initial milestone deposit to lock your sprint calendar, with the remaining 50% upon final delivery and 100% commercial source file handover.`,
+      actions: [
+        { label: '🧮 Interactive Cost Estimator', callback: 'scrollToEstimator' },
+        { label: '📅 Book a Discovery Call', callback: 'openBookCallModal' },
+        { label: '📝 Start a Project Inquiry', callback: 'scrollToContact' }
+      ],
+      chips: ['Pricing', 'Web Design', 'Graphic Design', 'Contact']
+    };
+  }
+
+  // 14. Location & Base
+  if (q.includes('location') || q.includes('where') || q.includes('benguet') || q.includes('la trinidad') || q.includes('manila') || q.includes('philippines') || q.includes('base') || q.includes('country')) {
+    return {
+      reply: `📍 **Studio Headquarters:**\n\nCreate and Arise is headquartered in **La Trinidad, Benguet, Philippines (GMT+8)**, serving visionary clients across the USA, UK, Europe, Australia, and Asia.\n\nOur highland studio operates with world-class design standards, international communication protocols, and dedicated asynchronous video walkthroughs (Loom & Figma).`,
+      actions: [
+        { label: '👥 Meet Our Team & Reviews', callback: 'scrollToTeam' },
+        { label: '📅 Book a Discovery Call', callback: 'openBookCallModal' },
+        { label: '💬 Chat on WhatsApp', callback: 'openWhatsApp' }
+      ],
+      chips: ['Client Reviews', 'Services', 'Pricing', 'Operating Hours']
+    };
+  }
+
+  // 15. Free Audit / Consultation
+  if (q.includes('audit') || q.includes('free audit') || q.includes('consultation') || q.includes('book') || q.includes('meeting') || q.includes('strategy call') || q.includes('discovery call')) {
+    return {
+      reply: `📅 **Book Your Free 30-Minute Discovery Strategy Call**\n\nLet's discuss your brand, current bottlenecks, and digital growth roadmap:\n\n• **What We Cover:** Brand positioning, UI/UX audit, conversion funnel bottlenecks, and tailored budget options.\n• **Meeting Platforms:** Google Meet, Zoom, or WhatsApp Video.\n• **Zero Pressure:** 100% free consultation with transparent advice.`,
+      actions: [
+        { label: '📅 Book Discovery Call Now', callback: 'openBookCallModal' },
+        { label: '📝 Send Project Specifications', callback: 'scrollToContact' },
+        { label: '💬 Chat on WhatsApp (+63 927 468 2635)', callback: 'openWhatsApp' }
+      ],
+      chips: ['Pricing', 'Services', 'Client Reviews', 'Contact']
+    };
+  }
+
+  // 16. Contact Info & Socials
+  if (q.includes('contact') || q.includes('email') || q.includes('phone') || q.includes('number') || q.includes('whatsapp') || q.includes('facebook') || q.includes('messenger') || q.includes('reach')) {
+    return {
+      reply: `📞 **Get in Touch with Create and Arise:**\n\n• **WhatsApp / Mobile:** +63 927 468 2635\n• **Official Email:** [createandarise05@gmail.com](mailto:createandarise05@gmail.com)\n• **Facebook:** [@CreateAndArise2023](https://www.facebook.com/CreateAndArise2023)\n• **Studio Hours:** Mon–Fri 8:00 AM – 6:00 PM PHT\n\nWe respond to all weekday inquiries within 24 business hours!`,
+      actions: [
+        { label: '💬 Message on WhatsApp', callback: 'openWhatsApp' },
+        { label: '📅 Book a Discovery Call', callback: 'openBookCallModal' },
+        { label: '📝 Fill Project Inquiry Form', callback: 'scrollToContact' }
+      ],
+      chips: ['Pricing', 'Services', 'Operating Hours', 'About Us']
+    };
+  }
+
+  // 17. Greetings & Introductions
+  if (q === 'hi' || q === 'hello' || q === 'hey' || q === 'kumusta' || q.startsWith('hi ') || q.startsWith('hello ') || q.startsWith('hey ') || q.includes('magandang') || q.includes('greetings')) {
+    return {
+      reply: `👋 **Hello and welcome to Create and Arise!** ✨\n\nI'm **AriseBot**, your AI creative and digital growth consultant. We are a premier Christian-founded creative design & digital studio based in the Philippines, helping visionary businesses and ministries arise through:\n\n1. **🎨 Graphic Design & Brand Identity**\n2. **💻 Web Design & Responsive UI/UX**\n3. **📈 Digital Ads & Paid Campaigns**\n4. **📱 Social Media Management**\n\nHow can I assist your brand today?`,
+      actions: [
+        { label: '🎨 Explore Services', callback: 'showServicesMenu' },
+        { label: '💰 Check Transparent Pricing', callback: 'scrollToEstimator' },
+        { label: '⭐ View Verified USA Reviews', callback: 'scrollToReviews' },
+        { label: '📅 Book Free Discovery Call', callback: 'openBookCallModal' }
+      ],
+      chips: ['Web Design', 'Graphic Design', 'Digital Ads', 'Social Media', 'Pricing', 'Client Reviews']
+    };
+  }
+
+  // 18. Default Intelligent Fallback
+  return {
+    reply: `Thank you for asking! ✨ At **Create and Arise**, we specialize in purpose-driven Graphic Design, High-Converting Web Design, Digital Ads Marketing, and Social Media Management for brands worldwide.\n\nWhether you need an e-commerce platform like **Aimé Leon Dore**, iconic branding like **Buck Mason**, or profitable digital ads like **The Ridge**, we're ready to engineer your growth!\n\nWhat would you like to explore next?`,
+    actions: [
+      { label: '🎨 View Creative Services', callback: 'showServicesMenu' },
+      { label: '🧮 Interactive Cost Calculator', callback: 'scrollToEstimator' },
+      { label: '⭐ Read Client Reviews & Outcomes', callback: 'scrollToReviews' },
+      { label: '📅 Book a Free Discovery Call', callback: 'openBookCallModal' }
+    ],
+    chips: ['Web Design', 'Graphic Design', 'Digital Ads', 'Social Media', 'Pricing', 'Contact']
+  };
+}
+
+/**
+ * Escapes markdown characters for quotes
+ */
+function escapeMarkdown(text) {
+  return text.replace(/"/g, '&quot;');
+}
+
+/**
+ * Optional Gemini API Query Helper
+ */
+function queryGeminiAPI(userMsg, history) {
+  return new Promise((resolve, reject) => {
+    if (!process.env.GEMINI_API_KEY) return resolve(null);
+
+    const systemPrompt = `You are AriseBot, the virtual AI creative assistant for "Create and Arise", a Christian-founded creative design and digital marketing studio in La Trinidad, Benguet, Philippines (GMT+8).
+Services: 
+1. Graphic Design & Brand Identity (from $450/₱25k)
+2. Web Design & Development (from $750/₱43.5k)
+3. Digital Ads Marketing (from $500/₱29k)
+4. Social Media Management (from $450/₱25k)
+Team: Jerome Cabinta (Web Developer), Elijah Morales (Founder & Creative Director), Hannah Grace Santos (Senior Brand Designer), Caleb Tan (Ads Lead), Faith Dela Cruz (Social Lead).
+Verified USA Clients: Aimé Leon Dore (0.4s speed, 4.8x conversion lift), Buck Mason (monogram, 30+ stores), Blue Bottle Coffee (single-origin packaging), The Ridge (+320% ROAS, CAC $18.50), Crossway ESV Bible (+240% outreach), Velocity Global (4x pipeline).
+Tone: Warm, highly professional, encouraging, faith-honoring, and focused on commercial excellence.`;
+
+    const payload = JSON.stringify({
+      contents: [
+        { role: 'user', parts: [{ text: `${systemPrompt}\n\nUser Question: ${userMsg}` }] }
+      ]
+    });
+
+    const options = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Content-Length': Buffer.byteLength(payload)
+      }
+    };
+
+    const req = https.request(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${process.env.GEMINI_API_KEY}`, options, (res) => {
+      let data = '';
+      res.on('data', chunk => { data += chunk; });
+      res.on('end', () => {
+        try {
+          const parsed = JSON.parse(data);
+          const replyText = parsed.candidates?.[0]?.content?.parts?.[0]?.text;
+          if (replyText) {
+            resolve({
+              reply: replyText,
+              actions: [
+                { label: '📅 Book a Discovery Call', callback: 'openBookCallModal' },
+                { label: '🧮 Interactive Cost Calculator', callback: 'scrollToEstimator' },
+                { label: '💬 WhatsApp Direct Chat', callback: 'openWhatsApp' }
+              ],
+              chips: ['Web Design', 'Graphic Design', 'Pricing', 'Client Reviews', 'Contact']
+            });
+          } else {
+            resolve(null);
+          }
+        } catch (e) {
+          resolve(null);
+        }
+      });
+    });
+
+    req.on('error', () => resolve(null));
+    req.setTimeout(8000, () => { req.destroy(); resolve(null); });
+    req.write(payload);
+    req.end();
+  });
+}
+
 const server = http.createServer((req, res) => {
   // Enable CORS headers
   res.setHeader('Access-Control-Allow-Origin', '*');
@@ -520,6 +882,65 @@ const server = http.createServer((req, res) => {
         console.error('Contact endpoint error:', err);
         res.writeHead(400, { 'Content-Type': 'application/json' });
         res.end(JSON.stringify({ success: false, error: 'Invalid JSON payload' }));
+      }
+    });
+    return;
+  }
+
+  // API Route: POST /api/chat (AriseBot AI Assistant Backend)
+  if (reqPath === '/api/chat' && req.method === 'POST') {
+    let body = '';
+    req.on('data', chunk => {
+      body += chunk.toString();
+    });
+
+    req.on('end', async () => {
+      try {
+        let payload = {};
+        try {
+          payload = JSON.parse(body || '{}');
+        } catch (parseErr) {
+          payload = { message: body };
+        }
+        const userMsg = (typeof payload === 'object' && payload.message ? payload.message : (typeof payload === 'string' ? payload : '')).trim();
+
+        if (!userMsg) {
+          res.writeHead(400, { 'Content-Type': 'application/json' });
+          res.end(JSON.stringify({ success: false, error: 'Empty message' }));
+          return;
+        }
+
+        // Save conversation log for studio lead insights
+        try {
+          const dataDir = path.join(__dirname, 'data');
+          const chatLogFile = path.join(dataDir, 'chat_logs.json');
+          if (!fs.existsSync(dataDir)) fs.mkdirSync(dataDir, { recursive: true });
+          let logs = [];
+          if (fs.existsSync(chatLogFile)) {
+            try { logs = JSON.parse(fs.readFileSync(chatLogFile, 'utf8')); } catch (e) { logs = []; }
+          }
+          logs.push({
+            timestamp: new Date().toISOString(),
+            userMessage: userMsg,
+            historyLength: (payload.history || []).length
+          });
+          if (logs.length > 500) logs = logs.slice(-500);
+          fs.writeFileSync(chatLogFile, JSON.stringify(logs, null, 2), 'utf8');
+        } catch (logErr) {
+          console.warn('[Chat] Could not save log:', logErr.message);
+        }
+
+        const botReplyData = await generateBotResponse(userMsg, payload.history || []);
+
+        res.writeHead(200, { 'Content-Type': 'application/json' });
+        res.end(JSON.stringify({
+          success: true,
+          ...botReplyData
+        }));
+      } catch (err) {
+        console.error('Chatbot endpoint error:', err);
+        res.writeHead(500, { 'Content-Type': 'application/json' });
+        res.end(JSON.stringify({ success: false, error: 'Internal server error' }));
       }
     });
     return;

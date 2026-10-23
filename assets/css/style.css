@@ -6663,7 +6663,7 @@ textarea.form-control {
   position: fixed;
   bottom: 2rem;
   right: 2rem;
-  z-index: 1000;
+  z-index: 9999;
   display: flex;
   flex-direction: column;
   align-items: flex-end;
@@ -6775,9 +6775,9 @@ textarea.form-control {
 
 /* Chatbot Popup Window */
 .chatbot-window {
-  width: 380px;
+  width: 390px;
   max-width: calc(100vw - 2.5rem);
-  height: 560px;
+  height: 580px;
   max-height: calc(100vh - 7rem);
   background: var(--bg-surface);
   border: 1px solid var(--border-glass);
@@ -6792,7 +6792,7 @@ textarea.form-control {
   transform: translateY(25px) scale(0.95);
   transform-origin: bottom right;
   transition: all var(--transition-bounce);
-  z-index: 1001;
+  z-index: 10000;
 }
 
 .chatbot-window.open {

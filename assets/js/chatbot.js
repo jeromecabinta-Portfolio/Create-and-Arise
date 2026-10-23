@@ -1,28 +1,93 @@
 /**
  * CREATE AND ARISE - Automated AI Chatbot Engine (AriseBot)
- * Purpose-Driven Virtual Creative Consultant
+ * Purpose-Driven Virtual Creative Consultant & Client Navigator
  */
 
 (function () {
-  // Knowledge Base & Intent Mapping
+  'use strict';
+
+  // Conversation History for Contextual Multi-Turn Dialog
+  const chatHistory = [];
+
+  // Local Offline Knowledge Base & Semantic Intent Mapping
   const botKnowledge = [
     {
       keywords: ['hi', 'hello', 'hey', 'kumusta', 'magandang', 'greetings', 'start', 'morning', 'afternoon', 'evening'],
-      response: `Hello and welcome to **Create and Arise**! ✨\n\nI'm **AriseBot**, your AI creative and digital growth assistant. We are a Christian-founded creative design & digital studio based in the Philippines, helping visionary brands arise through world-class graphics, high-converting websites, digital ads marketing, and social media management.\n\nHow can I help you today?`,
+      response: `👋 **Hello and welcome to Create and Arise!** ✨\n\nI'm **AriseBot**, your AI creative and digital growth assistant. We are a premier Christian-founded creative design & digital studio based in the Philippines, helping visionary brands arise through:\n\n1. **🎨 Graphic Design & Brand Identity** — Bespoke vector logos, guidelines & packaging.\n2. **💻 Web Design & UI/UX** — Ultra-fast, responsive, sub-second websites.\n3. **📈 Digital Ads Marketing** — High-ROI Meta, Google & TikTok campaigns.\n4. **📱 Social Media Management** — 30-day content calendars & aesthetic feeds.\n\nHow can I help grow or uplift your brand today?`,
       actions: [
         { label: '🎨 Explore Services', callback: 'showServicesMenu' },
-        { label: '💰 Check Pricing & Cost', callback: 'showPricingMenu' },
-        { label: '📅 Book Discovery Call', callback: 'openBookCallModal' },
-        { label: '🚀 Start a Project', callback: 'scrollToContact' }
+        { label: '💰 Check Pricing & Packages', callback: 'scrollToEstimator' },
+        { label: '⭐ View Verified USA Reviews', callback: 'scrollToReviews' },
+        { label: '📅 Book a Free Discovery Call', callback: 'openBookCallModal' }
       ],
-      chips: ['Graphic Design', 'Web Design', 'Digital Ads', 'Social Media', 'Book a Call', 'Cost Estimator']
+      chips: ['Web Design', 'Graphic Design', 'Digital Ads', 'Social Media', 'Pricing', 'Client Reviews']
+    },
+    {
+      keywords: ['aime', 'leon dore', 'aimeleondore', 'streetwear', 'marcus sterling'],
+      response: `🌟 **Aimé Leon Dore Case Study (New York City, NY, USA)**\n\n**Discipline:** Web Design & UI/UX • Luxury Streetwear E-Commerce\n**Client Lead:** Marcus Sterling, Head of Digital Commerce\n\n💬 *"Jerome and the Create and Arise team engineered our custom web platform with sub-second performance. Their clean code and responsive edge infrastructure cut our load times from 7.2s to 0.4s and lifted checkout conversions by 4.8x across international drop releases."*\n\n🚀 **Key Outcome:** Sub-0.4s Edge Load Speed & 4.8x Conversion Lift.\n🌐 **Official Website:** [aimeleondore.com](https://www.aimeleondore.com)`,
+      actions: [
+        { label: '👁️ Deep Dive Case Study (Aimé Leon Dore)', callback: 'openCaseStudy2' },
+        { label: '💻 Web Design Services', callback: 'selectWeb' },
+        { label: '📅 Book a Discovery Call', callback: 'openBookCallModal' }
+      ],
+      chips: ['Buck Mason', 'Blue Bottle Coffee', 'The Ridge', 'Web Design', 'Pricing']
+    },
+    {
+      keywords: ['buck mason', 'buckmason', 'heritage', 'menswear', 'michael ramirez'],
+      response: `🌟 **Buck Mason Case Study (Los Angeles, California, USA)**\n\n**Discipline:** Graphics & Branding • American Heritage Menswear\n**Client Lead:** Michael Ramirez, Head of Brand Retail\n\n💬 *"Create and Arise took our brand presentation to new heights. The attention to detail in our custom typography hierarchy, woven label specs, and tactile packaging guidelines enabled seamless store expansions across key flagship retail locations."*\n\n👔 **Key Outcome:** Iconic Heritage Monogram & Expansion across 30+ Flagship Stores.\n🌐 **Official Website:** [buckmason.com](https://www.buckmason.com)`,
+      actions: [
+        { label: '👁️ Deep Dive Case Study (Buck Mason)', callback: 'openCaseStudy8' },
+        { label: '🎨 Branding Services', callback: 'selectGraphics' },
+        { label: '📅 Book a Strategy Call', callback: 'openBookCallModal' }
+      ],
+      chips: ['Aimé Leon Dore', 'Blue Bottle Coffee', 'The Ridge', 'Branding', 'Pricing']
+    },
+    {
+      keywords: ['blue bottle', 'coffee', 'bluebottle', 'roastery', 'elena vance'],
+      response: `🌟 **Blue Bottle Coffee Case Study (Oakland, California, USA)**\n\n**Discipline:** Branding & Packaging • Specialty Coffee Roasteries & Cafes\n**Client Lead:** Elena Vance, Senior Brand Director\n\n💬 *"Create and Arise delivered immaculate visual brand systems and tactile packaging guidelines. Their respect for craftsmanship, typographic restraint, and clean vector precision gave our retail team total confidence across our nationwide cafes and roasteries."*\n\n☕ **Key Outcome:** Single-Origin Packaging Guidelines & Direct-Trade Monogram.\n🌐 **Official Website:** [bluebottlecoffee.com](https://bluebottlecoffee.com)`,
+      actions: [
+        { label: '👁️ Deep Dive Case Study (Blue Bottle)', callback: 'openCaseStudy3' },
+        { label: '🎨 Packaging & Branding', callback: 'selectGraphics' },
+        { label: '📅 Book a Discovery Call', callback: 'openBookCallModal' }
+      ],
+      chips: ['Aimé Leon Dore', 'Buck Mason', 'The Ridge', 'Branding', 'Pricing']
+    },
+    {
+      keywords: ['ridge', 'wallet', 'lumbarcare', 'jadd sanchez', 'everyday carry'],
+      response: `🌟 **The Ridge Case Study (Santa Monica, California, USA)**\n\n**Discipline:** Digital Paid Ads & Creative Strategy • High-Growth DTC\n**Client Lead:** Jadd Sanchez, Performance Marketing Director\n\n💬 *"Create and Arise completely turned our paid social advertising performance around. They engineered 36 high-converting ad creative variants, slashed our customer acquisition cost by 64%, and scaled our campaigns to a consistent 3.8x blended ROAS."*\n\n📈 **Key Outcome:** +320% ROAS Lift & Slashed CAC from $58 to $18.50.\n🌐 **Official Website:** [ridge.com](https://ridge.com)`,
+      actions: [
+        { label: '👁️ Deep Dive Case Study (The Ridge)', callback: 'openCaseStudy4' },
+        { label: '📈 Digital Ads Services', callback: 'selectAds' },
+        { label: '📅 Book Paid Ads Consultation', callback: 'openBookCallModal' }
+      ],
+      chips: ['Aimé Leon Dore', 'Buck Mason', 'Digital Ads', 'Pricing', 'Contact']
+    },
+    {
+      keywords: ['crossway', 'esv', 'bible', 'nathan reyes', 'the gospel coalition', 'tgc', 'jordan cruz', 'compassion', 'joycie santos', 'ministry', 'church'],
+      response: `✝️ **Faith-Driven Ministry Partnerships**\n\nCreate and Arise is honored to serve leading Christian ministries and biblical publishers:\n\n• **Crossway (ESV Bible - Wheaton, IL):** Editorial book typography, scripture carousels & +240% reader outreach.\n• **The Gospel Coalition (Austin, TX):** Theological video reels, social discipleship carousels & +280% reach.\n• **Compassion International (Colorado Springs, CO):** Global donor presentation decks & 100% biblical stewardship.\n\nEvery project is delivered with reverence, classical typographic restraint, and genuine kingdom stewardship.`,
+      actions: [
+        { label: '👁️ Crossway Case Study', callback: 'openCaseStudy5' },
+        { label: '👁️ Compassion Case Study', callback: 'openCaseStudy10' },
+        { label: '📅 Book Ministry Consultation', callback: 'openBookCallModal' }
+      ],
+      chips: ['Client Reviews', 'Web Design', 'Pricing', 'Our Faith', 'Contact']
+    },
+    {
+      keywords: ['review', 'reviews', 'testimonial', 'testimonials', 'feedback', 'rating', 'ratings', 'clients', 'usa client', 'usa clients'],
+      response: `⭐ **Verified Client Reviews & Testimonials**\n\nCreate and Arise maintains a **100% 5-Star Track Record** with visionary brands across the USA and worldwide:\n\n• **Aimé Leon Dore (NYC):** 0.4s load speed & 4.8x conversion lift.\n• **Buck Mason (LA):** Iconic monogram & expansion to 30+ stores.\n• **Blue Bottle Coffee (Oakland):** Single-origin retail packaging guidelines.\n• **The Ridge (Santa Monica):** +320% ROAS lift & CAC slashed by 64%.\n• **Velocity Global (Denver):** 4x enterprise inbound pipeline.\n• **Crossway & TGC:** +240% to +280% digital outreach surge.\n\nAll client websites are live and verified!`,
+      actions: [
+        { label: '⭐ View Reviews & Team Section', callback: 'scrollToReviews' },
+        { label: '🖼️ Explore Full Portfolio Grid', callback: 'scrollToPortfolio' },
+        { label: '📅 Book a Free Discovery Call', callback: 'openBookCallModal' }
+      ],
+      chips: ['Aimé Leon Dore', 'Buck Mason', 'Blue Bottle Coffee', 'The Ridge', 'Pricing']
     },
     {
       keywords: ['service', 'services', 'what do you do', 'offer', 'packages', 'capabilities', 'specialty', 'specialties'],
       response: `We specialize in 4 core creative and digital disciplines:\n\n1. **🎨 Graphic Design & Brand Identity** — Full logo suites, brand books, packaging & collaterals.\n2. **💻 Web Design & Development** — High-converting, fast, responsive UI/UX websites.\n3. **📈 Digital Ads & Campaign Marketing** — Meta, Google & TikTok Ads with high-ROI creative copy.\n4. **📱 Social Media Management** — Monthly content calendars, aesthetic grids & engagement.\n\nWhich service would you like to explore?`,
       actions: [
-        { label: '🎨 Graphic Design Details', callback: 'explainGraphics' },
-        { label: '💻 Web Design Details', callback: 'explainWeb' },
+        { label: '🎨 Graphic Design Details', callback: 'selectGraphics' },
+        { label: '💻 Web Design Details', callback: 'selectWeb' },
         { label: '📈 Digital Ads Details', callback: 'selectAds' },
         { label: '📱 Social Media Details', callback: 'selectSocial' },
         { label: '🧮 Open Cost Estimator', callback: 'scrollToEstimator' }
@@ -30,175 +95,140 @@
       chips: ['Graphic Design', 'Web Design', 'Digital Ads', 'Social Media', 'Pricing']
     },
     {
-      keywords: ['graphic', 'graphics', 'logo', 'branding', 'brand identity', 'packaging', 'vector', 'flyer', 'pitch deck', 'style guide'],
-      response: `Our **Graphic Design & Brand Identity** service is our core craft! 🎨\n\nWe provide:\n• Bespoke vector logo systems (AI, SVG, EPS, PDF, PNG)\n• Comprehensive Brand Guidelines & Color Palettes\n• Premium Packaging, Merchandise & Stationery\n• High-Impact Investor Pitch Decks & Marketing Collaterals\n• Unlimited commercial ownership of all source files\n\nWould you like an estimated investment for a branding package?`,
+      keywords: ['graphic', 'graphics', 'logo', 'branding', 'brand identity', 'packaging', 'vector', 'flyer', 'pitch deck', 'style guide', 'merch', 'stationery'],
+      response: `🎨 **Graphic Design & Brand Identity**\n\nOur foundational craft helps visionary brands command respect and trust:\n\n• **Complete Master Logo Suite:** Primary, secondary, submarks, and favicon vectors (AI, SVG, EPS, PDF, PNG).\n• **Brand Architecture Guidelines:** Color palettes, typography hierarchies, and visual standard books.\n• **Packaging & Unboxing:** Factory-ready die-lines, foil stamping, and 3D photorealistic mockups.\n• **Full Commercial Rights:** 100% source file handover with unlimited commercial rights.\n• **Investment:** Starting at **$450 / ₱25,000** with 2-week delivery.`,
       actions: [
-        { label: '🧮 Estimate Graphics Package ($450+)', callback: 'selectGraphics' },
-        { label: '🖼️ View Branding Portfolio', callback: 'filterPortfolioBranding' },
-        { label: '📩 Inquire for Branding', callback: 'scrollToContact' }
+        { label: '🧮 Estimate Branding Package ($450+)', callback: 'selectGraphics' },
+        { label: '👁️ Buck Mason Heritage Case Study', callback: 'openCaseStudy8' },
+        { label: '👁️ Blue Bottle Packaging Suite', callback: 'openCaseStudy3' },
+        { label: '📅 Book a Discovery Call', callback: 'openBookCallModal' }
       ],
-      chips: ['Web Design', 'Digital Ads', 'Calculate Cost', 'Get a Quote']
+      chips: ['Pricing', 'Web Design', 'Digital Ads', 'Social Media', 'Contact']
     },
     {
-      keywords: ['web', 'website', 'web design', 'development', 'landing page', 'ui', 'ux', 'responsive', 'e-commerce', 'ecommerce'],
-      response: `Our **Web Design & Development** combines breathtaking aesthetics with conversion-focused UX! 💻\n\nKey Highlights:\n• Modern, responsive, mobile-first layouts\n• Fast load speeds & SEO optimization\n• Clean glassmorphic / dark & light mode styling\n• Lead capture funnels, booking forms & analytics\n• Typical turnaround: 2 to 3 weeks\n\nWould you like to calculate your website investment?`,
+      keywords: ['web', 'website', 'web design', 'development', 'landing page', 'ui', 'ux', 'responsive', 'e-commerce', 'ecommerce', 'shopify', 'code'],
+      response: `💻 **Web Design & Development at Create and Arise**\n\nWe design and hand-craft high-converting, sub-second responsive websites:\n\n• **Speed & Performance:** 99/100 Core Web Vitals with sub-0.5s edge load speeds (just like our work for Aimé Leon Dore!).\n• **Clean Architecture:** Semantic HTML5, modern vanilla CSS, responsive layouts, zero template bloat.\n• **Conversion Optimization:** Lead capture forms, automated booking integrations, GA4 analytics.\n• **Investment:** Starting at **$750 / ₱43,500** with 2 to 3-week turnaround.\n\nWould you like an instant estimate or a free design audit of your current site?`,
       actions: [
-        { label: '🧮 Estimate Web Design Package ($750+)', callback: 'selectWeb' },
-        { label: '🖼️ View Web Portfolio', callback: 'filterPortfolioWeb' },
-        { label: '📅 Book a Free Strategy Call', callback: 'openBookCallModal' }
+        { label: '🧮 Estimate Web Design ($750+)', callback: 'selectWeb' },
+        { label: '👁️ Aimé Leon Dore Case Study', callback: 'openCaseStudy2' },
+        { label: '📅 Book Free 30-Min Strategy Call', callback: 'openBookCallModal' }
       ],
-      chips: ['Book a Call', 'Cost Estimator', 'Graphic Design', 'Digital Ads', 'Payment Methods']
+      chips: ['Pricing', 'Graphic Design', 'Digital Ads', 'Social Media', 'Book a Call']
     },
     {
-      keywords: ['reel', 'reels', 'video', 'tiktok video', 'shorts', 'youtube video', 'editing', 'motion', 'animation', 'video editing'],
-      response: `At **Create and Arise**, our studio focuses 100% of our creative energy on our 4 specialized core pillars:\n\n1. **🎨 Graphic Design & Brand Identity**\n2. **💻 Web Design & Development**\n3. **📈 Digital Ads & Campaign Marketing**\n4. **📱 Social Media Management**\n\nWe do **not** offer standalone video reels or motion graphics production, ensuring elite quality and deep strategic craft for our 4 core offerings!\n\nWould you like to explore our graphic design, web design, ads, or social media management services?`,
+      keywords: ['ad', 'ads', 'marketing', 'campaign', 'meta ads', 'facebook ads', 'google ads', 'tiktok ads', 'roas', 'traffic', 'cac'],
+      response: `📈 **Digital Ads & Performance Marketing**\n\nWe engineer omnichannel campaigns designed to scale revenue profitably:\n\n• **Platforms:** Meta Ads (Facebook & Instagram), Google Search & Display, TikTok Ads.\n• **High-Converting Creatives:** Static hooks, carousel funnels, and conversion-tested copywriting.\n• **Proven Results:** We slashed CAC by 64% and achieved **+320% ROAS** for high-growth brands like The Ridge.\n• **Full Funnel:** Dedicated landing pages, pixel integration, and weekly ROAS tracking.\n• **Investment:** Starting at **$500 / ₱29,000** per month/sprint.`,
       actions: [
-        { label: '🎨 Graphic Design & Branding', callback: 'selectGraphics' },
-        { label: '💻 Web Design & UX', callback: 'selectWeb' },
-        { label: '📈 Digital Ads Campaign', callback: 'selectAds' },
+        { label: '🧮 Estimate Ads Package ($500+)', callback: 'selectAds' },
+        { label: '👁️ The Ridge Case Study', callback: 'openCaseStudy4' },
+        { label: '📅 Book Paid Ads Consultation', callback: 'openBookCallModal' }
+      ],
+      chips: ['Pricing', 'Web Design', 'Graphic Design', 'Social Media', 'Contact']
+    },
+    {
+      keywords: ['social', 'social media', 'smm', 'instagram', 'content calendar', 'grid', 'feed', 'posting', 'followers'],
+      response: `📱 **Social Media Management**\n\nTransform your social media channels into an aesthetic, authoritative client magnet:\n\n• **30-Day Content Architecture:** Monthly editorial calendars mapped to your business sales cycle.\n• **Visual Polish:** High-impact branded carousels, aesthetic grids, and devotional/educational assets.\n• **Growth Copywriting:** High-retention hooks, thoughtful captions, and optimized hashtag clusters.\n• **Community Stewardship:** Strategic response protocols and monthly performance analytics.\n• **Investment:** Starting at **$450 / ₱25,000** per month.`,
+      actions: [
+        { label: '🧮 Estimate Social Media ($450+)', callback: 'selectSocial' },
+        { label: '👁️ TGC Discipleship Case Study', callback: 'openCaseStudy21' },
+        { label: '📅 Schedule Social Strategy Call', callback: 'openBookCallModal' }
+      ],
+      chips: ['Pricing', 'Web Design', 'Graphic Design', 'Digital Ads', 'Contact']
+    },
+    {
+      keywords: ['reel', 'reels', 'video', 'tiktok video', 'shorts', 'youtube', 'editing', 'motion', 'video editing'],
+      response: `🎬 **Creative Capabilities Note:**\n\nAt **Create and Arise**, our studio is 100% focused on our 4 high-impact core disciplines:\n\n1. **🎨 Graphic Design & Brand Identity**\n2. **💻 Web Design & Development**\n3. **📈 Digital Ads Marketing**\n4. **📱 Social Media Management**\n\nWe do **not** offer standalone freelance video shooting or YouTube editing, which allows us to deliver world-class craft and ROI for our 4 specialized core pillars!\n\nWhich core service can we assist you with today?`,
+      actions: [
+        { label: '🎨 Graphic Design', callback: 'selectGraphics' },
+        { label: '💻 Web Design', callback: 'selectWeb' },
+        { label: '📈 Digital Ads', callback: 'selectAds' },
         { label: '📱 Social Media Management', callback: 'selectSocial' }
       ],
-      chips: ['Graphic Design', 'Web Design', 'Digital Ads', 'Social Media', 'Cost Estimator']
+      chips: ['Web Design', 'Graphic Design', 'Pricing', 'Contact']
     },
     {
-      keywords: ['ad', 'ads', 'marketing', 'campaign', 'meta ads', 'facebook ads', 'google ads', 'tiktok ads', 'roas', 'roi', 'traffic'],
-      response: `Our **Digital Ads & Campaign Marketing** focuses strictly on measurable revenue and ROAS! 📈\n\nDeliverables:\n• Omnichannel campaigns across Meta (FB/IG), Google Search/Display & TikTok\n• Audience segmentation & high-intent retargeting\n• A/B testing of creative visual variations and copywriting\n• Average client ROAS lift: **+320%**\n• Transparent weekly analytics reports`,
-      actions: [
-        { label: '🧮 Estimate Ads Campaign ($500+)', callback: 'selectAds' },
-        { label: '💬 Chat with Growth Strategist', callback: 'openWhatsApp' },
-        { label: '📩 Inquire for Ad Campaign', callback: 'scrollToContact' }
-      ],
-      chips: ['Cost Estimator', 'Digital Ads', 'Social Media', 'Working Hours']
-    },
-    {
-      keywords: ['social', 'social media', 'smm', 'instagram', 'facebook', 'content calendar', 'grid', 'posting', 'management'],
-      response: `Our **Social Media Management** handles your complete digital presence so you can focus on running your business! 📱\n\nWhat's included:\n• 30-Day strategic monthly content calendar\n• Custom high-impact aesthetic carousels & posts\n• Engaging copywriting, hook captions & hashtag research\n• Active audience interaction & community reply support\n• Monthly growth and engagement analytics`,
-      actions: [
-        { label: '🧮 Estimate SMM Package ($450+)', callback: 'selectSocial' },
-        { label: '📩 Book Social Media Consultation', callback: 'scrollToContact' }
-      ],
-      chips: ['Graphic Design', 'Social Media', 'Pricing', 'Contact']
-    },
-    {
-      keywords: ['price', 'pricing', 'cost', 'rates', 'how much', 'fee', 'quote', 'estimate', 'cheap', 'budget', 'expensive'],
-      response: `We pride ourselves on transparent, honest pricing with zero hidden fees! 💰\n\n**Starting Estimates:**\n• 🎨 Graphic Design & Branding: from **$450 / ₱25,000**\n• 💻 Web Design & Development: from **$750 / ₱43,500**\n• 📈 Digital Ads Marketing: from **$500 / ₱29,000**\n• 📱 Social Media Management: from **$450 / ₱25,000**\n\nYou can use our Interactive Cost Estimator to customize your package in **USD, PHP, AUD, EUR, or GBP**!`,
+      keywords: ['price', 'pricing', 'cost', 'rates', 'how much', 'magkano', 'fee', 'quote', 'budget', 'estimate', 'cheap', 'expensive'],
+      response: `💰 **Transparent Studio Pricing & Packages**\n\nWe offer clear fixed-price packages with zero hidden fees:\n\n• **🎨 Graphic Design & Branding:** from **$450 / ₱25,000**\n• **💻 Web Design & Development:** from **$750 / ₱43,500**\n• **📈 Digital Ads Marketing:** from **$500 / ₱29,000**\n• **📱 Social Media Management:** from **$450 / ₱25,000**\n\n✨ **Options:**\n• Standard Delivery: 2–3 Weeks\n• Express Priority Sprint: 7 Days (+30%)\n• Ongoing Monthly Retainer: 10% Bundle Discount\n\nSupported Currencies: **USD ($), PHP (₱), AUD (A$), EUR (€), GBP (£)**!`,
       actions: [
         { label: '🧮 Open Interactive Cost Estimator', callback: 'scrollToEstimator' },
-        { label: '📩 Request Custom Project Proposal', callback: 'scrollToContact' }
+        { label: '📅 Book a Free Discovery Call', callback: 'openBookCallModal' },
+        { label: '📝 Submit Custom Project Scope', callback: 'scrollToContact' }
       ],
-      chips: ['Graphic Design', 'Web Design', 'Digital Ads', 'Social Media', 'Payment Methods']
+      chips: ['Web Design', 'Graphic Design', 'Digital Ads', 'Payment Methods', 'Contact']
+    },
+    {
+      keywords: ['jerome', 'cabinta', 'developer', 'web developer', 'who built', 'who coded', 'who made', 'coder', 'purpose', 'streetwear'],
+      response: `👨‍💻 **Meet Web Developer Jerome Cabinta**\n\n**Jerome Cabinta** is the web developer and UI/UX implementation specialist at Create and Arise who built this website from the ground up!\n\n• **Craft:** Clean semantic HTML5, modern vanilla CSS, sub-second edge speeds, and zero template bloat.\n• **Featured Live Project:** [create-with-purpose.vercel.app](https://create-with-purpose.vercel.app) — an interactive 500 GSM heavyweight streetwear platform.\n• **Philosophy:** Excellence in workmanship as working for the Lord (Colossians 3:23).`,
+      actions: [
+        { label: '🚀 Launch PURPOSE / STUDIO™ Live', callback: 'openPurposeProject' },
+        { label: '👁️ Purpose Studio Case Study', callback: 'openCaseStudy7' },
+        { label: '📅 Book Call with Jerome & Team', callback: 'openBookCallModal' },
+        { label: '💬 Chat on WhatsApp', callback: 'openWhatsApp' }
+      ],
+      chips: ['Meet the Team', 'Web Design', 'Client Reviews', 'Pricing', 'Contact']
+    },
+    {
+      keywords: ['team', 'members', 'staff', 'who works', 'people', 'collective', 'who is on the team', 'studio team', 'agency team', 'leadership', 'founder'],
+      response: `👥 **The Create and Arise Creative Collective**\n\nBased in the Philippines and serving clients across the USA, UK, Australia, and worldwide:\n\n• **Elijah Morales** — Founder & Executive Creative Director\n• **Jerome Cabinta** — Web Developer & UI/UX Specialist\n• **Hannah Grace Santos** — Senior Brand & Packaging Designer\n• **Caleb Tan** — Digital Ads & Growth Strategist\n• **Faith Dela Cruz** — Social Media & Content Strategist\n\nDedicated weekday sprints, direct Slack/Loom communication, and 100% intellectual property handover!`,
+      actions: [
+        { label: '👥 Meet Our Team & Reviews', callback: 'scrollToTeam' },
+        { label: '📅 Book Discovery Call', callback: 'openBookCallModal' },
+        { label: '💬 WhatsApp Direct Chat', callback: 'openWhatsApp' }
+      ],
+      chips: ['Client Reviews', 'Services', 'Pricing', 'Our Faith', 'Contact']
     },
     {
       keywords: ['hours', 'open', 'schedule', 'time', 'operating', 'closed', 'weekend', 'saturday', 'sunday', 'monday', 'friday', 'sabbath'],
-      response: `🕒 **Our Operating Hours (PHT / GMT+8):**\n\n• **Monday to Friday:** 8:00 AM – 6:00 PM PHT (Active Studio)\n• **Saturday & Sunday:** Closed for Weekend Sabbath, Rest & Family Renewal\n\nAll inquiries sent during weekends are prioritized first thing on Monday morning! We serve clients across all global time zones (US, Australia, UK, Europe, Asia) with smooth asynchronous communication.`,
+      response: `🕒 **Studio Operating Schedule (PHT / GMT+8):**\n\n• **Monday to Friday:** 8:00 AM – 6:00 PM PHT (Active Studio & Build Sprints)\n• **Saturday & Sunday:** Closed for Weekend Sabbath, Rest & Family Renewal\n\n⚡ **Global Asynchronous Collaboration:** We collaborate smoothly with clients in the US (EST/PST), Australia, and Europe with zero midnight meetings. Guaranteed replies within 24 weekday business hours!`,
       actions: [
-        { label: '📅 Schedule a 1-on-1 Call', callback: 'openBookCallModal' },
-        { label: '📩 Leave a Message for Monday', callback: 'scrollToContact' },
-        { label: '💬 Send a WhatsApp Inquiry', callback: 'openWhatsApp' }
+        { label: '📅 Schedule a Discovery Call', callback: 'openBookCallModal' },
+        { label: '📝 Submit Consultation Form', callback: 'scrollToContact' },
+        { label: '💬 Send WhatsApp Message', callback: 'openWhatsApp' }
       ],
-      chips: ['Book a Call', 'Location', 'Pricing', 'Services', 'Faith Foundation']
+      chips: ['Services', 'Pricing', 'Meet the Team', 'Contact']
     },
     {
-      keywords: ['philippines', 'location', 'where', 'benguet', 'la trinidad', 'manila', 'base', 'country', 'international', 'overseas', 'foreign', 'timezone', 'gmt'],
-      response: `🇵🇭 **Create and Arise** is proudly based in **La Trinidad, Benguet, Philippines (GMT+8)**, serving both Philippine enterprises and global brands in North America, Australia, the UK, Europe, and Asia!\n\nWe provide seamless asynchronous updates, dedicated Slack/WhatsApp channels, and flexible video consultations tailored to your local timezone.`,
+      keywords: ['payment', 'pay', 'gcash', 'maya', 'bank', 'paypal', 'stripe', 'wise', 'credit card', 'currency'],
+      response: `💳 **Secure Payment Methods Accepted:**\n\n• **Philippine Clients:** GCash, Maya, BDO, BPI, UnionBank (PHP ₱)\n• **USA & International Clients:** Stripe, PayPal, Wise, Direct International Wire Transfer (USD $, AUD A$, EUR €, GBP £)\n\n💼 **Terms:** 50% initial milestone deposit to lock your sprint calendar, with the remaining 50% upon final delivery and 100% commercial source file handover.`,
       actions: [
-        { label: '💳 View Accepted Payment Methods', callback: 'showPaymentMethods' },
-        { label: '🚀 Start Your Global Project', callback: 'scrollToContact' }
+        { label: '🧮 Interactive Cost Estimator', callback: 'scrollToEstimator' },
+        { label: '📅 Book a Discovery Call', callback: 'openBookCallModal' },
+        { label: '📝 Start a Project Inquiry', callback: 'scrollToContact' }
       ],
-      chips: ['Payment Methods', 'Working Hours', 'Services', 'Contact']
+      chips: ['Pricing', 'Web Design', 'Graphic Design', 'Contact']
     },
     {
-      keywords: ['payment', 'pay', 'gcash', 'maya', 'bank', 'paypal', 'stripe', 'wise', 'credit card', 'transfer', 'currency'],
-      response: `💳 **We accept flexible local and international payment methods:**\n\n• **For Philippine Clients:** GCash, Maya, BDO, BPI, UnionBank Online Transfers.\n• **For International Clients:** PayPal, Stripe (Credit/Debit Cards), Wise (TransferWise), and International Bank Wire Transfers in USD, PHP, AUD, EUR, or GBP.\n\nAll projects include formal electronic invoices and milestone billing (50% upfront / 50% upon completion).`,
+      keywords: ['location', 'where', 'benguet', 'la trinidad', 'manila', 'philippines', 'base', 'country', 'international'],
+      response: `📍 **Studio Headquarters:**\n\nCreate and Arise is headquartered in **La Trinidad, Benguet, Philippines (GMT+8)**, serving visionary clients across the USA, UK, Europe, Australia, and Asia.\n\nOur highland studio operates with world-class design standards, international communication protocols, and dedicated asynchronous video walkthroughs (Loom & Figma).`,
       actions: [
-        { label: '🧮 Calculate Investment Range', callback: 'scrollToEstimator' },
-        { label: '📩 Get an Official Invoice Quote', callback: 'scrollToContact' }
-      ],
-      chips: ['Cost Estimator', 'Services', 'Working Hours', 'Contact']
-    },
-    {
-      keywords: ['faith', 'christian', 'bible', 'isaiah', 'values', 'mission', 'vision', 'integrity', 'owner', 'god', 'church', 'ministry'],
-      response: `🙏 **Our Faith Foundation & Values:**\n\n**Create and Arise** was founded on **Isaiah 60:1**: *“Arise, shine; for your light has come, and the glory of the Lord rises upon you.”*\n\nWe operate with **Christian integrity, honesty, and stewardship**. We treat every design, website, and campaign as an act of excellence, ensuring transparent communication, respect for your resources, and uncompromising creative distinction.`,
-      actions: [
-        { label: '📜 Read Full Mission & ARISE Values', callback: 'scrollToMission' },
-        { label: '🚀 Collaborate with Us', callback: 'scrollToContact' }
-      ],
-      chips: ['Our Mission', 'Services', 'Cost Estimator', 'Working Hours']
-    },
-    {
-      keywords: ['contact', 'hire', 'book', 'talk', 'email', 'phone', 'whatsapp', 'messenger', 'consultation', 'call', 'meeting'],
-      response: `We'd love to partner with you! Here is how you can connect directly with our creative team:\n\n• 📝 **Booking Form:** Scroll to our free project consultation form.\n• 📱 **WhatsApp:** +63 927 468 2635\n• 🌐 **Facebook Page:** [facebook.com/CreateAndArise2023](https://www.facebook.com/CreateAndArise2023)\n• 💬 **FB Messenger:** [m.me/CreateAndArise2023](https://m.me/CreateAndArise2023)\n• ✉️ **Direct Email:** createandarise05@gmail.com\n\n✨ **Instant Confirmation:** When you submit an inquiry, you will immediately receive an automated confirmation email with your project reference ID!\n⏱️ We respond to all project inquiries within 24 weekday business hours!`,
-      actions: [
-        { label: '📝 Fill Consultation Form', callback: 'scrollToContact' },
-        { label: '🌐 Open Facebook Page', callback: 'openFacebook' },
-        { label: '💬 Chat on WhatsApp', callback: 'openWhatsApp' },
-        { label: '📋 Copy Direct Email', callback: 'copyEmail' }
-      ],
-      chips: ['Cost Estimator', 'Services', 'Working Hours', 'Branding']
-    },
-    {
-      keywords: ['facebook', 'fb', 'fanpage', 'meta page', 'createandarise2023', 'social link', 'facebook link'],
-      response: `🌐 **Connect with Create and Arise on Facebook:**\n\nFollow our official Facebook page to explore our latest creative projects, branding showcases, behind-the-scenes designs, and studio updates!\n\n• 🔗 **Official Page:** [facebook.com/CreateAndArise2023](https://www.facebook.com/CreateAndArise2023)\n• 💬 **Messenger:** [m.me/CreateAndArise2023](https://m.me/CreateAndArise2023)\n\nWe would love to connect with you and your business!`,
-      actions: [
-        { label: '🌐 Open Facebook Page', callback: 'openFacebook' },
-        { label: '💬 Send FB Message', callback: 'openMessenger' },
-        { label: '📝 Start Consultation', callback: 'scrollToContact' }
-      ],
-      chips: ['Contact Us', 'Services', 'Cost Estimator', 'Working Hours']
-    },
-    {
-      keywords: ['confirmation', 'email confirmation', 'receipt', 'confirmation email', 'receive email', 'confirm inquiry', 'inquiry confirmation'],
-      response: `✉️ **Automated Email Confirmation:**\n\nYes! Whenever you submit a project inquiry through our website, our studio system **immediately delivers an official confirmation email** to your inbox!\n\n• 🏷️ **Reference Code:** Unique reference receipt (e.g. \`INQ-CAA-XXXX\`)\n• 📝 **Scope Summary:** Details of your selected services & budget\n• ⏱️ **Turnaround Guarantee:** Guaranteed reply within 24 weekday business hours (Mon–Fri 8AM–6PM PHT).`,
-      actions: [
-        { label: '📝 Submit an Inquiry', callback: 'scrollToContact' },
+        { label: '👥 Meet Our Team & Reviews', callback: 'scrollToTeam' },
         { label: '📅 Book a Discovery Call', callback: 'openBookCallModal' },
         { label: '💬 Chat on WhatsApp', callback: 'openWhatsApp' }
       ],
-      chips: ['Consultation Form', 'Book Call', 'Working Hours', 'Services']
+      chips: ['Client Reviews', 'Services', 'Pricing', 'Operating Hours']
     },
     {
-      keywords: ['jerome', 'cabinta', 'developer', 'web developer', 'who made', 'who developed', 'who coded', 'coder'],
-      response: `👨‍💻 **Meet the Developer:**\n\n**Jerome Cabinta** is a member of the **Create and Arise** creative team, serving as the web developer who engineered this website.\n\nHe also built **PURPOSE / STUDIO™**, an interactive 500 GSM heavyweight streetwear e-commerce platform deployed live at [create-with-purpose.vercel.app](https://create-with-purpose.vercel.app).\n\nHe specializes in sub-second load speeds, clean semantic HTML5, modern vanilla CSS, and engaging interactive experiences.`,
+      keywords: ['contact', 'hire', 'book', 'talk', 'email', 'phone', 'whatsapp', 'messenger', 'consultation', 'call', 'meeting', 'audit'],
+      response: `📞 **Get in Touch with Create and Arise:**\n\n• **WhatsApp / Mobile:** +63 927 468 2635\n• **Official Email:** [createandarise05@gmail.com](mailto:createandarise05@gmail.com)\n• **Facebook:** [@CreateAndArise2023](https://www.facebook.com/CreateAndArise2023)\n• **Studio Hours:** Mon–Fri 8:00 AM – 6:00 PM PHT\n\nWe respond to all weekday inquiries within 24 business hours!`,
       actions: [
-        { label: '🚀 Launch Purpose Studio (Live Site)', callback: 'openPurposeProject' },
-        { label: '📖 Meet Our Team & Studio', callback: 'scrollToMission' },
-        { label: '📅 Book a Team Consultation', callback: 'openBookCallModal' },
-        { label: '💬 WhatsApp Our Team', callback: 'openWhatsApp' }
+        { label: '💬 Message on WhatsApp', callback: 'openWhatsApp' },
+        { label: '📅 Book a Discovery Call', callback: 'openBookCallModal' },
+        { label: '📝 Fill Project Inquiry Form', callback: 'scrollToContact' }
       ],
-      chips: ['Live Project', 'Our Mission', 'Cost Estimator', 'Services']
-    },
-    {
-      keywords: ['purpose', 'create with purpose', 'streetwear', 'hoodie', 'hoodies', 'fashion site', 'ecommerce sample', 'vercel project'],
-      response: `🔥 **Featured Live Project: PURPOSE / STUDIO™**\n\n**PURPOSE / STUDIO™** is an interactive streetwear e-commerce lab developed by **Jerome Cabinta**:\n\n• **Live Website:** [create-with-purpose.vercel.app](https://create-with-purpose.vercel.app)\n• **Features:** 500 GSM French Terry heavyweight hoodies, dynamic TikTok Shop video showcases, smart sizing engine, interactive bundle builder, and instant checkout flow.\n• **Performance:** 99/100 Core Web Vitals with sub-0.3s global Vercel Edge loading.\n\nWould you like to explore the live website or view the case study?`,
-      actions: [
-        { label: '🚀 Launch Live Site (Vercel)', callback: 'openPurposeProject' },
-        { label: '👁️ Deep Dive Case Study', callback: 'openPurposeCaseStudy' },
-        { label: '🧮 Estimate Web Project', callback: 'scrollToEstimator' }
-      ],
-      chips: ['Live Project', 'Case Studies', 'Web Design', 'Contact']
-    },
-    {
-      keywords: ['team', 'members', 'staff', 'who works', 'people', 'collective', 'who is on the team', 'studio team', 'agency team', 'leadership'],
-      response: `👥 **Meet the Create and Arise Team:**\n\nOur multidisciplinary collective combines faith-driven stewardship with premier creative mastery:\n\n• **Elijah Morales** — Founder & Executive Creative Director\n• **Jerome Cabinta** — Web Developer & UI Implementation\n• **Hannah Grace Santos** — Senior Brand & Packaging Designer\n• **Caleb Tan** — Digital Ads & Growth Strategist\n• **Faith Dela Cruz** — Social Media & Content Strategist\n\nEvery project is handled with direct communication and dedicated weekday sprints!`,
-      actions: [
-        { label: '📖 View Team Profiles', callback: 'scrollToMission' },
-        { label: '📅 Book a Team Consultation', callback: 'openBookCallModal' },
-        { label: '💬 WhatsApp Our Team', callback: 'openWhatsApp' }
-      ],
-      chips: ['About Us', 'Services', 'Cost Estimator', 'Contact']
+      chips: ['Pricing', 'Services', 'Operating Hours', 'About Us']
     }
   ];
 
   // Default Fallback Response
   const defaultFallback = {
-    response: `I'd love to help you with that! At **Create and Arise**, we provide world-class Graphic Design, High-Converting Web Design, Digital Ads Marketing, and Social Media Management from the Philippines to global markets. 🌟\n\nWhat would you like to explore or configure?`,
+    response: `Thank you for reaching out! ✨ At **Create and Arise**, we specialize in purpose-driven Graphic Design, High-Converting Web Design, Digital Ads Marketing, and Social Media Management for visionary businesses worldwide.\n\nWhether you need an ultra-fast web platform like **Aimé Leon Dore**, iconic heritage branding like **Buck Mason**, or high-ROAS ads like **The Ridge**, our team is ready to engineer your growth!\n\nWhat can we configure or answer for you?`,
     actions: [
-      { label: '🎨 Graphic & Web Services', callback: 'showServicesMenu' },
-      { label: '🧮 Calculate Project Investment', callback: 'scrollToEstimator' },
-      { label: '📝 Submit Project Consultation', callback: 'scrollToContact' },
-      { label: '💬 WhatsApp Direct Chat', callback: 'openWhatsApp' }
+      { label: '🎨 Explore Services', callback: 'showServicesMenu' },
+      { label: '🧮 Interactive Cost Calculator', callback: 'scrollToEstimator' },
+      { label: '⭐ Read Verified Client Reviews', callback: 'scrollToReviews' },
+      { label: '📅 Book a Free Discovery Call', callback: 'openBookCallModal' }
     ],
-    chips: ['Graphic Design', 'Web Design', 'Digital Ads', 'Social Media', 'Cost Estimator', 'Contact']
+    chips: ['Web Design', 'Graphic Design', 'Digital Ads', 'Social Media', 'Pricing', 'Contact']
   };
 
   // Chatbot Initialization
@@ -211,22 +241,23 @@
       const messagesContainer = document.getElementById('chatbotMessages');
       if (messagesContainer && messagesContainer.children.length === 0) {
         appendBotMessage(
-          `👋 **Hi there! Welcome to Create and Arise!**\n\nI'm **AriseBot**, your AI creative assistant. How can we help uplift and grow your brand today?`,
+          `👋 **Hi there! Welcome to Create and Arise!**\n\nI'm **AriseBot**, your AI creative and digital growth assistant. How can we help uplift and grow your brand today?`,
           [
             { label: '🎨 View Creative Services', callback: 'showServicesMenu' },
             { label: '🧮 Interactive Cost Calculator', callback: 'scrollToEstimator' },
+            { label: '⭐ Read USA Client Reviews', callback: 'scrollToReviews' },
             { label: '🕒 Check Business Schedule', callback: 'showHoursInfo' }
           ],
-          ['Graphic Design', 'Web Design', 'Digital Ads', 'Social Media', 'Pricing', 'Contact']
+          ['Web Design', 'Graphic Design', 'Digital Ads', 'Social Media', 'Pricing', 'Client Reviews']
         );
       }
-    }, 800);
+    }, 400);
   }
 
   function createChatbotMarkup() {
-    // Remove any legacy floating chat if present
-    const legacy = document.querySelector('.floating-quick-chat');
-    if (legacy) legacy.remove();
+    // Remove existing if any to prevent duplicate initialization
+    const existing = document.getElementById('ariseChatbotWidget');
+    if (existing) existing.remove();
 
     const widget = document.createElement('div');
     widget.className = 'chatbot-widget';
@@ -276,8 +307,8 @@
         <!-- Footer / Input Form -->
         <div class="chat-footer">
           <form class="chat-input-form" id="chatbotInputForm">
-            <input type="text" id="chatUserInput" class="chat-input-field" placeholder="Ask about services, pricing, hours..." autocomplete="off" required>
-            <button type="submit" class="chat-send-btn" aria-label="Send Message">
+            <input type="text" id="chatUserInput" class="chat-input-field" placeholder="Ask about services, pricing, reviews, team..." autocomplete="off" required>
+            <button type="button" id="chatSendBtn" class="chat-send-btn" aria-label="Send Message">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
                 <line x1="22" y1="2" x2="11" y2="13"></line>
                 <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
@@ -292,7 +323,9 @@
       <div class="chatbot-trigger-container">
         <div class="chatbot-tooltip" id="chatTooltip">Chat with AriseBot &#128075;</div>
         <button type="button" class="chatbot-trigger-btn" id="chatbotTriggerBtn" aria-label="Open AI Creative Chatbot">
-          <span id="chatTriggerIcon"><img src="assets/Logo/Logo.png" alt="AriseBot Logo" class="chat-trigger-logo"></span>
+          <span id="chatTriggerIcon">
+            <img src="assets/Logo/Logo.png" alt="AriseBot Logo" class="chat-trigger-logo">
+          </span>
           <span class="chatbot-unread-badge" id="chatUnreadBadge">1</span>
         </button>
       </div>
@@ -301,80 +334,141 @@
     document.body.appendChild(widget);
   }
 
+  // Global window functions for absolute reliability
+  let lastToggleTime = 0;
+  window.toggleAriseChatbot = function (openState) {
+    const now = Date.now();
+    if (openState === undefined && now - lastToggleTime < 250) {
+      return;
+    }
+    lastToggleTime = now;
+
+    const chatWindow = document.getElementById('chatbotWindow');
+    const unreadBadge = document.getElementById('chatUnreadBadge');
+    const triggerIcon = document.getElementById('chatTriggerIcon');
+    const tooltip = document.getElementById('chatTooltip');
+    const userInput = document.getElementById('chatUserInput');
+    if (!chatWindow) return;
+
+    const isCurrentlyOpen = chatWindow.classList.contains('open');
+    const shouldOpen = openState !== undefined ? Boolean(openState) : !isCurrentlyOpen;
+
+    if (shouldOpen) {
+      chatWindow.classList.add('open');
+      if (unreadBadge) unreadBadge.style.display = 'none';
+      if (triggerIcon) triggerIcon.innerHTML = '<span style="font-size: 1.5rem; line-height: 1; font-weight: 800; color: #0a0b10;">&times;</span>';
+      if (tooltip) tooltip.style.display = 'none';
+      setTimeout(() => userInput && userInput.focus(), 250);
+    } else {
+      chatWindow.classList.remove('open');
+      if (triggerIcon) triggerIcon.innerHTML = '<img src="assets/Logo/Logo.png" alt="AriseBot Logo" class="chat-trigger-logo">';
+    }
+  };
+
+  window.openAriseChatbot = function (initialQuery) {
+    window.toggleAriseChatbot(true);
+    if (initialQuery) {
+      setTimeout(() => {
+        appendUserMessage(initialQuery);
+        processUserQuery(initialQuery);
+      }, 300);
+    }
+  };
+
+  window.sendAriseChatMessage = function () {
+    const userInput = document.getElementById('chatUserInput');
+    if (!userInput) return;
+    const text = userInput.value.trim();
+    if (!text) return;
+
+    appendUserMessage(text);
+    userInput.value = '';
+    processUserQuery(text);
+  };
+
   function bindChatEvents() {
     const triggerBtn = document.getElementById('chatbotTriggerBtn');
     const tooltip = document.getElementById('chatTooltip');
     const closeBtn = document.getElementById('chatCloseBtn');
     const restartBtn = document.getElementById('chatRestartBtn');
-    const chatWindow = document.getElementById('chatbotWindow');
     const inputForm = document.getElementById('chatbotInputForm');
     const userInput = document.getElementById('chatUserInput');
-    const unreadBadge = document.getElementById('chatUnreadBadge');
-    const triggerIcon = document.getElementById('chatTriggerIcon');
+    const sendBtn = document.getElementById('chatSendBtn');
 
-    function toggleChat(openState) {
-      const isCurrentlyOpen = chatWindow.classList.contains('open');
-      const shouldOpen = openState !== undefined ? openState : !isCurrentlyOpen;
-
-      if (shouldOpen) {
-        chatWindow.classList.add('open');
-        if (unreadBadge) unreadBadge.style.display = 'none';
-        if (triggerIcon) triggerIcon.innerHTML = '&#10005;';
-        if (tooltip) tooltip.style.display = 'none';
-        setTimeout(() => userInput && userInput.focus(), 300);
-      } else {
-        chatWindow.classList.remove('open');
-        if (triggerIcon) triggerIcon.innerHTML = '&#9993;';
-      }
+    if (triggerBtn) {
+      triggerBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        window.toggleAriseChatbot();
+      });
     }
 
-    if (triggerBtn) triggerBtn.addEventListener('click', () => toggleChat());
-    if (tooltip) tooltip.addEventListener('click', () => toggleChat(true));
-    if (closeBtn) closeBtn.addEventListener('click', () => toggleChat(false));
+    if (tooltip) {
+      tooltip.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        window.toggleAriseChatbot(true);
+      });
+    }
 
-    if (restartBtn) {
-      restartBtn.addEventListener('click', () => {
-        const messagesContainer = document.getElementById('chatbotMessages');
-        if (messagesContainer) messagesContainer.innerHTML = '';
-        appendBotMessage(
-          `✨ **Conversation refreshed!**\n\nHow can Create and Arise help elevate your brand today?`,
-          [
-            { label: '🎨 Explore Services', callback: 'showServicesMenu' },
-            { label: '🧮 Calculate Package Cost', callback: 'scrollToEstimator' },
-            { label: '📝 Start Project Booking', callback: 'scrollToContact' }
-          ],
-          ['Graphic Design', 'Web Design', 'Digital Ads', 'Social Media', 'Pricing', 'Working Hours']
-        );
+    if (closeBtn) {
+      closeBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        window.toggleAriseChatbot(false);
       });
     }
 
     if (inputForm) {
       inputForm.addEventListener('submit', (e) => {
         e.preventDefault();
-        const text = userInput.value.trim();
-        if (!text) return;
-
-        appendUserMessage(text);
-        userInput.value = '';
-        processUserQuery(text);
+        e.stopPropagation();
+        window.sendAriseChatMessage();
       });
     }
 
-    // Expose open function globally
-    window.openAriseChatbot = function (initialQuery) {
-      toggleChat(true);
-      if (initialQuery) {
-        setTimeout(() => {
-          appendUserMessage(initialQuery);
-          processUserQuery(initialQuery);
-        }, 400);
-      }
-    };
+    if (sendBtn) {
+      sendBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        window.sendAriseChatMessage();
+      });
+    }
+
+    if (userInput) {
+      userInput.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') {
+          e.preventDefault();
+          e.stopPropagation();
+          window.sendAriseChatMessage();
+        }
+      });
+    }
+
+    if (restartBtn) {
+      restartBtn.addEventListener('click', () => {
+        const messagesContainer = document.getElementById('chatbotMessages');
+        if (messagesContainer) messagesContainer.innerHTML = '';
+        chatHistory.length = 0;
+        appendBotMessage(
+          `✨ **Conversation refreshed!**\n\nHow can Create and Arise help elevate your brand today?`,
+          [
+            { label: '🎨 Explore Services', callback: 'showServicesMenu' },
+            { label: '🧮 Calculate Package Cost', callback: 'scrollToEstimator' },
+            { label: '⭐ View Verified Reviews', callback: 'scrollToReviews' },
+            { label: '📅 Book a Discovery Call', callback: 'openBookCallModal' }
+          ],
+          ['Web Design', 'Graphic Design', 'Digital Ads', 'Social Media', 'Pricing', 'Client Reviews']
+        );
+      });
+    }
   }
 
   function appendUserMessage(text) {
     const container = document.getElementById('chatbotMessages');
     if (!container) return;
+
+    chatHistory.push({ role: 'user', text: text });
 
     const time = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
     const msgEl = document.createElement('div');
@@ -390,6 +484,8 @@
   function appendBotMessage(markdownText, actions = [], chips = []) {
     const container = document.getElementById('chatbotMessages');
     if (!container) return;
+
+    chatHistory.push({ role: 'model', text: markdownText });
 
     const time = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
     const msgEl = document.createElement('div');
@@ -423,6 +519,7 @@
     // Bind action callbacks
     msgEl.querySelectorAll('.chat-inline-btn').forEach(btn => {
       btn.addEventListener('click', (e) => {
+        e.preventDefault();
         const cbName = btn.getAttribute('data-callback');
         executeActionCallback(cbName);
       });
@@ -449,7 +546,8 @@
     `).join('');
 
     chipsContainer.querySelectorAll('.chat-suggestion-chip').forEach(btn => {
-      btn.addEventListener('click', () => {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
         const query = btn.getAttribute('data-chip');
         appendUserMessage(query);
         processUserQuery(query);
@@ -457,50 +555,76 @@
     });
   }
 
-  function processUserQuery(userQuery) {
+  async function processUserQuery(userQuery) {
     const typingIndicator = document.getElementById('chatTypingIndicator');
     if (typingIndicator) typingIndicator.style.display = 'block';
     scrollToBottom();
 
-    const normalized = userQuery.toLowerCase();
+    // 1. Attempt to query live /api/chat backend
+    let backendSuccess = false;
+    try {
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), 6000);
 
-    // Find matching knowledge item
-    let matched = null;
-    let maxMatchCount = 0;
+      const response = await fetch('/api/chat', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ message: userQuery, history: chatHistory.slice(-8) }),
+        signal: controller.signal
+      });
+      clearTimeout(timeoutId);
 
-    for (const item of botKnowledge) {
-      let count = 0;
-      for (const kw of item.keywords) {
-        if (normalized.includes(kw)) {
-          count++;
+      if (response.ok) {
+        const data = await response.json();
+        if (data.success && data.reply) {
+          backendSuccess = true;
+          if (typingIndicator) typingIndicator.style.display = 'none';
+          appendBotMessage(data.reply, data.actions || [], data.chips || []);
+          return;
         }
       }
-      if (count > maxMatchCount) {
-        maxMatchCount = count;
-        matched = item;
-      }
+    } catch (err) {
+      // Backend request failed or timed out, gracefully continue to local knowledge engine
     }
 
-    const delay = Math.min(800 + userQuery.length * 10, 1400);
+    // 2. Client-side Semantic Fallback Engine (Immediate & guaranteed)
+    if (!backendSuccess) {
+      const normalized = userQuery.toLowerCase();
+      let matched = null;
+      let maxMatchCount = 0;
 
-    setTimeout(() => {
-      if (typingIndicator) typingIndicator.style.display = 'none';
-
-      if (matched && maxMatchCount > 0) {
-        appendBotMessage(matched.response, matched.actions, matched.chips);
-      } else {
-        appendBotMessage(defaultFallback.response, defaultFallback.actions, defaultFallback.chips);
+      for (const item of botKnowledge) {
+        let count = 0;
+        for (const kw of item.keywords) {
+          if (normalized.includes(kw)) {
+            count += (kw.length > 5 ? 2 : 1);
+          }
+        }
+        if (count > maxMatchCount) {
+          maxMatchCount = count;
+          matched = item;
+        }
       }
-    }, delay);
+
+      const delay = Math.min(500 + userQuery.length * 8, 1100);
+
+      setTimeout(() => {
+        if (typingIndicator) typingIndicator.style.display = 'none';
+
+        if (matched && maxMatchCount > 0) {
+          appendBotMessage(matched.response, matched.actions, matched.chips);
+        } else {
+          appendBotMessage(defaultFallback.response, defaultFallback.actions, defaultFallback.chips);
+        }
+      }, delay);
+    }
   }
 
   function executeActionCallback(callbackName) {
-    const chatWindow = document.getElementById('chatbotWindow');
-
     switch (callbackName) {
       case 'showServicesMenu':
         appendBotMessage(
-          `Here are the 4 core services of **Create and Arise**:\n\n1. **🎨 Graphic Design & Brand Identity**\n2. **💻 Web Design & Development**\n3. **📈 Digital Ads & Campaign Marketing**\n4. **📱 Social Media Management**\n\nClick any button below to configure a quote in our Cost Estimator!`,
+          `Here are the 4 core disciplines of **Create and Arise**:\n\n1. **🎨 Graphic Design & Brand Identity** — From $450 / ₱25k\n2. **💻 Web Design & Development** — From $750 / ₱43.5k\n3. **📈 Digital Ads Marketing** — From $500 / ₱29k\n4. **📱 Social Media Management** — From $450 / ₱25k\n\nClick any button below to configure an instant package quote!`,
           [
             { label: '🎨 Estimate Graphics', callback: 'selectGraphics' },
             { label: '💻 Estimate Web Design', callback: 'selectWeb' },
@@ -511,41 +635,78 @@
         );
         break;
 
-      case 'showPricingMenu':
-        if (window.selectServiceInEstimator) {
-          window.selectServiceInEstimator('graphics');
-        }
-        break;
-
       case 'showHoursInfo':
         appendBotMessage(
-          `🕒 **Studio Operating Hours (PHT / GMT+8):**\n\n• **Monday to Friday:** 8:00 AM – 6:00 PM PHT\n• **Saturday & Sunday:** Closed (Weekend Sabbath Rest)\n\nWe provide rapid response times under 24 weekday hours for all clients worldwide! Would you like to schedule a 1-on-1 discovery call?`,
+          `🕒 **Studio Operating Hours (PHT / GMT+8):**\n\n• **Monday to Friday:** 8:00 AM – 6:00 PM PHT (Active Studio)\n• **Saturday & Sunday:** Closed for Weekend Sabbath Rest\n\nWe provide rapid response times under 24 weekday hours for all clients worldwide! Would you like to schedule a 1-on-1 discovery call?`,
           [
             { label: '📅 Schedule 1-on-1 Call', callback: 'openBookCallModal' },
             { label: '📝 Fill Project Consultation Form', callback: 'scrollToContact' },
             { label: '💬 Chat on WhatsApp', callback: 'openWhatsApp' }
           ],
-          ['Services', 'Pricing', 'Faith Foundation', 'Contact']
+          ['Services', 'Pricing', 'Client Reviews', 'Contact']
         );
         break;
 
-      case 'showPaymentMethods':
-        appendBotMessage(
-          `💳 **Accepted Payment Methods:**\n\n• **Philippine Clients:** GCash, Maya, BDO, BPI, UnionBank.\n• **International Clients:** PayPal, Stripe (Credit/Debit Card), Wise, Wire Transfer (USD, PHP, AUD, EUR, GBP).`,
-          [
-            { label: '🧮 Open Cost Estimator', callback: 'scrollToEstimator' },
-            { label: '📩 Inquire for Project Proposal', callback: 'scrollToContact' }
-          ],
-          ['Cost Estimator', 'Services', 'Working Hours', 'Contact']
-        );
+      case 'openCaseStudy2':
+        if (window.switchTab) window.switchTab('portfolio');
+        setTimeout(() => {
+          if (window.openCaseStudyById) window.openCaseStudyById(2);
+        }, 120);
         break;
 
-      case 'explainGraphics':
+      case 'openCaseStudy3':
+        if (window.switchTab) window.switchTab('portfolio');
+        setTimeout(() => {
+          if (window.openCaseStudyById) window.openCaseStudyById(3);
+        }, 120);
+        break;
+
+      case 'openCaseStudy4':
+        if (window.switchTab) window.switchTab('portfolio');
+        setTimeout(() => {
+          if (window.openCaseStudyById) window.openCaseStudyById(4);
+        }, 120);
+        break;
+
+      case 'openCaseStudy5':
+        if (window.switchTab) window.switchTab('portfolio');
+        setTimeout(() => {
+          if (window.openCaseStudyById) window.openCaseStudyById(5);
+        }, 120);
+        break;
+
+      case 'openCaseStudy7':
+        if (window.switchTab) window.switchTab('portfolio');
+        setTimeout(() => {
+          if (window.openCaseStudyById) window.openCaseStudyById(7);
+        }, 120);
+        break;
+
+      case 'openCaseStudy8':
+        if (window.switchTab) window.switchTab('portfolio');
+        setTimeout(() => {
+          if (window.openCaseStudyById) window.openCaseStudyById(8);
+        }, 120);
+        break;
+
+      case 'openCaseStudy10':
+        if (window.switchTab) window.switchTab('portfolio');
+        setTimeout(() => {
+          if (window.openCaseStudyById) window.openCaseStudyById(10);
+        }, 120);
+        break;
+
+      case 'openCaseStudy21':
+        if (window.switchTab) window.switchTab('portfolio');
+        setTimeout(() => {
+          if (window.openCaseStudyById) window.openCaseStudyById(21);
+        }, 120);
+        break;
+
       case 'selectGraphics':
         if (window.selectServiceInEstimator) window.selectServiceInEstimator('graphics');
         break;
 
-      case 'explainWeb':
       case 'selectWeb':
         if (window.selectServiceInEstimator) window.selectServiceInEstimator('web');
         break;
@@ -566,24 +727,23 @@
         if (window.switchTab) window.switchTab('contact');
         break;
 
-      case 'scrollToMission':
-        if (window.switchTab) window.switchTab('mission');
+      case 'scrollToTeam':
+        if (window.switchTab) window.switchTab('team');
         break;
 
-      case 'filterPortfolioBranding':
-        if (window.switchTab) window.switchTab('portfolio');
-        const filterBranding = document.querySelector('.filter-btn[data-filter="branding"]');
-        if (filterBranding) filterBranding.click();
+      case 'scrollToReviews':
+        if (window.switchTab) window.switchTab('team');
+        setTimeout(() => {
+          const revs = document.getElementById('testimonialsGrid');
+          if (revs) revs.scrollIntoView({ behavior: 'smooth' });
+        }, 120);
         break;
 
-      case 'filterPortfolioWeb':
+      case 'scrollToPortfolio':
         if (window.switchTab) window.switchTab('portfolio');
-        const filterWeb = document.querySelector('.filter-btn[data-filter="web"]');
-        if (filterWeb) filterWeb.click();
         break;
 
       case 'openBookCallModal':
-      case 'bookCall':
         if (window.openBookCallModal) window.openBookCallModal();
         break;
 
@@ -591,27 +751,8 @@
         window.open('https://wa.me/639274682635?text=Hello%20Create%20and%20Arise!%20I%20am%20chatting%20with%20AriseBot%20and%20would%20like%20to%20inquire%20about%20a%20project.', '_blank');
         break;
 
-      case 'openFacebook':
-        window.open('https://www.facebook.com/CreateAndArise2023', '_blank');
-        break;
-
-      case 'openMessenger':
-        window.open('https://m.me/CreateAndArise2023', '_blank');
-        break;
-
       case 'openPurposeProject':
         window.open('https://create-with-purpose.vercel.app', '_blank');
-        break;
-
-      case 'openPurposeCaseStudy':
-        if (window.switchTab) window.switchTab('portfolio');
-        setTimeout(() => {
-          if (window.openCaseStudyById) window.openCaseStudyById(7);
-        }, 150);
-        break;
-
-      case 'copyEmail':
-        if (window.copyEmail) window.copyEmail();
         break;
 
       default:
@@ -622,13 +763,16 @@
   function scrollToBottom() {
     const container = document.getElementById('chatbotMessages');
     if (container) {
-      container.scrollTop = container.scrollHeight;
+      setTimeout(() => {
+        container.scrollTop = container.scrollHeight;
+      }, 50);
     }
   }
 
   function formatMarkdown(text) {
     if (!text) return '';
     let formatted = text
+      .replace(/\[(.*?)\]\((.*?)\)/g, '<a href="$2" target="_blank" rel="noopener noreferrer" style="color: var(--color-primary); text-decoration: underline; text-underline-offset: 3px; font-weight: 600;">$1 &nearr;</a>')
       .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
       .replace(/\*(.*?)\*/g, '<em>$1</em>')
       .replace(/\n\n/g, '<br><br>')
