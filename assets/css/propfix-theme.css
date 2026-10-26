@@ -879,7 +879,7 @@
    -------------------------------------------------------------------------- */
 .pf-services-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
   gap: clamp(1.5rem, 2.5vw, 2rem);
   max-width: var(--max-width);
   margin: 0 auto;
@@ -2385,6 +2385,61 @@
 
 /* 1. Large Tablet / Laptop Navigation Breakpoint (<= 1180px) */
 @media (max-width: 1180px) {
+  /* CRITICAL: Remove backdrop-filter on header components on mobile to eliminate CSS containing block trap */
+  .site-header-master,
+  .site-header-master .top-announcement-bar,
+  .site-header-master .site-header,
+  .site-header {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+
+  .site-header-master {
+    background: rgba(8, 10, 16, 0.98) !important;
+  }
+
+  [data-theme="light"] .site-header-master {
+    background: rgba(255, 255, 255, 0.98) !important;
+  }
+
+  .site-header-master .site-header {
+    background: transparent !important;
+  }
+
+  /* True Viewport Fixed Navigation Drawer */
+  .nav-links {
+    position: fixed !important;
+    top: 0 !important;
+    bottom: 0 !important;
+    right: 0 !important;
+    left: auto !important;
+    width: min(88vw, 360px) !important;
+    height: 100vh !important;
+    height: 100dvh !important;
+    max-height: 100dvh !important;
+    z-index: 99999 !important;
+    overflow-y: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    overscroll-behavior-y: contain !important;
+    padding: max(1.25rem, env(safe-area-inset-top, 1.25rem)) 1.25rem max(2rem, env(safe-area-inset-bottom, 2rem)) !important;
+    display: flex !important;
+    flex-direction: column !important;
+  }
+
+  /* True Viewport Fixed Backdrop Overlay */
+  .mobile-nav-backdrop {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    height: 100dvh !important;
+    z-index: 99998 !important;
+    background: rgba(0, 0, 0, 0.75) !important;
+  }
+
   .nav-link-dropdown-wrap {
     width: 100% !important;
     display: block !important;
@@ -2805,4 +2860,18 @@
   color: #94a3b8;
   font-weight: 600;
   margin-top: 0.15rem;
+}
+
+/* Mobile Landscape & Short Viewports (e.g. phones in landscape) */
+@media (max-height: 520px) and (orientation: landscape) {
+  .top-announcement-bar {
+    display: none !important;
+  }
+  .site-header {
+    min-height: 54px !important;
+    height: 54px !important;
+  }
+  .site-header .navbar {
+    padding: 0.35rem 1rem !important;
+  }
 }

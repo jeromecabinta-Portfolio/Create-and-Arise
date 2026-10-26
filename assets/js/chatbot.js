@@ -358,9 +358,13 @@
       if (unreadBadge) unreadBadge.style.display = 'none';
       if (triggerIcon) triggerIcon.innerHTML = '<span style="font-size: 1.5rem; line-height: 1; font-weight: 800; color: #0a0b10;">&times;</span>';
       if (tooltip) tooltip.style.display = 'none';
+      if (window.innerWidth <= 640) {
+        document.body.classList.add('chat-open');
+      }
       setTimeout(() => userInput && userInput.focus(), 250);
     } else {
       chatWindow.classList.remove('open');
+      document.body.classList.remove('chat-open');
       if (triggerIcon) triggerIcon.innerHTML = '<img src="assets/Logo/Logo.png" alt="AriseBot Logo" class="chat-trigger-logo">';
     }
   };

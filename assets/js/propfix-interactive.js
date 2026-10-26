@@ -242,6 +242,19 @@
   window.syncHeaderHeight = syncHeaderHeight;
   window.addEventListener('resize', syncHeaderHeight, { passive: true });
   window.addEventListener('orientationchange', syncHeaderHeight, { passive: true });
+  window.addEventListener('load', syncHeaderHeight);
+  document.addEventListener('DOMContentLoaded', syncHeaderHeight);
+
+  // ResizeObserver for zero-lag responsiveness across mobile orientation & layout shifts
+  try {
+    if (typeof ResizeObserver !== 'undefined') {
+      const roHeader = new ResizeObserver(() => {
+        syncHeaderHeight();
+      });
+      const headerEl = document.getElementById('siteHeaderMaster') || document.querySelector('.site-header-master');
+      if (headerEl) roHeader.observe(headerEl);
+    }
+  } catch (err) {}
 
   // Smooth scroll helper for landing page anchors
   window.scrollToSection = function (sectionId) {

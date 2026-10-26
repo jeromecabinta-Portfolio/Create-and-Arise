@@ -220,6 +220,7 @@ window.openMobileNav = function () {
     menuToggle.setAttribute('aria-expanded', 'true');
   }
   if (backdrop) backdrop.classList.add('open');
+  document.body.classList.add('mobile-nav-locked');
 };
 
 window.closeMobileNav = function () {
@@ -232,6 +233,13 @@ window.closeMobileNav = function () {
     menuToggle.setAttribute('aria-expanded', 'false');
   }
   if (backdrop) backdrop.classList.remove('open');
+  document.body.classList.remove('mobile-nav-locked');
+
+  // Close accordion dropdown inside mobile drawer
+  const dropdownWrap = document.querySelector('.nav-link-dropdown-wrap');
+  if (dropdownWrap) dropdownWrap.classList.remove('open');
+  const triggerBtn = document.getElementById('servicesDropdownBtn');
+  if (triggerBtn) triggerBtn.setAttribute('aria-expanded', 'false');
 };
 
 window.toggleMobileNav = function () {
@@ -272,8 +280,12 @@ window.switchTab = function (tabName) {
   // Toggle active view
   allViews.forEach(v => v.classList.remove('active'));
   targetView.classList.add('active');
-  targetView.scrollTop = 0; // Reset internal scroll position
-  window.scrollTo({ top: 0, behavior: 'instant' });
+
+  // Universal Cross-Device Scroll Reset (Auto instead of non-standard 'instant')
+  window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
+  document.documentElement.scrollTop = 0;
+  document.body.scrollTop = 0;
+  targetView.scrollTop = 0;
 
   // If navigating directly to reviews, smoothly scroll to reviews anchor within the unified section
   if (isReviewsRedirect) {
@@ -317,6 +329,11 @@ window.switchTab = function (tabName) {
 
   // Close mobile navigation drawer if open
   window.closeMobileNav();
+
+  // Re-sync header height dynamically
+  if (typeof window.syncHeaderHeight === 'function') {
+    window.syncHeaderHeight();
+  }
 };
 
 function initNavigation() {
@@ -328,6 +345,18 @@ function initNavigation() {
   // Tab button click events
   navItems.forEach(btn => {
     btn.addEventListener('click', (e) => {
+      // If this is the dropdown trigger on mobile/drawer, toggle accordion without navigating away
+      if (btn.classList.contains('nav-dropdown-trigger')) {
+        const isMobile = window.innerWidth <= 1180;
+        if (isMobile) {
+          e.preventDefault();
+          e.stopPropagation();
+          if (typeof window.handleServicesDropdown === 'function') {
+            window.handleServicesDropdown(e);
+          }
+          return;
+        }
+      }
       e.preventDefault();
       const tab = btn.getAttribute('data-tab');
       if (tab) window.switchTab(tab);
@@ -364,6 +393,39 @@ function initNavigation() {
   }
 
   window.addEventListener('hashchange', handleHash);
+
+  // Handle mobile drawer DOM placement for true viewport coverage
+  function ensureNavLinksPlacement() {
+    const navLinks = document.getElementById('navLinks');
+    const backdrop = document.getElementById('mobileNavBackdrop');
+    const navbar = document.querySelector('.site-header .container.navbar');
+    if (!navLinks) return;
+
+    if (window.innerWidth <= 1180) {
+      if (navLinks.parentElement !== document.body) {
+        document.body.appendChild(navLinks);
+      }
+      if (backdrop && backdrop.parentElement !== document.body) {
+        document.body.appendChild(backdrop);
+      }
+    } else {
+      if (navbar && navLinks.parentElement !== navbar) {
+        const headerActions = navbar.querySelector('.header-actions');
+        if (headerActions) {
+          navbar.insertBefore(navLinks, headerActions);
+        } else {
+          navbar.appendChild(navLinks);
+        }
+      }
+      if (backdrop && navbar && backdrop.parentElement !== navbar) {
+        navbar.appendChild(backdrop);
+      }
+    }
+  }
+
+  ensureNavLinksPlacement();
+  window.addEventListener('resize', ensureNavLinksPlacement, { passive: true });
+  window.addEventListener('orientationchange', ensureNavLinksPlacement, { passive: true });
 
   // Initial tab activation
   handleHash();
@@ -3302,7 +3364,12 @@ function showRichSuccessModal({ title, desc, detailsHtml, whatsappMsg, mailtoSub
     mailBtn.href = `mailto:createandarise05@gmail.com?subject=${encodedSub}&body=${encodedBody}`;
   }
 
-  successModal.classList.add('active');
+  if (typeof window.openModal === 'function') {
+    window.openModal('successModal');
+  } else if (successModal) {
+    successModal.classList.add('active');
+    document.body.classList.add('modal-open');
+  }
 }
 
 function initContactForm() {
@@ -3574,7 +3641,12 @@ window.openBookCallModal = function (servicePreset) {
     checkExistingBooking();
   });
 
-  if (modal) modal.classList.add('active');
+  if (typeof window.openModal === 'function') {
+    window.openModal('bookCallModal');
+  } else if (modal) {
+    modal.classList.add('active');
+    document.body.classList.add('modal-open');
+  }
 };
 
 function switchBookingStep(step) {
@@ -4130,8 +4202,13 @@ function initBookCallModal() {
    8.8. Free Brand & Website Audit Modal Handling
    -------------------------------------------------------------------------- */
 window.openAuditModal = function () {
-  const modal = document.getElementById('auditModal');
-  if (modal) modal.classList.add('active');
+  if (typeof window.openModal === 'function') {
+    window.openModal('auditModal');
+  } else {
+    const modal = document.getElementById('auditModal');
+    if (modal) modal.classList.add('active');
+    document.body.classList.add('modal-open');
+  }
 };
 
 function initAuditModal() {
@@ -4216,6 +4293,9 @@ window.startProjectPrompt = function () {
    -------------------------------------------------------------------------- */
 function initModals() {
   window.openModal = function (modalId) {
+    if (typeof window.closeMobileNav === 'function') {
+      window.closeMobileNav();
+    }
     const modal = document.getElementById(modalId);
     if (modal) {
       modal.classList.add('active');
@@ -4243,9 +4323,12 @@ function initModals() {
     });
   });
 
-  // ESC key closes modals
+  // ESC key closes modals & mobile drawer
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') {
+      if (typeof window.closeMobileNav === 'function') {
+        window.closeMobileNav();
+      }
       document.querySelectorAll('.modal-overlay.active').forEach(m => m.classList.remove('active'));
       document.body.classList.remove('modal-open');
     }
