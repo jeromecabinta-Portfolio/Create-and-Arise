@@ -5622,6 +5622,13 @@ select {
     grid-template-columns: 1fr;
     gap: 2rem;
   }
+
+  .calc-summary-card {
+    position: static !important;
+    top: auto !important;
+    width: 100% !important;
+    margin-top: 1.5rem !important;
+  }
 }
 
 .calc-step-group {
@@ -9309,6 +9316,7 @@ textarea,
     transition: opacity 0.2s ease !important;
     touch-action: auto !important;
     padding: 1.25rem 0.75rem 2.5rem !important;
+    scroll-margin-top: calc(var(--site-header-height, 100px) + 16px) !important;
   }
 
   .tab-view.active {
@@ -9316,6 +9324,13 @@ textarea,
     transform: none !important;
     height: auto !important;
     overflow: visible !important;
+  }
+
+  #mainContactForm,
+  .contact-form-card,
+  .calculator-box,
+  .calc-summary-card {
+    scroll-margin-top: calc(var(--site-header-height, 100px) + 20px) !important;
   }
 
   /* Prevent iOS Auto-Zoom on form controls */

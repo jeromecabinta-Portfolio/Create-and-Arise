@@ -3348,13 +3348,13 @@
               <!-- Direct Studio Recipient Badge -->
               <div class="calc-recipient-badge"
                 style="display: flex; align-items: center; justify-content: center; gap: 0.45rem; font-size: 0.8rem; color: #10b981; background: rgba(16, 185, 129, 0.08); border: 1px solid rgba(16, 185, 129, 0.3); border-radius: 8px; padding: 0.5rem 0.75rem; margin-bottom: 0.85rem; text-align: center;">
-                <span>📬 Inquiries received at: <strong
-                    style="color: #34d399;">createandarise05@gmail.com</strong></span>
+                <span>📬 Inquiries received at: <a href="mailto:createandarise05@gmail.com"
+                    style="color: #34d399; font-weight: 700; text-decoration: underline;">createandarise05@gmail.com</a></span>
               </div>
 
               <!-- Primary CTA: Claim & Email Custom Package Directly -->
-              <button type="button" class="btn btn-primary" id="applyEstimateBtn"
-                style="width: 100%; padding: 0.95rem; font-weight: 700;">
+              <button type="button" class="btn btn-primary" id="applyEstimateBtn" onclick="openEstimateModal(); return false;"
+                style="width: 100%; padding: 0.95rem; font-weight: 700; cursor: pointer;">
                 <span>Claim &amp; Email Custom Package</span>
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
                   <path d="M5 12h14M12 5l7 7-7 7" />
@@ -3362,10 +3362,24 @@
               </button>
 
               <!-- Secondary Option: Or Open in Full Contact Form -->
-              <button type="button" class="btn btn-secondary btn-sm" id="btnTransferToContactDirect"
-                style="width: 100%; margin-top: 0.5rem; font-size: 0.82rem;">
+              <button type="button" class="btn btn-secondary btn-sm" id="btnTransferToContactDirect" onclick="transferEstimateToContact(); return false;"
+                style="width: 100%; margin-top: 0.5rem; font-size: 0.82rem; cursor: pointer;">
                 <span>Or Customize in Full Contact Form &rarr;</span>
               </button>
+
+              <!-- One-Tap Mobile Direct Fast Tracks -->
+              <div style="display: flex; gap: 0.5rem; margin-top: 0.65rem;">
+                <a id="calcQuickWaBtn" href="https://wa.me/639274682635?text=Hi%20Create%20and%20Arise!%20I'd%20like%20to%20inquire%20about%20your%20services."
+                  target="_blank" rel="noopener" class="btn btn-outline btn-sm"
+                  style="flex: 1; justify-content: center; font-size: 0.78rem; border-color: rgba(16, 185, 129, 0.4); color: #10b981; padding: 0.45rem;">
+                  <span>💬 WhatsApp Estimate</span>
+                </a>
+                <a id="calcQuickMailBtn" href="mailto:createandarise05@gmail.com?subject=Project%20Cost%20Estimate%20Inquiry"
+                  class="btn btn-outline btn-sm"
+                  style="flex: 1; justify-content: center; font-size: 0.78rem; border-color: var(--border-subtle); color: var(--text-main); padding: 0.45rem;">
+                  <span>✉️ Direct Email</span>
+                </a>
+              </div>
 
               <p
                 style="font-size: 0.75rem; color: var(--text-subtle); text-align: center; margin-top: 0.75rem; line-height: 1.4;">
@@ -4340,7 +4354,7 @@
           <div
             style="display: flex; justify-content: space-between; align-items: center; margin-top: 0.85rem; font-size: 0.78rem; color: var(--text-subtle);">
             <span>🔒 100% Privacy &bull; Zero Obligation</span>
-            <a href="#" id="modalTransferLink" style="color: var(--color-primary); text-decoration: underline;">
+            <a href="#" id="modalTransferLink" onclick="transferEstimateToContact(); return false;" style="color: var(--color-primary); text-decoration: underline; cursor: pointer;">
               Or fill out detailed Contact Form &rarr;
             </a>
           </div>

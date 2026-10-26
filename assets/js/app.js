@@ -80,6 +80,7 @@ function syncFormActions() {
   if (!endpoint) return;
   const forms = [
     document.getElementById('mainContactForm'),
+    document.getElementById('estimateInquiryForm'),
     document.getElementById('bookCallForm'),
     document.getElementById('auditForm'),
     document.getElementById('feedbackForm')
@@ -2813,14 +2814,36 @@ function initCostCalculator() {
         `;
       }
     }
+
+    // Update One-Tap Mobile Direct Fast Track Buttons
+    const quickWa = document.getElementById('calcQuickWaBtn');
+    const quickMail = document.getElementById('calcQuickMailBtn');
+    const serviceNames = selectedItems.map(s => s.name).join(', ') || 'Selected Creative Services';
+    const finalAmountStr = estAmountEl ? estAmountEl.textContent : '$1,200';
+
+    if (quickWa) {
+      quickWa.href = `https://wa.me/639274682635?text=${encodeURIComponent(`Hi Jerome & Create and Arise! I configured a custom package with your Cost Estimator: ${serviceNames} (~${finalAmountStr}, ${timelineInfo.label}). I would love to connect!`)}`;
+    }
+    if (quickMail) {
+      quickMail.href = `mailto:createandarise05@gmail.com?subject=${encodeURIComponent(`[Estimate Inquiry] ${serviceNames} (${finalAmountStr})`)}&body=${encodeURIComponent(`Hi Jerome & Create and Arise Team,\n\nI just configured an estimate using your Cost Estimator:\n• Services: ${serviceNames}\n• Timeline Pacing: ${timelineInfo.label}\n• Estimated Investment: ~${finalAmountStr} (${rateInfo.suffix})\n\nPlease email my formal proposal and let's get started!\n\nBest regards,`)}`;
+    }
   };
 
-  serviceCheckboxes.forEach(cb => cb.addEventListener('change', window.runCalculator));
-  timelineRadios.forEach(r => r.addEventListener('change', window.runCalculator));
-  if (currencySelect) currencySelect.addEventListener('change', window.runCalculator);
+  serviceCheckboxes.forEach(cb => {
+    cb.addEventListener('change', window.runCalculator);
+    cb.addEventListener('input', window.runCalculator);
+  });
+  timelineRadios.forEach(r => {
+    r.addEventListener('change', window.runCalculator);
+    r.addEventListener('input', window.runCalculator);
+  });
+  if (currencySelect) {
+    currencySelect.addEventListener('change', window.runCalculator);
+    currencySelect.addEventListener('input', window.runCalculator);
+  }
 
-  // Helper to extract current calculated scope
-  function getCalculatedScope() {
+  // Global helper to extract current calculated scope
+  window.getCalculatedScope = function () {
     const selectedServices = Array.from(serviceCheckboxes).filter(cb => cb.checked).map(cb => serviceBasePrices[cb.value]?.name).filter(Boolean);
     let selectedTimeline = 'standard';
     timelineRadios.forEach(r => {
@@ -2833,16 +2856,56 @@ function initCostCalculator() {
     return {
       services: selectedServices,
       timeline: timelineInfo,
-      currency: rateInfo,
+      currency: { ...rateInfo, code: curr },
       amountText: amountText
     };
-  }
+  };
 
-  // Helper to transfer estimate into main contact form
-  function transferEstimateToContact() {
-    const scope = getCalculatedScope();
-    if (scope.services.length === 0) {
-      showToast('Please select at least one service in the calculator.');
+  // Global handler to open estimate modal with configured scope
+  window.openEstimateModal = function () {
+    const scope = window.getCalculatedScope();
+    if (!scope.services || scope.services.length === 0) {
+      if (typeof showToast === 'function') {
+        showToast('Please select at least one service in the calculator.');
+      }
+      return;
+    }
+
+    const modalAmount = document.getElementById('modalEstAmount');
+    const modalServices = document.getElementById('modalEstServices');
+    const modalPacing = document.getElementById('modalEstPacing');
+    const notesField = document.getElementById('estClientNotes');
+    const subjectField = document.getElementById('estimateFormSubject');
+
+    if (modalAmount) modalAmount.textContent = scope.amountText;
+    if (modalServices) modalServices.textContent = scope.services.join(', ');
+    if (modalPacing) modalPacing.textContent = scope.timeline.label;
+    if (subjectField) {
+      subjectField.value = `🧮 [COST ESTIMATE] Custom Package Inquiry: ${scope.services.join(', ')} (~${scope.amountText})`;
+    }
+
+    if (notesField && (!notesField.value || notesField.dataset.userEdited !== 'true')) {
+      notesField.value = `I configured this custom package using your Cost Estimator:\n• Services: ${scope.services.join(', ')}\n• Delivery Pacing: ${scope.timeline.label}\n• Estimated Investment: ~${scope.amountText} (${scope.currency.suffix || 'USD'})\n\nPlease email my itemized proposal and let's discuss details!`;
+    }
+
+    if (typeof window.openModal === 'function') {
+      window.openModal('estimateModal');
+    } else {
+      const m = document.getElementById('estimateModal');
+      if (m) {
+        m.classList.add('active');
+        document.body.classList.add('modal-open');
+      }
+    }
+  };
+
+  // Global helper to transfer estimate into main contact form
+  window.transferEstimateToContact = function () {
+    const scope = window.getCalculatedScope();
+    if (!scope.services || scope.services.length === 0) {
+      if (typeof showToast === 'function') {
+        showToast('Please select at least one service in the calculator.');
+      }
       return;
     }
 
@@ -2850,7 +2913,7 @@ function initCostCalculator() {
     const contactBudget = document.getElementById('contactBudget');
 
     if (contactMsg) {
-      contactMsg.value = `Hello Jerome & Create and Arise Creative Team!\n\nI configured a custom package with your Cost Estimator:\n• Services: ${scope.services.join(', ')}\n• Delivery Pacing: ${scope.timeline.label}\n• Estimated Package: ~${scope.amountText} (${scope.currency.suffix})\n\nI would love to receive your formal proposal and schedule a discovery call!`;
+      contactMsg.value = `Hello Jerome & Create and Arise Creative Team!\n\nI configured a custom package with your Cost Estimator:\n• Services: ${scope.services.join(', ')}\n• Delivery Pacing: ${scope.timeline.label}\n• Estimated Package: ~${scope.amountText} (${scope.currency.suffix || 'USD'})\n\nI would love to receive your formal proposal and schedule a discovery call!`;
     }
 
     // Auto-match budget select in contact form
@@ -2858,8 +2921,11 @@ function initCostCalculator() {
       const numMatch = scope.amountText.replace(/[^0-9]/g, '');
       const numVal = parseInt(numMatch, 10) || 1200;
       let approxUsd = numVal;
-      if (scope.currency.code === 'PHP') approxUsd = Math.round(numVal / 58);
-      else if (scope.currency.code === 'AUD') approxUsd = Math.round(numVal / 1.55);
+      const currCode = scope.currency.code || scope.currency.suffix || 'USD';
+      if (currCode === 'PHP') approxUsd = Math.round(numVal / 58);
+      else if (currCode === 'AUD') approxUsd = Math.round(numVal / 1.55);
+      else if (currCode === 'EUR') approxUsd = Math.round(numVal / 0.92);
+      else if (currCode === 'GBP') approxUsd = Math.round(numVal / 0.78);
 
       if (approxUsd <= 500) contactBudget.value = 'under500';
       else if (approxUsd <= 1500) contactBudget.value = '500-1500';
@@ -2872,69 +2938,47 @@ function initCostCalculator() {
       chk.checked = scope.services.some(s => s.toLowerCase().includes(chk.value.toLowerCase()));
     });
 
-    if (window.closeModal) window.closeModal('estimateModal');
-    if (window.switchTab) window.switchTab('contact');
+    if (typeof window.closeModal === 'function') window.closeModal('estimateModal');
+    if (typeof window.switchTab === 'function') window.switchTab('contact');
 
     setTimeout(() => {
       const contactForm = document.getElementById('mainContactForm');
-      if (contactForm) contactForm.scrollIntoView({ behavior: 'smooth' });
-    }, 150);
+      if (contactForm) {
+        const headerOffset = 100;
+        const formPosition = contactForm.getBoundingClientRect().top + window.pageYOffset;
+        window.scrollTo({
+          top: Math.max(0, formPosition - headerOffset),
+          behavior: 'smooth'
+        });
+      }
+    }, 180);
 
-    showToast('✨ Custom package transferred to contact form!');
-  }
+    if (typeof showToast === 'function') {
+      showToast('✨ Custom package transferred to contact form!');
+    }
+  };
 
-  // 1. Primary Button: Opens the dedicated Estimate Modal
+  // Bind event listeners for safety and fallback
   if (applyEstimateBtn) {
     applyEstimateBtn.addEventListener('click', (e) => {
       e.preventDefault();
-      const scope = getCalculatedScope();
-      if (scope.services.length === 0) {
-        showToast('Please select at least one service in the calculator.');
-        return;
-      }
-
-      // Update modal display elements
-      const modalAmount = document.getElementById('modalEstAmount');
-      const modalServices = document.getElementById('modalEstServices');
-      const modalPacing = document.getElementById('modalEstPacing');
-      const notesField = document.getElementById('estClientNotes');
-      const subjectField = document.getElementById('estimateFormSubject');
-
-      if (modalAmount) modalAmount.textContent = scope.amountText;
-      if (modalServices) modalServices.textContent = scope.services.join(', ');
-      if (modalPacing) modalPacing.textContent = scope.timeline.label;
-      if (subjectField) {
-        subjectField.value = `🧮 [COST ESTIMATE] Custom Package Inquiry: ${scope.services.join(', ')} (~${scope.amountText})`;
-      }
-
-      if (notesField && (!notesField.value || notesField.dataset.userEdited !== 'true')) {
-        notesField.value = `I configured this custom package using your Cost Estimator:\n• Services: ${scope.services.join(', ')}\n• Delivery Pacing: ${scope.timeline.label}\n• Estimated Investment: ~${scope.amountText} (${scope.currency.suffix})\n\nPlease email my itemized proposal and let's discuss details!`;
-      }
-
-      if (window.openModal) {
-        window.openModal('estimateModal');
-      } else {
-        const m = document.getElementById('estimateModal');
-        if (m) m.classList.add('active');
-      }
+      window.openEstimateModal();
     });
   }
 
-  // 2. Secondary Button: Or Open in Full Contact Form
   const btnTransferDirect = document.getElementById('btnTransferToContactDirect');
   if (btnTransferDirect) {
     btnTransferDirect.addEventListener('click', (e) => {
       e.preventDefault();
-      transferEstimateToContact();
+      window.transferEstimateToContact();
     });
   }
 
-  // Modal link: Or fill out detailed contact form
   const modalTransferLink = document.getElementById('modalTransferLink');
   if (modalTransferLink) {
     modalTransferLink.addEventListener('click', (e) => {
       e.preventDefault();
-      transferEstimateToContact();
+      window.transferEstimateToContact();
     });
   }
 
