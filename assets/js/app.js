@@ -126,7 +126,7 @@ function initLiveBusinessHours() {
     const timeFormatted = phtDate.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', second: '2-digit', hour12: true });
 
     if (clockElement) {
-      clockElement.textContent = `PHT (GMT+8): ${timeFormatted}`;
+      clockElement.innerHTML = `<span class="hide-mobile">PHT (GMT+8): </span><span class="show-mobile-inline">PHT: </span>${timeFormatted}`;
     }
 
     // Business Schedule: Monday (1) to Friday (5), 8:00 AM to 6:00 PM (18:00)
@@ -137,17 +137,17 @@ function initLiveBusinessHours() {
       if (isWeekday && isWorkingHour) {
         statusBadge.innerHTML = `
           <span class="status-dot online"></span>
-          <span><strong>Open Now</strong> &bull; Creative Studio Active (Mon–Fri 8AM–6PM PHT)</span>
+          <span><strong>Open Now</strong> <span class="hide-mobile">&bull; Creative Studio Active</span> (Mon&ndash;Fri 8AM&ndash;6PM PHT)</span>
         `;
       } else if (!isWeekday) {
         statusBadge.innerHTML = `
           <span class="status-dot offline"></span>
-          <span><strong>Studio Resting</strong> &bull; Weekend Sabbath/Rest &bull; Opens Monday 8:00 AM PHT</span>
+          <span><strong>Studio Resting</strong> &bull; Weekend Rest <span class="hide-mobile">&bull; Opens Monday 8:00 AM PHT</span></span>
         `;
       } else {
         statusBadge.innerHTML = `
           <span class="status-dot offline"></span>
-          <span><strong>Closed for the Evening</strong> &bull; Opens tomorrow at 8:00 AM PHT</span>
+          <span><strong>Closed for Evening</strong> &bull; Opens tomorrow 8:00 AM PHT</span>
         `;
       }
     }

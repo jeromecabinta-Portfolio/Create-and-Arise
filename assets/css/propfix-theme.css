@@ -2525,12 +2525,116 @@
 
 /* 3. Small Tablet & Phablet (<= 768px) */
 @media (max-width: 768px) {
+  .top-announcement-bar {
+    font-size: 0.74rem !important;
+    padding: 0.35rem 0.75rem !important;
+  }
+
+  .top-bar-content {
+    justify-content: center !important;
+    text-align: center !important;
+    gap: 0.25rem 0.75rem !important;
+  }
+
+  .business-status-chip {
+    font-size: 0.74rem !important;
+    justify-content: center !important;
+    text-align: center !important;
+  }
+
+  .top-bar-info {
+    font-size: 0.72rem !important;
+    text-align: center !important;
+  }
+
   .site-header .navbar {
-    padding: 0.65rem 1rem !important;
+    padding: 0.5rem 1rem !important;
+    gap: 0.75rem !important;
+  }
+
+  .brand-logo {
+    gap: 0.65rem !important;
+  }
+
+  .brand-logo-img-box {
+    width: 38px !important;
+    height: 38px !important;
+  }
+
+  .brand-text .brand-name {
+    font-size: 1.05rem !important;
+  }
+
+  .brand-text .brand-tagline {
+    display: none !important;
+  }
+
+  .header-actions {
+    gap: 0.45rem !important;
+  }
+
+  .mobile-menu-toggle {
+    width: 40px !important;
+    height: 40px !important;
+    min-width: 40px !important;
+    min-height: 40px !important;
+  }
+
+  .pf-hero-section {
+    padding: 1.5rem 0 2.25rem !important;
+  }
+
+  .pf-hero-container {
+    padding: 0 1rem !important;
+    gap: 2rem !important;
+  }
+
+  .pf-hero-left {
+    gap: 0.85rem !important;
+  }
+
+  .pf-eyebrow {
+    font-size: 0.76rem !important;
+    margin-bottom: 0.15rem !important;
   }
 
   .pf-hero-title {
-    font-size: clamp(2rem, 5.5vw, 2.75rem) !important;
+    font-size: clamp(1.6rem, 6.8vw, 2.15rem) !important;
+    line-height: 1.2 !important;
+    letter-spacing: -0.02em !important;
+  }
+
+  .pf-hero-title br.hide-mobile,
+  .pf-hero-title br {
+    display: none !important;
+  }
+
+  .pf-hero-title .pf-accent-word {
+    display: block !important;
+    margin-top: 0.15rem !important;
+  }
+
+  .pf-hero-desc {
+    font-size: 0.94rem !important;
+    line-height: 1.55 !important;
+    margin: 0 !important;
+    max-width: 100% !important;
+  }
+
+  .pf-checklist {
+    flex-direction: column !important;
+    gap: 0.45rem !important;
+    margin: 0.2rem 0 0.5rem !important;
+  }
+
+  .pf-check-item {
+    font-size: 0.88rem !important;
+    gap: 0.45rem !important;
+  }
+
+  .pf-hero-actions {
+    gap: 0.75rem !important;
+    margin-top: 0.35rem !important;
   }
 
   .pf-about-grid {
@@ -2578,6 +2682,27 @@
 
 /* 4. Standard Mobile (<= 580px) */
 @media (max-width: 580px) {
+  .pf-hero-title {
+    font-size: clamp(1.45rem, 6.5vw, 1.85rem) !important;
+    line-height: 1.22 !important;
+  }
+
+  .pf-hero-actions {
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 0.55rem !important;
+  }
+
+  .pf-hero-actions .btn {
+    width: 100% !important;
+    justify-content: center !important;
+  }
+
+  .pf-hero-actions a {
+    text-align: center !important;
+    padding: 0.35rem 0 !important;
+  }
+
   .pf-services-grid {
     grid-template-columns: 1fr !important;
     gap: 1.25rem !important;
@@ -2684,7 +2809,8 @@
   }
 
   .pf-hero-title {
-    font-size: 1.75rem !important;
+    font-size: 1.42rem !important;
+    line-height: 1.25 !important;
   }
 
   .pf-hero-desc {
@@ -2862,16 +2988,32 @@
   margin-top: 0.15rem;
 }
 
-/* Mobile Landscape & Short Viewports (e.g. phones in landscape) */
+/* Mobile Landscape & Short Viewports (e.g. phones in landscape on iOS & Android) */
 @media (max-height: 520px) and (orientation: landscape) {
   .top-announcement-bar {
     display: none !important;
   }
   .site-header {
-    min-height: 54px !important;
-    height: 54px !important;
+    min-height: 52px !important;
+    height: 52px !important;
   }
   .site-header .navbar {
-    padding: 0.35rem 1rem !important;
+    padding: 0.25rem max(1rem, env(safe-area-inset-right)) 0.25rem max(1rem, env(safe-area-inset-left)) !important;
+  }
+  .tab-view {
+    padding-left: max(1rem, env(safe-area-inset-left)) !important;
+    padding-right: max(1rem, env(safe-area-inset-right)) !important;
+    padding-bottom: max(2rem, env(safe-area-inset-bottom)) !important;
+  }
+  .pf-hero-container {
+    padding-left: max(1rem, env(safe-area-inset-left)) !important;
+    padding-right: max(1rem, env(safe-area-inset-right)) !important;
+  }
+  .modal-overlay {
+    padding-left: max(1rem, env(safe-area-inset-left)) !important;
+    padding-right: max(1rem, env(safe-area-inset-right)) !important;
+  }
+  .modal-card {
+    max-height: calc(100dvh - 1rem) !important;
   }
 }

@@ -479,9 +479,20 @@ select {
   color: var(--color-primary) !important;
 }
 
-@media (max-width: 680px) {
-  .top-bar-info .hide-mobile {
-    display: none;
+.show-mobile-inline,
+.show-mobile-block {
+  display: none !important;
+}
+
+@media (max-width: 768px) {
+  .hide-mobile {
+    display: none !important;
+  }
+  .show-mobile-inline {
+    display: inline !important;
+  }
+  .show-mobile-block {
+    display: block !important;
   }
 }
 
@@ -6762,14 +6773,9 @@ textarea.form-control {
   }
 }
 
-@media (max-width: 600px) {
-  .chatbot-widget {
-    bottom: 1.25rem;
-    right: 1.25rem;
-  }
-
+@media (hover: none), (max-width: 768px), (max-height: 520px) {
   .chatbot-tooltip {
-    display: none;
+    display: none !important;
   }
 }
 
@@ -9115,6 +9121,14 @@ body.mobile-nav-locked,
 body.chat-open {
   overflow: hidden !important;
   touch-action: none !important;
+  -webkit-overflow-scrolling: auto !important;
+}
+
+.modal-overlay,
+.modal-card,
+.nav-links,
+.chatbot-window {
+  touch-action: pan-y !important;
 }
 
 body.modal-open .chatbot-widget,
@@ -9381,18 +9395,31 @@ textarea,
 
   /* Floating Chatbot */
   .chatbot-widget {
-    bottom: max(1rem, env(safe-area-inset-bottom, 1rem)) !important;
-    right: max(1rem, env(safe-area-inset-right, 1rem)) !important;
+    bottom: max(0.85rem, env(safe-area-inset-bottom, 0.85rem)) !important;
+    right: max(0.85rem, env(safe-area-inset-right, 0.85rem)) !important;
     z-index: 9999 !important;
   }
 
   .chatbot-trigger-btn {
-    width: 52px !important;
-    height: 52px !important;
-    min-width: 52px !important;
-    min-height: 52px !important;
-    font-size: 1.35rem !important;
-    box-shadow: 0 6px 20px rgba(245, 158, 11, 0.45) !important;
+    width: 48px !important;
+    height: 48px !important;
+    min-width: 48px !important;
+    min-height: 48px !important;
+    font-size: 1.2rem !important;
+    box-shadow: 0 4px 18px rgba(245, 158, 11, 0.4) !important;
+  }
+
+  .chatbot-trigger-btn .chat-trigger-logo {
+    width: 26px !important;
+    height: 26px !important;
+  }
+
+  .chatbot-unread-badge {
+    width: 18px !important;
+    height: 18px !important;
+    font-size: 0.65rem !important;
+    top: -2px !important;
+    right: -2px !important;
   }
 
   .chatbot-window {
@@ -9414,16 +9441,27 @@ textarea,
 
   /* Modal Dialogs */
   .modal-overlay {
-    padding: 0.75rem 0.5rem !important;
+    padding: max(0.75rem, env(safe-area-inset-top, 0.75rem)) max(0.5rem, env(safe-area-inset-right, 0.5rem)) max(0.75rem, env(safe-area-inset-bottom, 0.75rem)) max(0.5rem, env(safe-area-inset-left, 0.5rem)) !important;
     z-index: 100000 !important;
   }
 
   .modal-card {
     width: 100% !important;
     max-width: 100% !important;
-    max-height: 94vh !important;
+    max-height: calc(100dvh - 1.5rem) !important;
+    max-height: calc(100vh - 1.5rem) !important;
     padding: 1.25rem 0.95rem !important;
     border-radius: var(--radius-md) !important;
+    -webkit-overflow-scrolling: touch !important;
+    overscroll-behavior-y: contain !important;
+    touch-action: pan-y !important;
+  }
+
+  .modal-close-btn {
+    min-width: 44px !important;
+    min-height: 44px !important;
+    top: 0.85rem !important;
+    right: 0.85rem !important;
   }
 
   /* Booking modal scheduler */
@@ -9432,14 +9470,23 @@ textarea,
     gap: 0.85rem !important;
   }
 
-  /* Input fields prevention of iOS auto-zoom */
+  /* Universal iOS & Android Form Controls (Auto-Zoom Prevention & Appearance Reset) */
+  input,
   input[type="text"],
   input[type="email"],
   input[type="tel"],
   input[type="url"],
+  input[type="number"],
+  input[type="search"],
+  input[type="date"],
   select,
-  textarea {
+  textarea,
+  .chat-input-field {
     font-size: 16px !important;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border-radius: var(--radius-sm);
   }
 }
 
