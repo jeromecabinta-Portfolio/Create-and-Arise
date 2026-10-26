@@ -3354,32 +3354,12 @@
 
               <!-- Primary CTA: Claim & Email Custom Package Directly -->
               <button type="button" class="btn btn-primary" id="applyEstimateBtn" onclick="openEstimateModal(); return false;"
-                style="width: 100%; padding: 0.95rem; font-weight: 700; cursor: pointer;">
+                style="width: 100%; padding: 1rem; font-size: 1.05rem; font-weight: 800; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 0.5rem;">
                 <span>Claim &amp; Email Custom Package</span>
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
                   <path d="M5 12h14M12 5l7 7-7 7" />
                 </svg>
               </button>
-
-              <!-- Secondary Option: Or Open in Full Contact Form -->
-              <button type="button" class="btn btn-secondary btn-sm" id="btnTransferToContactDirect" onclick="transferEstimateToContact(); return false;"
-                style="width: 100%; margin-top: 0.5rem; font-size: 0.82rem; cursor: pointer;">
-                <span>Or Customize in Full Contact Form &rarr;</span>
-              </button>
-
-              <!-- One-Tap Mobile Direct Fast Tracks -->
-              <div style="display: flex; gap: 0.5rem; margin-top: 0.65rem;">
-                <a id="calcQuickWaBtn" href="https://wa.me/639274682635?text=Hi%20Create%20and%20Arise!%20I'd%20like%20to%20inquire%20about%20your%20services."
-                  target="_blank" rel="noopener" class="btn btn-outline btn-sm"
-                  style="flex: 1; justify-content: center; font-size: 0.78rem; border-color: rgba(16, 185, 129, 0.4); color: #10b981; padding: 0.45rem;">
-                  <span>💬 WhatsApp Estimate</span>
-                </a>
-                <a id="calcQuickMailBtn" href="mailto:createandarise05@gmail.com?subject=Project%20Cost%20Estimate%20Inquiry"
-                  class="btn btn-outline btn-sm"
-                  style="flex: 1; justify-content: center; font-size: 0.78rem; border-color: var(--border-subtle); color: var(--text-main); padding: 0.45rem;">
-                  <span>✉️ Direct Email</span>
-                </a>
-              </div>
 
               <p
                 style="font-size: 0.75rem; color: var(--text-subtle); text-align: center; margin-top: 0.75rem; line-height: 1.4;">
@@ -4256,8 +4236,10 @@
         </form>
       </div>
     </div>
-    <!-- Interactive Cost Estimator Claim & Send Modal -->
-    <div class="modal-overlay" id="estimateModal" role="dialog" aria-modal="true" aria-labelledby="estimateModalTitle">
+  </div>
+
+  <!-- Interactive Cost Estimator Claim & Send Modal -->
+  <div class="modal-overlay" id="estimateModal" role="dialog" aria-modal="true" aria-labelledby="estimateModalTitle">
       <div class="modal-card estimate-modal-card" style="max-width: 580px;">
         <button class="modal-close-btn" onclick="closeModal('estimateModal')" aria-label="Close Modal">&times;</button>
 
@@ -4343,13 +4325,25 @@
           </div>
 
           <button type="submit" id="btnSubmitEstimateInquiry" class="btn btn-primary"
-            style="width: 100%; padding: 1rem; font-size: 1rem; font-weight: 700;">
+            style="width: 100%; padding: 0.9rem 0.75rem; font-size: clamp(0.88rem, 3.8vw, 1.02rem); font-weight: 700; display: flex; align-items: center; justify-content: center; gap: 0.5rem; text-align: center; white-space: normal; line-height: 1.35;">
             <span>Send Package Inquiry to createandarise05@gmail.com</span>
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="flex-shrink: 0;">
               <line x1="22" y1="2" x2="11" y2="13"></line>
               <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
             </svg>
           </button>
+
+          <!-- Alternative Quick 1-Tap Pathways -->
+          <div style="display: flex; gap: 0.6rem; margin-top: 0.75rem;">
+            <a id="modalWaQuickBtn" href="https://wa.me/639274682635" target="_blank" rel="noopener" class="btn btn-outline btn-sm"
+              style="flex: 1; justify-content: center; font-size: 0.8rem; border-color: rgba(16, 185, 129, 0.4); color: #10b981; padding: 0.45rem;">
+              <span>💬 WhatsApp Quote</span>
+            </a>
+            <a id="modalMailQuickBtn" href="mailto:createandarise05@gmail.com" class="btn btn-outline btn-sm"
+              style="flex: 1; justify-content: center; font-size: 0.8rem; border-color: var(--border-subtle); color: var(--text-main); padding: 0.45rem;">
+              <span>✉️ Send via Mail App</span>
+            </a>
+          </div>
 
           <div
             style="display: flex; justify-content: space-between; align-items: center; margin-top: 0.85rem; font-size: 0.78rem; color: var(--text-subtle);">

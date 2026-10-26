@@ -28,6 +28,118 @@ window.CAA_FORM_CONFIG = {
   }
 };
 
+window.openModal = function (modalId) {
+  if (typeof window.closeMobileNav === 'function') {
+    window.closeMobileNav();
+  }
+  const modal = document.getElementById(modalId);
+  if (modal) {
+    modal.classList.add('active');
+    document.body.classList.add('modal-open');
+    const card = modal.querySelector('.modal-card');
+    if (card) card.scrollTop = 0;
+  }
+};
+
+window.closeModal = function (modalId) {
+  const modal = document.getElementById(modalId);
+  if (modal) modal.classList.remove('active');
+  if (!document.querySelector('.modal-overlay.active')) {
+    document.body.classList.remove('modal-open');
+  }
+};
+
+window.openEstimateModal = function () {
+  let scope = null;
+  if (typeof window.getCalculatedScope === 'function') {
+    try {
+      scope = window.getCalculatedScope();
+    } catch (e) {
+      console.warn('Could not get calculated scope via helper:', e);
+    }
+  }
+
+  // Fallback if calculator scope is not ready or has no services selected
+  if (!scope || !scope.services || scope.services.length === 0) {
+    const serviceNamesMap = {
+      graphics: 'Graphic Design & Brand Identity',
+      web: 'Web Design & Responsive Development',
+      ads: 'Digital Ads & Campaign Marketing',
+      social: 'Social Media Content Management'
+    };
+    const checkedBoxes = Array.from(document.querySelectorAll('.calc-service-checkbox:checked'));
+    const services = checkedBoxes.map(cb => serviceNamesMap[cb.value] || cb.value);
+    const finalServices = services.length > 0 ? services : ['Graphic Design & Brand Identity', 'Web Design & Responsive Development'];
+
+    let selectedTimeline = 'Standard Delivery (2–3 Weeks)';
+    const checkedRadio = document.querySelector('input[name="calc_timeline"]:checked');
+    if (checkedRadio) {
+      if (checkedRadio.value === 'express') selectedTimeline = 'Express Priority (7 Days)';
+      else if (checkedRadio.value === 'retainer') selectedTimeline = 'Monthly Creative Retainer (-10%)';
+    }
+
+    const estAmountEl = document.getElementById('estAmount');
+    const amountText = (estAmountEl && estAmountEl.textContent.trim()) ? estAmountEl.textContent.trim() : '$1,200';
+    const currSelect = document.getElementById('calcCurrency');
+    const currCode = currSelect ? currSelect.value : 'USD';
+
+    scope = {
+      services: finalServices,
+      timeline: { label: selectedTimeline },
+      currency: { suffix: currCode, code: currCode },
+      amountText: amountText
+    };
+  }
+
+  const modalAmount = document.getElementById('modalEstAmount');
+  const modalServices = document.getElementById('modalEstServices');
+  const modalPacing = document.getElementById('modalEstPacing');
+  const notesField = document.getElementById('estClientNotes');
+  const subjectField = document.getElementById('estimateFormSubject');
+  const modalWa = document.getElementById('modalWaQuickBtn');
+  const modalMail = document.getElementById('modalMailQuickBtn');
+
+  if (modalAmount) modalAmount.textContent = scope.amountText;
+  if (modalServices) modalServices.textContent = scope.services.join(', ');
+  if (modalPacing) modalPacing.textContent = scope.timeline.label;
+  if (subjectField) {
+    subjectField.value = `🧮 [COST ESTIMATE] Custom Package Inquiry: ${scope.services.join(', ')} (~${scope.amountText})`;
+  }
+
+  if (notesField && (!notesField.value || notesField.dataset.userEdited !== 'true')) {
+    notesField.value = `I configured this custom package using your Cost Estimator:\n• Services: ${scope.services.join(', ')}\n• Delivery Pacing: ${scope.timeline.label}\n• Estimated Investment: ~${scope.amountText} (${scope.currency.suffix || 'USD'})\n\nPlease email my itemized proposal and let's discuss details!`;
+  }
+
+  if (modalWa) {
+    modalWa.href = `https://wa.me/639274682635?text=${encodeURIComponent(`Hi Jerome & Create and Arise! I configured a custom package with your Cost Estimator: ${scope.services.join(', ')} (~${scope.amountText}, ${scope.timeline.label}). I would love to connect!`)}`;
+  }
+  if (modalMail) {
+    modalMail.href = `mailto:createandarise05@gmail.com?subject=${encodeURIComponent(`[Estimate Inquiry] ${scope.services.join(', ')} (${scope.amountText})`)}&body=${encodeURIComponent(`Hi Jerome & Create and Arise Team,\n\nI just configured an estimate using your Cost Estimator:\n• Services: ${scope.services.join(', ')}\n• Timeline Pacing: ${scope.timeline.label}\n• Estimated Investment: ~${scope.amountText} (${scope.currency.suffix || 'USD'})\n\nPlease email my formal proposal and let's get started!\n\nBest regards,`)}`;
+  }
+
+  if (typeof window.openModal === 'function') {
+    window.openModal('estimateModal');
+  } else {
+    const m = document.getElementById('estimateModal');
+    if (m) {
+      m.classList.add('active');
+      document.body.classList.add('modal-open');
+    }
+  }
+
+  // Scroll modal card to top for mobile viewports
+  const modalElem = document.getElementById('estimateModal');
+  const cardElem = modalElem ? modalElem.querySelector('.modal-card') : null;
+  if (cardElem) cardElem.scrollTop = 0;
+};
+
+// Global standalone alias for inline onclick
+function openEstimateModal() {
+  if (typeof window.openEstimateModal === 'function') {
+    window.openEstimateModal();
+  }
+}
+
 window.sendFormSubmission = async function (payload) {
   // Ensure _replyto is always present for instant Gmail replies
   if (payload.email && !payload._replyto) {
@@ -2876,6 +2988,8 @@ function initCostCalculator() {
     const modalPacing = document.getElementById('modalEstPacing');
     const notesField = document.getElementById('estClientNotes');
     const subjectField = document.getElementById('estimateFormSubject');
+    const modalWa = document.getElementById('modalWaQuickBtn');
+    const modalMail = document.getElementById('modalMailQuickBtn');
 
     if (modalAmount) modalAmount.textContent = scope.amountText;
     if (modalServices) modalServices.textContent = scope.services.join(', ');
@@ -2888,6 +3002,13 @@ function initCostCalculator() {
       notesField.value = `I configured this custom package using your Cost Estimator:\n• Services: ${scope.services.join(', ')}\n• Delivery Pacing: ${scope.timeline.label}\n• Estimated Investment: ~${scope.amountText} (${scope.currency.suffix || 'USD'})\n\nPlease email my itemized proposal and let's discuss details!`;
     }
 
+    if (modalWa) {
+      modalWa.href = `https://wa.me/639274682635?text=${encodeURIComponent(`Hi Jerome & Create and Arise! I configured a custom package with your Cost Estimator: ${scope.services.join(', ')} (~${scope.amountText}, ${scope.timeline.label}). I would love to connect!`)}`;
+    }
+    if (modalMail) {
+      modalMail.href = `mailto:createandarise05@gmail.com?subject=${encodeURIComponent(`[Estimate Inquiry] ${scope.services.join(', ')} (${scope.amountText})`)}&body=${encodeURIComponent(`Hi Jerome & Create and Arise Team,\n\nI just configured an estimate using your Cost Estimator:\n• Services: ${scope.services.join(', ')}\n• Timeline Pacing: ${scope.timeline.label}\n• Estimated Investment: ~${scope.amountText} (${scope.currency.suffix || 'USD'})\n\nPlease email my formal proposal and let's get started!\n\nBest regards,`)}`;
+    }
+
     if (typeof window.openModal === 'function') {
       window.openModal('estimateModal');
     } else {
@@ -2897,6 +3018,11 @@ function initCostCalculator() {
         document.body.classList.add('modal-open');
       }
     }
+
+    // Scroll modal card to top for mobile viewports
+    const modalElem = document.getElementById('estimateModal');
+    const cardElem = modalElem?.querySelector('.modal-card');
+    if (cardElem) cardElem.scrollTop = 0;
   };
 
   // Global helper to transfer estimate into main contact form
